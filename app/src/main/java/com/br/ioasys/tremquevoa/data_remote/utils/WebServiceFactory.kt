@@ -24,8 +24,8 @@ object WebServiceFactory {
     fun providerOkHttClient(): OkHttpClient =
         OkHttpClient.Builder()
             .dispatcher(Dispatcher().apply {
-                maxRequests =10
-                maxRequestsPerHost = 10
+                maxRequests =1
+                maxRequestsPerHost = 1
             })
             .connectTimeout(30L, TimeUnit.SECONDS)
             .readTimeout(30L, TimeUnit.SECONDS)

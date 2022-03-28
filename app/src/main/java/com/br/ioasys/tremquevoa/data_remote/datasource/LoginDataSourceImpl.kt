@@ -13,9 +13,7 @@ class LoginDataSourceImpl(
     private val authService: AuthService
 ) : LoginRemoteDataSource {
     override fun doLogin(email: String, password: String): Flow<User> = flow {
-        Log.d("LoginDataSourceImpl", "Pre chamada")
-        val response = authService.doLogin(Gson().toJson(LoginRequest(email = email, password = password)))
-        //val response = authService.doLogin()
+        val response = authService.doLogin(LoginRequest(email = email, password = password))
         if (response.isSuccessful) {
             Log.d("LoginDataSourceImpl", "Login ok")
         } else {

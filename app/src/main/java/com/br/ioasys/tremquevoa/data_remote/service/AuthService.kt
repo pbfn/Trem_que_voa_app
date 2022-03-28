@@ -10,8 +10,9 @@ import retrofit2.http.POST
 
 interface AuthService {
 
-    @GET("users/signin")
+    @Headers("Content-type: application/json")
+    @POST("users/signin")
     suspend fun doLogin(
-        @Body loginRequest: String
+        @Body loginRequest: LoginRequest
     ): Response<LoginResponse>
 }
