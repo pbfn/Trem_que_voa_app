@@ -1,7 +1,8 @@
-package com.br.ioasys.tremquevoa
+package com.br.ioasys.tremquevoa.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.br.ioasys.tremquevoa.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
