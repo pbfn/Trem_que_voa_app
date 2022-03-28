@@ -19,5 +19,11 @@ class LoginDataSourceImpl(
         } else {
             Log.d("LoginDataSourceImpl", "Login erro")
         }
+        //TODO REMOVER USER MOCADO
+        emit(User(
+            email = "pbruno1283",
+            token = "dkjhskajshkasdha",
+            refreshToken = "dkajshdkajhsdkjashdkja"
+        ))
     }
 }

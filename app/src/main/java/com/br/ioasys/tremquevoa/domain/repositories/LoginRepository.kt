@@ -7,4 +7,6 @@ interface LoginRepository {
 
     fun doLogin(email: String, password: String): Flow<User>
 
+    fun saveUser(user: User)
+
 }
