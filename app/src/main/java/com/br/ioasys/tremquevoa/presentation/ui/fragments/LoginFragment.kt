@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.databinding.FragmentLoginBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyEmailException
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyPasswordException
 import com.br.ioasys.tremquevoa.presentation.viewmodel.LoginViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -42,7 +45,7 @@ class LoginFragment : Fragment() {
     private fun setListeners() {
         binding.apply {
             btnLogin.setOnClickListener {
-                checkInput(
+                doLogin(
                     email = editTextEmail.text.toString(),
                     password = editTextPassword.text.toString()
                 )
@@ -50,27 +53,6 @@ class LoginFragment : Fragment() {
 
             btnRegister.setOnClickListener {
                 nextPage(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
-            }
-        }
-    }
-
-    private fun checkInput(email: String?, password: String?) {
-        when {
-            email.isNullOrBlank() && password.isNullOrBlank() -> {
-                Log.d("LoginFragmentTeste", "Os dois estão vazios")
-            }
-            email.isNullOrBlank() -> {
-                Log.d("LoginFragmentTeste", "Email vazio")
-            }
-            password.isNullOrBlank() -> {
-                Log.d("LoginFragmentTeste", "Senha Vazia")
-            }
-            else -> {
-                Log.d("LoginFragmentTeste", "Ok, pode logar")
-                doLogin(
-                    email = email,
-                    password = password
-                )
             }
         }
     }
@@ -86,13 +68,32 @@ class LoginFragment : Fragment() {
         loginViewModel.user.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
-                    Log.d("LoginFragmentTeste", "Carregando Login")
+                    binding.textViewPasswordEmpty.visibility = View.GONE
+                    binding.textViewEmailEmpty.visibility = View.GONE
                 }
                 is ViewState.Success -> {
-
+                    Toast.makeText(
+                        requireContext(),
+                        "Login realizado com sucesso",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 is ViewState.Error -> {
-
+                    when (response.throwable) {
+                        is InvalidEmptyPasswordException -> {
+                            binding.textViewPasswordEmpty.visibility = View.VISIBLE
+                        }
+                        is InvalidEmptyEmailException -> {
+                            binding.textViewEmailEmpty.visibility = View.VISIBLE
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Houve uma falha no login",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             }
         }

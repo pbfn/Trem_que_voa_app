@@ -20,17 +20,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewEmailEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Por favor informe um email"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailEmpty" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPasswordEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Por favor informe a senha"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewForgotPassword"
@@ -39,9 +57,9 @@
         android:layout_marginHorizontal="70dp"
         android:gravity="end"
         android:text="Esqueci a senha "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPasswordEmpty" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"

@@ -7,6 +7,6 @@ data class LoginResponse(
     val token: String,
     @SerializedName("refreshToken")
     val refreshToken: String,
-    @SerializedName("name")
-    val name: String,
+    @SerializedName("user")
+    val user: UserResponse,
 )
