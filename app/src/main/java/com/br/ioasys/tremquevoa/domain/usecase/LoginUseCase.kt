@@ -1,5 +1,7 @@
 package com.br.ioasys.tremquevoa.domain.usecase
 
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyEmailException
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyPasswordException
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
@@ -17,6 +19,12 @@ class LoginUseCase(
     )
 
     override fun run(params: Params): Flow<User> = when {
+        params.email.isEmpty() -> {
+            throw InvalidEmptyEmailException()
+        }
+        params.password.isEmpty() -> {
+            throw InvalidEmptyPasswordException()
+        }
         else -> {
             loginRepository.doLogin(email = params.email, password = params.password)
         }

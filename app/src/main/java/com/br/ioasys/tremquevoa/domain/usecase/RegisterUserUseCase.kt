@@ -22,19 +22,19 @@ class RegisterUserUseCase(
 
     override fun run(params: Params): Flow<User> = when {
         params.firstName.isEmpty() -> {
-            throw InvalidFirstNameException()
+            throw InvalidEmptyFirstNameException()
         }
         params.lastName.isEmpty() -> {
-            throw InvalidLastNameException()
+            throw InvalidEmptyLastNameException()
         }
         params.email.isEmpty() -> {
-            throw InvalidEmailException()
+            throw InvalidEmptyEmailException()
         }
         params.password.isEmpty() -> {
-            throw InvalidPasswordException()
+            throw InvalidEmptyPasswordException()
         }
         params.passwordConfirmation.isEmpty() -> {
-            throw InvalidPasswordConfirmException()
+            throw InvalidEmptyPasswordConfirmException()
         }
         params.password != params.passwordConfirmation -> {
             throw InvalidDifferPasswordException()
