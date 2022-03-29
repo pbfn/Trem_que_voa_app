@@ -1,4 +1,4 @@
-package com.br.ioasys.tremquevoa.data_remote.model
+package com.br.ioasys.tremquevoa.data_remote.model.response
 
 import com.google.gson.annotations.SerializedName
 

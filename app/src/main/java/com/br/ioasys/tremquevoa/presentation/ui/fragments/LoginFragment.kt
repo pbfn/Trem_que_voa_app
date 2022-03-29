@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.databinding.FragmentLoginBinding
 import com.br.ioasys.tremquevoa.presentation.viewmodel.LoginViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -44,6 +46,10 @@ class LoginFragment : Fragment() {
                     email = editTextEmail.text.toString(),
                     password = editTextPassword.text.toString()
                 )
+            }
+
+            btnRegister.setOnClickListener {
+                nextPage(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
             }
         }
     }
@@ -92,4 +98,7 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun nextPage(directions: NavDirections) {
+        findNavController().navigate(directions)
+    }
 }

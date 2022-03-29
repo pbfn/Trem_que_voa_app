@@ -2,10 +2,9 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 
 import android.util.Log
 import com.br.ioasys.tremquevoa.data.datasource.remote.LoginRemoteDataSource
-import com.br.ioasys.tremquevoa.data_remote.model.LoginRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -20,10 +19,15 @@ class LoginDataSourceImpl(
             Log.d("LoginDataSourceImpl", "Login erro")
         }
         //TODO REMOVER USER MOCADO
-        emit(User(
-            email = "pbruno1283",
-            token = "dkjhskajshkasdha",
-            refreshToken = "dkajshdkajhsdkjashdkja"
-        ))
+        emit(
+            User(
+                id = "23123123123",
+                firstName = "",
+                lastName = "",
+                email = "pbruno1283",
+                token = "dkjhskajshkasdha",
+                refreshToken = "dkajshdkajhsdkjashdkja",
+            )
+        )
     }
 }
