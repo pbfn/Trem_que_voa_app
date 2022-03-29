@@ -11,6 +11,6 @@ val dataModule = module {
         LoginRepositoryImpl(get(), get())
     }
     single<RegisterRepository> {
-        RegisterRepositoryImpl()
+        RegisterRepositoryImpl(get())
     }
 }

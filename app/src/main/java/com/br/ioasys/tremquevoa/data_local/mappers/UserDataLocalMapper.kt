@@ -5,14 +5,19 @@ import com.br.ioasys.tremquevoa.domain.model.User
 
 
 fun User.toDao(): UserDataLocal = UserDataLocal(
-    id = "1",
+    id = this.id,
     email = this.email,
     token = this.token,
-    refreshToken = this.refreshToken
+    refreshToken = this.refreshToken,
+    firstName = this.firstName,
+    lastName = this.lastName
 )
 
 fun UserDataLocal.toDomain(): User = User(
+    id = this.id,
     email = this.email,
     token = this.token,
-    refreshToken = this.refreshToken
+    refreshToken = this.refreshToken,
+    firstName = this.firstName,
+    lastName = this.lastName
 )

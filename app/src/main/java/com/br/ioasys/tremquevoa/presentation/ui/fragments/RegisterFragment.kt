@@ -1,12 +1,15 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterBinding
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterViewModel
+import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
@@ -34,12 +37,37 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
+        addObserver()
     }
 
     private fun setListeners() {
         binding.apply {
             btnRegister.setOnClickListener {
                 registerUser()
+            }
+        }
+    }
+
+    private fun addObserver() {
+        registerViewModel.user.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Cadastro realizado com sucesso",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Houve uma falha no cadastro",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }

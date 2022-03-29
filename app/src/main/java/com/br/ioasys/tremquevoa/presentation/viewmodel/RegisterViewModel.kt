@@ -8,6 +8,7 @@ import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterUserUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
+import com.br.ioasys.tremquevoa.util.postSuccess
 
 class RegisterViewModel(
     private val registerUserUseCase: RegisterUserUseCase
@@ -35,7 +36,7 @@ class RegisterViewModel(
                     passwordConfirmation = passwordConfirmation
                 ),
                 onSuccess = {
-
+                    _user.postSuccess(it)
                 },
                 onError = {
                     _user.postError(it)

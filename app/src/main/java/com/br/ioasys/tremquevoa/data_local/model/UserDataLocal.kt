@@ -10,4 +10,6 @@ data class UserDataLocal(
     val email:String,
     val token: String,
     val refreshToken: String,
+    val firstName:String,
+    val lastName:String
 )
