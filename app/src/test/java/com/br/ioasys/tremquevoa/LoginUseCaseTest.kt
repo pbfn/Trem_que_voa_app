@@ -58,7 +58,7 @@ class LoginUseCaseTest {
     }
 
     @Test(expected = InvalidEmptyPasswordException::class)
-    fun `WHEN  EMPTY PASSWORD  MUST RETURN INVALIDPASSWORDEMPTYEXCEPTION`() {
+    fun `WHEN  EMPTY PASSWORD  MUST RETURN INVALID PASSWORD EMPTY EXCEPTION`() {
         subject.run(
             params = LoginUseCase.Params(
                 email = "pbruno@gmail.com",
@@ -68,7 +68,7 @@ class LoginUseCaseTest {
     }
 
     @Test(expected = InvalidEmptyEmailException::class)
-    fun `WHEN EMPTY EMAIL MUST RETURN INVALIDEMAILEMPTYEXCEPTION`() {
+    fun `WHEN EMPTY EMAIL MUST RETURN INVALID EMAIL EMPTY EXCEPTION`() {
         subject.run(
             params = LoginUseCase.Params(
                 email = "",
