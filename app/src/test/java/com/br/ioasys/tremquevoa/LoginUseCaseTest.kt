@@ -25,16 +25,6 @@ class LoginUseCaseTest {
     private lateinit var repository: LoginRepository
     private lateinit var subject: LoginUseCase
 
-
-    private val userFake = User(
-        id = "123456",
-        email = "pbruno@gmail.com",
-        firstName = "Pedro",
-        lastName = "Bruno",
-        token = "token",
-        refreshToken = "refreshToken"
-    )
-
     @Before
     fun before() {
         MockitoAnnotations.openMocks(this)
@@ -53,7 +43,7 @@ class LoginUseCaseTest {
                 password = "password"
             )
         ).collect {
-            assert(it == userFake)
+            assert(it == DOMAIN_USER_FAKE)
         }
     }
 
@@ -85,7 +75,7 @@ class LoginUseCaseTest {
                 password = any()
             )
         ).thenAnswer {
-            flowOf(userFake)
+            flowOf(DOMAIN_USER_FAKE)
         }
     }
 

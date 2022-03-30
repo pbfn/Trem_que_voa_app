@@ -22,14 +22,6 @@ class RegisterUserUseCaseTest {
     private lateinit var repository: RegisterRepository
     private lateinit var subject: RegisterUserUseCase
 
-    private val userFake = User(
-        id = "123456",
-        email = "pbruno@gmail.com",
-        firstName = "Pedro",
-        lastName = "Bruno",
-        token = "token",
-        refreshToken = "refreshToken"
-    )
 
 
     @Before
@@ -53,7 +45,7 @@ class RegisterUserUseCaseTest {
                 passwordConfirmation = "password"
             )
         ).collect {
-            assert(it == userFake)
+            assert(it == DOMAIN_USER_FAKE)
         }
     }
 
@@ -84,7 +76,7 @@ class RegisterUserUseCaseTest {
     }
 
     @Test(expected = InvalidEmptyLastNameException::class)
-    fun `WHEN EMPTY FIRST NAME MUST RETURN INVALID EMPTY LAST NAME EXCEPTION`() {
+    fun `WHEN EMPTY LAST NAME MUST RETURN INVALID EMPTY LAST NAME EXCEPTION`() {
         subject.run(
             params = RegisterUserUseCase.Params(
                 email = "email",
@@ -97,7 +89,7 @@ class RegisterUserUseCaseTest {
     }
 
     @Test(expected = InvalidEmptyPasswordException::class)
-    fun `WHEN EMPTY FIRST NAME MUST RETURN INVALID EMPTY PASSWORD EXCEPTION`() {
+    fun `WHEN EMPTY PASSWORD MUST RETURN INVALID EMPTY PASSWORD EXCEPTION`() {
         subject.run(
             params = RegisterUserUseCase.Params(
                 email = "email",
@@ -111,7 +103,7 @@ class RegisterUserUseCaseTest {
 
 
     @Test(expected = InvalidEmptyPasswordConfirmException::class)
-    fun `WHEN EMPTY FIRST NAME MUST RETURN INVALID EMPTY CONFIRMPASSWORD EXCEPTION`() {
+    fun `WHEN EMPTY CONFIRM PASSWORD MUST RETURN INVALID EMPTY CONFIRMPASSWORD EXCEPTION`() {
         subject.run(
             params = RegisterUserUseCase.Params(
                 email = "email",
@@ -146,7 +138,7 @@ class RegisterUserUseCaseTest {
                 passwordConfirmation = any()
             )
         ).thenAnswer {
-            flowOf(userFake)
+            flowOf(DOMAIN_USER_FAKE)
         }
     }
 }
