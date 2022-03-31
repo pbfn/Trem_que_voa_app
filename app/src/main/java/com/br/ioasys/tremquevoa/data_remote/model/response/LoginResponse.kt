@@ -1,4 +1,4 @@
-package com.br.ioasys.tremquevoa.data_remote.model
+package com.br.ioasys.tremquevoa.data_remote.model.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,6 +7,6 @@ data class LoginResponse(
     val token: String,
     @SerializedName("refreshToken")
     val refreshToken: String,
-    @SerializedName("name")
-    val name: String,
+    @SerializedName("user")
+    val user: UserResponse,
 )

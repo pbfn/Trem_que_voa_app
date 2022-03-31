@@ -7,6 +7,9 @@ import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.LoginUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.SaveUserLocalUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
+import com.br.ioasys.tremquevoa.util.postError
+import com.br.ioasys.tremquevoa.util.postLoading
+import com.br.ioasys.tremquevoa.util.postSuccess
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
@@ -21,7 +24,7 @@ class LoginViewModel(
     }
 
     fun doLogin(email: String, password: String) {
-        _user.postValue(ViewState.Loading)
+        _user.postLoading()
 
         loginUseCase(
             params = LoginUseCase.Params(
@@ -29,11 +32,11 @@ class LoginViewModel(
                 password = password
             ),
             onSuccess = { userReponse ->
-                _user.postValue(ViewState.Success(userReponse))
+                _user.postSuccess(userReponse)
                 saveUser(userReponse)
             },
             onError = {
-                _user.postValue(ViewState.Error(it))
+                _user.postError(it)
             }
 
         )
