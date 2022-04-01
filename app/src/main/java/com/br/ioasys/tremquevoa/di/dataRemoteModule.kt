@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.data_remote.datasource.LoginDataSourceImpl
 import com.br.ioasys.tremquevoa.data_remote.datasource.RegisterEventDataSourceImpl
 import com.br.ioasys.tremquevoa.data_remote.datasource.RegisterDataSourceImpl
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
+import com.br.ioasys.tremquevoa.data_remote.service.EventService
 import com.br.ioasys.tremquevoa.data_remote.utils.ApiConstants.BASE_URL
 import com.br.ioasys.tremquevoa.data_remote.utils.WebServiceFactory
 import org.koin.dsl.module
@@ -17,7 +18,7 @@ val dataRemoteModule = module {
     }
 
     single<RegisterEventRemoteDataSource> {
-        RegisterEventDataSourceImpl()
+        RegisterEventDataSourceImpl(get())
     }
 
     single<RegisterRemoteDataSource> {
@@ -25,6 +26,13 @@ val dataRemoteModule = module {
     }
 
     single<AuthService> {
+        WebServiceFactory.createWebService(
+            okHttpClient = get(),
+            url = BASE_URL
+        )
+    }
+
+    single<EventService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
             url = BASE_URL

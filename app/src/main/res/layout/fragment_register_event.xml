@@ -50,6 +50,29 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <RadioGroup
+            android:id="@+id/radioGroupIsOnline"
+            android:checkedButton="@id/radioButtonIsOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="200dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputDescription" >
+            <RadioButton
+                android:id="@+id/radioButtonIsOnline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Online"/>
+            <RadioButton
+                android:id="@+id/radioButtonInPerson"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Presencial"
+                android:layout_marginStart="10dp"/>
+        </RadioGroup>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonDatePikerEvent"
             android:layout_width="match_parent"
@@ -59,7 +82,7 @@
             android:text="Selecione a data"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputDescription"/>
+            app:layout_constraintTop_toBottomOf="@id/radioGroupIsOnline"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewDatePikerEvent"
@@ -152,6 +175,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputBoxActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEndTime"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Selecione a atividade"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewIsAcessible"
             android:layout_width="match_parent"
@@ -160,11 +203,11 @@
             android:layout_marginHorizontal="16dp"
             android:text="O evento é acessível?"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputEndTime"/>
+            app:layout_constraintTop_toBottomOf="@id/textInputBoxActivity"/>
 
         <RadioGroup
-            android:id="@+id/radioGroupAccessible"
-            android:checkedButton="@id/radioButtonNoAcessible"
+            android:id="@+id/radioGroupIsAccessible"
+            android:checkedButton="@id/radioButtonIsAcessible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="200dp"
@@ -173,17 +216,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewIsAcessible" >
             <RadioButton
-                android:id="@+id/radioButtonAcessible"
+                android:id="@+id/radioButtonIsAcessible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Sim"/>
+                android:text="Online"/>
             <RadioButton
-                android:id="@+id/radioButtonNoAcessible"
+                android:id="@+id/radioButtonNoAccessible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Não"
+                android:text="Presencial"
                 android:layout_marginStart="10dp"/>
         </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputIdentity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:hint="CPF ou CNPJ"
+            app:helperTextEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupIsAccessible">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextIdentity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRegisterEvent"
@@ -195,7 +258,7 @@
             android:text="Cadastrar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/radioGroupAccessible"
+            app:layout_constraintTop_toBottomOf="@id/textInputIdentity"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
