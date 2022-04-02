@@ -75,7 +75,7 @@ class RegisterFragment : Fragment() {
     private fun registerUser() {
         registerViewModel.registerUser(
             firstName = binding.editTextFirstName.text.toString(),
-            lastName = binding.editTextLastName.text.toString(),
+            lastName = "pedro",
             email = binding.editTextEmail.text.toString(),
             password = binding.editTextPassword.text.toString(),
             passwordConfirmation = binding.editTextConfirmPassword.text.toString()
