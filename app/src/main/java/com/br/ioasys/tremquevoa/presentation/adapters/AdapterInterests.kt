@@ -1,15 +1,20 @@
 package com.br.ioasys.tremquevoa.presentation.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.InterestsItemAdapterBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
 
 class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterestsViewHolder>() {
 
+
+    var context: Context? = null
 
     class AdapterInterestsViewHolder(itemView: InterestsItemAdapterBinding) :
         RecyclerView.ViewHolder(itemView.root) {
@@ -36,6 +41,7 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
             parent,
             false
         )
+        context = parent.context
         return AdapterInterestsViewHolder(binding)
     }
 
@@ -43,6 +49,17 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
         val interest = differ.currentList[position]
         holder.apply {
             title.text = interest.title
+            image.setOnClickListener {
+                interest.selected = !interest.selected
+                if (interest.selected) {
+                    //TODO PESQUISAR OUTRAS FORMAS DE FAZER
+                    image.borderWidth = 110
+                    image.borderColor = ContextCompat.getColor(context!!, R.color.border_interest_selected)
+                } else {
+                    image.borderWidth = 0
+                }
+            }
+
         }
     }
 
