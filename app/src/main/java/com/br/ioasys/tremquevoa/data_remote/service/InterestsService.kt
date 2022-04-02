@@ -8,6 +8,6 @@ import retrofit2.http.Headers
 interface InterestsService {
 
     @Headers("Content-type: application/json")
-    @GET("interests")
-    suspend fun getAllInterests():Response<InterestsResponse>
+    @GET("activities/list")
+    suspend fun getAllInterests(): Response<List<InterestsResponse>>
 }
