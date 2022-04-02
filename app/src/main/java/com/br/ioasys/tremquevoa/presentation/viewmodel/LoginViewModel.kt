@@ -19,9 +19,6 @@ class LoginViewModel(
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
 
-    init {
-        doLogin("squad8.test@gmail.com", "12345678")
-    }
 
     fun doLogin(email: String, password: String) {
         _user.postLoading()

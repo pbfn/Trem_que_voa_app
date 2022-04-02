@@ -10,12 +10,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentInterestsBinding
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterInterests
+import com.br.ioasys.tremquevoa.presentation.viewmodel.InterestsViewModel
 import com.br.ioasys.tremquevoa.util.MockInteresses
+import com.br.ioasys.tremquevoa.util.ViewState
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class InterestsFragment : Fragment() {
 
     private var _binding: FragmentInterestsBinding? = null
     private val binding: FragmentInterestsBinding get() = _binding!!
+    private val interestsViewModel: InterestsViewModel by lazy {
+        getViewModel()
+    }
 
 
     private lateinit var adapterInterests: AdapterInterests
@@ -35,7 +41,9 @@ class InterestsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
-        adapterInterests.differ.submitList(MockInteresses.listaInteresses)
+        addObserver()
+        getInterests()
+        //adapterInterests.differ.submitList(MockInteresses.listaInteresses)
     }
 
     private fun setRecyclerView() {
@@ -47,5 +55,29 @@ class InterestsFragment : Fragment() {
         }
     }
 
+    private fun getInterests() {
+        interestsViewModel.getInterests()
+    }
+
+    private fun addObserver() {
+        interestsViewModel.interests.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    adapterInterests.differ.submitList(response.data)
+                }
+
+                is ViewState.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
+
+        }
+    }
 
 }
