@@ -9,11 +9,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textVIewTitleInterests"
+        style="@style/Base.Widget.AppCompat.TextView.Title_23"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="45dp"
         android:layout_marginTop="72dp"
-        android:text="Conta pra gente.. quais são seus interesses?"
+        android:text="@string/title_interests"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +26,7 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="42dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="46dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewButtonJump"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,10 +36,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewButtonJump"
+        style="@style/Base.Widget.AppCompat.TextView.Text_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="Pular"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/jump"
         app:layout_constraintBottom_toTopOf="@+id/buttonNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,10 +50,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
+        style="@style/TextAppearance.AppCompat.Button.StyleButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="120dp"
         android:layout_marginBottom="41dp"
-        android:text="próximo"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

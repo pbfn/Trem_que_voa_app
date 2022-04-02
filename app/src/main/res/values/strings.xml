@@ -2,4 +2,8 @@
     <string name="app_name">Trem que voa App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_interests">Conta pra gente...quais são seus interesses?</string>
+    <string name="jump">pular</string>
+    <string name="next">próximo</string>
+    <string name="title_aux">Title</string>
 </resources>

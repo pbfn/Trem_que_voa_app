@@ -16,11 +16,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewInterest"
-        android:layout_width="wrap_content"
+        style="@style/Base.Widget.AppCompat.TextView.Text_18"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Title"
         android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/title_aux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageViewInterests"
         app:layout_constraintStart_toStartOf="@+id/imageViewInterests"
