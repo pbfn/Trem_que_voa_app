@@ -3,6 +3,7 @@ package com.br.ioasys.tremquevoa.data_remote.utils
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -26,6 +27,9 @@ object WebServiceFactory {
             .dispatcher(Dispatcher().apply {
                 maxRequests =1
                 maxRequestsPerHost = 1
+            })
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                setLevel(HttpLoggingInterceptor.Level.BODY)
             })
             .connectTimeout(30L, TimeUnit.SECONDS)
             .readTimeout(30L, TimeUnit.SECONDS)

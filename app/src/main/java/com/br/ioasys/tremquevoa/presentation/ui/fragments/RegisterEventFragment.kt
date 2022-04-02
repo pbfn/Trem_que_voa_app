@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ class RegisterEventFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = FragmentRegisterEventBinding.inflate(inflater, container, false).apply {
+       Log.d("EventFragment", "eu passei no onCreate")
         _binding = this
     }.root
 
@@ -109,8 +111,8 @@ class RegisterEventFragment : Fragment() {
             description = binding.editTextDescription.text.toString(),
             isOnline = handIsOnline(),
             date = binding.textViewDatePikerEvent.text.toString(),
-            minimumAge = binding.editTextMinAge.text.toInt(),
-            maxParticipants = binding.editTextMaxParticipants.text.toInt(),
+            minimumAge = binding.editTextMinAge.text.toInt()?:0,
+            maxParticipants = binding.editTextMaxParticipants.text.toInt()?:0,
             startTime = binding.editTextStartTime.text.toString(),
             endTime = binding.editTextEndTime.text.toString(),
             activityId = binding.autoCompleteActivity.text.toString(),
