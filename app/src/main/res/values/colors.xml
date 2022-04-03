@@ -13,4 +13,5 @@
     <color name="text_title">#6B5BBE</color>
     <color name="text_subtitle">#9C91D3</color>
     <color name="text_interests">#757678</color>
+    <color name="title_edit_text">#2C3131</color>
 </resources>
