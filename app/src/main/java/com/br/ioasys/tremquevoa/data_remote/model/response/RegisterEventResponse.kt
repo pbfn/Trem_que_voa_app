@@ -23,6 +23,8 @@ class RegisterEventResponse (
     val endTime: String,
     @SerializedName("activityId")
     val activityId: String,
+    @SerializedName("userId")
+    val userId: String,
     @SerializedName("userIdentity")
     val userIdentity: String,
     @SerializedName("isAccessible")

@@ -1,5 +1,7 @@
 package com.br.ioasys.tremquevoa.domain.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Event (
     val id: String,
     val name: String,
@@ -11,6 +13,7 @@ data class Event (
     val startTime: String,
     val endTime: String,
     val activityId: String,
+    val userId: String,
     val userIdentity: String,
     val isAccessible: Boolean
 )

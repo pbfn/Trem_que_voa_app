@@ -4,4 +4,5 @@ import com.br.ioasys.tremquevoa.domain.model.User
 
 interface LoginLocalDataSource {
     fun saveUser(user: User)
+    fun fetchUserLogged(): User?
 }

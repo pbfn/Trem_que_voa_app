@@ -15,5 +15,6 @@ fun RegisterEventResponse.toDomain() = Event(
     endTime = this.endTime,
     activityId = this.activityId,
     userIdentity = this.userIdentity,
-    isAccessible = this.isAccessible
+    isAccessible = this.isAccessible,
+    userId = this.userId
 )

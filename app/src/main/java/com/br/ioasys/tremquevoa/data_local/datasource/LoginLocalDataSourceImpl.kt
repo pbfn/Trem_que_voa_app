@@ -12,4 +12,8 @@ class LoginLocalDataSourceImpl(
         user = user.toDao()
     )
 
+    override fun fetchUserLogged(): User? {
+        return userDao.getUserLogged()
+    }
+
 }
