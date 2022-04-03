@@ -8,9 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.motion.utils.ViewState
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
+import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.extensions.toInt
+import com.br.ioasys.tremquevoa.presentation.AdapterActivities
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterEventViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.util.*
@@ -20,15 +21,18 @@ class RegisterEventFragment : Fragment() {
     private var _binding: FragmentRegisterEventBinding? = null
     private val binding: FragmentRegisterEventBinding get() = _binding!!
 
+    private var activitySelected: Activities? = null
+
     private val registerEventViewModel: RegisterEventViewModel by lazy {
         getViewModel()
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = FragmentRegisterEventBinding.inflate(inflater, container, false).apply {
-       Log.d("EventFragment", "eu passei no onCreate")
+        Log.d("EventFragment", "eu passei no onCreate")
         _binding = this
     }.root
 
@@ -41,6 +45,7 @@ class RegisterEventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setListener()
         addObserver()
+        registerEventViewModel.fetchActivities()
     }
 
     private fun setListener() {
@@ -77,6 +82,35 @@ class RegisterEventFragment : Fragment() {
                 }
             }
         }
+
+        registerEventViewModel.activities.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is com.br.ioasys.tremquevoa.util.ViewState.Loading -> {
+
+                }
+
+                is com.br.ioasys.tremquevoa.util.ViewState.Success -> {
+                    val adapter = AdapterActivities(
+                        requireContext(),
+                        response.data
+                    )
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+                    binding.autoCompleteActivity.setOnItemClickListener { adapterView, view, i, l ->
+                        activitySelected = response.data[i]
+                    }
+                    binding.autoCompleteActivity.setAdapter(adapter)
+                }
+
+                is com.br.ioasys.tremquevoa.util.ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Houve uma falha ao pegar as activities",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
     }
 
     private fun dataPickDialog() {
@@ -87,7 +121,7 @@ class RegisterEventFragment : Fragment() {
 
         val datePikerDialog = DatePickerDialog(
             requireContext(),
-            DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            { view, mYear, mMonth, mDay ->
                 binding.textViewDatePikerEvent.setText("" + mYear + "-" + mMonth + "-" + mDay)
             },
             year,
@@ -111,11 +145,11 @@ class RegisterEventFragment : Fragment() {
             description = binding.editTextDescription.text.toString(),
             isOnline = handIsOnline(),
             date = binding.textViewDatePikerEvent.text.toString(),
-            minimumAge = binding.editTextMinAge.text.toInt()?:0,
-            maxParticipants = binding.editTextMaxParticipants.text.toInt()?:0,
+            minimumAge = binding.editTextMinAge.text.toInt() ?: 0,
+            maxParticipants = binding.editTextMaxParticipants.text.toInt() ?: 0,
             startTime = binding.editTextStartTime.text.toString(),
             endTime = binding.editTextEndTime.text.toString(),
-            activityId = binding.autoCompleteActivity.text.toString(),
+            activityId = activitySelected?.id?:"",
             userIdentity = binding.editTextIdentity.text.toString(),
             isAccessible = handAccessible()
         )

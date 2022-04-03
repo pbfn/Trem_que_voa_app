@@ -219,12 +219,12 @@
                 android:id="@+id/radioButtonIsAcessible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Online"/>
+                android:text="Sim"/>
             <RadioButton
                 android:id="@+id/radioButtonNoAccessible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Presencial"
+                android:text="Não"
                 android:layout_marginStart="10dp"/>
         </RadioGroup>
 
