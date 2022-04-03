@@ -12,7 +12,8 @@ val databaseModule = module {
             androidContext(),
             Database::class.java,
             DATABASE_NAME
-        ).build()
+        ).allowMainThreadQueries()
+            .build()
     }
 
     single { get<Database>().userDao() }
