@@ -4,56 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
+        style="@style/Base.Widget.AppCompat.TextView.Text_18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        style="@style/Base.Widget.AppCompat.TextView.Text_18"
-        android:textColor="#2C3131"
         android:text="@string/title"
+        android:textColor="#2C3131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <FrameLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:orientation="vertical"
-        app:boxBackgroundMode="none"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
+        android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input_custom_neutral"
-            android:gravity="center_vertical"
-            android:inputType="textEmailAddress"
-            android:singleLine="true"
-            android:textColor="@color/neutral"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical"
+            app:boxBackgroundMode="none"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/input_custom_neutral"
+                android:gravity="center_vertical"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/neutral" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Light"
-        android:textColor="#E25C5C"
-
         android:id="@+id/tvError"
+        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Light"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginTop="8dp"
         android:text="Mensagem de erro"
+        android:textColor="#E25C5C"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
+        app:layout_constraintTop_toBottomOf="@+id/layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
