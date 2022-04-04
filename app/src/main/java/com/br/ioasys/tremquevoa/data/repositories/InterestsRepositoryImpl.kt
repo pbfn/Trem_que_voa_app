@@ -11,8 +11,8 @@ class InterestsRepositoryImpl(
     private val interestsRemoteDataSource: InterestsRemoteDataSource
 ) : InterestsRepository {
 
-    override fun getAllInterests(): Flow<List<Interests>> = flow {
-        interestsRemoteDataSource.getAllInterests().collect { listInterests ->
+    override fun fetchAllInterests(): Flow<List<Interests>> = flow {
+        interestsRemoteDataSource.fetchAllInterests().collect { listInterests ->
             emit(listInterests)
         }
     }

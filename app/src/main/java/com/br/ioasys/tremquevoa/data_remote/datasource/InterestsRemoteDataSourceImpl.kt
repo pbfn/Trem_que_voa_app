@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
 class InterestsRemoteDataSourceImpl(
     private val interestsService: InterestsService
 ) : InterestsRemoteDataSource {
-    override fun getAllInterests(): Flow<List<Interests>> = flow {
+    override fun fetchAllInterests(): Flow<List<Interests>> = flow {
         val response = interestsService.getAllInterests()
         if (response.isSuccessful) {
             response.body()?.let { listReponse ->

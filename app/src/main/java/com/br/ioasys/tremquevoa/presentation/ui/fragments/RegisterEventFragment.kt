@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Activities
+import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.extensions.toInt
-import com.br.ioasys.tremquevoa.presentation.AdapterActivities
+import com.br.ioasys.tremquevoa.presentation.adapters.AdapterActivities
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterEventViewModel
+import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.util.*
 
@@ -21,7 +23,7 @@ class RegisterEventFragment : Fragment() {
     private var _binding: FragmentRegisterEventBinding? = null
     private val binding: FragmentRegisterEventBinding get() = _binding!!
 
-    private var activitySelected: Activities? = null
+    private var activitySelected: Interests? = null
 
     private val registerEventViewModel: RegisterEventViewModel by lazy {
         getViewModel()
@@ -63,17 +65,17 @@ class RegisterEventFragment : Fragment() {
     private fun addObserver() {
         registerEventViewModel.event.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is com.br.ioasys.tremquevoa.util.ViewState.Loading -> {
+                is ViewState.Loading -> {
 
                 }
-                is com.br.ioasys.tremquevoa.util.ViewState.Success -> {
+                is ViewState.Success -> {
                     Toast.makeText(
                         requireContext(),
                         "Evento cadastrado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                is com.br.ioasys.tremquevoa.util.ViewState.Error -> {
+                is ViewState.Error -> {
                     Toast.makeText(
                         requireContext(),
                         "Houve uma falha no cadastro",
@@ -85,11 +87,11 @@ class RegisterEventFragment : Fragment() {
 
         registerEventViewModel.activities.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is com.br.ioasys.tremquevoa.util.ViewState.Loading -> {
+                is ViewState.Loading -> {
 
                 }
 
-                is com.br.ioasys.tremquevoa.util.ViewState.Success -> {
+                is ViewState.Success -> {
                     val adapter = AdapterActivities(
                         requireContext(),
                         response.data
@@ -102,7 +104,7 @@ class RegisterEventFragment : Fragment() {
                     binding.autoCompleteActivity.setAdapter(adapter)
                 }
 
-                is com.br.ioasys.tremquevoa.util.ViewState.Error -> {
+                is ViewState.Error -> {
                     Toast.makeText(
                         requireContext(),
                         "Houve uma falha ao pegar as activities",

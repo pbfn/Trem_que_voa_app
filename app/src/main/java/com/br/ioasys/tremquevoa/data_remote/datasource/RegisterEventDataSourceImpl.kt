@@ -51,14 +51,14 @@ class RegisterEventDataSourceImpl(
         }
     }
 
-    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
-        val response = eventService.fetchEventActivities()
-        if (response.isSuccessful) {
-            response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse.toDomain())
-            }
-        } else {
-            emit(error(response.code()))
-        }
-    }
+//    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
+//        val response = eventService.fetchEventActivities()
+//        if (response.isSuccessful) {
+//            response.body()?.let { registerEventResponse ->
+//                emit(registerEventResponse.toDomain())
+//            }
+//        } else {
+//            emit(error(response.code()))
+//        }
+//    }
 }

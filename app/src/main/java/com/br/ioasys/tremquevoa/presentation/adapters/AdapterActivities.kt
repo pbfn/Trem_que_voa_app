@@ -1,4 +1,4 @@
-package com.br.ioasys.tremquevoa.presentation
+package com.br.ioasys.tremquevoa.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,18 +8,19 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.ThemedSpinnerAdapter
 import com.br.ioasys.tremquevoa.domain.model.Activities
+import com.br.ioasys.tremquevoa.domain.model.Interests
 
 @SuppressLint("NewApi")
 class AdapterActivities(
     context: Context,
-    private val listActivities: List<Activities>
-) : ArrayAdapter<Activities>(
+    private val listActivities: List<Interests>
+) : ArrayAdapter<Interests>(
     context,
     android.R.layout.simple_spinner_dropdown_item,
     listActivities
 ), ThemedSpinnerAdapter {
 
-    override fun getItem(position: Int): Activities? {
+    override fun getItem(position: Int): Interests? {
         return listActivities[position]
     }
 
@@ -35,7 +36,7 @@ class AdapterActivities(
         super.getView(position, convertView, parent)
         val view = super.getView(position, convertView, parent)
         val tvNameActivities = view.findViewById<TextView>(android.R.id.text1)
-        tvNameActivities.setText(listActivities[position].name)
+        tvNameActivities.setText(listActivities[position].title)
         return view
     }
 }

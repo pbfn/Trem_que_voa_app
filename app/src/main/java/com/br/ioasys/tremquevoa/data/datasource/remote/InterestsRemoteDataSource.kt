@@ -4,5 +4,5 @@ import com.br.ioasys.tremquevoa.domain.model.Interests
 import kotlinx.coroutines.flow.Flow
 
 interface InterestsRemoteDataSource {
-    fun getAllInterests(): Flow<List<Interests>>
+    fun fetchAllInterests(): Flow<List<Interests>>
 }
