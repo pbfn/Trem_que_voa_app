@@ -1,5 +1,6 @@
 package com.br.ioasys.tremquevoa.di
 
+import com.br.ioasys.tremquevoa.domain.usecase.*
 import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.LoginUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterUserUseCase
@@ -15,5 +16,7 @@ val domainModule = module {
     factory { LoginUseCase(get(), get()) }
     factory { SaveUserLocalUseCase(get(), get()) }
     factory { RegisterUserUseCase(get(), get()) }
+    factory { RegisterEventUseCase(get(), get(), get()) }
+    factory { GetActivitiesUseCase(get(), get()) }
     factory { GetInterestsUseCase(get(), get()) }
 }

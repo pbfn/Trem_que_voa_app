@@ -9,4 +9,6 @@ interface LoginRepository {
 
     fun saveUser(user: User)
 
+    fun fetchUserLogged(): Flow<User?>
+
 }

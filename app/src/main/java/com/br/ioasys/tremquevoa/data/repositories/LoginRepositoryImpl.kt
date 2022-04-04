@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 
 class LoginRepositoryImpl(
     private val loginRemoteDataSource: LoginRemoteDataSource,
@@ -22,5 +23,11 @@ class LoginRepositoryImpl(
     override fun saveUser(user: User) = loginLocalDataSource.saveUser(
         user = user
     )
+
+    override fun fetchUserLogged(): Flow<User?> {
+        return loginLocalDataSource.fetchUserLogged().let {
+            flowOf(it)
+        }
+    }
 
 }
