@@ -14,4 +14,7 @@
     <color name="text_subtitle">#9C91D3</color>
     <color name="text_interests">#757678</color>
     <color name="title_edit_text">#2C3131</color>
+
+    <color name="error">#E25C5C</color>
+    <color name="neutral">#757678</color>
 </resources>
