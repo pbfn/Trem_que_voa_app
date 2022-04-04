@@ -17,6 +17,6 @@ class GetInterestsUseCase(
     )
 
     override fun run(params: Params): Flow<List<Interests>>{
-       return interestsRepository.getAllInterests()
+       return interestsRepository.fetchAllInterests()
     }
 }

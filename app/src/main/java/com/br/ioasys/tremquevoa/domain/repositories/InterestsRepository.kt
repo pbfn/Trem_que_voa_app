@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface InterestsRepository {
 
-    fun getAllInterests(): Flow<List<Interests>>
+    fun fetchAllInterests(): Flow<List<Interests>>
 }

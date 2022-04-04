@@ -43,9 +43,9 @@ class RegisterEventRepositoryImpl(
         }
     }
 
-    override fun fetchEventActivities(): Flow<List<Activities>> {
-        return registerEventRemoteDataSource.fetchEventActivities()
-    }
+//    override fun fetchEventActivities(): Flow<List<Activities>> {
+//        return registerEventRemoteDataSource.fetchEventActivities()
+//    }
 }
 
 

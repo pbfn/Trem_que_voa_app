@@ -21,5 +21,5 @@ interface RegisterEventRepository {
         isAccessible: Boolean
     ): Flow<Event>
 
-    fun fetchEventActivities(): Flow<List<Activities>>
+    //fun fetchEventActivities(): Flow<List<Activities>>
 }

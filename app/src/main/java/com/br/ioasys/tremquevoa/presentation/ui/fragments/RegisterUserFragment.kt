@@ -13,7 +13,7 @@ import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class RegisterFragment : Fragment() {
+class RegisterUserFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding: FragmentRegisterBinding get() = _binding!!
