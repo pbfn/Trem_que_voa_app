@@ -1,9 +1,13 @@
 package com.br.ioasys.tremquevoa.data_remote.datasource
 
+import android.util.Log
 import com.br.ioasys.tremquevoa.data.datasource.remote.LoginRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmailExecption
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidPasswordException
+import com.br.ioasys.tremquevoa.domain.exceptions.InvalidUserException
 import com.br.ioasys.tremquevoa.domain.exceptions.IvalidLoginException
 import com.br.ioasys.tremquevoa.domain.model.User
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +23,20 @@ class LoginDataSourceImpl(
                 emit(loginResponse.toDomain())
             }
         } else {
-            emit(throw IvalidLoginException())
+            when (response.code()) {
+                400 -> {
+                    emit(throw InvalidUserException())
+                }
+                401 -> {
+                    emit(throw InvalidPasswordException())
+                }
+                404 -> {
+                    emit(throw InvalidEmailExecption())
+                }
+                else -> {
+                    emit(throw IvalidLoginException())
+                }
+            }
         }
     }
 }

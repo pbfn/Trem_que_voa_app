@@ -35,4 +35,16 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Light">
+        <item name="android:fontFamily">@font/libre_franklin_light</item>
+        <item name="android:textColor">@color/title_edit_text</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.LibreFranklin_Text_16_Medium">
+        <item name="android:fontFamily">@font/libre_franklin_medium</item>
+        <item name="android:textColor">@color/text_interests</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomFormInput">
+        <attr name="custom_title" format="string" />
+        <attr name="android:inputType" />
+        <attr name="msgError" format="string" />
+        <attr name="background_input" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -6,4 +6,5 @@
     <string name="jump">pular</string>
     <string name="next">próximo</string>
     <string name="title_aux">Title</string>
+    <string name="title">Titulo</string>
 </resources>
