@@ -1,10 +1,8 @@
 package com.br.ioasys.tremquevoa
 
-import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyEmailException
 import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyPasswordException
-import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
+import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.usecase.LoginUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +20,7 @@ class LoginUseCaseTest {
 
 
     @Mock
-    private lateinit var repository: LoginRepository
+    private lateinit var repository: UserRepository
     private lateinit var subject: LoginUseCase
 
     @Before

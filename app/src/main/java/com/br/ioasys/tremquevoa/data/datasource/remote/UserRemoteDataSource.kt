@@ -1,9 +1,11 @@
-package com.br.ioasys.tremquevoa.domain.repositories
+package com.br.ioasys.tremquevoa.data.datasource.remote
 
 import com.br.ioasys.tremquevoa.domain.model.User
 import kotlinx.coroutines.flow.Flow
 
-interface RegisterRepository {
+interface UserRemoteDataSource {
+
+    fun doLogin(email: String, password: String): Flow<User>
 
     fun registerUser(
         firstName: String,

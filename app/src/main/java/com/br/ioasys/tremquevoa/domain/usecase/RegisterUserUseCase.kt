@@ -2,13 +2,13 @@ package com.br.ioasys.tremquevoa.domain.usecase
 
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.repositories.RegisterRepository
+import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
 class RegisterUserUseCase(
-    private val registerRepository: RegisterRepository,
+    private val userRepository: UserRepository,
     scope: CoroutineScope
 ) : UseCase<RegisterUserUseCase.Params, User>(scope = scope) {
 
@@ -43,7 +43,7 @@ class RegisterUserUseCase(
             throw InvalidDifferPasswordException()
         }
         else -> {
-            registerRepository.registerUser(
+            userRepository.registerUser(
                 firstName = params.firstName,
                 lastName = params.lastName,
                 email = params.email,

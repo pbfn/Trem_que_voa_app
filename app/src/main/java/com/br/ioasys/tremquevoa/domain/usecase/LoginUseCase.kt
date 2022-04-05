@@ -3,13 +3,13 @@ package com.br.ioasys.tremquevoa.domain.usecase
 import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyEmailException
 import com.br.ioasys.tremquevoa.domain.exceptions.InvalidEmptyPasswordException
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
+import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
 class LoginUseCase(
-    private val loginRepository: LoginRepository,
+    private val userRepository: UserRepository,
     scope: CoroutineScope
 ) : UseCase<LoginUseCase.Params, User>(scope = scope) {
 
@@ -26,7 +26,7 @@ class LoginUseCase(
             throw InvalidEmptyPasswordException()
         }
         else -> {
-            loginRepository.doLogin(email = params.email, password = params.password)
+            userRepository.doLogin(email = params.email, password = params.password)
         }
     }
 }

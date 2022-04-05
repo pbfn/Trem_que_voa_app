@@ -2,14 +2,14 @@ package com.br.ioasys.tremquevoa.domain.usecase
 
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
+import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class SaveUserLocalUseCase(
-    private val loginRepository: LoginRepository,
+    private val userRepository: UserRepository,
     scope: CoroutineScope
 ) : UseCase<SaveUserLocalUseCase.Params, Unit>(scope = scope) {
 
@@ -39,7 +39,7 @@ class SaveUserLocalUseCase(
 
         else -> {
             flowOf(
-                loginRepository.saveUser(user = params.user)
+                userRepository.saveUser(user = params.user)
             )
         }
     }
