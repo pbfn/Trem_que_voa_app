@@ -20,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentLoginBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.*
+import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.presentation.viewmodel.LoginViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -49,7 +50,6 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         underlineText()
         setListeners()
-        addChangeListener(requireContext())
         addObserver()
     }
 
@@ -80,8 +80,10 @@ class LoginFragment : Fragment() {
             when (response) {
 
                 is ViewState.Loading -> {
-                    changeBackgroundPassword(false,null)
-                    changeBackgroundEmail(false,null)
+                    binding.apply {
+                        customEmail.ChangeBackground(false, null)
+                        customPassword.ChangeBackground(false, null)
+                    }
                 }
 
                 is ViewState.Success -> {
@@ -97,29 +99,26 @@ class LoginFragment : Fragment() {
                     when (response.throwable) {
                         is InvalidEmptyPasswordException -> {
                             msg = "Por favor informe a senha"
-                            changeBackgroundPassword(true, msg)
+                            binding.customPassword.ChangeBackground(true,msg)
                         }
                         is InvalidEmptyEmailException -> {
                             msg = "Por favor informe o email"
-                            changeBackgroundEmail(true,msg)
+                            binding.customEmail.ChangeBackground(true,msg)
                         }
-                        is InvalidUserException->{
+                        is InvalidUserException -> {
                             msg = "Email ou senha informados errado"
+                            emitError(msg)
                         }
-                        is InvalidPasswordException ->{
+                        is InvalidPasswordException -> {
                             msg = "Senha errada"
+                            emitError(msg)
                         }
-                        is InvalidEmailExecption ->{
+                        is InvalidEmailExecption -> {
                             msg = "Não existe esse email cadastrado"
+                            emitError(msg)
                         }
                     }
-                    Toast.makeText(
-                        requireContext(),
-                        msg,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    changeBackgroundPassword(true,null)
-                    changeBackgroundEmail(true,null)
+
                 }
             }
         }
@@ -129,91 +128,20 @@ class LoginFragment : Fragment() {
         findNavController().navigate(directions)
     }
 
-    private fun underlineText(){
+    private fun underlineText() {
         binding.btnRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
     }
 
-    private fun changeBackgroundPassword(error: Boolean,msg:String?) {
-        if (error) {
-            binding.customPassword.apply {
-                msgError.visibility = View.VISIBLE
-                input.background = ContextCompat.getDrawable(context, R.drawable.input_custom_error)
-                input.setTextColor(ContextCompat.getColor(context,R.color.error))
-                msgError.text = msg
-            }
-        } else {
-            binding.customPassword.apply {
-                msgError.visibility = View.INVISIBLE
-                input.background =
-                    ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
-                input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-            }
+    private fun emitError(msg:String){
+        Toast.makeText(
+            requireContext(),
+            msg,
+            Toast.LENGTH_SHORT
+        ).show()
+        binding.apply {
+            customPassword.ChangeBackground(true,null)
+            customEmail.ChangeBackground(true,null)
         }
-
     }
 
-    private fun changeBackgroundEmail(error: Boolean,msg:String?) {
-        if (error) {
-            binding.customEmail.apply {
-                msgError.visibility = View.VISIBLE
-                input.background = ContextCompat.getDrawable(context, R.drawable.input_custom_error)
-                input.setTextColor(ContextCompat.getColor(context,R.color.error))
-                msgError.text = msg
-            }
-        } else {
-            binding.customPassword.apply {
-                msgError.visibility = View.INVISIBLE
-                input.background =
-                    ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
-                input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-            }
-        }
-
-    }
-
-    private fun addChangeListener(context:Context){
-        binding.customEmail.input.addTextChangedListener (object : TextWatcher{
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(p1>0){
-                    binding.customEmail.input.background =  ContextCompat.getDrawable(context, R.drawable.input_custom_success)
-                    binding.customEmail.input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-                }else{
-                    binding.customEmail.input.background =  ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
-                    binding.customEmail.input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-        })
-
-        binding.customPassword.input.addTextChangedListener (object : TextWatcher{
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(p1>0){
-                    binding.customPassword.input.background =  ContextCompat.getDrawable(context, R.drawable.input_custom_success)
-                    binding.customPassword.input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-                }else{
-                    binding.customPassword.input.background =  ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
-                    binding.customPassword.input.setTextColor(ContextCompat.getColor(context,R.color.neutral))
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-        })
-    }
 }

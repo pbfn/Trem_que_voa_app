@@ -6,6 +6,7 @@ import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterRequest
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
 import com.br.ioasys.tremquevoa.domain.exceptions.InvalidRegisterException
+import com.br.ioasys.tremquevoa.domain.exceptions.UserException
 import com.br.ioasys.tremquevoa.domain.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -34,7 +35,19 @@ class RegisterDataSourceImpl(
                 emit(registerReponse.toDomain())
             }
         } else {
-            emit(throw InvalidRegisterException())
+            when (response.code()) {
+                400 -> {
+                    emit(throw InvalidRegisterException())
+                }
+                409 -> {
+                    emit(throw UserException())
+                }
+                else -> {
+                    emit(throw InvalidRegisterException())
+                }
+            }
+
+
         }
     }
 }

@@ -33,6 +33,9 @@ class RegisterUserUseCase(
         params.password.isEmpty() -> {
             throw InvalidEmptyPasswordException()
         }
+        params.password.length < 6 ->{
+            throw InvalidMinimunPassword()
+        }
         params.passwordConfirmation.isEmpty() -> {
             throw InvalidEmptyPasswordConfirmException()
         }

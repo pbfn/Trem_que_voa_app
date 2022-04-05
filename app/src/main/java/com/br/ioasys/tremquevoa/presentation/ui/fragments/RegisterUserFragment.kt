@@ -1,13 +1,14 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.*
+import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -52,7 +53,12 @@ class RegisterUserFragment : Fragment() {
         registerViewModel.user.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
-
+                    binding.apply {
+                        editTextFirstName.ChangeBackground(false, null)
+                        editTextEmail.ChangeBackground(false, null)
+                        editTextPassword.ChangeBackground(false, null)
+                        editTextConfirmPassword.ChangeBackground(false, null)
+                    }
                 }
                 is ViewState.Success -> {
                     Toast.makeText(
@@ -62,11 +68,56 @@ class RegisterUserFragment : Fragment() {
                     ).show()
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Houve uma falha no cadastro",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    var msg = ""
+                    when (response.throwable) {
+                        is InvalidEmptyFirstNameException -> {
+                            msg = "Por favor informe o nome"
+                            binding.editTextFirstName.ChangeBackground(true, msg)
+                        }
+                        is InvalidEmptyEmailException -> {
+                            msg = "Por favor informe o email"
+                            binding.editTextEmail.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidEmptyPasswordException -> {
+                            msg = "Por favor informe a senha"
+                            binding.editTextPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidMinimunPassword -> {
+                            msg = "A senha não pode ser menor que 6 digitos"
+                            binding.editTextPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidEmptyPasswordConfirmException -> {
+                            msg = "Por favor informe a confirmação de senha"
+                            binding.editTextConfirmPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidDifferPasswordException -> {
+                            msg = "As senhas não estão iguais, por favor informe novamente"
+                            binding.editTextConfirmPassword.ChangeBackground(true, msg)
+                        }
+
+                        is EmailAlreadyUsed -> {
+                            msg = "Email já esta sendo utilizado"
+                            binding.editTextEmail.ChangeBackground(true, msg)
+                        }
+                        is InvalidRegisterException -> {
+                            binding.apply {
+                                editTextFirstName.ChangeBackground(true, null)
+                                editTextEmail.ChangeBackground(true, null)
+                                editTextPassword.ChangeBackground(true, null)
+                                editTextConfirmPassword.ChangeBackground(true, null)
+                            }
+                            Toast.makeText(
+                                requireContext(),
+                                "Houve uma falha no cadastro",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
                 }
             }
         }
