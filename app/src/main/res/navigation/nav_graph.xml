@@ -18,7 +18,7 @@
         android:id="@+id/registerFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterUserFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register_user" />
     <fragment
         android:id="@+id/interestsFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.InterestsFragment"

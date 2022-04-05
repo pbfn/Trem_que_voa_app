@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.br.ioasys.tremquevoa.databinding.FragmentRegisterBinding
+import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -15,8 +15,8 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class RegisterUserFragment : Fragment() {
 
-    private var _binding: FragmentRegisterBinding? = null
-    private val binding: FragmentRegisterBinding get() = _binding!!
+    private var _binding: FragmentRegisterUserBinding? = null
+    private val binding: FragmentRegisterUserBinding get() = _binding!!
     private val registerViewModel: RegisterViewModel by lazy {
         getViewModel()
     }
@@ -25,7 +25,7 @@ class RegisterUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentRegisterBinding.inflate(inflater, container, false).apply {
+    ): View = FragmentRegisterUserBinding.inflate(inflater, container, false).apply {
         _binding = this
     }.root
 
@@ -74,11 +74,11 @@ class RegisterUserFragment : Fragment() {
 
     private fun registerUser() {
         registerViewModel.registerUser(
-            firstName = binding.editTextFirstName.text.toString(),
+            firstName = binding.editTextFirstName.input.text.toString(),
             lastName = "pedro",
-            email = binding.editTextEmail.text.toString(),
-            password = binding.editTextPassword.text.toString(),
-            passwordConfirmation = binding.editTextConfirmPassword.text.toString()
+            email = binding.editTextEmail.input.text.toString(),
+            password = binding.editTextPassword.input.text.toString(),
+            passwordConfirmation = binding.editTextConfirmPassword.input.text.toString()
         )
     }
 }
