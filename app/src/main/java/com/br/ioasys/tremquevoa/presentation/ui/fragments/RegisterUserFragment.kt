@@ -45,7 +45,9 @@ class RegisterUserFragment : Fragment() {
     private fun setListeners() {
         binding.apply {
             btnRegister.setOnClickListener {
-                registerUser()
+                if (termsIsChecked()) {
+                    registerUser()
+                }
             }
         }
     }
@@ -68,8 +70,9 @@ class RegisterUserFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     findNavController().navigate(
-                        RegisterUserFragmentDirections.actionRegisterFragmentToEmergencyContactFragment(
-                            response.data.id
+                        RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
+                            response.data.email,
+                            binding.editTextPassword.input.text.toString()
                         )
                     )
                 }
@@ -126,6 +129,16 @@ class RegisterUserFragment : Fragment() {
 
                 }
             }
+        }
+    }
+
+    private fun termsIsChecked(): Boolean {
+        return if (!binding.checkboxTerms.isChecked) {
+            binding.textViewErrorMsg.visibility = View.VISIBLE
+            false
+        } else {
+            binding.textViewErrorMsg.visibility = View.GONE
+            true
         }
     }
 

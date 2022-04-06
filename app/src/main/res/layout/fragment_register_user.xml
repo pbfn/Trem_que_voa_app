@@ -81,11 +81,11 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/appCompatCheckBox"
-            android:button="@drawable/radio_button_selector"
+            android:id="@+id/checkboxTerms"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
+            android:button="@drawable/radio_button_selector"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
             app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
@@ -97,53 +97,63 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Li e concordo com os "
-            app:layout_constraintStart_toEndOf="@+id/appCompatCheckBox"
-            app:layout_constraintTop_toTopOf="@+id/appCompatCheckBox" />
+            app:layout_constraintStart_toEndOf="@+id/checkboxTerms"
+            app:layout_constraintTop_toTopOf="@+id/checkboxTerms" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewTerms_part2"
-            android:layout_width="wrap_content"
             style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
-            android:textColor="@color/button_color"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Termos e Condições"
+            android:textColor="@color/button_color"
             app:layout_constraintStart_toEndOf="@+id/textViewTerms_part1"
             app:layout_constraintTop_toTopOf="@+id/textViewTerms_part1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewTerms_part3"
+            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
             android:text=" e "
             app:layout_constraintStart_toEndOf="@+id/textViewTerms_part2"
             app:layout_constraintTop_toTopOf="@+id/textViewTerms_part2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewTerms_part4"
+            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Política de Privacidade"
             android:textColor="@color/button_color"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
             app:layout_constraintStart_toStartOf="@+id/textViewTerms_part1"
             app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part1" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewErrorMsg"
+            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginHorizontal="35dp"
+            android:text="Por favor concorde com os Termos e Codições e a Política de Privacidade para continuar"
+            android:textColor="@color/error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part4" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegister"
             style="@style/TextAppearance.AppCompat.Button.StyleButton"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="126dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="36dp"
             android:text="criar conta"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part4" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/textViewErrorMsg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
