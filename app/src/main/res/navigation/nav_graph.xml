@@ -18,7 +18,11 @@
         android:id="@+id/registerFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterUserFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register_user" />
+        tools:layout="@layout/fragment_register_user" >
+        <action
+            android:id="@+id/action_registerFragment_to_emergencyContactFragment"
+            app:destination="@id/emergencyContactFragment" />
+    </fragment>
     <fragment
         android:id="@+id/interestsFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.InterestsFragment"
@@ -29,4 +33,16 @@
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment"
         android:label="fragment_register_event"
         tools:layout="@layout/fragment_register_event" />
+    <fragment
+        android:id="@+id/emergencyContactFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.EmergencyContactFragment"
+        android:label="fragment_emergency_contact"
+        tools:layout="@layout/fragment_emergency_contact" >
+        <action
+            android:id="@+id/action_emergencyContactFragment_to_interestsFragment"
+            app:destination="@id/interestsFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 </navigation>

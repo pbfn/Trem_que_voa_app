@@ -14,11 +14,17 @@ class UpdateEmergencyContactsUserUseCase(
     data class Params(
         val userId: String,
         val emergencyName: String,
-        val emergencyPhone: String?
+        val emergencyPhone: String
     )
 
-    override fun run(params: Params): Flow<Boolean> {
-        TODO("Not yet implemented")
+    override fun run(params: Params): Flow<Boolean> = when {
+        else -> {
+            userRepository.updateEmergencyContactsUser(
+                userId = params.userId,
+                emergencyPhone = params.emergencyPhone,
+                emergencyName = params.emergencyName
+            )
+        }
     }
 
 }

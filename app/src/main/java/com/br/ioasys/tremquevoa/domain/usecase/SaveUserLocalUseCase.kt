@@ -21,11 +21,8 @@ class SaveUserLocalUseCase(
         params.user.id.isEmpty() -> {
             throw InvalidEmptyIdException()
         }
-        params.user.firstName.isEmpty() -> {
+        params.user.name.isEmpty() -> {
             throw InvalidEmptyFirstNameException()
-        }
-        params.user.lastName.isEmpty() -> {
-            throw InvalidEmptyLastNameException()
         }
         params.user.email.isEmpty() -> {
             throw InvalidEmptyEmailException()

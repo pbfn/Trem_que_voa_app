@@ -19,4 +19,10 @@ interface UserRepository {
         passwordConfirmation: String
     ): Flow<User>
 
+    fun updateEmergencyContactsUser(
+        userId:String,
+        emergencyName: String,
+        emergencyPhone: String
+    ): Flow<Boolean>
+
 }

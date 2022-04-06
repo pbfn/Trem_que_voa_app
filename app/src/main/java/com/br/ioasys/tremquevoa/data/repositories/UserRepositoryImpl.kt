@@ -48,4 +48,18 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun updateEmergencyContactsUser(
+        userId: String,
+        emergencyName: String,
+        emergencyPhone: String
+    ): Flow<Boolean> = flow {
+        userRemoteDataSource.updateEmergencyContactsUser(
+            userId = userId,
+            emergencyName = emergencyName,
+            emergencyPhone = emergencyPhone
+        ).collect {
+            emit(it)
+        }
+    }
+
 }

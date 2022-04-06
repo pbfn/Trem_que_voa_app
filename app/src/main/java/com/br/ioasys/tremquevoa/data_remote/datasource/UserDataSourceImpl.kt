@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data.datasource.remote.UserRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.UpdateEmergencyContactUserRequest
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.User
@@ -47,8 +48,7 @@ class UserDataSourceImpl(
     ): Flow<User> = flow {
         val response = authService.registerUser(
             RegisterRequest(
-                firstName = firstName,
-                lastName = lastName,
+                name = firstName,
                 email = email,
                 password = password,
                 passwordConfirmation = passwordConfirmation
@@ -70,6 +70,26 @@ class UserDataSourceImpl(
                     emit(throw InvalidRegisterException())
                 }
             }
+        }
+    }
+
+    override fun updateEmergencyContactsUser(
+        userId: String,
+        emergencyName: String,
+        emergencyPhone: String
+    ): Flow<Boolean> = flow {
+        val response = authService.updateEmergencyContactsUser(
+            UpdateEmergencyContactUserRequest(
+                userId = "pbruno2@gmail.com",
+                emergencyName = emergencyName,
+                emergencyPhone = emergencyPhone
+            )
+        )
+
+        if (response.isSuccessful) {
+            emit(true)
+        } else {
+            emit(false)
         }
     }
 }

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
-import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterViewModel
+import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterUserViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -18,7 +19,7 @@ class RegisterUserFragment : Fragment() {
 
     private var _binding: FragmentRegisterUserBinding? = null
     private val binding: FragmentRegisterUserBinding get() = _binding!!
-    private val registerViewModel: RegisterViewModel by lazy {
+    private val registerViewModel: RegisterUserViewModel by lazy {
         getViewModel()
     }
 
@@ -66,6 +67,11 @@ class RegisterUserFragment : Fragment() {
                         "Cadastro realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findNavController().navigate(
+                        RegisterUserFragmentDirections.actionRegisterFragmentToEmergencyContactFragment(
+                            response.data.id
+                        )
+                    )
                 }
                 is ViewState.Error -> {
                     var msg = ""
