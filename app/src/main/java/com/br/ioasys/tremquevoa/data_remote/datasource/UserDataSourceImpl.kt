@@ -15,11 +15,11 @@ class UserDataSourceImpl(
     private val authService: AuthService
 ) : UserRemoteDataSource {
 
-    override fun doLogin(email: String, password: String): Flow<User> = flow {
+    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> = flow {
         val response = authService.doLogin(LoginRequest(email = email, password = password))
         if (response.isSuccessful) {
             response.body()?.let { loginResponse ->
-                emit(loginResponse.toDomain())
+                emit(loginResponse.toDomain(maintainLogin = maintainLogin))
             }
         } else {
             when (response.code()) {

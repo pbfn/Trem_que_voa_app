@@ -15,5 +15,6 @@ fun RegisterResponse.toDomain() = User(
     emergencyName = this.emergencyName,
     emergencyPhone = this.emergencyPhone,
     updatedAt = this.updatedAt,
-    createdAt = this.createdAt
+    createdAt = this.createdAt,
+    maintainLogin = false
 )

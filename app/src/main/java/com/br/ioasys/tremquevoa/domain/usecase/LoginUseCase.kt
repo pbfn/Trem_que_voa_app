@@ -15,7 +15,8 @@ class LoginUseCase(
 
     data class Params(
         val email: String,
-        val password: String
+        val password: String,
+        val maintainLogin: Boolean
     )
 
     override fun run(params: Params): Flow<User> = when {
@@ -26,7 +27,11 @@ class LoginUseCase(
             throw InvalidEmptyPasswordException()
         }
         else -> {
-            userRepository.doLogin(email = params.email, password = params.password)
+            userRepository.doLogin(
+                email = params.email,
+                password = params.password,
+                maintainLogin = params.maintainLogin
+            )
         }
     }
 }

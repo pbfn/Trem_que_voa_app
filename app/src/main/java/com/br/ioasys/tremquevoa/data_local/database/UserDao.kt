@@ -16,4 +16,6 @@ interface UserDao {
     @Query("SELECT * FROM users")
     fun getUserLogged(): User?
 
+    @Query("DELETE FROM users")
+    fun wipeTable()
 }

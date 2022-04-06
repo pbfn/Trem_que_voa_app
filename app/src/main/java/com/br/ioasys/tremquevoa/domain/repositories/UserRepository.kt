@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
 
-    fun doLogin(email: String, password: String): Flow<User>
+    fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User>
 
     fun saveUser(user: User)
 
@@ -20,7 +20,7 @@ interface UserRepository {
     ): Flow<User>
 
     fun updateEmergencyContactsUser(
-        userId:String,
+        userId: String,
         emergencyName: String,
         emergencyPhone: String
     ): Flow<Boolean>

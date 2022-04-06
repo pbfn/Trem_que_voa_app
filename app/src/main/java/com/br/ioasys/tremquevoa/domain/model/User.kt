@@ -10,5 +10,6 @@ data class User(
     val emergencyName: String?,
     val emergencyPhone: String?,
     val createdAt: String?,
-    val updatedAt: String?
+    val updatedAt: String?,
+    val maintainLogin: Boolean
 )

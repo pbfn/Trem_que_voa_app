@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRemoteDataSource {
 
-    fun doLogin(email: String, password: String): Flow<User>
+    fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User>
 
     fun registerUser(
         firstName: String,

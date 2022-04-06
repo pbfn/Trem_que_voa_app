@@ -20,13 +20,14 @@ class LoginViewModel(
     var user: LiveData<ViewState<User>> = _user
 
 
-    fun doLogin(email: String, password: String) {
+    fun doLogin(email: String, password: String, maintainLogin: Boolean) {
         _user.postLoading()
 
         loginUseCase(
             params = LoginUseCase.Params(
                 email = email,
-                password = password
+                password = password,
+                maintainLogin = maintainLogin
             ),
             onSuccess = { userReponse ->
                 _user.postSuccess(userReponse)

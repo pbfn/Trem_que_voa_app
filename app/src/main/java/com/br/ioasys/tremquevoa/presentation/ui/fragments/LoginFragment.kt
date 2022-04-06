@@ -58,7 +58,8 @@ class LoginFragment : Fragment() {
             btnLogin.setOnClickListener {
                 doLogin(
                     email = customEmail.input.text.toString(),
-                    password = customPassword.input.text.toString()
+                    password = customPassword.input.text.toString(),
+                    maintainLogin = toggleStayConnected.isChecked
                 )
             }
 
@@ -68,10 +69,11 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun doLogin(email: String, password: String) {
+    private fun doLogin(email: String, password: String, maintainLogin: Boolean) {
         loginViewModel.doLogin(
             email = email,
-            password = password
+            password = password,
+            maintainLogin = maintainLogin
         )
     }
 
@@ -99,11 +101,11 @@ class LoginFragment : Fragment() {
                     when (response.throwable) {
                         is InvalidEmptyPasswordException -> {
                             msg = "Por favor informe a senha"
-                            binding.customPassword.ChangeBackground(true,msg)
+                            binding.customPassword.ChangeBackground(true, msg)
                         }
                         is InvalidEmptyEmailException -> {
                             msg = "Por favor informe o email"
-                            binding.customEmail.ChangeBackground(true,msg)
+                            binding.customEmail.ChangeBackground(true, msg)
                         }
                         is InvalidUserException -> {
                             msg = "Email ou senha informados errado"
@@ -132,15 +134,15 @@ class LoginFragment : Fragment() {
         binding.btnRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
     }
 
-    private fun emitError(msg:String){
+    private fun emitError(msg: String) {
         Toast.makeText(
             requireContext(),
             msg,
             Toast.LENGTH_SHORT
         ).show()
         binding.apply {
-            customPassword.ChangeBackground(true,null)
-            customEmail.ChangeBackground(true,null)
+            customPassword.ChangeBackground(true, null)
+            customEmail.ChangeBackground(true, null)
         }
     }
 

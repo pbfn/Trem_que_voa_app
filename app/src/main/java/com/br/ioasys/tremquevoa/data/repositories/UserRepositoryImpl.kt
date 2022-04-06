@@ -14,11 +14,16 @@ class UserRepositoryImpl(
     private val userLocalDataSource: UserLocalDataSource
 ) : UserRepository {
 
-    override fun doLogin(email: String, password: String): Flow<User> = flow {
-        userRemoteDataSource.doLogin(email = email, password = password).collect { user ->
-            emit(user)
+    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> =
+        flow {
+            userRemoteDataSource.doLogin(
+                email = email,
+                password = password,
+                maintainLogin = maintainLogin
+            ).collect { user ->
+                emit(user)
+            }
         }
-    }
 
     override fun saveUser(user: User) = userLocalDataSource.saveUser(
         user = user

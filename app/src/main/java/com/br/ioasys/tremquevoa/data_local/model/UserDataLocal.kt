@@ -16,5 +16,6 @@ data class UserDataLocal(
     val emergencyName: String?,
     val emergencyPhone: String?,
     val updatedAt: String?,
-    val createdAt: String?
+    val createdAt: String?,
+    val maintainLogin: Boolean
 )
