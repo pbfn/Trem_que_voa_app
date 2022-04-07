@@ -74,16 +74,16 @@ class UserDataSourceImpl(
     }
 
     override fun updateEmergencyContactsUser(
-        userId: String,
+        token: String,
         emergencyName: String,
         emergencyPhone: String
     ): Flow<Boolean> = flow {
         val response = authService.updateEmergencyContactsUser(
+            token = "Bearer $token",
             UpdateEmergencyContactUserRequest(
-                userId = "pbruno2@gmail.com",
                 emergencyName = emergencyName,
                 emergencyPhone = emergencyPhone
-            )
+            ),
         )
 
         if (response.isSuccessful) {

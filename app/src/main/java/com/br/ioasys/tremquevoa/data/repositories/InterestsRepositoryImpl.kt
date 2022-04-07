@@ -16,4 +16,16 @@ class InterestsRepositoryImpl(
             emit(listInterests)
         }
     }
+
+    override fun saveInterestsForUser(
+        token: String,
+        listIdInterests: List<String>
+    ): Flow<Boolean> = flow {
+        interestsRemoteDataSource.saveInterestsForUser(
+            token = token,
+            listIdInterests = listIdInterests
+        ).collect {
+            emit(it)
+        }
+    }
 }

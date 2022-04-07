@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.InterestsRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
+import com.br.ioasys.tremquevoa.data_remote.model.request.UserInterestsRequest
 import com.br.ioasys.tremquevoa.data_remote.service.InterestsService
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.util.MockInteresses
@@ -21,5 +22,22 @@ class InterestsRemoteDataSourceImpl(
             emit(MockInteresses.listaInteresses)
         }
 
+    }
+
+    override fun saveInterestsForUser(
+        token: String,
+        listIdInterests: List<String>
+    ): Flow<Boolean> = flow {
+        val response = interestsService.saveInterestsForUser(
+            token = "Bearer $token",
+            UserInterestsRequest(
+                activityIds = listIdInterests
+            )
+        )
+        if (response.isSuccessful) {
+            emit(true)
+        } else {
+            emit(false)
+        }
     }
 }

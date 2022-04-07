@@ -54,14 +54,18 @@ class EmergencyContactFragment : Fragment() {
                 )
             }
             textViewButtonJump.setOnClickListener {
-                nextPage(EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment())
+                nextPage(
+                    EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment(
+                        args.token
+                    )
+                )
             }
         }
     }
 
     private fun updateEmergencyContacts(emergencyName: String, emergencyPhone: String) {
         updateUserViewModel.updateEmergencyContact(
-            userId = args.userId,
+            token = args.token,
             emergencyName = emergencyName,
             emergencyPhone = emergencyPhone
         )
@@ -76,7 +80,11 @@ class EmergencyContactFragment : Fragment() {
 
                 is ViewState.Success -> {
                     Toast.makeText(requireContext(), "Teste", Toast.LENGTH_SHORT).show()
-                    nextPage(EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment())
+                    nextPage(
+                        EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment(
+                            args.token
+                        )
+                    )
                 }
 
                 is ViewState.Error -> {

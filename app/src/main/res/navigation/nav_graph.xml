@@ -27,7 +27,11 @@
         android:id="@+id/interestsFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.InterestsFragment"
         android:label="fragment_interests"
-        tools:layout="@layout/fragment_interests" />
+        tools:layout="@layout/fragment_interests" >
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/registerEventFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment"
@@ -42,7 +46,7 @@
             android:id="@+id/action_emergencyContactFragment_to_interestsFragment"
             app:destination="@id/interestsFragment" />
         <argument
-            android:name="userId"
+            android:name="token"
             app:argType="string" />
     </fragment>
     <fragment

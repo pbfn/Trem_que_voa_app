@@ -20,7 +20,7 @@ interface UserRepository {
     ): Flow<User>
 
     fun updateEmergencyContactsUser(
-        userId: String,
+        token: String,
         emergencyName: String,
         emergencyPhone: String
     ): Flow<Boolean>

@@ -6,10 +6,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.request.UpdateEmergencyContact
 import com.br.ioasys.tremquevoa.data_remote.model.response.LoginResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface AuthService {
 
@@ -28,6 +25,7 @@ interface AuthService {
     @Headers("Content-type: application/json")
     @PUT("users")
     suspend fun updateEmergencyContactsUser(
+        @Header("Authorization") token: String,
         @Body updateEmergencyContactUserRequest: UpdateEmergencyContactUserRequest
     ): Response<RegisterResponse>
 }
