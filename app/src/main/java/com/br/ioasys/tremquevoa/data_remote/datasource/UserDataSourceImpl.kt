@@ -77,7 +77,7 @@ class UserDataSourceImpl(
         token: String,
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<Boolean> = flow {
+    ): Flow<User> = flow {
         val response = authService.updateEmergencyContactsUser(
             token = "Bearer $token",
             UpdateEmergencyContactUserRequest(
@@ -85,11 +85,10 @@ class UserDataSourceImpl(
                 emergencyPhone = emergencyPhone
             ),
         )
-
-        if (response.isSuccessful) {
-            emit(true)
-        } else {
-            emit(false)
+        if (response.isSuccessful){
+            response.body()?.let { registerReponse ->
+                emit(registerReponse.toDomain())
+            }
         }
     }
 }

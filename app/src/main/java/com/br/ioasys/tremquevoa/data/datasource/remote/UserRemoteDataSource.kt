@@ -19,6 +19,6 @@ interface UserRemoteDataSource {
         token: String,
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<Boolean>
+    ): Flow<User>
 
 }

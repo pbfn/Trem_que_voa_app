@@ -9,7 +9,7 @@ interface UserRepository {
 
     fun saveUser(user: User)
 
-    fun fetchUserLogged(): Flow<User?>
+    fun fetchUserLogged(): Flow<User>
 
     fun registerUser(
         firstName: String,
@@ -23,6 +23,8 @@ interface UserRepository {
         token: String,
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<Boolean>
+    ): Flow<User>
+
+    fun updateUser(newUser: User)
 
 }

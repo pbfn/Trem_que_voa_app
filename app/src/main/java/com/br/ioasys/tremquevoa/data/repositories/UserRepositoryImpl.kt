@@ -29,10 +29,8 @@ class UserRepositoryImpl(
         user = user
     )
 
-    override fun fetchUserLogged(): Flow<User?> {
-        return userLocalDataSource.fetchUserLogged().let {
-            flowOf(it)
-        }
+    override fun fetchUserLogged(): Flow<User> {
+        return flowOf(userLocalDataSource.fetchUserLogged())
     }
 
     override fun registerUser(
@@ -57,7 +55,7 @@ class UserRepositoryImpl(
         token: String,
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<Boolean> = flow {
+    ): Flow<User> = flow {
         userRemoteDataSource.updateEmergencyContactsUser(
             token = token,
             emergencyName = emergencyName,
@@ -66,5 +64,7 @@ class UserRepositoryImpl(
             emit(it)
         }
     }
+
+    override fun updateUser(newUser: User) = userLocalDataSource.updateUser(newUser)
 
 }
