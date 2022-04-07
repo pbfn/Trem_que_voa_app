@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data.datasource.remote.UserRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.ResetPasswordUserRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.UpdateEmergencyContactUserRequest
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
 import com.br.ioasys.tremquevoa.domain.exceptions.*
@@ -15,29 +16,30 @@ class UserDataSourceImpl(
     private val authService: AuthService
 ) : UserRemoteDataSource {
 
-    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> = flow {
-        val response = authService.doLogin(LoginRequest(email = email, password = password))
-        if (response.isSuccessful) {
-            response.body()?.let { loginResponse ->
-                emit(loginResponse.toDomain(maintainLogin = maintainLogin))
-            }
-        } else {
-            when (response.code()) {
-                400 -> {
-                    emit(throw InvalidUserException())
+    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> =
+        flow {
+            val response = authService.doLogin(LoginRequest(email = email, password = password))
+            if (response.isSuccessful) {
+                response.body()?.let { loginResponse ->
+                    emit(loginResponse.toDomain(maintainLogin = maintainLogin))
                 }
-                401 -> {
-                    emit(throw InvalidPasswordException())
-                }
-                404 -> {
-                    emit(throw InvalidEmailExecption())
-                }
-                else -> {
-                    emit(throw IvalidLoginException())
+            } else {
+                when (response.code()) {
+                    400 -> {
+                        emit(throw InvalidUserException())
+                    }
+                    401 -> {
+                        emit(throw InvalidPasswordException())
+                    }
+                    404 -> {
+                        emit(throw InvalidEmailExecption())
+                    }
+                    else -> {
+                        emit(throw IvalidLoginException())
+                    }
                 }
             }
         }
-    }
 
     override fun registerUser(
         firstName: String,
@@ -85,10 +87,18 @@ class UserDataSourceImpl(
                 emergencyPhone = emergencyPhone
             ),
         )
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             response.body()?.let { registerReponse ->
                 emit(registerReponse.toDomain())
             }
+        }
+    }
+
+
+    override fun resetPassword(email: String): Flow<Boolean> = flow {
+        val response = authService.resetPassword(ResetPasswordUserRequest(email = email))
+        if (response.isSuccessful){
+            emit(true)
         }
     }
 }

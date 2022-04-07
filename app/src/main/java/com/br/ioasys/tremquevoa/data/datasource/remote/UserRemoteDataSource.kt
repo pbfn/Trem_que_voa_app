@@ -21,4 +21,5 @@ interface UserRemoteDataSource {
         emergencyPhone: String
     ): Flow<User>
 
+    fun resetPassword(email: String): Flow<Boolean>
 }

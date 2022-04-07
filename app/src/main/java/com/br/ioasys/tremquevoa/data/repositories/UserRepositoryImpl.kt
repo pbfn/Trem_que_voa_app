@@ -67,4 +67,10 @@ class UserRepositoryImpl(
 
     override fun updateUser(newUser: User) = userLocalDataSource.updateUser(newUser)
 
+    override fun resetPassword(email: String): Flow<Boolean> = flow {
+        userRemoteDataSource.resetPassword(email = email).collect {
+            emit(it)
+        }
+    }
+
 }
