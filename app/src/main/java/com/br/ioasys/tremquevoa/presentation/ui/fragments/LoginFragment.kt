@@ -48,6 +48,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            customEmail.ChangeBackground(false, null)
+            customPassword.ChangeBackground(false, null)
+        }
         underlineText()
         setListeners()
         addObserver()
@@ -65,6 +69,10 @@ class LoginFragment : Fragment() {
 
             btnRegister.setOnClickListener {
                 nextPage(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+            }
+
+            textViewForgotPassword.setOnClickListener {
+                nextPage(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
             }
         }
     }
