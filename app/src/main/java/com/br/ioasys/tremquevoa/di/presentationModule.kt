@@ -10,4 +10,5 @@ val presentationModule = module {
     viewModel { RegisterUserViewModel(get()) }
     viewModel { InterestsViewModel(get(), get()) }
     viewModel { UpdateUserViewModel(get(), get(), get()) }
+    viewModel { ForgotPasswordViewModel(get()) }
 }

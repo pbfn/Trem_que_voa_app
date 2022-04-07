@@ -27,4 +27,6 @@ interface UserRepository {
 
     fun updateUser(newUser: User)
 
+    fun resetPassword(email: String): Flow<Boolean>
+
 }

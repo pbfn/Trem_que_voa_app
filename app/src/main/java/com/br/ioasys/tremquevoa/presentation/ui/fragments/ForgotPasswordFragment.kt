@@ -9,6 +9,9 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentForgotPasswordBinding
+import com.br.ioasys.tremquevoa.presentation.viewmodel.ForgotPasswordViewModel
+import com.br.ioasys.tremquevoa.util.ViewState
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 class ForgotPasswordFragment : Fragment() {
@@ -16,6 +19,9 @@ class ForgotPasswordFragment : Fragment() {
 
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding: FragmentForgotPasswordBinding get() = _binding!!
+    private val forgotPasswordViewModel: ForgotPasswordViewModel by lazy {
+        getViewModel()
+    }
 
 
     override fun onCreateView(
@@ -32,13 +38,14 @@ class ForgotPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeData()
         setListenres()
     }
 
-    private fun setListenres(){
+    private fun setListenres() {
         binding.apply {
-            binding.buttonSendEmail.setOnClickListener {
-                nextPage(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToNewPasswordSuccessFragment())
+            buttonSendEmail.setOnClickListener {
+              resetPassword(email = editTextEmail.input.text.toString())
             }
         }
     }
@@ -47,4 +54,27 @@ class ForgotPasswordFragment : Fragment() {
         findNavController().navigate(directions)
     }
 
+    private fun observeData() {
+        forgotPasswordViewModel.resetPassword.observe(viewLifecycleOwner) { response ->
+
+            when (response) {
+
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    nextPage(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToNewPasswordSuccessFragment())
+                }
+
+                is ViewState.Error -> {
+
+                }
+            }
+
+        }
+    }
+
+    private fun resetPassword(email:String){
+        forgotPasswordViewModel.resetPassword(email = email)
+    }
 }
