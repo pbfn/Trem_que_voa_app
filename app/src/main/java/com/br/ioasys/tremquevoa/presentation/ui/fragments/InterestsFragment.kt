@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentInterestsBinding
+import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterInterests
 import com.br.ioasys.tremquevoa.presentation.viewmodel.InterestsViewModel
 import com.br.ioasys.tremquevoa.util.MockInteresses
@@ -23,6 +25,8 @@ class InterestsFragment : Fragment() {
         getViewModel()
     }
 
+    private val args: InterestsFragmentArgs by navArgs()
+    private var listInterests: List<Interests> = listOf()
 
     private lateinit var adapterInterests: AdapterInterests
 
@@ -43,7 +47,7 @@ class InterestsFragment : Fragment() {
         setRecyclerView()
         addObserver()
         getInterests()
-        //adapterInterests.differ.submitList(MockInteresses.listaInteresses)
+        setListeners()
     }
 
     private fun setRecyclerView() {
@@ -66,7 +70,8 @@ class InterestsFragment : Fragment() {
 
                 }
                 is ViewState.Success -> {
-                    adapterInterests.differ.submitList(response.data)
+                    listInterests = response.data
+                    adapterInterests.differ.submitList(listInterests)
                 }
 
                 is ViewState.Error -> {
@@ -80,4 +85,15 @@ class InterestsFragment : Fragment() {
         }
     }
 
+    private fun setListeners() {
+        binding.buttonNext.setOnClickListener {
+            val selectedIdInterestsList: MutableList<String> = mutableListOf()
+            listInterests.forEach { interest ->
+                if (interest.selected) {
+                    selectedIdInterestsList.add(interest.id)
+                }
+            }
+            interestsViewModel.saveInterestsByUser(args.token, selectedIdInterestsList)
+        }
+    }
 }

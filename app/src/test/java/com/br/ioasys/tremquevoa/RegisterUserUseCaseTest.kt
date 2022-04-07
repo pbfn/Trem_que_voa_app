@@ -1,8 +1,6 @@
 package com.br.ioasys.tremquevoa
 
 import com.br.ioasys.tremquevoa.domain.exceptions.*
-import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.repositories.RegisterRepository
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterUserUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

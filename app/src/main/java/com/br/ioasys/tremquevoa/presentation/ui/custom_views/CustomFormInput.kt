@@ -10,6 +10,7 @@ import android.view.ViewTreeObserver
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.br.ioasys.tremquevoa.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -40,10 +41,12 @@ class CustomFormInput @JvmOverloads constructor(
         view.findViewById(R.id.tvError)
     }
 
+    var textChangeListener: (text: String) -> Unit = {}
+
     init {
         setLayout(attrs)
         configure()
-
+        configureInputText()
     }
 
     private fun setLayout(attrs: AttributeSet?) {
@@ -114,6 +117,23 @@ class CustomFormInput @JvmOverloads constructor(
 
         input.setOnFocusChangeListener { _, hasFocus ->
             updateHintPosition(hasFocus, !input.text.isNullOrEmpty(), true)
+        }
+    }
+
+    private fun configureInputText() {
+        input.addTextChangedListener { text ->
+            configureInputTextBackground(text.isNullOrEmpty())
+            textChangeListener.invoke(text.toString())
+        }
+    }
+
+    private fun configureInputTextBackground(empty: Boolean) {
+        if (empty) {
+            input.background = ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
+            input.setTextColor(ContextCompat.getColor(context, R.color.neutral))
+        } else {
+            input.background = ContextCompat.getDrawable(context, R.drawable.input_custom_success)
+            input.setTextColor(ContextCompat.getColor(context, R.color.neutral))
         }
     }
 

@@ -2,14 +2,14 @@ package com.br.ioasys.tremquevoa.domain.usecase
 
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.Event
-import com.br.ioasys.tremquevoa.domain.repositories.LoginRepository
+import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.repositories.RegisterEventRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 
 class RegisterEventUseCase(
-    private val loginRepository: LoginRepository,
+    private val userRepository: UserRepository,
     private val registerEventRepository: RegisterEventRepository,
     scope: CoroutineScope
 ) : UseCase<RegisterEventUseCase.Params, Event>(scope = scope) {
@@ -54,7 +54,7 @@ class RegisterEventUseCase(
     }
 
     private fun getUserId(): String {
-            return loginRepository.fetchUserLogged().map { user ->
+            return userRepository.fetchUserLogged().map { user ->
                 user?.id ?: ""
             }.toString()
     }

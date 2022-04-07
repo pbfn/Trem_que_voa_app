@@ -5,4 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface InterestsRemoteDataSource {
     fun fetchAllInterests(): Flow<List<Interests>>
+
+    fun saveInterestsForUser(token: String, listIdInterests: List<String>): Flow<Boolean>
 }

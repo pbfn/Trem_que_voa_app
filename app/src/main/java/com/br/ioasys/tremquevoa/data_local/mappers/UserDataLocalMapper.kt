@@ -1,6 +1,7 @@
 package com.br.ioasys.tremquevoa.data_local.mappers
 
 import com.br.ioasys.tremquevoa.data_local.model.UserDataLocal
+import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.domain.model.User
 
 
@@ -9,8 +10,13 @@ fun User.toDao(): UserDataLocal = UserDataLocal(
     email = this.email,
     token = this.token,
     refreshToken = this.refreshToken,
-    firstName = this.firstName,
-    lastName = this.lastName
+    name = this.name,
+    phone = this.phone,
+    emergencyName = this.emergencyName,
+    emergencyPhone = this.emergencyPhone,
+    updatedAt = this.updatedAt,
+    createdAt = this.createdAt,
+    maintainLogin = this.maintainLogin
 )
 
 fun UserDataLocal.toDomain(): User = User(
@@ -18,6 +24,11 @@ fun UserDataLocal.toDomain(): User = User(
     email = this.email,
     token = this.token,
     refreshToken = this.refreshToken,
-    firstName = this.firstName,
-    lastName = this.lastName
+    name = this.name,
+    phone = this.phone,
+    emergencyName = this.emergencyName,
+    emergencyPhone = this.emergencyPhone,
+    updatedAt = this.updatedAt,
+    createdAt = this.createdAt,
+    maintainLogin = this.maintainLogin
 )

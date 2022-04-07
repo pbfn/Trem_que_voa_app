@@ -4,48 +4,45 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.usecase.LoginUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.SaveUserLocalUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.RegisterUserUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
 import com.br.ioasys.tremquevoa.util.postSuccess
 
-class LoginViewModel(
-    private val loginUseCase: LoginUseCase,
-    private val saveUserLocalUseCase: SaveUserLocalUseCase
+class RegisterUserViewModel(
+    private val registerUserUseCase: RegisterUserUseCase,
 ) : ViewModel() {
 
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
 
-
-    fun doLogin(email: String, password: String, maintainLogin: Boolean) {
+    fun registerUser(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        passwordConfirmation: String
+    ) {
         _user.postLoading()
 
-        loginUseCase(
-            params = LoginUseCase.Params(
+        registerUserUseCase(
+            params = RegisterUserUseCase.Params(
+                firstName = firstName,
+                lastName = lastName,
                 email = email,
                 password = password,
-                maintainLogin = maintainLogin
+                passwordConfirmation = passwordConfirmation
             ),
-            onSuccess = { userReponse ->
-                _user.postSuccess(userReponse)
-                saveUser(userReponse)
+            onSuccess = {
+                _user.postSuccess(it)
+
             },
             onError = {
                 _user.postError(it)
             }
-
         )
     }
 
-    private fun saveUser(user: User) {
-        saveUserLocalUseCase(
-            params = SaveUserLocalUseCase.Params(
-                user = user
-            )
-        )
-    }
 
 }

@@ -1,23 +1,25 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.br.ioasys.tremquevoa.databinding.FragmentRegisterBinding
-import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterViewModel
+import androidx.navigation.fragment.findNavController
+import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.*
+import com.br.ioasys.tremquevoa.extensions.ChangeBackground
+import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterUserViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 class RegisterUserFragment : Fragment() {
 
-    private var _binding: FragmentRegisterBinding? = null
-    private val binding: FragmentRegisterBinding get() = _binding!!
-    private val registerViewModel: RegisterViewModel by lazy {
+    private var _binding: FragmentRegisterUserBinding? = null
+    private val binding: FragmentRegisterUserBinding get() = _binding!!
+    private val registerViewModel: RegisterUserViewModel by lazy {
         getViewModel()
     }
 
@@ -25,7 +27,7 @@ class RegisterUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentRegisterBinding.inflate(inflater, container, false).apply {
+    ): View = FragmentRegisterUserBinding.inflate(inflater, container, false).apply {
         _binding = this
     }.root
 
@@ -43,7 +45,9 @@ class RegisterUserFragment : Fragment() {
     private fun setListeners() {
         binding.apply {
             btnRegister.setOnClickListener {
-                registerUser()
+                if (termsIsChecked()) {
+                    registerUser()
+                }
             }
         }
     }
@@ -52,7 +56,12 @@ class RegisterUserFragment : Fragment() {
         registerViewModel.user.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
-
+                    binding.apply {
+                        editTextFirstName.ChangeBackground(false, null)
+                        editTextEmail.ChangeBackground(false, null)
+                        editTextPassword.ChangeBackground(false, null)
+                        editTextConfirmPassword.ChangeBackground(false, null)
+                    }
                 }
                 is ViewState.Success -> {
                     Toast.makeText(
@@ -60,25 +69,86 @@ class RegisterUserFragment : Fragment() {
                         "Cadastro realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findNavController().navigate(
+                        RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
+                            response.data.email,
+                            binding.editTextPassword.input.text.toString()
+                        )
+                    )
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Houve uma falha no cadastro",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    var msg = ""
+                    when (response.throwable) {
+                        is InvalidEmptyFirstNameException -> {
+                            msg = "Por favor informe o nome"
+                            binding.editTextFirstName.ChangeBackground(true, msg)
+                        }
+                        is InvalidEmptyEmailException -> {
+                            msg = "Por favor informe o email"
+                            binding.editTextEmail.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidEmptyPasswordException -> {
+                            msg = "Por favor informe a senha"
+                            binding.editTextPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidMinimunPassword -> {
+                            msg = "A senha não pode ser menor que 6 digitos"
+                            binding.editTextPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidEmptyPasswordConfirmException -> {
+                            msg = "Por favor informe a confirmação de senha"
+                            binding.editTextConfirmPassword.ChangeBackground(true, msg)
+                        }
+
+                        is InvalidDifferPasswordException -> {
+                            msg = "As senhas não estão iguais, por favor informe novamente"
+                            binding.editTextConfirmPassword.ChangeBackground(true, msg)
+                        }
+
+                        is EmailAlreadyUsed -> {
+                            msg = "Email já esta sendo utilizado"
+                            binding.editTextEmail.ChangeBackground(true, msg)
+                        }
+                        is InvalidRegisterException -> {
+                            binding.apply {
+                                editTextFirstName.ChangeBackground(true, null)
+                                editTextEmail.ChangeBackground(true, null)
+                                editTextPassword.ChangeBackground(true, null)
+                                editTextConfirmPassword.ChangeBackground(true, null)
+                            }
+                            Toast.makeText(
+                                requireContext(),
+                                "Houve uma falha no cadastro",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
                 }
             }
         }
     }
 
+    private fun termsIsChecked(): Boolean {
+        return if (!binding.checkboxTerms.isChecked) {
+            binding.textViewErrorMsg.visibility = View.VISIBLE
+            false
+        } else {
+            binding.textViewErrorMsg.visibility = View.GONE
+            true
+        }
+    }
+
     private fun registerUser() {
         registerViewModel.registerUser(
-            firstName = binding.editTextFirstName.text.toString(),
+            firstName = binding.editTextFirstName.input.text.toString(),
             lastName = "pedro",
-            email = binding.editTextEmail.text.toString(),
-            password = binding.editTextPassword.text.toString(),
-            passwordConfirmation = binding.editTextConfirmPassword.text.toString()
+            email = binding.editTextEmail.input.text.toString(),
+            password = binding.editTextPassword.input.text.toString(),
+            passwordConfirmation = binding.editTextConfirmPassword.input.text.toString()
         )
     }
 }
