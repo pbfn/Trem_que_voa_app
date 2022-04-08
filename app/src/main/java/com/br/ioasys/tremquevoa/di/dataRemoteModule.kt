@@ -1,14 +1,9 @@
 package com.br.ioasys.tremquevoa.di
 
-import com.br.ioasys.tremquevoa.data.datasource.remote.InterestsRemoteDataSource
-import com.br.ioasys.tremquevoa.data.datasource.remote.LoginRemoteDataSource
-import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterEventRemoteDataSource
-import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterRemoteDataSource
-import com.br.ioasys.tremquevoa.data_remote.datasource.InterestsRemoteDataSourceImpl
-import com.br.ioasys.tremquevoa.data_remote.datasource.LoginDataSourceImpl
-import com.br.ioasys.tremquevoa.data_remote.datasource.RegisterEventDataSourceImpl
-import com.br.ioasys.tremquevoa.data_remote.datasource.RegisterDataSourceImpl
+import com.br.ioasys.tremquevoa.data.datasource.remote.*
+import com.br.ioasys.tremquevoa.data_remote.datasource.*
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
+import com.br.ioasys.tremquevoa.data_remote.service.DisabilitiesService
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
 import com.br.ioasys.tremquevoa.data_remote.service.InterestsService
 import com.br.ioasys.tremquevoa.data_remote.utils.ApiConstants.BASE_URL
@@ -32,6 +27,10 @@ val dataRemoteModule = module {
         InterestsRemoteDataSourceImpl(get())
     }
 
+    single<DisabilitiesRemoteDataSource> {
+        DisabilitiesRemoteDataSourceImpl(get())
+    }
+
     single<AuthService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
@@ -47,6 +46,13 @@ val dataRemoteModule = module {
     }
 
     single<InterestsService> {
+        WebServiceFactory.createWebService(
+            okHttpClient = get(),
+            url = BASE_URL
+        )
+    }
+
+    single<DisabilitiesService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
             url = BASE_URL

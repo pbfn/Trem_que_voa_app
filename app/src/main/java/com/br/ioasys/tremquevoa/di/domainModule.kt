@@ -18,4 +18,5 @@ val domainModule = module {
     factory { RegisterUserUseCase(get(), get()) }
     factory { RegisterEventUseCase(get(), get(), get()) }
     factory { GetInterestsUseCase(get(), get()) }
+    factory { GetDisabilitiesUseCase(get(), get()) }
 }

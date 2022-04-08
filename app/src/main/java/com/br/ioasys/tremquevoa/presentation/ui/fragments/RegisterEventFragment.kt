@@ -1,6 +1,7 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,11 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.extensions.toInt
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterActivities
+import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDisabilities
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterEventViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -23,12 +25,14 @@ class RegisterEventFragment : Fragment() {
     private var _binding: FragmentRegisterEventBinding? = null
     private val binding: FragmentRegisterEventBinding get() = _binding!!
 
-    private var activitySelected: Interests? = null
+
+    private var categorySelected: Interests? = null
+
+    private lateinit var adapterDisabilities: AdapterDisabilities
 
     private val registerEventViewModel: RegisterEventViewModel by lazy {
         getViewModel()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +51,9 @@ class RegisterEventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setListener()
         addObserver()
+        setRecycleViewButtonsOptions()
         registerEventViewModel.fetchActivities()
+        registerEventViewModel.fetchDisabilities()
     }
 
     private fun setListener() {
@@ -56,8 +62,16 @@ class RegisterEventFragment : Fragment() {
                 registerEvent()
             }
 
-            buttonDatePikerEvent.setOnClickListener {
-                dataPickDialog()
+            imgInputDate.setOnClickListener {
+                datePickerDialog()
+            }
+
+            imgInputStartTime.setOnClickListener {
+                timePickerDialogStart()
+            }
+
+            imgInputEndTime.setOnClickListener {
+                timePickerDialogEnd()
             }
         }
     }
@@ -69,6 +83,7 @@ class RegisterEventFragment : Fragment() {
 
                 }
                 is ViewState.Success -> {
+
                     Toast.makeText(
                         requireContext(),
                         "Evento cadastrado com sucesso",
@@ -98,10 +113,18 @@ class RegisterEventFragment : Fragment() {
                     )
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-                    binding.autoCompleteActivity.setOnItemClickListener { adapterView, view, i, l ->
-                        activitySelected = response.data[i]
+                    binding.autoCompleteCategory.apply {
+                        setOnItemClickListener { adapterView, view, i, l ->
+                            categorySelected = response.data[i]
+
+                            setText(categorySelected?.title)
+                            Log.d("Category", "categoria selecionada ${categorySelected?.title}")
+                        }
+
                     }
-                    binding.autoCompleteActivity.setAdapter(adapter)
+
+                    binding.autoCompleteCategory.setAdapter(adapter)
+
                 }
 
                 is ViewState.Error -> {
@@ -113,9 +136,24 @@ class RegisterEventFragment : Fragment() {
                 }
             }
         }
+
+        registerEventViewModel.disabilities.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    adapterDisabilities.differ.submitList(response.data)
+                }
+                is ViewState.Error -> {
+
+                }
+            }
+        }
+
     }
 
-    private fun dataPickDialog() {
+    private fun datePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -124,36 +162,75 @@ class RegisterEventFragment : Fragment() {
         val datePikerDialog = DatePickerDialog(
             requireContext(),
             { view, mYear, mMonth, mDay ->
-                binding.textViewDatePikerEvent.setText("" + mYear + "-" + mMonth + "-" + mDay)
+                binding.customDate.input.setText("$mDay/$mMonth/$mYear")
             },
-            year,
+            day,
             month,
-            day
+            year
         )
         datePikerDialog.show()
     }
 
-    private fun handAccessible(): Boolean {
-        return binding.radioButtonIsAcessible.isChecked
+    private fun timePickerDialogStart() {
+
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        TimePickerDialog(
+            requireContext(),
+            TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
+                binding.customStartTime.input.setText("$mHour:$mMinute")
+            },
+            hour,
+            minute,
+            false
+        ).show()
+    }
+
+    private fun timePickerDialogEnd() {
+
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        TimePickerDialog(
+            requireContext(),
+            TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
+                binding.customEndTime.input.setText("$mHour:$mMinute")
+            },
+            hour,
+            minute,
+            false
+        ).show()
     }
 
     private fun handIsOnline(): Boolean {
-        return binding.radioButtonIsOnline.isChecked
+        return binding.autoCompleteModality.isSelected
     }
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
-            name = binding.editTextEventName.text.toString(),
-            description = binding.editTextDescription.text.toString(),
+            name = binding.customNameEvent.input.text.toString(),
+            description = binding.customDescription.input.text.toString(),
             isOnline = handIsOnline(),
-            date = binding.textViewDatePikerEvent.text.toString(),
-            minimumAge = binding.editTextMinAge.text.toInt() ?: 0,
-            maxParticipants = binding.editTextMaxParticipants.text.toInt() ?: 0,
-            startTime = binding.editTextStartTime.text.toString(),
-            endTime = binding.editTextEndTime.text.toString(),
-            activityId = activitySelected?.id?:"",
-            userIdentity = binding.editTextIdentity.text.toString(),
-            isAccessible = handAccessible()
+            date = binding.customDate.input.text.toString(),
+            minimumAge = binding.customMinAge.input.text.toInt() ?: 0,
+            maxParticipants = binding.customMaxParticipants.input.text.toInt() ?: 0,
+            startTime = timePickerDialogStart().toString(),
+            endTime = timePickerDialogEnd().toString(),
+            activityId = categorySelected?.id ?: "",
+            userIdentity = "",
+            isAccessible = true
         )
+    }
+
+    private fun setRecycleViewButtonsOptions() {
+        val layout = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        adapterDisabilities = AdapterDisabilities()
+        binding.recyclerViewButtonOptions.apply {
+            adapter = adapterDisabilities
+            layoutManager = layout
+        }
     }
 }
