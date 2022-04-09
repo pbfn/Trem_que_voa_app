@@ -15,29 +15,33 @@ class RegisterEventRepositoryImpl(
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
         activityId: String,
-        userIdentity: String,
         userId: String,
-        isAccessible: Boolean
+        userIdentity: String,
+        accessibilities: String,
+        address: String
     ): Flow<Event> = flow {
         registerEventRemoteDataSource.registerEvent(
             name = name,
             description = description,
             isOnline = isOnline,
+            url = url,
             date = date,
-            minimumAge = minimumAge,
+            isPetFriendly = isPetFriendly,
             maxParticipants = maxParticipants,
             startTime = startTime,
             endTime = endTime,
             activityId = activityId,
+            userId = userId,
             userIdentity = userIdentity,
-            isAccessible = isAccessible,
-            userId = userId
+            accessibilities = accessibilities,
+            address = address
         ).collect { event ->
             emit(event)
         }

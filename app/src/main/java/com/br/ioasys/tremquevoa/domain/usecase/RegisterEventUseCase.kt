@@ -18,21 +18,23 @@ class RegisterEventUseCase(
         val name: String,
         val description: String,
         val isOnline: Boolean,
+        val url: String,
         val date: String,
-        val minimumAge: Int,
+        val isPetFriendly: Boolean,
         val maxParticipants: Int,
         val startTime: String,
         val endTime: String,
         val activityId: String,
-        var userId: String,
+        val userId: String,
         val userIdentity: String,
-        val isAccessible: Boolean
+        val accessibilities: String,
+        val address: String
     )
 
     override fun run(params: Params): Flow<Event> {
 
         params.apply {
-            userId = getUserId()
+            var userId = getUserId()
         }
 
         validateFields(params)
@@ -41,15 +43,17 @@ class RegisterEventUseCase(
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,
+            url = params.url,
             date = params.date,
-            minimumAge = params.minimumAge,
+            isPetFriendly = params.isPetFriendly,
             maxParticipants = params.maxParticipants,
             startTime = params.startTime,
             endTime = params.endTime,
             activityId = params.activityId,
             userId = params.userId,
             userIdentity = params.userIdentity,
-            isAccessible = params.isAccessible,
+            accessibilities = params.accessibilities,
+            address = params.address
         )
     }
 
@@ -72,7 +76,7 @@ class RegisterEventUseCase(
         if (params.userId.isEmpty()) {
             throw InvalidEmptyUserIdException()
         }
-        if (params.minimumAge.toString().isEmpty()) {
+        if (params.url.isEmpty()) {
             throw InvalidEmptyMinimumAgeException()
         }
         if (params.maxParticipants.toString().isEmpty()) {

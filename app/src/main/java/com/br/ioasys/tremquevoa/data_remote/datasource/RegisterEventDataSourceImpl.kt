@@ -16,30 +16,34 @@ class RegisterEventDataSourceImpl(
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
         activityId: String,
         userId: String,
         userIdentity: String,
-        isAccessible: Boolean
+        accessibilities: String,
+        address: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
             RegisterEventRequest(
                 name = name,
                 description = description,
                 isOnline = isOnline,
+                url = url,
                 date = date,
-                minimumAge = minimumAge,
+                isPetFriendly = isPetFriendly,
                 maxParticipants = maxParticipants,
                 startTime = startTime,
                 endTime = endTime,
                 activityId = activityId,
-                userIdentity = userIdentity,
                 userId = userId,
-                isAccessible = isAccessible
+                userIdentity = userIdentity,
+                accessibilities = accessibilities,
+                address = address
             )
         )
         if (response.isSuccessful) {
@@ -49,7 +53,7 @@ class RegisterEventDataSourceImpl(
         } else {
             emit(error(response.code()))
         }
-    }
+
 
 //    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
 //        val response = eventService.fetchEventActivities()
@@ -61,4 +65,5 @@ class RegisterEventDataSourceImpl(
 //            emit(error(response.code()))
 //        }
 //    }
+    }
 }

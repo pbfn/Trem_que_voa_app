@@ -7,4 +7,20 @@
     <string name="next">próximo</string>
     <string name="title_aux">Title</string>
     <string name="title">Titulo</string>
+
+    <string name="in_person">Presencial</string>
+    <string name="online">Online</string>
+
+    <string-array name="modalities_array">
+        <item>@string/in_person</item>
+        <item>@string/online</item>
+    </string-array>
+
+    <string name="yes" formatted="true">Sim</string>
+    <string name="no" formatted="false">Não</string>
+
+    <string-array name="pet_friendly_array">
+        <item>@string/yes</item>
+        <item>@string/no</item>
+    </string-array>
 </resources>

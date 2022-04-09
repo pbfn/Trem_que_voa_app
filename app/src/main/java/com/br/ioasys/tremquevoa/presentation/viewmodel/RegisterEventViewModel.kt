@@ -4,21 +4,21 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.model.Interests
+import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterEventUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
 import com.br.ioasys.tremquevoa.util.postSuccess
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class RegisterEventViewModel(
     private val registerEventUseCase: RegisterEventUseCase,
     private val getInterestsUseCase: GetInterestsUseCase,
+    private val getDisabilitiesUseCase: GetDisabilitiesUseCase
 ) : ViewModel() {
 
     private val TAG = "EventViewModel"
@@ -29,18 +29,24 @@ class RegisterEventViewModel(
     private var _activities = MutableLiveData<ViewState<List<Interests>>>()
     val activities: LiveData<ViewState<List<Interests>>> = _activities
 
+    private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
+    var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
+
     fun registerEvent(
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
-        activityId: String = "",
+        activityId: String,
+        userId: String,
         userIdentity: String,
-        isAccessible: Boolean
+        accessibilities: String,
+        address: String
     ) {
         _event.postValue(ViewState.Loading)
 
@@ -49,15 +55,17 @@ class RegisterEventViewModel(
                         name = name,
                         description = description,
                         isOnline = isOnline,
+                        url = url,
                         date = date,
-                        minimumAge = minimumAge,
+                        isPetFriendly = isPetFriendly,
                         maxParticipants = maxParticipants,
                         startTime = startTime,
                         endTime = endTime,
                         activityId = activityId,
-                        userId = "",
+                        userId = userId,
                         userIdentity = userIdentity,
-                        isAccessible = isAccessible
+                        accessibilities = accessibilities,
+                        address = address
                     ),
                     onSuccess = { event ->
                         Log.d(TAG, event.toString())
@@ -85,4 +93,17 @@ class RegisterEventViewModel(
         )
     }
 
+    fun fetchDisabilities() {
+        _disabilities.postLoading()
+        getDisabilitiesUseCase(
+            Unit,
+            onSuccess = { listDisabilitiesResponse ->
+                Log.d(TAG, listDisabilitiesResponse.toString())
+                _disabilities.postSuccess(listDisabilitiesResponse)
+            },
+            onError = {
+                _disabilities.postError(it)
+            }
+        )
+    }
 }

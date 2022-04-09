@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuBookmarkFill"
+        android:icon="@drawable/ic_bookmark_fill"
+        android:title="Favoritos" />
+
+    <item
+        android:id="@+id/menuDateRanger"
+        android:icon="@drawable/ic_date_range_fill"
+        android:title="Calendário"/>
+
+    <item
+        android:id="@+id/menuAddRoundFill"
+        android:icon="@drawable/ic_add_round_fill"
+        android:title="Criar evento"/>
+
+    <item
+        android:id="@+id/menuHomeFill"
+        android:icon="@drawable/ic_home_fill"
+        android:title="Sobre"/>
+
+    <item
+        android:id="@+id/menuUserFill"
+        android:icon="@drawable/ic_user_fill"
+        android:title="Perfil"/>
+</menu>
