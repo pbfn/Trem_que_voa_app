@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.EventFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageEventContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            app:cardElevation="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonClose"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ic_close"
+                android:contentDescription="Fechar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/img_event" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_bg_event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageEventContainer">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewEventName"
+                style="@style/Base.Widget.AppCompat.TextView.Title_23"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Yoga ao ar livre" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewEventDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginVertical="16dp"
+                android:layout_marginTop="27dp"
+                android:textColor="#757678"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEventName"
+                tools:text="Prática de yoga gratuita no gramado do Campus para iniciantes" />
+
+            <GridLayout
+                android:id="@+id/gridOrganizer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEventDescription">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewOrganizer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Organizador:"
+                    android:textColor="#5040A1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageViewOrganizer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="26dp"
+                    android:src="@drawable/ic_ellipse"
+                    app:layout_constraintStart_toEnd="@id"
+                    app:layout_constraintTop_toBottomOf="@id/icon_acessible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewNameOrganizer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Ana Vaz"
+                    android:textColor="#5040A1" />
+            </GridLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewParticipants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="30dp"
+                android:text="Participantes:"
+                android:textColor="#5040A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gridOrganizer"/>
+
+            <GridLayout
+                android:id="@+id/gridDateTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewParticipants">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Data: "
+                    android:textColor="#5040A1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="139dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Inicio: "
+                    android:textColor="#5040A1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Término: "
+                    android:textColor="#5040A1" />
+            </GridLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="56dp"
+                android:text="Categorias:"
+                android:textColor="#5040A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gridDateTime" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/ic_loaction"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewCategories" />
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="26dp"
+                android:text="Evento presencial"
+                app:layout_constraintStart_toEndOf="@id/icon_location"
+                app:layout_constraintTop_toBottomOf="@id/textViewCategories" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_acessible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/ic_accessible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_location" />
+
+            <TextView
+                android:id="@+id/textViewAcessible"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="26dp"
+                android:text="Possui acessibilidade"
+                app:layout_constraintStart_toEndOf="@id/icon_acessible"
+                app:layout_constraintTop_toBottomOf="@id/textViewLocation" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconEventFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/ic_person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_acessible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconEventFree2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/ic_person2"
+                app:layout_constraintStart_toEndOf="@id/iconEventFree"
+                app:layout_constraintTop_toBottomOf="@id/icon_acessible" />
+
+            <TextView
+                android:id="@+id/textViewEventFree"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="26dp"
+                android:text="Evento gratuito"
+                app:layout_constraintStart_toEndOf="@id/iconEventFree2"
+                app:layout_constraintTop_toBottomOf="@id/textViewAcessible" />
+
+            <TextView
+                android:id="@+id/textViewEventAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Local:"
+                android:textColor="#5040A1"
+                app:layout_constraintStart_toEndOf="@id/icon_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEventFree" />
+
+            <TextView
+                android:id="@+id/textViewTitleHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="76dp"
+                android:text="Dúvidas? Pergunte no fórum!"
+                android:textColor="#5040A1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEventAddress" />
+
+            <TextView
+                android:id="@+id/textViewHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="7dp"
+                android:text="Sua dúvida poderá ser respondida pelo organizador\nou participante já confirmados."
+                android:textColor="#757678"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitleHelp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_forum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="59dp"
+                android:src="@drawable/ic_forum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewHelp"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitleHelp" />
+
+            <GridLayout
+                android:id="@+id/gridShares"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewHelp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconEventReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="26dp"
+                    android:src="@drawable/ic_round_report"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewHelp" />
+
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconEventLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="26dp"
+                    android:src="@drawable/ic_eva_link_outline"
+                    app:layout_constraintStart_toEndOf="@id/iconEventReport"
+                    app:layout_constraintTop_toBottomOf="@id/textViewHelp" />
+
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconEventShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_share_fill"
+                    app:layout_constraintStart_toEndOf="@id/iconEventLink"
+                    app:layout_constraintTop_toBottomOf="@id/textViewHelp" />
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/gridTextShares"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gridShares">
+
+                <TextView
+                    android:id="@+id/textViewEventReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Denunciar"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iconEventReport" />
+
+                <TextView
+                    android:id="@+id/textViewEventLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Copiar Link"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/textViewEventReport"
+                    app:layout_constraintTop_toBottomOf="@id/iconEventLink" />
+
+                <TextView
+                    android:id="@+id/textViewEvenShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Compartilhar"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/textViewEventLink"
+                    app:layout_constraintTop_toBottomOf="@id/iconEventShare" />
+            </GridLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonParticipate"
+                style="@style/TextAppearance.AppCompat.Button.StyleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="112dp"
+                android:layout_marginTop="27dp"
+                android:text="Quero participar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gridTextShares" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menuBottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_bottom_navigation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonParticipate"
+            app:layout_constraintVertical_bias="1.0"
+            app:menu="@menu/bottom_navigation_menu" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
