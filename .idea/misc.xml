@@ -5,13 +5,35 @@
       <map>
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/background_button_disable.xml" value="0.1" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/background_button_enabled.xml" value="0.1" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/background_item_perfil.xml" value="0.352" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/button_selector.xml" value="0.1465" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/edit_text_enabled.xml" value="0.262" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.265" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/input_custom_error.xml" value="0.31" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/input_custom_success.xml" value="0.31" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/radio_button_selector.xml" value="0.265" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/selector_item_perfil.xml" value="0.352" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/shape_radio_button_selected.xml" value="0.265" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/shape_radio_button_unselected.xml" value="0.265" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/drawable/toogle_selector.xml" value="0.305" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/custom_card_perfil.xml" value="0.33" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/custom_form.xml" value="0.6365883807169345" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_emergency_contact.xml" value="0.5655737704918032" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_forgot_password.xml" value="0.2877297990594271" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_interests.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.67" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.5" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_new_password_success.xml" value="0.42948308870453095" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_perfil_user.xml" value="0.6461769115442278" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.2877297990594271" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_register_user.xml" value="0.5" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_welcome.xml" value="0.5" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/interests_item_adapter.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/interests_perfil_item_adapter.xml" value="0.601115760111576" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/shape_radio_button_selected.xml" value="0.2877297990594271" />
+        <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/teste_layout.xml" value="0.8504366812227074" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/activity_splash.xml" value="0.15" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.136986301369863" />
