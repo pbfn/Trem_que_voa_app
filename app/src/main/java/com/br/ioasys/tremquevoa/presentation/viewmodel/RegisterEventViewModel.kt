@@ -73,7 +73,7 @@ class RegisterEventViewModel(
         _activities.postLoading()
         getInterestsUseCase(
             params = GetInterestsUseCase.Params(
-                userID = null
+                token = "null"
             ),
             onSuccess = { listInterestsResponse ->
                 Log.d(TAG, listInterestsResponse.toString())

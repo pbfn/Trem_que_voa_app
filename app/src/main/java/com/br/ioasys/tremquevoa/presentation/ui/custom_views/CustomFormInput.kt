@@ -52,24 +52,24 @@ class CustomFormInput @JvmOverloads constructor(
     private fun setLayout(attrs: AttributeSet?) {
         attrs?.let { attributeSet ->
             val attributes =
-                context.obtainStyledAttributes(attributeSet, R.styleable.CustomFormInput)
+                context.obtainStyledAttributes(attributeSet, R.styleable.CustomLayoutIoasys)
 
-            val customTitle = attributes.getString(R.styleable.CustomFormInput_custom_title)
+            val customTitle = attributes.getString(R.styleable.CustomLayoutIoasys_custom_title)
             title.text = customTitle
 
             val inputType = attributes.getInt(
-                R.styleable.CustomFormInput_android_inputType,
+                R.styleable.CustomLayoutIoasys_android_inputType,
                 InputType.TYPE_CLASS_TEXT
             )
             input.inputType = inputType
 
             val messageError =
-                attributes.getString(R.styleable.CustomFormInput_msgError)
+                attributes.getString(R.styleable.CustomLayoutIoasys_msgError)
             msgError.text = messageError
 
             val background =
                 attributes.getInt(
-                    R.styleable.CustomFormInput_background_input,
+                    R.styleable.CustomLayoutIoasys_background_input,
                     R.drawable.input_custom_neutral
                 )
 

@@ -102,6 +102,7 @@ class LoginFragment : Fragment() {
                         "Login realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
+                    nextPage(LoginFragmentDirections.actionLoginFragmentToPerfilUserFragment())
                 }
 
                 is ViewState.Error -> {
