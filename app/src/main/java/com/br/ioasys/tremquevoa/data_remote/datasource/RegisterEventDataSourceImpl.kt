@@ -13,6 +13,7 @@ class RegisterEventDataSourceImpl(
     private val eventService: EventService
 ) : RegisterEventRemoteDataSource {
     override fun registerEvent(
+        token:String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -29,6 +30,7 @@ class RegisterEventDataSourceImpl(
         address: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
+            token = token,
             RegisterEventRequest(
                 name = name,
                 description = description,

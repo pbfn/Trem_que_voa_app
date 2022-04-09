@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
+import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.extensions.invisible
 import com.br.ioasys.tremquevoa.extensions.toInt
 import com.br.ioasys.tremquevoa.extensions.visible
@@ -36,6 +37,7 @@ class RegisterEventFragment : Fragment() {
     private val registerEventViewModel: RegisterEventViewModel by lazy {
         getViewModel()
     }
+    lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,8 +57,7 @@ class RegisterEventFragment : Fragment() {
         setListener()
         addObserver()
         setRecycleViewButtonsOptions()
-        registerEventViewModel.fetchActivities()
-        registerEventViewModel.fetchDisabilities()
+
         settingModality()
         settingPetFriendly()
     }
@@ -82,9 +83,33 @@ class RegisterEventFragment : Fragment() {
     }
 
     private fun addObserver() {
+
+        registerEventViewModel.user.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+                }
+
+                is ViewState.Success -> {
+                    user = response.data
+                    registerEventViewModel.fetchActivities(user.token)
+                    registerEventViewModel.fetchDisabilities(user.token)
+                }
+
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Houve uma falha no cadastro",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+        }
+
         registerEventViewModel.event.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is ViewState.Loading -> {}
+                is ViewState.Loading -> {
+                }
 
                 is ViewState.Success -> {
                     Toast.makeText(
@@ -106,7 +131,8 @@ class RegisterEventFragment : Fragment() {
 
         registerEventViewModel.activities.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is ViewState.Loading -> {}
+                is ViewState.Loading -> {
+                }
 
                 is ViewState.Success -> {
                     val adapter = AdapterActivities(
@@ -137,13 +163,15 @@ class RegisterEventFragment : Fragment() {
 
         registerEventViewModel.disabilities.observe(viewLifecycleOwner) { response ->
             when (response) {
-                is ViewState.Loading -> {}
+                is ViewState.Loading -> {
+                }
 
                 is ViewState.Success -> {
                     adapterDisabilities.differ.submitList(response.data)
                 }
 
-                is ViewState.Error -> {}
+                is ViewState.Error -> {
+                }
             }
         }
     }
@@ -214,7 +242,7 @@ class RegisterEventFragment : Fragment() {
 
     private fun configViewIsOnline(online: Boolean) {
         binding.apply {
-            if(online) {
+            if (online) {
                 customAddress.invisible()
                 customReferences.invisible()
                 textInputPetFriendly.invisible()
@@ -244,6 +272,7 @@ class RegisterEventFragment : Fragment() {
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
+            token = user.token,
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,
@@ -254,7 +283,7 @@ class RegisterEventFragment : Fragment() {
             startTime = binding.customStartTime.input.text.toString(),
             endTime = binding.customEndTime.input.text.toString(),
             activityId = categorySelected?.id ?: "",
-            userId = "",
+            userId = user.id,
             userIdentity = binding.customUserIdentity.input.text.toString(),
             accessibilities = "",
             address = binding.customAddress.input.text.toString()

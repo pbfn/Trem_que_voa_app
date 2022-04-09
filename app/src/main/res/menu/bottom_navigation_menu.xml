@@ -11,7 +11,7 @@
         android:title="Calendário"/>
 
     <item
-        android:id="@+id/menuAddRoundFill"
+        android:id="@+id/item_new_event"
         android:icon="@drawable/ic_add_round_fill"
         android:title="Criar evento"/>
 
@@ -21,7 +21,7 @@
         android:title="Sobre"/>
 
     <item
-        android:id="@+id/menuUserFill"
+        android:id="@+id/item_perfil"
         android:icon="@drawable/ic_user_fill"
         android:title="Perfil"/>
 </menu>

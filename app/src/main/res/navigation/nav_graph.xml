@@ -17,8 +17,8 @@
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_perfilUserFragment"
-            app:destination="@id/perfilUserFragment" />
+            android:id="@+id/action_loginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -93,4 +93,14 @@
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment"
         android:label="fragment_perfil_user"
         tools:layout="@layout/fragment_perfil_user" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.br.ioasys.tremquevoa.activity.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>
