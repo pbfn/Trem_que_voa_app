@@ -11,10 +11,12 @@ class RegisterEventResponse (
     val description: String,
     @SerializedName("isOnline")
     val isOnline: Boolean,
+    @SerializedName("url")
+    val url: String,
     @SerializedName("date")
     val date: String,
-    @SerializedName("minimumAge")
-    val minimumAge: Int,
+    @SerializedName("isPetFriendly")
+    val isPetFriendly: Boolean,
     @SerializedName("maxParticipants")
     val maxParticipants: Int,
     @SerializedName("startTime")
@@ -27,7 +29,9 @@ class RegisterEventResponse (
     val userId: String,
     @SerializedName("userIdentity")
     val userIdentity: String,
-    @SerializedName("isAccessible")
-    val isAccessible: Boolean,
+    @SerializedName("accessibilities")
+    val accessibilities: String,
+    @SerializedName("address")
+    val address: String,
 )
 

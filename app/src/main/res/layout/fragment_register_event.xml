@@ -11,256 +11,309 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputEventName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Nome do evento"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imgArrowBack"
+            android:layout_width="23dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/arrow_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEventName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textAutoComplete"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Descrição do evento"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputEventName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textAutoComplete" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <RadioGroup
-            android:id="@+id/radioGroupIsOnline"
-            android:checkedButton="@id/radioButtonIsOnline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="200dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputDescription" >
-            <RadioButton
-                android:id="@+id/radioButtonIsOnline"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Online"/>
-            <RadioButton
-                android:id="@+id/radioButtonInPerson"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Presencial"
-                android:layout_marginStart="10dp"/>
-        </RadioGroup>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonDatePikerEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Selecione a data"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/radioGroupIsOnline"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewDatePikerEvent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Data selecionada"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonDatePikerEvent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputMinAge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Idade mínima"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDatePikerEvent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextMinAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputMaxParticipants"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Máximo de participantes"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputMinAge">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextMaxParticipants"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputStartTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Horário de início"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputMaxParticipants">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextStartTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputEndTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="Horário de fim"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputStartTime">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEndTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputBoxActivity"
+            android:id="@+id/textViewCreateEvent"
+            style="@style/Base.Widget.AppCompat.TextView.Title_23"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="50dp"
+            android:text="Criar novo evento"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgArrowBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_name_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="35dp"
+            app:custom_title="Nome do evento:"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewCreateEvent" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_user_identity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="number"
+            app:custom_title="CPF do organizador:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_name_event" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_max_participants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="number"
+            app:custom_title="Máximo de participantes:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_user_identity" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputBoxCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputEndTime"
+            app:layout_constraintTop_toBottomOf="@+id/custom_max_participants"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
             <AutoCompleteTextView
-                android:id="@+id/autoCompleteActivity"
+                android:id="@+id/autoCompleteCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Selecione a atividade"
+                android:hint="Selecione a Categoria"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewIsAcessible"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="O evento é acessível?"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputBoxActivity"/>
-
-        <RadioGroup
-            android:id="@+id/radioGroupIsAccessible"
-            android:checkedButton="@id/radioButtonIsAcessible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="200dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewIsAcessible" >
-            <RadioButton
-                android:id="@+id/radioButtonIsAcessible"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sim"/>
-            <RadioButton
-                android:id="@+id/radioButtonNoAccessible"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Não"
-                android:layout_marginStart="10dp"/>
-        </RadioGroup>
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputIdentity"
-            android:layout_width="0dp"
+            android:id="@+id/textInputBoxModality"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:hint="CPF ou CNPJ"
-            app:helperTextEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroupIsAccessible">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputBoxCategory"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextIdentity"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteModality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:hint="Selecione a modalidade"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonRegisterEvent"
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_url"
+            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Cadastrar"
+            android:inputType="text"
+            app:custom_title="Url:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputBoxModality" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_address"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Endereço:"
+            android:inputType="textAutoComplete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_url">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imgInputAddress"
+                android:layout_width="32dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="36dp"
+                android:src="@drawable/address_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAddGoogleMaps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="34dp"
+            android:text="Adicionar localização no Google Maps"
+
+            style="@style/Base.Widget.AppCompat.TextView.Text_18"
+            android:textColor="#2C3131"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_address"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_references"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Ponto de Referência:"
+            android:inputType="textAutoComplete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAddGoogleMaps" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="date"
+            app:custom_title="Data:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_references">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imgInputDate"
+                android:layout_width="23dp"
+                android:layout_height="20dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/date_range_fill_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="time"
+            app:custom_title="Horário início:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_date">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imgInputStartTime"
+                android:layout_width="23dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="45dp"
+                android:src="@drawable/time_five_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:inputType="time"
+            app:custom_title="Horário Término:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_start_time">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imgInputEndTime"
+                android:layout_width="19dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="37dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/time_five_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPetFriendly"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputIdentity"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/custom_end_time"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
+            <AutoCompleteTextView
+                android:id="@+id/autoCompletePetFriendly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="É Pet Friendly?"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAcessible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
+            android:text="Evento acessível a pessoa com deficiência?"
+            style="@style/Base.Widget.AppCompat.TextView.Text_18"
+            android:textColor="#2C3131"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputPetFriendly" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewButtonOptions"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="46dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAcessible"
+            tools:listitem="@layout/buttons_options_item_adapter" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_description"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Descrição do evento:"
+            android:inputType="textAutoComplete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewButtonOptions" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRegisterEvent"
+            style="@style/TextAppearance.AppCompat.Button.StyleButton"
+            android:layout_width="263dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="40dp"
+            android:text="Criar evento e publicar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

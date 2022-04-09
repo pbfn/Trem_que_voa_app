@@ -1,6 +1,5 @@
 package com.br.ioasys.tremquevoa.data.datasource.remote
 
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 
@@ -10,15 +9,17 @@ interface RegisterEventRemoteDataSource {
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
         activityId: String,
         userId: String,
         userIdentity: String,
-        isAccessible: Boolean
+        accessibilities: String,
+        address: String
     ): Flow<Event>
 
     //fun fetchEventActivities(): Flow<List<Activities>>

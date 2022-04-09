@@ -10,15 +10,17 @@ interface RegisterEventRepository {
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
         activityId: String,
-        userIdentity: String,
         userId: String,
-        isAccessible: Boolean
+        userIdentity: String,
+        accessibilities: String,
+        address: String
     ): Flow<Event>
 
     //fun fetchEventActivities(): Flow<List<Activities>>

@@ -36,14 +36,17 @@ class RegisterEventViewModel(
         name: String,
         description: String,
         isOnline: Boolean,
+        url: String,
         date: String,
-        minimumAge: Int,
+        isPetFriendly: Boolean,
         maxParticipants: Int,
         startTime: String,
         endTime: String,
-        activityId: String = "",
+        activityId: String,
+        userId: String,
         userIdentity: String,
-        isAccessible: Boolean
+        accessibilities: String,
+        address: String
     ) {
         _event.postValue(ViewState.Loading)
 
@@ -52,15 +55,17 @@ class RegisterEventViewModel(
                         name = name,
                         description = description,
                         isOnline = isOnline,
+                        url = url,
                         date = date,
-                        minimumAge = minimumAge,
+                        isPetFriendly = isPetFriendly,
                         maxParticipants = maxParticipants,
                         startTime = startTime,
                         endTime = endTime,
                         activityId = activityId,
-                        userId = "",
+                        userId = userId,
                         userIdentity = userIdentity,
-                        isAccessible = isAccessible
+                        accessibilities = accessibilities,
+                        address = address
                     ),
                     onSuccess = { event ->
                         Log.d(TAG, event.toString())

@@ -10,13 +10,15 @@ data class EventDataLocal(
     val name: String,
     val description: String,
     val isOnline: Boolean,
+    val url: String,
     val date: String,
-    val minimumAge: Int,
+    val isPetFriendly: Boolean,
     val maxParticipants: Int,
     val startTime: String,
     val endTime: String,
     val activityId: String,
     val userId: String,
     val userIdentity: String,
-    val isAccessible: Boolean
+    val accessibilities: String,
+    val address: String
 )
