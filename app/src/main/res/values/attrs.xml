@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomFormInput">
+    <declare-styleable name="CustomLayoutIoasys">
         <attr name="custom_title" format="string" />
         <attr name="android:inputType" />
         <attr name="msgError" format="string" />
         <attr name="background_input" format="integer"/>
+        <attr name="titleCard" format="string"/>
+        <attr name="subtitleCard" format="string"/>
+        <attr name="iconCard" format="integer"/>
     </declare-styleable>
 </resources>

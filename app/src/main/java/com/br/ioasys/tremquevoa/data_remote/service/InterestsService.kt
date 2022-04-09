@@ -9,7 +9,15 @@ interface InterestsService {
 
     @Headers("Content-type: application/json")
     @GET("activities/list")
-    suspend fun getAllInterests(): Response<List<InterestsResponse>>
+    suspend fun getAllInterests(
+        @Header("Authorization") token: String,
+    ): Response<List<InterestsResponse>>
+
+    @Headers("Content-type: application/json")
+    @GET("users/interests/list/")
+    suspend fun getInterestsByUser(
+        @Header("Authorization") token: String,
+    ): Response<List<InterestsResponse>>
 
     @Headers("Content-type: application/json")
     @POST("users/interests")

@@ -60,7 +60,7 @@ class InterestsFragment : Fragment() {
     }
 
     private fun getInterests() {
-        interestsViewModel.getInterests()
+        interestsViewModel.getInterests(args.token)
     }
 
     private fun addObserver() {

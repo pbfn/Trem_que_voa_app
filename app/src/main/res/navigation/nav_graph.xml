@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_perfilUserFragment"
+            app:destination="@id/perfilUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -85,4 +88,9 @@
             android:id="@+id/action_newPasswordSuccessFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/perfilUserFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment"
+        android:label="fragment_perfil_user"
+        tools:layout="@layout/fragment_perfil_user" />
 </navigation>

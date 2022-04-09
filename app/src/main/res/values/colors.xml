@@ -17,4 +17,6 @@
 
     <color name="error">#E25C5C</color>
     <color name="neutral">#757678</color>
+    <color name="background_card">#DEDAF0</color>
+    <color name="background_item_perfil">#6B5BBE</color>
 </resources>
