@@ -17,4 +17,7 @@
 
     <color name="error">#E25C5C</color>
     <color name="neutral">#757678</color>
+
+    <color name="bg_bottom_navigation">#A5A1A1</color>
+    <color name="bg_event">#FAF1F1</color>
 </resources>
