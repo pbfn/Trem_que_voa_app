@@ -29,4 +29,5 @@ interface UserRepository {
 
     fun resetPassword(email: String): Flow<Boolean>
 
+    fun updateAboutMe(token: String, aboutMe: String): Flow<User>
 }

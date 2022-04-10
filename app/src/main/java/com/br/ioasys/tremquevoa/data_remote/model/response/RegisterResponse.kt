@@ -18,5 +18,7 @@ data class RegisterResponse(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("updatedAt")
-    val updatedAt: String
+    val updatedAt: String,
+    @SerializedName("aboutMe")
+    val aboutMe: String,
 )

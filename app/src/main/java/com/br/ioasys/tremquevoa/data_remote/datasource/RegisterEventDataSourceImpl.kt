@@ -30,7 +30,7 @@ class RegisterEventDataSourceImpl(
         address: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
-            token = token,
+            token = "Bearer $token",
             RegisterEventRequest(
                 name = name,
                 description = description,

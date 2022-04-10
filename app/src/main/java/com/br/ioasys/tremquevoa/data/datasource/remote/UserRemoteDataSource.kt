@@ -22,4 +22,9 @@ interface UserRemoteDataSource {
     ): Flow<User>
 
     fun resetPassword(email: String): Flow<Boolean>
+
+    fun updateAboutMeUser(
+        token: String,
+        aboutMe:String
+    ):Flow<User>
 }

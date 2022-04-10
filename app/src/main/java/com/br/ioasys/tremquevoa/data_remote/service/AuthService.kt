@@ -1,9 +1,6 @@
 package com.br.ioasys.tremquevoa.data_remote.service
 
-import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.ResetPasswordUserRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.UpdateEmergencyContactUserRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.*
 import com.br.ioasys.tremquevoa.data_remote.model.response.LoginResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.ResetPasswordUserResponse
@@ -36,4 +33,11 @@ interface AuthService {
     suspend fun resetPassword(
         @Body resetPasswordUserRequest: ResetPasswordUserRequest
     ): Response<ResetPasswordUserResponse>
+
+    @Headers("Content-type: application/json")
+    @PATCH("users")
+    suspend fun updateAboutMeUser(
+        @Header("Authorization") token: String,
+        @Body updateAboutMeUserRequest: UpdateAboutMeUserRequest
+    ): Response<RegisterResponse>
 }

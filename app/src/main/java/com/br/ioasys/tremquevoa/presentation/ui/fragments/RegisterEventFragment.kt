@@ -176,25 +176,28 @@ class RegisterEventFragment : Fragment() {
         }
     }
 
-    private fun datePickerDialog() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
+    private fun datePickerDialog()
+    {
+        resources.configuration.setLocale(Locale("pt","BR"))
+        val today = Calendar.getInstance()
+        val year = today.get(Calendar.YEAR)
+        val month = today.get(Calendar.MONTH) + 1
+        val day = today.get(Calendar.DAY_OF_MONTH)
         val datePikerDialog = DatePickerDialog(
             requireContext(),
-            { view, mYear, mMonth, mDay ->
+            { _, mYear, mMonth, mDay ->
                 binding.customDate.input.setText("$mDay/$mMonth/$mYear")
                 Log.d("Date", "data selecionada $mDay/$mMonth/$mYear")
             },
-            day,
+            year,
             month,
-            year
+            day
         )
         datePikerDialog.show()
     }
 
     private fun timePickerDialogStart() {
+        resources.configuration.setLocale(Locale("pt","BR"))
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
@@ -206,11 +209,12 @@ class RegisterEventFragment : Fragment() {
             },
             hour,
             minute,
-            false
+            true
         ).show()
     }
 
     private fun timePickerDialogEnd() {
+        resources.configuration.setLocale(Locale("pt","BR"))
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
@@ -222,7 +226,7 @@ class RegisterEventFragment : Fragment() {
             },
             hour,
             minute,
-            false
+            true
         ).show()
     }
 

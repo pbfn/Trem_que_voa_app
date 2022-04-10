@@ -19,4 +19,6 @@ data class UserResponse(
     val createdAt: String,
     @SerializedName("updatedAt")
     val updatedAt: String,
+    @SerializedName("aboutMe")
+    val aboutMe: String,
 )
