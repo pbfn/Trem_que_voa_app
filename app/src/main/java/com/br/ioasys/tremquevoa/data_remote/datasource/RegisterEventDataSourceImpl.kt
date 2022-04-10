@@ -26,7 +26,8 @@ class RegisterEventDataSourceImpl(
         userId: String,
         userIdentity: String,
         accessibilities: String,
-        address: String
+        address: String,
+        token: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
             RegisterEventRequest(
@@ -44,7 +45,8 @@ class RegisterEventDataSourceImpl(
                 userIdentity = userIdentity,
                 accessibilities = accessibilities,
                 address = address
-            )
+            ),
+            token
         )
         if (response.isSuccessful) {
             response.body()?.let { registerEventResponse ->

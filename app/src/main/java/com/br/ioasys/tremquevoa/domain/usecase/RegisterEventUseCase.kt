@@ -53,14 +53,17 @@ class RegisterEventUseCase(
             userId = params.userId,
             userIdentity = params.userIdentity,
             accessibilities = params.accessibilities,
-            address = params.address
+            address = params.address,
+            token = userRepository.fetchUserLogged().map {
+                it.token
+            }.toString()
         )
     }
 
     private fun getUserId(): String {
-            return userRepository.fetchUserLogged().map { user ->
-                user?.id ?: ""
-            }.toString()
+        return userRepository.fetchUserLogged().map { user ->
+            user?.id ?: ""
+        }.toString()
     }
 
     private fun validateFields(params: Params) {

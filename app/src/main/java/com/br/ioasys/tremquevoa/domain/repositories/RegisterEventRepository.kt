@@ -20,7 +20,8 @@ interface RegisterEventRepository {
         userId: String,
         userIdentity: String,
         accessibilities: String,
-        address: String
+        address: String,
+        token: String
     ): Flow<Event>
 
     //fun fetchEventActivities(): Flow<List<Activities>>

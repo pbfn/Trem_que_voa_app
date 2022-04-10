@@ -25,7 +25,8 @@ class RegisterEventRepositoryImpl(
         userId: String,
         userIdentity: String,
         accessibilities: String,
-        address: String
+        address: String,
+        token: String
     ): Flow<Event> = flow {
         registerEventRemoteDataSource.registerEvent(
             name = name,
@@ -41,7 +42,8 @@ class RegisterEventRepositoryImpl(
             userId = userId,
             userIdentity = userIdentity,
             accessibilities = accessibilities,
-            address = address
+            address = address,
+            token = token
         ).collect { event ->
             emit(event)
         }
