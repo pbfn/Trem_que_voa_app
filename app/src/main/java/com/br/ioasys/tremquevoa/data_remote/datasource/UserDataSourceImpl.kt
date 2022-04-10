@@ -2,10 +2,7 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.UserRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
-import com.br.ioasys.tremquevoa.data_remote.model.request.LoginRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.ResetPasswordUserRequest
-import com.br.ioasys.tremquevoa.data_remote.model.request.UpdateEmergencyContactUserRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.*
 import com.br.ioasys.tremquevoa.data_remote.service.AuthService
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.User
@@ -97,8 +94,20 @@ class UserDataSourceImpl(
 
     override fun resetPassword(email: String): Flow<Boolean> = flow {
         val response = authService.resetPassword(ResetPasswordUserRequest(email = email))
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             emit(true)
+        }
+    }
+
+    override fun updateAboutMeUser(token: String, aboutMe: String): Flow<User> = flow {
+        val response = authService.updateAboutMeUser(
+            token = "Bearer $token",
+            UpdateAboutMeUserRequest(aboutMe = aboutMe)
+        )
+        if (response.isSuccessful){
+            response.body()?.let { registerReponse ->
+                emit(registerReponse.toDomain())
+            }
         }
     }
 }

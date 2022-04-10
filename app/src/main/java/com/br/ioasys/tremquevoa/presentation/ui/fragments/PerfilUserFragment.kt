@@ -1,10 +1,13 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doBeforeTextChanged
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentPerfilUserBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
@@ -43,8 +46,7 @@ class PerfilUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addObserver()
-        setCardLayout()
-        setRecyclerView()
+        setListeners()
     }
 
     private fun setCardLayout() {
@@ -62,6 +64,7 @@ class PerfilUserFragment : Fragment() {
                 title.text = "140"
                 subtitle.text = "Minutos"
             }
+
         }
     }
 
@@ -76,15 +79,29 @@ class PerfilUserFragment : Fragment() {
         }
     }
 
+    private fun setListeners() {
+        binding.apply {
+            buttonEditAboutMe.setOnClickListener {
+                editAboutMe.isEnabled = true
+            }
+
+            editAboutMe.doAfterTextChanged {
+                perfilViewModel.updateAboutMe(token = user.token, aboutMe = it.toString())
+            }
+        }
+    }
 
     private fun addObserver() {
-        perfilViewModel.user.observe(viewLifecycleOwner) { response ->
+        perfilViewModel.userLocal.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
 
                 }
                 is ViewState.Success -> {
                     user = response.data
+                    setLayout()
+                    setCardLayout()
+                    setRecyclerView()
                 }
 
                 is ViewState.Error -> {
@@ -114,7 +131,35 @@ class PerfilUserFragment : Fragment() {
             }
 
         }
+
+        perfilViewModel.user.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    val updatedUser = response.data
+                    updatedUser.token = user.token
+                    updatedUser.refreshToken = user.refreshToken
+                    perfilViewModel.updateUserLocal(updatedUser)
+                }
+
+                is ViewState.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
+        }
+
     }
 
+    private fun setLayout(){
+        binding.apply {
+            editAboutMe.text = Editable.Factory.getInstance().newEditable(user.aboutMe)
+            textViewName.text = user.name
+        }
+    }
 
 }

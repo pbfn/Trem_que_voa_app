@@ -95,6 +95,8 @@
         app:layout_constraintStart_toEndOf="@+id/textViewAboutMe" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:padding="2dp"
+        android:background="@drawable/selector_about_me_perfil"
         android:id="@+id/editAboutMe"
         android:layout_width="0dp"
         android:layout_height="90dp"

@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface RegisterEventRemoteDataSource {
 
     fun registerEvent(
+        token:String,
         name: String,
         description: String,
         isOnline: Boolean,

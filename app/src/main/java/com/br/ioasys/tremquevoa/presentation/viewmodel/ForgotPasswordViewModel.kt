@@ -3,7 +3,7 @@ package com.br.ioasys.tremquevoa.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.br.ioasys.tremquevoa.domain.usecase.util.ResetPasswordUserUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.ResetPasswordUserUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading

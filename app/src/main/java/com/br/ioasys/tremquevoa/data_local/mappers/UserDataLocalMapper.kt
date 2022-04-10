@@ -16,7 +16,8 @@ fun User.toDao(): UserDataLocal = UserDataLocal(
     emergencyPhone = this.emergencyPhone,
     updatedAt = this.updatedAt,
     createdAt = this.createdAt,
-    maintainLogin = this.maintainLogin
+    maintainLogin = this.maintainLogin,
+    aboutMe = this.aboutMe
 )
 
 fun UserDataLocal.toDomain(): User = User(
@@ -30,5 +31,6 @@ fun UserDataLocal.toDomain(): User = User(
     emergencyPhone = this.emergencyPhone,
     updatedAt = this.updatedAt,
     createdAt = this.createdAt,
-    maintainLogin = this.maintainLogin
+    maintainLogin = this.maintainLogin,
+    aboutMe = this.aboutMe
 )

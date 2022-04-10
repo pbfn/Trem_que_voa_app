@@ -7,6 +7,7 @@ data class User(
     var token: String,
     var refreshToken: String,
     val phone: String?,
+    val aboutMe: String?,
     val emergencyName: String?,
     val emergencyPhone: String?,
     val createdAt: String?,
