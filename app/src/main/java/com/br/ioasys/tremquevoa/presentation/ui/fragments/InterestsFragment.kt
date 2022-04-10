@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
@@ -83,6 +85,25 @@ class InterestsFragment : Fragment() {
             }
 
         }
+
+        interestsViewModel.saveInterests.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    nextPage(InterestsFragmentDirections.actionInterestsFragmentToHomeActivity())
+                }
+
+                is ViewState.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
+
+        }
     }
 
     private fun setListeners() {
@@ -95,5 +116,9 @@ class InterestsFragment : Fragment() {
             }
             interestsViewModel.saveInterestsByUser(args.token, selectedIdInterestsList)
         }
+    }
+
+    private fun nextPage(directions: NavDirections) {
+        findNavController().navigate(directions)
     }
 }

@@ -25,7 +25,7 @@ interface AuthService {
     ): Response<RegisterResponse>
 
     @Headers("Content-type: application/json")
-    @PUT("users")
+    @PATCH("users")
     suspend fun updateEmergencyContactsUser(
         @Header("Authorization") token: String,
         @Body updateEmergencyContactUserRequest: UpdateEmergencyContactUserRequest

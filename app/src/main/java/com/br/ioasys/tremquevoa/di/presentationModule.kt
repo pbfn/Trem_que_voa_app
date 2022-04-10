@@ -6,10 +6,11 @@ import org.koin.dsl.module
 
 val presentationModule = module {
     viewModel { LoginViewModel(get(), get()) }
-    viewModel { RegisterEventViewModel(get(), get(), get(),get()) }
+    viewModel { RegisterEventViewModel(get(), get(), get(), get()) }
     viewModel { RegisterUserViewModel(get()) }
     viewModel { InterestsViewModel(get(), get()) }
     viewModel { UpdateUserViewModel(get(), get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }
-    viewModel { PerfilViewModel(get(),get()) }
+    viewModel { PerfilViewModel(get(), get()) }
+    viewModel { SplashViewModel(get()) }
 }
