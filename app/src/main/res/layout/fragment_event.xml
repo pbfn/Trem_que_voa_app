@@ -391,25 +391,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="112dp"
                 android:layout_marginTop="27dp"
+                android:layout_marginBottom="29dp"
                 android:text="Quero participar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gridTextShares" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/menuBottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_bottom_navigation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonParticipate"
-            app:layout_constraintVertical_bias="1.0"
-            app:menu="@menu/bottom_navigation_menu" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

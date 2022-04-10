@@ -10,5 +10,7 @@ interface DisabilitiesService {
 
     @Headers("Content-type: application/json")
     @GET("disabilities/list")
-    suspend fun getAllDisabilities(): Response<List<DisabilitiesResponse>>
+    suspend fun getAllDisabilities(
+        @Header("Authorization") token: String,
+    ): Response<List<DisabilitiesResponse>>
 }

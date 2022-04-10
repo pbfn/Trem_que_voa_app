@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface RegisterEventRepository {
 
     fun registerEvent(
+        token:String,
         name: String,
         description: String,
         isOnline: Boolean,

@@ -13,6 +13,7 @@ data class UserDataLocal(
     val refreshToken: String,
     val name: String,
     val phone: String?,
+    val aboutMe: String?,
     val emergencyName: String?,
     val emergencyPhone: String?,
     val updatedAt: String?,

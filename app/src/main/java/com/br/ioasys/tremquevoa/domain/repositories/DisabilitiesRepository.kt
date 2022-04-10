@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface DisabilitiesRepository {
 
-    fun fetchAllDesabilities(): Flow<List<Disabilities>>
+    fun fetchAllDesabilities(token:String): Flow<List<Disabilities>>
 }

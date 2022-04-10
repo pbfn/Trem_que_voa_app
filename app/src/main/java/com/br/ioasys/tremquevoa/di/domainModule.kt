@@ -5,7 +5,7 @@ import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.LoginUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterUserUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.SaveUserLocalUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.util.ResetPasswordUserUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.ResetPasswordUserUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
@@ -26,4 +26,5 @@ val domainModule = module {
     factory { UpdateUserUseCase(get(), get()) }
     factory { ResetPasswordUserUseCase(get(), get()) }
     factory { GetInterestsByUserUseCase(get(), get()) }
+    factory { UpdateAboutMeUserUserCase(get(), get()) }
 }

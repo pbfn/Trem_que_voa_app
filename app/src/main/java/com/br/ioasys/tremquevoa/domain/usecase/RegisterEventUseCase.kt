@@ -15,6 +15,7 @@ class RegisterEventUseCase(
 ) : UseCase<RegisterEventUseCase.Params, Event>(scope = scope) {
 
     data class Params(
+        val token: String,
         val name: String,
         val description: String,
         val isOnline: Boolean,
@@ -40,6 +41,7 @@ class RegisterEventUseCase(
         validateFields(params)
 
         return registerEventRepository.registerEvent(
+            token = params.token,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,

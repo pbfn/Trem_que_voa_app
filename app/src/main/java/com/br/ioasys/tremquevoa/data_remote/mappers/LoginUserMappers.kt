@@ -15,5 +15,6 @@ fun LoginResponse.toDomain(maintainLogin: Boolean) = User(
     emergencyPhone = this.user.emergencyPhone,
     updatedAt = this.user.updatedAt,
     createdAt = this.user.createdAt,
-    maintainLogin = maintainLogin
+    maintainLogin = maintainLogin,
+    aboutMe = this.user.aboutMe
 )

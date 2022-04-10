@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsByUserUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetLocalUserUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.*
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
@@ -15,14 +13,22 @@ import com.br.ioasys.tremquevoa.util.postSuccess
 
 class PerfilViewModel(
     private val getLocalUserUseCase: GetLocalUserUseCase,
-    private val getInterestsByUserUseCase: GetInterestsByUserUseCase
+    private val getInterestsByUserUseCase: GetInterestsByUserUseCase,
+    private val updateAboutMeUserUserCase: UpdateAboutMeUserUserCase,
+    private val updateUserUseCase: UpdateUserUseCase
 ) : ViewModel() {
 
     private var _interests = MutableLiveData<ViewState<List<Interests>>>()
     var interests: LiveData<ViewState<List<Interests>>> = _interests
 
+    private var _userLocal = MutableLiveData<ViewState<User>>()
+    var userLocal: LiveData<ViewState<User>> = _userLocal
+
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
+
+    private var _updateUser = MutableLiveData<ViewState<Boolean>>()
+    var updateUser: LiveData<ViewState<Boolean>> = _updateUser
 
     init {
         getUserLocal()
@@ -44,19 +50,47 @@ class PerfilViewModel(
     }
 
     private fun getUserLocal() {
-        _user.postLoading()
+        _userLocal.postLoading()
         getLocalUserUseCase(
             params = Unit,
             onSuccess = {
-                _user.postSuccess(it)
+                _userLocal.postSuccess(it)
                 getInterestsUser(it.token)
             },
             onError = {
-                _user.postError(it)
+                _userLocal.postError(it)
                 _interests.postError(it)
             }
         )
     }
 
+    fun updateAboutMe(aboutMe: String, token: String) {
+        updateAboutMeUserUserCase(
+            params = UpdateAboutMeUserUserCase.Params(
+                token = token,
+                aboutMe = aboutMe
+            ),
+            onSuccess = {
+                _user.postSuccess(it)
+            },
+            onError = {
+                _user.postError(it)
+            }
+        )
+    }
+
+     fun updateUserLocal(newUser: User) {
+        updateUserUseCase(
+            params = UpdateUserUseCase.Params(
+                newUser = newUser
+            ),
+            onSuccess = {
+                _updateUser.postSuccess(true)
+            },
+            onError = {
+                _updateUser.postError(it)
+            }
+        )
+    }
 
 }

@@ -73,4 +73,13 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun updateAboutMe(token: String, aboutMe: String): Flow<User> = flow {
+       userRemoteDataSource.updateAboutMeUser(
+           token = token,
+           aboutMe = aboutMe
+       ).collect{
+           emit(it)
+       }
+    }
+
 }

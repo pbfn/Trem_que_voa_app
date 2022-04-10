@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.flow
 class DisabilitiesRepositoryImpl(
     private val disabilitiesRemoteDataSource: DisabilitiesRemoteDataSource
 ): DisabilitiesRepository {
-    override fun fetchAllDesabilities(): Flow<List<Disabilities>> = flow {
-        disabilitiesRemoteDataSource.fetchAllDisabilities().collect { listDisabilities ->
+    override fun fetchAllDesabilities(token:String): Flow<List<Disabilities>> = flow {
+        disabilitiesRemoteDataSource.fetchAllDisabilities(token = token).collect { listDisabilities ->
             emit(listDisabilities)
         }
     }

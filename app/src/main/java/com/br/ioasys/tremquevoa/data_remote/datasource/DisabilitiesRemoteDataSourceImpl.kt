@@ -11,8 +11,8 @@ class DisabilitiesRemoteDataSourceImpl(
     private val disabilitiesService: DisabilitiesService
 ): DisabilitiesRemoteDataSource {
 
-    override fun fetchAllDisabilities(): Flow<List<Disabilities>> = flow {
-        val response = disabilitiesService.getAllDisabilities()
+    override fun fetchAllDisabilities(token:String): Flow<List<Disabilities>> = flow {
+        val response = disabilitiesService.getAllDisabilities(token = "Bearer $token")
         if (response.isSuccessful) {
             response.body()?.let { listReponse ->
                 emit(listReponse.toDomain())
