@@ -134,17 +134,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_url">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/imgInputAddress"
-                android:layout_width="32dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="36dp"
-                android:src="@drawable/address_input"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -183,17 +172,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/custom_references">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/imgInputDate"
-                android:layout_width="23dp"
-                android:layout_height="20dp"
-                android:layout_marginVertical="8dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/date_range_fill_input"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
@@ -208,17 +187,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_date">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/imgInputStartTime"
-                android:layout_width="23dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="17dp"
-                android:layout_marginBottom="45dp"
-                android:src="@drawable/time_five_input"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
@@ -232,17 +201,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_start_time">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/imgInputEndTime"
-                android:layout_width="19dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="37dp"
-                android:layout_marginEnd="22dp"
-                android:layout_marginBottom="40dp"
-                android:src="@drawable/time_five_input"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 

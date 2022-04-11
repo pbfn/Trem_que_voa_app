@@ -141,6 +141,7 @@ class PerfilUserFragment : Fragment() {
                     val updatedUser = response.data
                     updatedUser.token = user.token
                     updatedUser.refreshToken = user.refreshToken
+                    updatedUser.maintainLogin = user.maintainLogin
                     perfilViewModel.updateUserLocal(updatedUser)
                 }
 

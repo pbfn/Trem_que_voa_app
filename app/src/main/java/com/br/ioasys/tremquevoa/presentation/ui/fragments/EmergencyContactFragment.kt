@@ -17,7 +17,7 @@ import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class EmergencyContactFragment : Fragment() {
+class  EmergencyContactFragment : Fragment() {
 
     private var _binding: FragmentEmergencyContactBinding? = null
     private val binding: FragmentEmergencyContactBinding get() = _binding!!

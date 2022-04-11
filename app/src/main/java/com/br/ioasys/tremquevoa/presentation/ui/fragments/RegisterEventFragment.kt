@@ -10,11 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
+import com.br.ioasys.tremquevoa.di.databaseModule
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
+import com.br.ioasys.tremquevoa.extensions.ChangeIcon
 import com.br.ioasys.tremquevoa.extensions.invisible
 import com.br.ioasys.tremquevoa.extensions.toInt
 import com.br.ioasys.tremquevoa.extensions.visible
@@ -37,6 +40,10 @@ class RegisterEventFragment : Fragment() {
     private val registerEventViewModel: RegisterEventViewModel by lazy {
         getViewModel()
     }
+
+    private lateinit var datePikerDialog: DatePickerDialog
+    private lateinit var timePickerDialogStart: TimePickerDialog
+    private lateinit var timePickerDialogEnd: TimePickerDialog
     lateinit var user: User
 
     override fun onCreateView(
@@ -54,6 +61,9 @@ class RegisterEventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupDatePickerDialog()
+        setupTimePickerDialogStart()
+        setupTimePickerDialogEnd()
         setListener()
         addObserver()
         setRecycleViewButtonsOptions()
@@ -68,17 +78,34 @@ class RegisterEventFragment : Fragment() {
                 registerEvent()
             }
 
-            imgInputDate.setOnClickListener {
-                datePickerDialog()
-            }
+            customDate.ChangeIcon(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.date_range_fill_input
+                )!!, ::showDatePicker
+            )
 
-            imgInputStartTime.setOnClickListener {
-                timePickerDialogStart()
-            }
+            customStartTime.ChangeIcon(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.time_five_input
+                )!!, ::showTimePickerDialogStart
+            )
 
-            imgInputEndTime.setOnClickListener {
-                timePickerDialogEnd()
-            }
+            customEndTime.ChangeIcon(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.time_five_input
+                )!!, ::showTimePickerDialogEnd
+            )
+
+            customAddress.ChangeIcon(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.address_input
+                )!!,
+                {}
+            )
         }
     }
 
@@ -176,14 +203,13 @@ class RegisterEventFragment : Fragment() {
         }
     }
 
-    private fun datePickerDialog()
-    {
-        resources.configuration.setLocale(Locale("pt","BR"))
+    private fun setupDatePickerDialog() {
+        resources.configuration.setLocale(Locale("pt", "BR"))
         val today = Calendar.getInstance()
         val year = today.get(Calendar.YEAR)
         val month = today.get(Calendar.MONTH) + 1
         val day = today.get(Calendar.DAY_OF_MONTH)
-        val datePikerDialog = DatePickerDialog(
+        datePikerDialog = DatePickerDialog(
             requireContext(),
             { _, mYear, mMonth, mDay ->
                 binding.customDate.input.setText("$mDay/$mMonth/$mYear")
@@ -193,15 +219,18 @@ class RegisterEventFragment : Fragment() {
             month,
             day
         )
+    }
+
+    private fun showDatePicker() {
         datePikerDialog.show()
     }
 
-    private fun timePickerDialogStart() {
-        resources.configuration.setLocale(Locale("pt","BR"))
+    private fun setupTimePickerDialogStart() {
+        resources.configuration.setLocale(Locale("pt", "BR"))
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
-        TimePickerDialog(
+        timePickerDialogStart = TimePickerDialog(
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
                 binding.customStartTime.input.setText("$mHour:$mMinute")
@@ -210,15 +239,19 @@ class RegisterEventFragment : Fragment() {
             hour,
             minute,
             true
-        ).show()
+        )
     }
 
-    private fun timePickerDialogEnd() {
-        resources.configuration.setLocale(Locale("pt","BR"))
+    private fun showTimePickerDialogStart() {
+        timePickerDialogStart.show()
+    }
+
+    private fun setupTimePickerDialogEnd() {
+        resources.configuration.setLocale(Locale("pt", "BR"))
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
-        TimePickerDialog(
+        timePickerDialogEnd = TimePickerDialog(
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
                 binding.customEndTime.input.setText("$mHour:$mMinute")
@@ -227,7 +260,11 @@ class RegisterEventFragment : Fragment() {
             hour,
             minute,
             true
-        ).show()
+        )
+    }
+
+    private fun showTimePickerDialogEnd() {
+        timePickerDialogEnd.show()
     }
 
     private fun settingModality() {
