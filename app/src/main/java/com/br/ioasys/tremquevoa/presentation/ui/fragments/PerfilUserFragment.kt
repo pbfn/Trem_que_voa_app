@@ -157,7 +157,9 @@ class PerfilUserFragment : Fragment() {
 
     private fun setLayout(){
         binding.apply {
-            editAboutMe.text = Editable.Factory.getInstance().newEditable(user.aboutMe)
+            if(!user.aboutMe.isNullOrEmpty()){
+                editAboutMe.text = Editable.Factory.getInstance().newEditable(user.aboutMe)
+            }
             textViewName.text = user.name
         }
     }

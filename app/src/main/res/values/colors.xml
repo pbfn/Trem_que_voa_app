@@ -19,4 +19,14 @@
     <color name="bg_event">#FAF1F1</color>
     <color name="background_card">#DEDAF0</color>
     <color name="background_item_perfil">#6B5BBE</color>
+
+    <color name="M3_sys_light_error">#B3261E</color>
+    <color name="M3_sys_light_on_primary">#FFFFFF</color>
+
+
+    <color name="neutral_darkest">#252627</color>
+    <color name="neutral_dark">#757678</color>
+    <color name="primary_darker">#1A00D0</color>
+    <color name="primary_lighter">#DEDAF0</color>
+
 </resources>

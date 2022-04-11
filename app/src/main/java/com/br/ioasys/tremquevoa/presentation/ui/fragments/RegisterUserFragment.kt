@@ -1,11 +1,13 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
+import android.graphics.Paint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.*
@@ -40,6 +42,7 @@ class RegisterUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
         addObserver()
+        underlineText()
     }
 
     private fun setListeners() {
@@ -49,7 +52,14 @@ class RegisterUserFragment : Fragment() {
                     registerUser()
                 }
             }
+            textViewSubscribe.setOnClickListener {
+                nextPage(RegisterUserFragmentDirections.actionRegisterFragmentToLoginFragment())
+            }
         }
+    }
+
+    private fun underlineText() {
+        binding.textViewSubscribe.paintFlags = Paint.UNDERLINE_TEXT_FLAG
     }
 
     private fun addObserver() {
@@ -69,12 +79,10 @@ class RegisterUserFragment : Fragment() {
                         "Cadastro realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
-                    findNavController().navigate(
-                        RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
-                            response.data.email,
-                            binding.editTextPassword.input.text.toString()
-                        )
-                    )
+                    nextPage(RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
+                        response.data.email,
+                        binding.editTextPassword.input.text.toString()
+                    ))
                 }
                 is ViewState.Error -> {
                     var msg = ""
@@ -150,5 +158,9 @@ class RegisterUserFragment : Fragment() {
             password = binding.editTextPassword.input.text.toString(),
             passwordConfirmation = binding.editTextConfirmPassword.input.text.toString()
         )
+    }
+
+    private fun nextPage(directions: NavDirections) {
+        findNavController().navigate(directions)
     }
 }

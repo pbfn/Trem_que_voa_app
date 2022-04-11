@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.InterestsItemAdapterBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
+import com.bumptech.glide.Glide
 
 class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterestsViewHolder>() {
 
@@ -49,6 +50,9 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
         val interest = differ.currentList[position]
         holder.apply {
             title.text = interest.title
+            holder.itemView.apply {
+                Glide.with(this).load("https://i.ibb.co/60rTJ9z/ic-ioga-inative.png").into(holder.image)
+            }
             image.setOnClickListener {
                 interest.selected = !interest.selected
                 if (interest.selected) {

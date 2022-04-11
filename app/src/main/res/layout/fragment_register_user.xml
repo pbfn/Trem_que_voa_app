@@ -1,159 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.RegisterUserFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="13dp"
+        android:text="Olá! Primeiro crie sua conta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        android:id="@+id/editTextFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="text"
+        app:custom_title="Como podemos te chamar?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+    <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="textEmailAddress"
+        app:custom_title="Seu e-mail:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
+
+    <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="textPassword"
+        app:custom_title="Digite uma senha:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+    <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="textPassword"
+        app:custom_title="Confirme sua senha:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkboxTerms"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:button="@drawable/radio_button_selector"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTerms_part1"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="17dp"
+        android:text="Li e concordo com os "
+        app:layout_constraintStart_toEndOf="@+id/checkboxTerms"
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTerms_part2"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Termos e Condições"
+        android:textColor="@color/button_color"
+        app:layout_constraintStart_toEndOf="@+id/textViewTerms_part1"
+        app:layout_constraintTop_toTopOf="@+id/textViewTerms_part1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTerms_part3"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" e "
+        app:layout_constraintStart_toEndOf="@+id/textViewTerms_part2"
+        app:layout_constraintTop_toTopOf="@+id/textViewTerms_part2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTerms_part4"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Política de Privacidade"
+        android:textColor="@color/button_color"
+        app:layout_constraintStart_toStartOf="@+id/textViewTerms_part1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewErrorMsg"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="8dp"
+        android:text="Por favor concorde com os Termos e Codições e a Política de Privacidade para continuar"
+        android:textColor="@color/M3_sys_light_error"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part4" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterGoogle"
+        style="@style/TextAppearance.AppCompat.Button.StyleButtonGoogle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="14dp"
+        android:drawableEnd="@drawable/ic_google"
+        android:includeFontPadding="false"
+        android:paddingStart="41dp"
+        android:paddingEnd="41dp"
+        android:text="continuar com o gmail"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageViewCamera"
-            android:layout_width="134dp"
-            android:layout_height="134dp"
-            android:layout_marginTop="44dp"
-            android:src="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        style="@style/TextAppearance.AppCompat.Button.StyleButton"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="criar conta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
-            style="@style/Base.Widget.AppCompat.TextView.Title_23"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="43dp"
-            android:layout_marginTop="44dp"
-            android:text="Cadastre-se"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewCamera" />
-
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-            android:id="@+id/editTextFirstName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="32dp"
-            android:inputType="text"
-            app:custom_title="Como podemos te chamar?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
-
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-            android:id="@+id/editTextEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="10dp"
-            android:inputType="textEmailAddress"
-            app:custom_title="Seu e-mail:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
-
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-            android:id="@+id/editTextPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="10dp"
-            android:inputType="textPassword"
-            app:custom_title="Digite uma senha:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
-
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-            android:id="@+id/editTextConfirmPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="10dp"
-            android:inputType="textPassword"
-            app:custom_title="Confirme sua senha:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/checkboxTerms"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:button="@drawable/radio_button_selector"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
-            app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+        tools:layout_editor_absoluteX="0dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTerms_part1"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Li e concordo com os "
-            app:layout_constraintStart_toEndOf="@+id/checkboxTerms"
-            app:layout_constraintTop_toTopOf="@+id/checkboxTerms" />
+            android:text="Já tem uma conta?" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTerms_part2"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+            android:id="@+id/textViewSubscribe"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Termos e Condições"
-            android:textColor="@color/button_color"
-            app:layout_constraintStart_toEndOf="@+id/textViewTerms_part1"
-            app:layout_constraintTop_toTopOf="@+id/textViewTerms_part1" />
+            android:text="Entre aqui!"
+            android:textColor="@color/primary_darker" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTerms_part3"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" e "
-            app:layout_constraintStart_toEndOf="@+id/textViewTerms_part2"
-            app:layout_constraintTop_toTopOf="@+id/textViewTerms_part2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTerms_part4"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Política de Privacidade"
-            android:textColor="@color/button_color"
-            app:layout_constraintStart_toStartOf="@+id/textViewTerms_part1"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part1" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewErrorMsg"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Light"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginHorizontal="35dp"
-            android:text="Por favor concorde com os Termos e Codições e a Política de Privacidade para continuar"
-            android:textColor="@color/error"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part4" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegister"
-            style="@style/TextAppearance.AppCompat.Button.StyleButton"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="126dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="36dp"
-            android:text="criar conta"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewErrorMsg" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
