@@ -8,18 +8,15 @@ import com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
 fun CustomFormInput.ChangeBackground(error: Boolean, msg: String?){
     if (error) {
         this.apply {
-            msgError.visibility = View.VISIBLE
-            input.background = ContextCompat.getDrawable(context, R.drawable.input_custom_error)
-            input.setTextColor(ContextCompat.getColor(context, R.color.error))
-            msgError.text = msg
+            inputLayout.helperText = msg
+            inputLayout.boxStrokeColor = ContextCompat.getColor(context,R.color.error)
+            input.requestFocus()
         }
 
     } else {
         this.apply {
-            msgError.visibility = View.INVISIBLE
-            input.background =
-                ContextCompat.getDrawable(context, R.drawable.input_custom_neutral)
-            input.setTextColor(ContextCompat.getColor(context, R.color.neutral))
+            inputLayout.boxStrokeColor = ContextCompat.getColor(context,R.color.purple_500)
+            inputLayout.helperText = ""
         }
     }
 }
