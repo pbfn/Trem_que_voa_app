@@ -2,9 +2,10 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterEventRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
-import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterEventRequest
+import com.br.ioasys.tremquevoa.data_remote.model.response.event.AddressResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event.EventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +14,7 @@ class RegisterEventDataSourceImpl(
     private val eventService: EventService
 ) : RegisterEventRemoteDataSource {
     override fun registerEvent(
-        token:String,
+        token: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -26,29 +27,45 @@ class RegisterEventDataSourceImpl(
         activityId: String,
         userId: String,
         userIdentity: String,
-        accessibilities: String,
-        address: String,
-        token: String
+        accessibilities: List<String>,
+        street: String,
+        number: Int,
+        city: String,
+        state: String,
+        zipCode: String,
+        referencePoint: String,
+        eventId: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
             token = "Bearer $token",
-            RegisterEventRequest(
-                name = name,
-                description = description,
-                isOnline = isOnline,
-                url = url,
-                date = date,
-                isPetFriendly = isPetFriendly,
-                maxParticipants = maxParticipants,
-                startTime = startTime,
-                endTime = endTime,
-                activityId = activityId,
-                userId = userId,
-                userIdentity = userIdentity,
-                accessibilities = accessibilities,
-                address = address
-            ),
-            token
+            registerEventRequest = RegisterEventResponse(
+                EventResponse(
+                    name = name,
+                    description = description,
+                    isOnline = isOnline,
+                    url = url,
+                    date = date,
+                    isPetFriendly = isPetFriendly,
+                    maxParticipants = maxParticipants,
+                    startTime = startTime,
+                    endTime = endTime,
+                    activityId = activityId,
+                    userId = userId,
+                    userIdentity = userIdentity,
+                    accessibilities = accessibilities,
+                    eventId = ""
+                ),
+                address = AddressResponse(
+                    street = street,
+                    number = number,
+                    city = city,
+                    state = state,
+                    zipCode = zipCode,
+                    referencePoint = referencePoint,
+                    userId = userId,
+                    eventId = eventId,
+                )
+            )
         )
         if (response.isSuccessful) {
             response.body()?.let { registerEventResponse ->

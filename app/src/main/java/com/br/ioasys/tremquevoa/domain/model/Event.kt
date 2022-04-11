@@ -14,6 +14,11 @@ data class Event (
     val activityId: String,
     val userId: String,
     val userIdentity: String,
-    val accessibilities: String,
-    val address: String
+    val accessibilities: List<String>,
+    val street: String,
+    val number: Int,
+    val city: String,
+    val state: String,
+    val zipCode: String,
+    val referencePoint: String
 )

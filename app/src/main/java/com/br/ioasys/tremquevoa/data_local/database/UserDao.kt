@@ -16,6 +16,6 @@ interface UserDao {
     @Query("DELETE FROM users")
     fun wipeTable()
 
-   @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateUser(user:UserDataLocal)
 }

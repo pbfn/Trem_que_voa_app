@@ -28,8 +28,14 @@ class RegisterEventUseCase(
         val activityId: String,
         val userId: String,
         val userIdentity: String,
-        val accessibilities: String,
-        val address: String
+        val accessibilities: List<String>,
+        val street: String,
+        val number: Int,
+        val city: String,
+        val state: String,
+        val zipCode: String,
+        val referencePoint: String,
+        val eventId: String
     )
 
     override fun run(params: Params): Flow<Event> {
@@ -41,7 +47,6 @@ class RegisterEventUseCase(
         validateFields(params)
 
         return registerEventRepository.registerEvent(
-            token = params.token,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,
@@ -55,10 +60,14 @@ class RegisterEventUseCase(
             userId = params.userId,
             userIdentity = params.userIdentity,
             accessibilities = params.accessibilities,
-            address = params.address,
-            token = userRepository.fetchUserLogged().map {
-                it.token
-            }.toString()
+            street = params.street,
+            number = params.number,
+            city = params.city,
+            state = params.state,
+            zipCode = params.zipCode,
+            referencePoint = params.referencePoint,
+            eventId = params.eventId,
+            token = params.token
         )
     }
 
@@ -80,9 +89,6 @@ class RegisterEventUseCase(
         }
         if (params.userId.isEmpty()) {
             throw InvalidEmptyUserIdException()
-        }
-        if (params.url.isEmpty()) {
-            throw InvalidEmptyMinimumAgeException()
         }
         if (params.maxParticipants.toString().isEmpty()) {
             throw InvalidEmptyMaxParticipantsException()

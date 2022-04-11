@@ -68,15 +68,15 @@ class RegisterEventFragment : Fragment() {
                 registerEvent()
             }
 
-            imgInputDate.setOnClickListener {
+            customDate.setOnClickListener {
                 datePickerDialog()
             }
 
-            imgInputStartTime.setOnClickListener {
+            customStartTime.setOnClickListener {
                 timePickerDialogStart()
             }
 
-            imgInputEndTime.setOnClickListener {
+            customEndTime.setOnClickListener {
                 timePickerDialogEnd()
             }
         }
@@ -247,16 +247,25 @@ class RegisterEventFragment : Fragment() {
     private fun configViewIsOnline(online: Boolean) {
         binding.apply {
             if (online) {
-                customAddress.invisible()
+                customStreet.invisible()
+                customNumber.invisible()
+                customCity.invisible()
+                customZipCode.invisible()
+                customState.invisible()
                 customReferences.invisible()
                 textInputPetFriendly.invisible()
                 textViewAddGoogleMaps.invisible()
                 customUrl.visible()
             } else {
-                customAddress.visible()
+                customStreet.visible()
+                customNumber.visible()
+                customCity.visible()
+                customZipCode.visible()
+                customState.visible()
                 customReferences.visible()
                 textInputPetFriendly.visible()
                 customUrl.invisible()
+                Log.d("IsOnline", "configViewIsOnline()")
             }
         }
     }
@@ -270,6 +279,7 @@ class RegisterEventFragment : Fragment() {
                 val itemSelected = petFriendly[i]
                 val isYes = getString(R.string.yes) == itemSelected
                 this@RegisterEventFragment.isYes = isYes
+                Log.d("IsPet", "settingPetFriendly()")
             }
         }
     }
@@ -289,8 +299,14 @@ class RegisterEventFragment : Fragment() {
             activityId = categorySelected?.id ?: "",
             userId = user.id,
             userIdentity = binding.customUserIdentity.input.text.toString(),
-            accessibilities = "",
-            address = binding.customAddress.input.text.toString()
+            accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.name },
+            street = binding.customStreet.input.text.toString(),
+            number = binding.customNumber.input.text.toInt() ?: 0,
+            city = binding.customCity.input.text.toString(),
+            state = binding.customState.input.text.toString(),
+            zipCode = binding.customZipCode.input.toString(),
+            referencePoint = binding.customReferences.input.toString(),
+            eventId = ""
         )
     }
 

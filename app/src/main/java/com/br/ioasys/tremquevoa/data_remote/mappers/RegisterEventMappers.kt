@@ -1,22 +1,27 @@
 package com.br.ioasys.tremquevoa.data_remote.mappers
 
-import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterEventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
 import com.br.ioasys.tremquevoa.domain.model.Event
 
 fun RegisterEventResponse.toDomain() = Event(
-    id = this.id,
-    name = this.name,
-    description = this.description,
-    isOnline = this.isOnline,
-    url = this.url,
-    date = this.date,
-    isPetFriendly = this.isPetFriendly,
-    maxParticipants = this.maxParticipants,
-    startTime = this.startTime,
-    endTime = this.endTime,
-    activityId = this.activityId,
-    userId = this.userId,
-    userIdentity = this.userIdentity,
-    accessibilities = this.accessibilities,
-    address = this.address
+    id = this.eventResponse.eventId,
+    name = this.eventResponse.name,
+    description = this.eventResponse.description,
+    isOnline = this.eventResponse.isOnline,
+    url = this.eventResponse.url,
+    date = this.eventResponse.date,
+    isPetFriendly = this.eventResponse.isPetFriendly,
+    maxParticipants = this.eventResponse.maxParticipants,
+    startTime = this.eventResponse.startTime,
+    endTime = this.eventResponse.endTime,
+    activityId = this.eventResponse.activityId,
+    userId = this.eventResponse.userId,
+    userIdentity = this.eventResponse.userIdentity,
+    accessibilities = this.eventResponse.accessibilities,
+    street = this.address.street,
+    number = this.address.number,
+    city = this.address.city,
+    state = this.address.state,
+    zipCode = this.address.zipCode,
+    referencePoint = this.address.referencePoint
 )

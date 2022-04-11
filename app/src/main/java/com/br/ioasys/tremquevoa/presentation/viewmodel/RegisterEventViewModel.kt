@@ -57,8 +57,14 @@ class RegisterEventViewModel(
         activityId: String,
         userId: String,
         userIdentity: String,
-        accessibilities: String,
-        address: String
+        accessibilities: List<String>,
+        street: String,
+        number: Int,
+        city: String,
+        state: String,
+        zipCode: String,
+        referencePoint: String,
+        eventId: String
     ) {
         _event.postValue(ViewState.Loading)
 
@@ -78,7 +84,13 @@ class RegisterEventViewModel(
                 userId = userId,
                 userIdentity = userIdentity,
                 accessibilities = accessibilities,
-                address = address
+                street = street,
+                number = number,
+                city = city,
+                state = state,
+                zipCode = zipCode,
+                referencePoint = referencePoint,
+                eventId = eventId,
             ),
             onSuccess = { event ->
                 Log.d(TAG, event.toString())
