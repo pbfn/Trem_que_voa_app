@@ -25,28 +25,23 @@ class CustomFormInput @JvmOverloads constructor(
     private val view =
         LayoutInflater.from(context).inflate(R.layout.custom_form, this, true)
 
-    val title: AppCompatTextView by lazy {
-        view.findViewById(R.id.tvTitle)
-    }
+    private var messageError:String? = ""
 
     val input: TextInputEditText by lazy {
         view.findViewById(R.id.editText)
     }
 
-    private val inputLayout: TextInputLayout by lazy {
+    val inputLayout: TextInputLayout by lazy {
         view.findViewById(R.id.textInputLayout)
     }
 
-    val msgError: AppCompatTextView by lazy {
-        view.findViewById(R.id.tvError)
-    }
 
     var textChangeListener: (text: String) -> Unit = {}
 
     init {
         setLayout(attrs)
-        configure()
-        configureInputText()
+        // configure()
+        //configureInputText()
     }
 
     private fun setLayout(attrs: AttributeSet?) {
@@ -55,7 +50,7 @@ class CustomFormInput @JvmOverloads constructor(
                 context.obtainStyledAttributes(attributeSet, R.styleable.CustomLayoutIoasys)
 
             val customTitle = attributes.getString(R.styleable.CustomLayoutIoasys_custom_title)
-            title.text = customTitle
+            inputLayout.hint = customTitle
 
             val inputType = attributes.getInt(
                 R.styleable.CustomLayoutIoasys_android_inputType,
@@ -63,17 +58,17 @@ class CustomFormInput @JvmOverloads constructor(
             )
             input.inputType = inputType
 
-            val messageError =
+            messageError=
                 attributes.getString(R.styleable.CustomLayoutIoasys_msgError)
-            msgError.text = messageError
+            inputLayout.helperText = messageError
 
-            val background =
-                attributes.getInt(
-                    R.styleable.CustomLayoutIoasys_background_input,
-                    R.drawable.input_custom_neutral
-                )
+//            //val background =
+//                attributes.getInt(
+//                    R.styleable.CustomLayoutIoasys_background_input,
+//                    R.drawable.input_custom_neutral
+//                )
 
-            input.background = ContextCompat.getDrawable(context, background)
+            //input.background = ContextCompat.getDrawable(context, background)
             attributes.recycle()
         }
 
@@ -122,7 +117,7 @@ class CustomFormInput @JvmOverloads constructor(
 
     private fun configureInputText() {
         input.addTextChangedListener { text ->
-            configureInputTextBackground(text.isNullOrEmpty())
+            //configureInputTextBackground(text.isNullOrEmpty())
             textChangeListener.invoke(text.toString())
         }
     }
