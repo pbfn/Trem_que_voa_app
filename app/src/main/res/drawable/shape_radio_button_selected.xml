@@ -5,7 +5,7 @@
             <size
                 android:width="20dp"
                 android:height="20dp" />
-            <solid android:color="@color/button_color" />
+            <solid android:color="@color/primary_darker" />
             <corners android:radius="2dp" />
             <margin
                 android:bottom="8dp"

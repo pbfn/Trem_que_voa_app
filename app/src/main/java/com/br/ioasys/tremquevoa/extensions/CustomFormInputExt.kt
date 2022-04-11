@@ -9,7 +9,7 @@ fun CustomFormInput.ChangeBackground(error: Boolean, msg: String?){
     if (error) {
         this.apply {
             inputLayout.helperText = msg
-            inputLayout.boxStrokeColor = ContextCompat.getColor(context,R.color.error)
+            inputLayout.boxStrokeColor = ContextCompat.getColor(context,R.color.M3_sys_light_error)
             input.requestFocus()
         }
 

@@ -4,87 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.EmergencyContactFragment">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageViewCamera"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="44dp"
-        android:src="@color/black"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_emergency_siren"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        style="@style/Base.Widget.AppCompat.TextView.Title_23"
-        android:layout_width="0dp"
+        android:id="@+id/textViewTitle"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="97dp"
-        android:inputType="number"
-        android:lines="3"
         android:text="Gostaria de adicionar um contato de emergência?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCamera" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAlert" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewSubTitleTitle"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Esse contato serve para enviarmos uma mensa-gem para alguém que você confia, caso você não se sinta segura ou confortável em alguma situação, através do botão de ajuda."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
 
     <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
         android:id="@+id/editTextNamePerson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="33dp"
         android:inputType="text"
-        app:custom_title="Qual o nome da pessoa?"
+        app:custom_title="Qual o nome do seu contato?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSubTitleTitle" />
 
 
     <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
         android:id="@+id/editTextNumberPerson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"
-        android:inputType="text"
-        app:custom_title="E o telefone?"
+        android:layout_marginTop="24dp"
+        android:inputType="number"
+        app:custom_title="E qual é o celular dele?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNamePerson" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewButtonJump"
-        style="@style/Base.Widget.AppCompat.TextView.Text_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/jump"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNext"
         style="@style/TextAppearance.AppCompat.Button.StyleButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="120dp"
-        android:layout_marginBottom="41dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="64dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/next"
+        android:text="Adicionar contato"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewButtonJump"
+        style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/jump"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
