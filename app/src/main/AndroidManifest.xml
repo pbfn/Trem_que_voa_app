@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TremQueVoaApp">
         <activity
+            android:screenOrientation="portrait"
             android:name=".activity.HomeActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>

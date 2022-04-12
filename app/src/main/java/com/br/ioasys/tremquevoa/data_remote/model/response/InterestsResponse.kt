@@ -9,4 +9,8 @@ data class InterestsResponse(
     val name: String,
     @SerializedName("active")
     val active: Boolean,
+    @SerializedName("urlActive")
+    val urlActive: String,
+    @SerializedName("urlInactive")
+    val urlInactive: String,
 )

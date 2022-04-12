@@ -3,127 +3,151 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.LoginFragment">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="147dp"
         android:layout_marginTop="20dp"
-        android:src="@color/black"
+        android:src="@drawable/round_triangle_chain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTitle"
-        style="@style/Base.Widget.AppCompat.TextView.Title_23"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="20dp"
-        android:text="Acesse sua conta"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Olá! Acesse sua conta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
 
 
     <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-        android:layout_marginTop="33dp"
         android:id="@+id/custom_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        app:custom_title="Seu e-mail:"
+        android:layout_marginTop="16dp"
         android:inputType="textEmailAddress"
+        app:custom_title="Seu e-mail:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-        android:layout_marginTop="10dp"
         android:id="@+id/custom_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="16dp"
         android:inputType="textPassword"
-        app:custom_title="Digite uma senha"
+        app:custom_title="Digite sua senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_email" />
 
-    <ToggleButton
-        android:id="@+id/toggleStayConnected"
-        android:layout_width="36dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/toogle_selector"
-        android:textOff=""
-        android:textOn=""
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayouStayConnected"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custom_password" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_password">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewStayConnected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_16_Medium"
-        android:layout_marginStart="12dp"
-        android:text="Permanecer concetado"
-        app:layout_constraintStart_toEndOf="@+id/toggleStayConnected"
-        app:layout_constraintTop_toTopOf="@+id/toggleStayConnected" />
+        <ToggleButton
+            android:id="@+id/toggleStayConnected"
+            android:layout_width="36dp"
+            android:layout_height="20dp"
+            android:background="@drawable/toogle_selector"
+            android:textOff=""
+            android:textOn="" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewStayConnected"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Permanecer logado"
+            android:textColor="@color/neutral_dark" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewForgotPassword"
+        style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="112dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_16_Medium"
-        android:textColor="@color/button_color"
         android:text="Esqueceu a senha?"
+        android:textColor="@color/primary_darker"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterGoogle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggleStayConnected" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterGoogle"
+        style="@style/TextAppearance.AppCompat.Button.StyleButtonGoogle"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@drawable/ic_google"
+        android:includeFontPadding="false"
+        android:paddingStart="41dp"
+        android:paddingEnd="41dp"
+        android:text="acessar com o gmail"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         style="@style/TextAppearance.AppCompat.Button.StyleButton"
-        android:layout_width="0dp"
-        android:layout_marginHorizontal="126dp"
-        android:layout_marginTop="22dp"
-        android:text="entrar"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="Entrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewForgotPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewDontHaveAnAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="41dp"
-        android:text="Não tem uma conta?"
-        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_16_Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Não tem uma conta?" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btnRegister"
-        style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_16_Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inscreva-se"
-        android:layout_marginStart="2dp"
-        android:textColor="@color/button_color"
-        app:layout_constraintStart_toEndOf="@+id/textViewDontHaveAnAccount"
-        app:layout_constraintTop_toTopOf="@+id/textViewDontHaveAnAccount" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnRegister"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastre-se aqui!"
+            android:textColor="@color/primary_darker" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

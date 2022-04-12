@@ -48,19 +48,28 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
 
     override fun onBindViewHolder(holder: AdapterInterestsViewHolder, position: Int) {
         val interest = differ.currentList[position]
+        holder.itemView.apply {
+            Glide.with(this).load(interest.urlInactive)
+                .into(holder.image)
+        }
         holder.apply {
             title.text = interest.title
-            holder.itemView.apply {
-                Glide.with(this).load("https://i.ibb.co/60rTJ9z/ic-ioga-inative.png").into(holder.image)
-            }
             image.setOnClickListener {
                 interest.selected = !interest.selected
                 if (interest.selected) {
                     //TODO PESQUISAR OUTRAS FORMAS DE FAZER
-                    image.borderWidth = 110
-                    image.borderColor = ContextCompat.getColor(context!!, R.color.border_interest_selected)
+                    holder.itemView.apply {
+                        Glide.with(this).load(interest.urlActive)
+                            .into(holder.image)
+                    }
+//                    image.borderWidth = 110
+//                    image.borderColor =
+//                        ContextCompat.getColor(context!!, R.color.border_interest_selected)
                 } else {
-                    image.borderWidth = 0
+                    holder.itemView.apply {
+                        Glide.with(this).load(interest.urlInactive)
+                            .into(holder.image)
+                    }
                 }
             }
 
