@@ -1,8 +1,10 @@
-package com.br.ioasys.tremquevoa.data_remote.model.request
+package com.br.ioasys.tremquevoa.data_remote.model.response.event
 
 import com.google.gson.annotations.SerializedName
 
-data class RegisterEventRequest (
+data class EventResponse(
+    @SerializedName("id")
+    val id: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("description")
@@ -23,13 +25,13 @@ data class RegisterEventRequest (
     val endTime: String,
     @SerializedName("activityId")
     val activityId: String,
+    @SerializedName("price")
+    val price: Int,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("userIdentity")
     val userIdentity: String,
     @SerializedName("accessibilities")
-    val accessibilities: String,
-    @SerializedName("address")
-    val address: String,
+    val accessibilities: List<String>
 )
 

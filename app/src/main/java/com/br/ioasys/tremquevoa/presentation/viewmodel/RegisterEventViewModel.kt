@@ -45,6 +45,7 @@ class RegisterEventViewModel(
 
     fun registerEvent(
         token:String,
+        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -55,16 +56,23 @@ class RegisterEventViewModel(
         startTime: String,
         endTime: String,
         activityId: String,
+        price: Int,
         userId: String,
         userIdentity: String,
-        accessibilities: String,
-        address: String
+        accessibilities: List<String>,
+        street: String,
+        number: Int,
+        city: String,
+        state: String,
+        zipCode: String,
+        referencePoint: String
     ) {
         _event.postValue(ViewState.Loading)
 
         registerEventUseCase(
             params = RegisterEventUseCase.Params(
                 token = token,
+                id = id,
                 name = name,
                 description = description,
                 isOnline = isOnline,
@@ -75,10 +83,16 @@ class RegisterEventViewModel(
                 startTime = startTime,
                 endTime = endTime,
                 activityId = activityId,
+                price = price,
                 userId = userId,
                 userIdentity = userIdentity,
                 accessibilities = accessibilities,
-                address = address
+                street = street,
+                number = number,
+                city = city,
+                state = state,
+                zipCode = zipCode,
+                referencePoint = referencePoint,
             ),
             onSuccess = { event ->
                 Log.d(TAG, event.toString())

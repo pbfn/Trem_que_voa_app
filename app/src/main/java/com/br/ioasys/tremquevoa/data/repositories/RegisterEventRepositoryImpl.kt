@@ -1,7 +1,6 @@
 package com.br.ioasys.tremquevoa.data.repositories
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterEventRemoteDataSource
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.repositories.RegisterEventRepository
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +11,8 @@ class RegisterEventRepositoryImpl(
     private val registerEventRemoteDataSource: RegisterEventRemoteDataSource
 ) : RegisterEventRepository {
     override fun registerEvent(
-        token:String,
+        token: String,
+        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -23,13 +23,20 @@ class RegisterEventRepositoryImpl(
         startTime: String,
         endTime: String,
         activityId: String,
+        price: Int,
         userId: String,
         userIdentity: String,
-        accessibilities: String,
-        address: String
+        accessibilities: List<String>,
+        street: String,
+        number: Int,
+        city: String,
+        state: String,
+        zipCode: String,
+        referencePoint: String,
     ): Flow<Event> = flow {
         registerEventRemoteDataSource.registerEvent(
-            token=token,
+            token = token,
+            id = id,
             name = name,
             description = description,
             isOnline = isOnline,
@@ -40,19 +47,26 @@ class RegisterEventRepositoryImpl(
             startTime = startTime,
             endTime = endTime,
             activityId = activityId,
+            price = price,
             userId = userId,
             userIdentity = userIdentity,
             accessibilities = accessibilities,
-            address = address
+            street = street,
+            number = number,
+            city = city,
+            state = state,
+            zipCode = zipCode,
+            referencePoint = referencePoint,
         ).collect { event ->
             emit(event)
         }
     }
+}
 
 //    override fun fetchEventActivities(): Flow<List<Activities>> {
 //        return registerEventRemoteDataSource.fetchEventActivities()
 //    }
-}
+
 
 
 

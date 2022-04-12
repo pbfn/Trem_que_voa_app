@@ -16,6 +16,7 @@ class RegisterEventUseCase(
 
     data class Params(
         val token: String,
+        val id: String,
         val name: String,
         val description: String,
         val isOnline: Boolean,
@@ -26,10 +27,16 @@ class RegisterEventUseCase(
         val startTime: String,
         val endTime: String,
         val activityId: String,
+        val price: Int,
         val userId: String,
         val userIdentity: String,
-        val accessibilities: String,
-        val address: String
+        val accessibilities: List<String>,
+        val street: String,
+        val number: Int,
+        val city: String,
+        val state: String,
+        val zipCode: String,
+        val referencePoint: String,
     )
 
     override fun run(params: Params): Flow<Event> {
@@ -42,6 +49,7 @@ class RegisterEventUseCase(
 
         return registerEventRepository.registerEvent(
             token = params.token,
+            id = params.id,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,
@@ -52,10 +60,16 @@ class RegisterEventUseCase(
             startTime = params.startTime,
             endTime = params.endTime,
             activityId = params.activityId,
+            price = params.price,
             userId = params.userId,
             userIdentity = params.userIdentity,
             accessibilities = params.accessibilities,
-            address = params.address
+            street = params.street,
+            number = params.number,
+            city = params.city,
+            state = params.state,
+            zipCode = params.zipCode,
+            referencePoint = params.referencePoint,
         )
     }
 
@@ -78,9 +92,6 @@ class RegisterEventUseCase(
         if (params.userId.isEmpty()) {
             throw InvalidEmptyUserIdException()
         }
-        if (params.url.isEmpty()) {
-            throw InvalidEmptyMinimumAgeException()
-        }
         if (params.maxParticipants.toString().isEmpty()) {
             throw InvalidEmptyMaxParticipantsException()
         }
@@ -95,6 +106,9 @@ class RegisterEventUseCase(
         }
         if (params.userIdentity.isEmpty()) {
             throw InvalidEmptyUserIdentityException()
+        }
+        if (params.price.toString().isEmpty()) {
+            throw InvalidEmptyPriceException()
         }
     }
 }

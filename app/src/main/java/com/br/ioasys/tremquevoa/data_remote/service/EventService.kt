@@ -1,7 +1,6 @@
 package com.br.ioasys.tremquevoa.data_remote.service
 
-import com.br.ioasys.tremquevoa.data_remote.model.request.RegisterEventRequest
-import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterEventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header
@@ -13,8 +12,8 @@ interface EventService {
     @Headers("Content-type: application/json")
     @POST("events")
     suspend fun registerEvent(
-        @Header("Authorization") token: String,
-        @Body registerEventRequest: RegisterEventRequest
+        @Body registerEventRequest: RegisterEventResponse,
+        @Header("Authorization") token: String
     ): Response<RegisterEventResponse>
 
 //    @Headers("Content-type: application/json")

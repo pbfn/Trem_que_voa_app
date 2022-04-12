@@ -16,10 +16,16 @@ fun Event.toDao(): EventDataLocal = EventDataLocal(
     startTime = this.startTime,
     endTime = this.endTime,
     activityId = this.activityId,
+    price = this.price,
     userId = this.userId,
     userIdentity = this.userIdentity,
     accessibilities = this.accessibilities,
-    address = this.address
+    street = this.street,
+    number = this.number,
+    city = this.city,
+    state = this.state,
+    zipCode = this.zipCode,
+    referencePoint = this.referencePoint
 )
 
 fun EventDataLocal.toDomain(): Event = Event(
@@ -34,8 +40,14 @@ fun EventDataLocal.toDomain(): Event = Event(
     startTime = this.startTime,
     endTime = this.endTime,
     activityId = this.activityId,
+    price = this.price,
     userId = this.userId,
     userIdentity = this.userIdentity,
     accessibilities = this.accessibilities,
-    address = this.address
+    street = this.street,
+    number = this.number,
+    city = this.city,
+    state = this.state,
+    zipCode = this.zipCode,
+    referencePoint = this.referencePoint
 )

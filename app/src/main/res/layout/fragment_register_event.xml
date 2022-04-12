@@ -122,13 +122,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputBoxModality" />
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
-            android:id="@+id/custom_address"
+            android:id="@+id/custom_street"
             android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
-            app:custom_title="Endereço:"
+            app:custom_title="Rua:"
             android:inputType="textAutoComplete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,17 +136,68 @@
 
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_number"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Número:"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_street" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_zipCode"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="CEP:"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_number" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_city"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Cidade:"
+            android:inputType="textAutoComplete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_zipCode" />
+
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_state"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Estado:"
+            android:inputType="textAutoComplete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_city" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAddGoogleMaps"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="34dp"
             android:text="Adicionar localização no Google Maps"
-
             style="@style/Base.Widget.AppCompat.TextView.Text_18"
             android:textColor="#2C3131"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_address"
+            app:layout_constraintTop_toBottomOf="@id/custom_state"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
@@ -263,6 +314,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewButtonOptions" />
 
+        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            android:id="@+id/custom_price"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            app:custom_title="Preço:"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_description" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegisterEvent"
             style="@style/TextAppearance.AppCompat.Button.StyleButton"
@@ -274,6 +337,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_description" />
+            app:layout_constraintTop_toBottomOf="@id/custom_price" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
