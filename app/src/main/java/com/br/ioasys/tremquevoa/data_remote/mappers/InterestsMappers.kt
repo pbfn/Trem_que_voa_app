@@ -17,6 +17,7 @@ fun List<InterestsResponse>.toDomain(): MutableList<Interests> {
 fun InterestsResponse.toDomain(): Interests = Interests(
     id = this.id,
     title = this.name,
-    imageUrl = "",
-    selected = false
+    selected = false,
+    urlInactive = this.urlInactive,
+    urlActive = this.urlActive
 )
