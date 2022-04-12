@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.data_local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.br.ioasys.tremquevoa.data_local.mappers.toDao
 
 @Entity(tableName = "Events")
 data class EventDataLocal(
@@ -17,6 +18,7 @@ data class EventDataLocal(
     val startTime: String,
     val endTime: String,
     val activityId: String,
+    val price: Int,
     val userId: String,
     val userIdentity: String,
     val accessibilities: List<String>,

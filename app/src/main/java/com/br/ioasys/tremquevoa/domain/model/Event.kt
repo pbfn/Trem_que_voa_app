@@ -12,6 +12,7 @@ data class Event (
     val startTime: String,
     val endTime: String,
     val activityId: String,
+    val price: Int,
     val userId: String,
     val userIdentity: String,
     val accessibilities: List<String>,

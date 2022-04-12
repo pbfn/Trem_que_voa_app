@@ -23,6 +23,8 @@ data class EventRequest(
     val endTime: String,
     @SerializedName("activityId")
     val activityId: String,
+    @SerializedName("price")
+    val price: Int,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("userIdentity")

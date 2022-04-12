@@ -16,6 +16,7 @@ class RegisterEventUseCase(
 
     data class Params(
         val token: String,
+        val id: String,
         val name: String,
         val description: String,
         val isOnline: Boolean,
@@ -26,6 +27,7 @@ class RegisterEventUseCase(
         val startTime: String,
         val endTime: String,
         val activityId: String,
+        val price: Int,
         val userId: String,
         val userIdentity: String,
         val accessibilities: List<String>,
@@ -35,7 +37,6 @@ class RegisterEventUseCase(
         val state: String,
         val zipCode: String,
         val referencePoint: String,
-        val eventId: String
     )
 
     override fun run(params: Params): Flow<Event> {
@@ -47,6 +48,8 @@ class RegisterEventUseCase(
         validateFields(params)
 
         return registerEventRepository.registerEvent(
+            token = params.token,
+            id = params.id,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,
@@ -57,6 +60,7 @@ class RegisterEventUseCase(
             startTime = params.startTime,
             endTime = params.endTime,
             activityId = params.activityId,
+            price = params.price,
             userId = params.userId,
             userIdentity = params.userIdentity,
             accessibilities = params.accessibilities,
@@ -66,8 +70,6 @@ class RegisterEventUseCase(
             state = params.state,
             zipCode = params.zipCode,
             referencePoint = params.referencePoint,
-            eventId = params.eventId,
-            token = params.token
         )
     }
 
@@ -104,6 +106,9 @@ class RegisterEventUseCase(
         }
         if (params.userIdentity.isEmpty()) {
             throw InvalidEmptyUserIdentityException()
+        }
+        if (params.price.toString().isEmpty()) {
+            throw InvalidEmptyPriceException()
         }
     }
 }

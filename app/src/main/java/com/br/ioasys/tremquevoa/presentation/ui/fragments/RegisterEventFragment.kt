@@ -287,6 +287,7 @@ class RegisterEventFragment : Fragment() {
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
             token = user.token,
+            id = "",
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,
@@ -297,6 +298,7 @@ class RegisterEventFragment : Fragment() {
             startTime = binding.customStartTime.input.text.toString(),
             endTime = binding.customEndTime.input.text.toString(),
             activityId = categorySelected?.id ?: "",
+            price = binding.customPrice.input.text.toInt() ?: 0,
             userId = user.id,
             userIdentity = binding.customUserIdentity.input.text.toString(),
             accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.name },
@@ -306,7 +308,6 @@ class RegisterEventFragment : Fragment() {
             state = binding.customState.input.text.toString(),
             zipCode = binding.customZipCode.input.toString(),
             referencePoint = binding.customReferences.input.toString(),
-            eventId = ""
         )
     }
 

@@ -1,6 +1,7 @@
 package com.br.ioasys.tremquevoa.domain.model
 
 class Address(
+    val id: String,
     val street: String,
     val number: Int,
     val city: String,

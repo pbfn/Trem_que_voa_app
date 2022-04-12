@@ -7,6 +7,7 @@ interface RegisterEventRemoteDataSource {
 
     fun registerEvent(
         token:String,
+        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -17,6 +18,7 @@ interface RegisterEventRemoteDataSource {
         startTime: String,
         endTime: String,
         activityId: String,
+        price: Int,
         userId: String,
         userIdentity: String,
         accessibilities: List<String>,
@@ -26,7 +28,6 @@ interface RegisterEventRemoteDataSource {
         state: String,
         zipCode: String,
         referencePoint: String,
-        eventId: String,
     ): Flow<Event>
 
     //fun fetchEventActivities(): Flow<List<Activities>>

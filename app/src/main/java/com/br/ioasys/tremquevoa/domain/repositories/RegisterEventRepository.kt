@@ -8,6 +8,7 @@ interface RegisterEventRepository {
 
     fun registerEvent(
         token:String,
+        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -18,6 +19,7 @@ interface RegisterEventRepository {
         startTime: String,
         endTime: String,
         activityId: String,
+        price: Int,
         userId: String,
         userIdentity: String,
         accessibilities: List<String>,
@@ -26,8 +28,7 @@ interface RegisterEventRepository {
         city: String,
         state: String,
         zipCode: String,
-        referencePoint: String,
-        eventId: String
+        referencePoint: String
     ): Flow<Event>
 
     //fun fetchEventActivities(): Flow<List<Activities>>

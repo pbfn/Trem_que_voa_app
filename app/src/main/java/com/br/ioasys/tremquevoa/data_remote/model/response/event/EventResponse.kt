@@ -3,8 +3,8 @@ package com.br.ioasys.tremquevoa.data_remote.model.response.event
 import com.google.gson.annotations.SerializedName
 
 data class EventResponse(
-    @SerializedName("eventId")
-    val eventId: String,
+    @SerializedName("id")
+    val id: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("description")
@@ -25,6 +25,8 @@ data class EventResponse(
     val endTime: String,
     @SerializedName("activityId")
     val activityId: String,
+    @SerializedName("price")
+    val price: Int,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("userIdentity")

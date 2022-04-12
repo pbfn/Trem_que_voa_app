@@ -15,6 +15,7 @@ class RegisterEventDataSourceImpl(
 ) : RegisterEventRemoteDataSource {
     override fun registerEvent(
         token: String,
+        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -25,6 +26,7 @@ class RegisterEventDataSourceImpl(
         startTime: String,
         endTime: String,
         activityId: String,
+        price: Int,
         userId: String,
         userIdentity: String,
         accessibilities: List<String>,
@@ -34,12 +36,12 @@ class RegisterEventDataSourceImpl(
         state: String,
         zipCode: String,
         referencePoint: String,
-        eventId: String
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
             token = "Bearer $token",
             registerEventRequest = RegisterEventResponse(
                 EventResponse(
+                    id = id,
                     name = name,
                     description = description,
                     isOnline = isOnline,
@@ -50,10 +52,10 @@ class RegisterEventDataSourceImpl(
                     startTime = startTime,
                     endTime = endTime,
                     activityId = activityId,
+                    price = price,
                     userId = userId,
                     userIdentity = userIdentity,
                     accessibilities = accessibilities,
-                    eventId = ""
                 ),
                 address = AddressResponse(
                     street = street,
@@ -63,7 +65,7 @@ class RegisterEventDataSourceImpl(
                     zipCode = zipCode,
                     referencePoint = referencePoint,
                     userId = userId,
-                    eventId = eventId,
+                    eventId = id,
                 )
             )
         )
