@@ -52,7 +52,6 @@ class SplashFragment : Fragment() {
                 }
 
                 is ViewState.Success -> {
-
                     if (response.data.maintainLogin) {
 
                         nextPage(SplashFragmentDirections.actionSplashFragmentToHomeActivity())
@@ -65,6 +64,31 @@ class SplashFragment : Fragment() {
 
                 is ViewState.Error -> {
                     nextPage(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+                }
+
+            }
+        }
+        splashViewModel.firstLogin.observe(viewLifecycleOwner) { response ->
+            when (response) {
+
+                is ViewState.Loading -> {
+
+                }
+
+                is ViewState.Success -> {
+                    splashViewModel.setFirstLogin()
+                    if (response.data) {
+                        nextPage(
+                            SplashFragmentDirections.actionSplashFragmentToInitOnboardingFragment(
+                                1
+                            )
+                        )
+                    } else {
+                        splashViewModel.getUserLocal()
+                    }
+                }
+
+                is ViewState.Error -> {
                 }
 
             }

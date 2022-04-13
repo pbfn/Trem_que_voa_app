@@ -27,4 +27,6 @@ val domainModule = module {
     factory { ResetPasswordUserUseCase(get(), get()) }
     factory { GetInterestsByUserUseCase(get(), get()) }
     factory { UpdateAboutMeUserUserCase(get(), get()) }
+    factory { VerifyFirstLoginUseCase(get(), get()) }
+    factory { SetFirstLoginUseCase(get(), get()) }
 }

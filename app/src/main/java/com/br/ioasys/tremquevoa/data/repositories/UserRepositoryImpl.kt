@@ -74,12 +74,22 @@ class UserRepositoryImpl(
     }
 
     override fun updateAboutMe(token: String, aboutMe: String): Flow<User> = flow {
-       userRemoteDataSource.updateAboutMeUser(
-           token = token,
-           aboutMe = aboutMe
-       ).collect{
-           emit(it)
-       }
+        userRemoteDataSource.updateAboutMeUser(
+            token = token,
+            aboutMe = aboutMe
+        ).collect {
+            emit(it)
+        }
+    }
+
+    override fun verifyFirstLogin(): Flow<Boolean> = flow {
+        userLocalDataSource.verifyFirstLogin().collect {
+            emit(it)
+        }
+    }
+
+    override fun setFirstLogin() {
+        userLocalDataSource.setFirstLogin()
     }
 
 }

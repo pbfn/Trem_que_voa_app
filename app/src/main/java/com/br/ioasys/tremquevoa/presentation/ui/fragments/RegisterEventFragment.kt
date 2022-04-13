@@ -99,13 +99,13 @@ class RegisterEventFragment : Fragment() {
                 )!!, ::showTimePickerDialogEnd
             )
 
-            customAddress.ChangeIcon(
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.address_input
-                )!!,
-                {}
-            )
+//            customAddress.ChangeIcon(
+//                ContextCompat.getDrawable(
+//                    requireContext(),
+//                    R.drawable.address_input
+//                )!!,
+//                {}
+//            )
         }
     }
 

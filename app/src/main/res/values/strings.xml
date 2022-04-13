@@ -18,6 +18,12 @@
 
     <string name="yes" formatted="true">Sim</string>
     <string name="no" formatted="false">Não</string>
+    <string name="title_onboarding_init">A gente entende como alguns dias podem ser bem estressantes...</string>
+    <string name="subtitle_onboarding_init">Mas sabia que às vezes é mais produtivo fazer uma pausa e relaxar um pouco?</string>
+    <string name="title_onboarding_mid">...já pensou quantas pessoas ao seu redor podem estar se sentindo assim?</string>
+    <string name="subtitle_onboarding_mid">Que tal se conectar com elas participando de grupos ou eventos do seu interesse?</string>
+    <string name="title_onboarding_end">Um incentivo a mais para você cuidar da sua saúde mental e física!</string>
+    <string name="subtitle_onboarding_end">Não seria legal aproveitar melhor o seu tempo livre e ter uma rotina mais agradável?</string>
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>
