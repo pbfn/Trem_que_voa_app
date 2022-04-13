@@ -12,5 +12,5 @@ val presentationModule = module {
     viewModel { UpdateUserViewModel(get(), get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }
     viewModel { PerfilViewModel(get(), get(), get(), get()) }
-    viewModel { SplashViewModel(get()) }
+    viewModel { SplashViewModel(get(), get(), get()) }
 }

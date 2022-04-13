@@ -30,4 +30,8 @@ interface UserRepository {
     fun resetPassword(email: String): Flow<Boolean>
 
     fun updateAboutMe(token: String, aboutMe: String): Flow<User>
+
+    fun verifyFirstLogin(): Flow<Boolean>
+
+    fun setFirstLogin()
 }
