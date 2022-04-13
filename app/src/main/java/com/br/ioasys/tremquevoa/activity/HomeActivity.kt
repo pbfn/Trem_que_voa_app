@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -25,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.menuBottomNavigation.setupWithNavController(navController)
 
-
+        showDialog()
         replaceFragment(PerfilUserFragment())
         setBottomNavigation()
     }
@@ -54,4 +55,10 @@ class HomeActivity : AppCompatActivity() {
             .addToBackStack("Fragment").commit()
     }
 
+    private fun showDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setView(R.layout.pop_up_home)
+        builder.create()
+        builder.show()
+    }
 }
