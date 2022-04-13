@@ -19,10 +19,11 @@
     <color name="bg_event">#FAF1F1</color>
     <color name="background_card">#DEDAF0</color>
     <color name="background_item_perfil">#6B5BBE</color>
+    <color name="bg_date_card_event">#F6F9FF</color>
+    <color name="bg_card_event">#E8E7E3</color>
 
     <color name="M3_sys_light_error">#B3261E</color>
     <color name="M3_sys_light_on_primary">#FFFFFF</color>
-
 
     <color name="neutral_darkest">#252627</color>
     <color name="neutral_dark">#757678</color>
