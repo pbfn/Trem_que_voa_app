@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.request.*
 import com.br.ioasys.tremquevoa.data_remote.model.response.LoginResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.ResetPasswordUserResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -26,7 +27,7 @@ interface AuthService {
     suspend fun updateEmergencyContactsUser(
         @Header("Authorization") token: String,
         @Body updateEmergencyContactUserRequest: UpdateEmergencyContactUserRequest
-    ): Response<RegisterResponse>
+    ): Response<UserResponse>
 
     @Headers("Content-type: application/json")
     @PATCH("users/resetpassword")

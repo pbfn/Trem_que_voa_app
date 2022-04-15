@@ -6,16 +6,16 @@ import com.br.ioasys.tremquevoa.domain.model.User
 
 
 fun RegisterResponse.toDomain() = User(
-    id = this.id,
-    email = this.email,
-    name = this.name,
-    token = "token",
+    id = this.user.id,
+    email = this.user.email,
+    name = this.user.name,
+    token = this.token,
     refreshToken = "refresh-token",
-    phone = this.phone,
-    emergencyName = this.emergencyName,
-    emergencyPhone = this.emergencyPhone,
-    updatedAt = this.updatedAt,
-    createdAt = this.createdAt,
+    phone = "",
+    emergencyName = "",
+    emergencyPhone = "",
+    updatedAt = this.user.updatedAt,
+    createdAt = this.user.createdAt,
     maintainLogin = false,
-    aboutMe = this.aboutMe
+    aboutMe = ""
 )

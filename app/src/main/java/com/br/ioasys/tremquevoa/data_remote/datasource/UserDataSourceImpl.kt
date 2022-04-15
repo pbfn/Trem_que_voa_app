@@ -63,7 +63,7 @@ class UserDataSourceImpl(
                     emit(throw InvalidRegisterException())
                 }
                 409 -> {
-                    emit(throw UserException())
+                    emit(throw EmailAlreadyUsed())
                 }
                 else -> {
                     emit(throw InvalidRegisterException())
@@ -85,8 +85,8 @@ class UserDataSourceImpl(
             ),
         )
         if (response.isSuccessful) {
-            response.body()?.let { registerReponse ->
-                emit(registerReponse.toDomain())
+            response.body()?.let { userReponse ->
+                emit(userReponse.toDomain())
             }
         }
     }
