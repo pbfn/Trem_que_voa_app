@@ -12,6 +12,14 @@
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.67" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="..\:/Users/pbrun/StudioProjects/Trem_que_voa_app/app/src/main/res/layout/interests_item_adapter.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_disable.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_enable.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/button_selected_options.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/buttons_options_item_adapter.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_perfil_user.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.21" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_register_user.xml" value="0.1" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable-hdpi/background_button_google.xml" value="0.121" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable-xxhdpi/background_edit_perfil_inactive.xml" value="0.1145" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable/background_button_disable.xml" value="0.1" />
@@ -45,12 +53,13 @@
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_event.xml" value="0.22937443336355395" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_event_view.xml" value="0.25" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_forgot_password.xml" value="0.24206708975521304" />
-        <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_interests.xml" value="0.19324497648567765" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_perfil_user.xml" value="0.24206708975521304" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_register.xml" value="0.14920906370243694" />
-        <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.1446280991735537" />
+        <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.33" />
+        <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_register_user.xml" value="0.18" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/fragment_welcome.xml" value="0.24206708975521304" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/interests_item_adapter.xml" value="0.19324497648567765" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/layout/interests_perfil_item_adapter.xml" value="0.24206708975521304" />

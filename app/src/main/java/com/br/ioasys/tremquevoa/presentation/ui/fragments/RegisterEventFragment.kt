@@ -14,13 +14,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
+
 import com.br.ioasys.tremquevoa.di.databaseModule
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.extensions.ChangeIcon
-import com.br.ioasys.tremquevoa.extensions.invisible
-import com.br.ioasys.tremquevoa.extensions.toInt
-import com.br.ioasys.tremquevoa.extensions.visible
+import com.br.ioasys.tremquevoa.extensions.*
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterActivities
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDisabilities
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterEventViewModel
@@ -44,7 +42,10 @@ class RegisterEventFragment : Fragment() {
     private lateinit var datePikerDialog: DatePickerDialog
     private lateinit var timePickerDialogStart: TimePickerDialog
     private lateinit var timePickerDialogEnd: TimePickerDialog
-    lateinit var user: User
+    private var date: GregorianCalendar = GregorianCalendar()
+    private var startHour: GregorianCalendar? = null
+    private var endHour: GregorianCalendar? = null
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,13 +100,13 @@ class RegisterEventFragment : Fragment() {
                 )!!, ::showTimePickerDialogEnd
             )
 
-            customAddress.ChangeIcon(
+            /*customStreet.ChangeIcon(
                 ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.address_input
                 )!!,
                 {}
-            )
+            )*/
         }
     }
 
@@ -130,7 +131,6 @@ class RegisterEventFragment : Fragment() {
                     ).show()
                 }
             }
-
         }
 
         registerEventViewModel.event.observe(viewLifecycleOwner) { response ->
@@ -212,8 +212,11 @@ class RegisterEventFragment : Fragment() {
         datePikerDialog = DatePickerDialog(
             requireContext(),
             { _, mYear, mMonth, mDay ->
-                binding.customDate.input.setText("$mDay/$mMonth/$mYear")
-                Log.d("Date", "data selecionada $mDay/$mMonth/$mYear")
+                binding.customDate.input.setText("$mYear-$mMonth-$mDay")
+                date.set(GregorianCalendar.YEAR, mYear)
+                date.set(GregorianCalendar.MONTH, mMonth)
+                date.set(GregorianCalendar.DAY_OF_MONTH, mDay)
+                Log.d("Date", "data selecionada $mDay-$mMonth-$mYear")
             },
             year,
             month,
@@ -234,6 +237,12 @@ class RegisterEventFragment : Fragment() {
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
                 binding.customStartTime.input.setText("$mHour:$mMinute")
+                startHour = GregorianCalendar().apply {
+                    set(GregorianCalendar.HOUR, mHour)
+                    set(GregorianCalendar.MINUTE, mMinute)
+                    date.set(GregorianCalendar.HOUR, mHour)
+                    date.set(GregorianCalendar.MINUTE, mMinute)
+                }
                 Log.d("Date", "startTime selecionada $mHour:$mMinute")
             },
             hour,
@@ -255,6 +264,10 @@ class RegisterEventFragment : Fragment() {
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
                 binding.customEndTime.input.setText("$mHour:$mMinute")
+                endHour = GregorianCalendar().apply {
+                    set(GregorianCalendar.HOUR_OF_DAY, mHour)
+                    set(GregorianCalendar.MINUTE, mMinute)
+                }
                 Log.d("Date", "startEnd selecionada $mHour:$mMinute")
             },
             hour,
@@ -329,22 +342,22 @@ class RegisterEventFragment : Fragment() {
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,
             url = binding.customUrl.input.text.toString(),
-            date = binding.customDate.input.text.toString(),
+            date = date?.toString(FORMAT_DATE)?:"",
+            startTime = startHour?.toString(FORMAT_HOUR)?:"",
+            endTime = endHour?.toString(FORMAT_HOUR)?:"",
             isPetFriendly = isYes,
             maxParticipants = binding.customMaxParticipants.input.text.toInt() ?: 0,
-            startTime = binding.customStartTime.input.text.toString(),
-            endTime = binding.customEndTime.input.text.toString(),
             activityId = categorySelected?.id ?: "",
             price = binding.customPrice.input.text.toInt() ?: 0,
             userId = user.id,
             userIdentity = binding.customUserIdentity.input.text.toString(),
-            accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.name },
+            accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.id },
             street = binding.customStreet.input.text.toString(),
             number = binding.customNumber.input.text.toInt() ?: 0,
             city = binding.customCity.input.text.toString(),
             state = binding.customState.input.text.toString(),
-            zipCode = binding.customZipCode.input.toString(),
-            referencePoint = binding.customReferences.input.toString(),
+            zipCode = binding.customZipCode.input.text.toString(),
+            referencePoint = binding.customReferences.input.text.toString(),
         )
     }
 
