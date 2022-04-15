@@ -17,6 +17,4 @@ val databaseModule = module {
     }
 
     single { get<Database>().userDao() }
-
-    single { get<Database>().eventDao() }
 }
