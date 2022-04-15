@@ -3,7 +3,7 @@ package com.br.ioasys.tremquevoa.data.datasource.remote
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 
-interface RegisterEventRemoteDataSource {
+interface EventRemoteDataSource {
 
     fun registerEvent(
         token:String,
@@ -29,6 +29,8 @@ interface RegisterEventRemoteDataSource {
         zipCode: String,
         referencePoint: String,
     ): Flow<Event>
+
+    fun getEvent(token: String): Flow<List<Event>>
 
     //fun fetchEventActivities(): Flow<List<Activities>>
 }
