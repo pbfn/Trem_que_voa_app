@@ -28,5 +28,6 @@
     <color name="neutral_dark">#757678</color>
     <color name="primary_darker">#1A00D0</color>
     <color name="primary_lighter">#DEDAF0</color>
+    <color name="secondary_dark">#DF3083</color>
 
 </resources>

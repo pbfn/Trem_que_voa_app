@@ -45,7 +45,7 @@ class ForgotPasswordFragment : Fragment() {
     private fun setListenres() {
         binding.apply {
             buttonSendEmail.setOnClickListener {
-              resetPassword(email = editTextEmail.input.text.toString())
+                resetPassword(email = editTextEmail.input.text.toString())
             }
         }
     }
@@ -74,7 +74,7 @@ class ForgotPasswordFragment : Fragment() {
         }
     }
 
-    private fun resetPassword(email:String){
+    private fun resetPassword(email: String) {
         forgotPasswordViewModel.resetPassword(email = email)
     }
 }

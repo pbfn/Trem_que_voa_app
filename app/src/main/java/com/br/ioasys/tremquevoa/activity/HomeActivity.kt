@@ -26,12 +26,13 @@ class HomeActivity : AppCompatActivity() {
         binding.menuBottomNavigation.setupWithNavController(navController)
 
 
-        replaceFragment(PerfilUserFragment())
+        //replaceFragment(PerfilUserFragment())
         setBottomNavigation()
     }
 
 
     private fun setBottomNavigation() {
+        binding.menuBottomNavigation.itemIconTintList = null
         binding.menuBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item_perfil -> {

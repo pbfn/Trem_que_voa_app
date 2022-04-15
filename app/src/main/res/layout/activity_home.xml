@@ -17,17 +17,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuBottomNavigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_bottom_navigation"
+        android:background="@drawable/ic_background_navbar"
+        app:itemTextColor="@color/neutral_dark"
+        android:layout_height="64dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

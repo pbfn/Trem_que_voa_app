@@ -42,7 +42,6 @@ class RegisterUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
         addObserver()
-        underlineText()
     }
 
     private fun setListeners() {
@@ -58,9 +57,6 @@ class RegisterUserFragment : Fragment() {
         }
     }
 
-    private fun underlineText() {
-        binding.textViewSubscribe.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-    }
 
     private fun addObserver() {
         registerViewModel.user.observe(viewLifecycleOwner) { response ->
@@ -79,10 +75,12 @@ class RegisterUserFragment : Fragment() {
                         "Cadastro realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
-                    nextPage(RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
-                        response.data.email,
-                        binding.editTextPassword.input.text.toString()
-                    ))
+                    nextPage(
+                        RegisterUserFragmentDirections.actionRegisterFragmentToWelcomeFragment(
+                            response.data.email,
+                            binding.editTextPassword.input.text.toString()
+                        )
+                    )
                 }
                 is ViewState.Error -> {
                     var msg = ""
