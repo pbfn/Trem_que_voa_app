@@ -9,7 +9,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -77,7 +77,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTerms_part1"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -88,7 +88,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTerms_part2"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Termos e Condições"
@@ -98,7 +98,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTerms_part3"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" e "
@@ -107,7 +107,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTerms_part4"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Política de Privacidade"
@@ -117,7 +117,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewErrorMsg"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
@@ -166,14 +166,14 @@
         tools:layout_editor_absoluteX="0dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Já tem uma conta?" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewSubscribe"
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Entre aqui!"

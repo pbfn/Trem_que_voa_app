@@ -99,7 +99,7 @@ class SplashFragment : Fragment() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             findNavController().navigate(directions)
-        }, 4000)
+        }, 5000)
 
     }
 

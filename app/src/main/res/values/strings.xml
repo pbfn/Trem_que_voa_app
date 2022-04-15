@@ -24,6 +24,18 @@
     <string name="subtitle_onboarding_mid">Que tal se conectar com elas participando de grupos ou eventos do seu interesse?</string>
     <string name="title_onboarding_end">Um incentivo a mais para você cuidar da sua saúde mental e física!</string>
     <string name="subtitle_onboarding_end">Não seria legal aproveitar melhor o seu tempo livre e ter uma rotina mais agradável?</string>
+    <string name="forgot_password_question">Esqueceu a senha?</string>
+    <string name="subtitle_forgot_password">Não se preocupe, acontece! Digite seu e-mail abaixo que vamos enviar uma nova senha.</string>
+    <string name="your_email">Seu e-email</string>
+    <string name="send">enviar</string>
+    <string name="remender_password">Lembrou qual era?</string>
+    <string name="access_account">Acesse sua conta aqui!</string>
+    <string name="send_new_password">Nova senha enviada com sucesso!</string>
+    <string name="subtitle_success_password">Verifique seu e-mail e faça login com a nova senha!</string>
+    <string name="access_account_button">ACESSAR SUA CONTA</string>
+    <string name="send_password">Não recebeu a senha?</string>
+    <string name="send_new_password_button">Reenvie aqui!</string>
+
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>

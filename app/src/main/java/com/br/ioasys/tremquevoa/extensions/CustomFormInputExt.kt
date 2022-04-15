@@ -1,5 +1,6 @@
 package com.br.ioasys.tremquevoa.extensions
 
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.view.MotionEvent
@@ -13,22 +14,21 @@ fun CustomFormInput.ChangeBackground(error: Boolean, msg: String?) {
     if (error) {
         this.apply {
             inputLayout.helperText = msg
-            inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.M3_sys_light_error)
-            input.requestFocus()
+            inputLayout.isErrorEnabled = error
+            inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.error)
+            inputLayout.setErrorIconDrawable(R.drawable.ic_error)
+            inputLayout.hintTextColor =
+                ColorStateList.valueOf(ContextCompat.getColor(context, R.color.error))
 
         }
 
     } else {
         this.apply {
+            inputLayout.isErrorEnabled = error
             inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.purple_500)
             inputLayout.helperText = ""
-            input.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                null,
-                null,
-                null,
-                null
-            )
-
+            inputLayout.hintTextColor =
+                ColorStateList.valueOf(ContextCompat.getColor(context, R.color.purple_500))
         }
     }
 }

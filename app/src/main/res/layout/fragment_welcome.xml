@@ -20,7 +20,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textVIewTitle"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Bold"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
@@ -38,7 +38,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginHorizontal="32dp"
         android:gravity="center"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Medium"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
         android:text="Sua conta foi criada!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -34,7 +34,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewSubTitle"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Medium"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
