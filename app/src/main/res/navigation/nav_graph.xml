@@ -121,4 +121,9 @@
             android:id="@+id/action_splashFragment_to_homeActivity"
             app:destination="@id/homeActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

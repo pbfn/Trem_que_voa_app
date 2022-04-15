@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.HomeFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewListCategory"
+            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Categorias" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewListAccessibilities"
+            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Acesssibilidade" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewListUpcomingEvents"
+            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Eventos próximos" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewEvents"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginHorizontal="16dp"
+            android:clipToPadding="false"
+            android:layout_marginTop="32dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_marginBottom="48dp"
+            tools:listitem="@layout/events_item_adpter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewListOnlineEvents"
+            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Eventos online" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewListInsights"
+            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Eventos online" />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+

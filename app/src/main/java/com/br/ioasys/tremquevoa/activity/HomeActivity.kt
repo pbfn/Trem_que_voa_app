@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.ActivityHomeBinding
+import com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment
 
@@ -39,6 +40,9 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.item_new_event -> {
                     replaceFragment(RegisterEventFragment())
+                }
+                R.id.menuHomeFill -> {
+                    replaceFragment(HomeFragment())
                 }
                 else -> {
                     replaceFragment(PerfilUserFragment())
