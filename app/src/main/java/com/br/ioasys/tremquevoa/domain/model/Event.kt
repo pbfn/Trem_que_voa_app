@@ -15,11 +15,11 @@ data class Event (
     val price: Int,
     val userId: String,
     val userIdentity: String,
-    val accessibilities: List<String>,
+    val accessibilities: List<Disabilities>,
     val street: String,
     val number: Int,
     val city: String,
     val state: String,
     val zipCode: String,
-    val referencePoint: String
+    val referencePoint: String,
 )

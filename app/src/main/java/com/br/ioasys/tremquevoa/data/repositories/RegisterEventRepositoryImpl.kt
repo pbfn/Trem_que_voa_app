@@ -1,6 +1,6 @@
 package com.br.ioasys.tremquevoa.data.repositories
 
-import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterEventRemoteDataSource
+import com.br.ioasys.tremquevoa.data.datasource.remote.EventRemoteDataSource
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.repositories.RegisterEventRepository
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 
 class RegisterEventRepositoryImpl(
-    private val registerEventRemoteDataSource: RegisterEventRemoteDataSource
+    private val eventRemoteDataSource: EventRemoteDataSource
 ) : RegisterEventRepository {
     override fun registerEvent(
         token: String,
@@ -34,7 +34,7 @@ class RegisterEventRepositoryImpl(
         zipCode: String,
         referencePoint: String,
     ): Flow<Event> = flow {
-        registerEventRemoteDataSource.registerEvent(
+        eventRemoteDataSource.registerEvent(
             token = token,
             id = id,
             name = name,
