@@ -15,8 +15,8 @@ val dataRemoteModule = module {
         UserDataSourceImpl(get())
     }
 
-    single<RegisterEventRemoteDataSource> {
-        RegisterEventDataSourceImpl(get())
+    single<EventRemoteDataSource> {
+        EventDataSourceImpl(get())
     }
 
 

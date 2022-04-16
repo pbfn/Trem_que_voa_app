@@ -22,7 +22,7 @@ data class EventResponse(
     @SerializedName("startTime")
     val startTime: String,
     @SerializedName("endTime")
-    val endTime: String,
+    val endTime: String?,
     @SerializedName("activityId")
     val activityId: String,
     @SerializedName("price")

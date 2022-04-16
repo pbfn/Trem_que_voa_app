@@ -25,8 +25,6 @@ data class EventRequest(
     val activityId: String,
     @SerializedName("price")
     val price: Int,
-    @SerializedName("userId")
-    val userId: String,
     @SerializedName("userIdentity")
     val userIdentity: String,
     @SerializedName("accessibilities")

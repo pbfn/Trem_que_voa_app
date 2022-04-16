@@ -6,7 +6,5 @@ class AddressRequest(
     val city: String,
     val state: String,
     val zipCode: String,
-    val referencePoint: String,
-    val userId: String,
-    val eventId: String
+    val referencePoint: String
 )
