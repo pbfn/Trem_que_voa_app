@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         binding.menuBottomNavigation.setupWithNavController(navController)
 
 
-        //replaceFragment(PerfilUserFragment())
+        replaceFragment(HomeFragment())
         setBottomNavigation()
     }
 
@@ -36,17 +36,20 @@ class HomeActivity : AppCompatActivity() {
         binding.menuBottomNavigation.itemIconTintList = null
         binding.menuBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item_perfil -> {
-                    replaceFragment(PerfilUserFragment())
-                }
-                R.id.item_new_event -> {
-                    replaceFragment(RegisterEventFragment())
-                }
-                R.id.menuHomeFill -> {
+                R.id.menuHome -> {
                     replaceFragment(HomeFragment())
                 }
-                else -> {
+                R.id.menuPerfil -> {
                     replaceFragment(PerfilUserFragment())
+                }
+                R.id.menuNewEvent -> {
+                    replaceFragment(RegisterEventFragment())
+                }
+                R.id.menuCalendar -> {
+
+                }
+                R.id.menuSaves -> {
+
                 }
             }
 
