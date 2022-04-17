@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menuBookmarkFill"
-        android:icon="@drawable/ic_bookmark_fill"
-        android:title="Favoritos" />
+        android:id="@+id/menuHome"
+        android:icon="@drawable/home_selector"
+        android:title="Início" />
 
     <item
-        android:id="@+id/menuDateRanger"
-        android:icon="@drawable/ic_date_range_fill"
-        android:title="Calendário"/>
+        android:id="@+id/menuCalendar"
+        android:icon="@drawable/calendar_selector"
+        android:title="Calendário" />
 
     <item
-        android:id="@+id/item_new_event"
-        android:icon="@drawable/ic_add_round_fill"
-        android:title="Criar evento"/>
+        android:id="@+id/menuNewEvent"
+        android:icon="@drawable/add_event_selector"
+        android:title="Criar evento" />
 
     <item
-        android:id="@+id/menuHomeFill"
-        android:icon="@drawable/ic_home_fill"
-        android:title="Sobre"/>
+        android:id="@+id/menuSaves"
+        android:icon="@drawable/saved_event_selector"
+        android:title="Salvos" />
 
     <item
-        android:id="@+id/item_perfil"
-        android:icon="@drawable/ic_user_fill"
-        android:title="Perfil"/>
+        android:id="@+id/menuPerfil"
+        android:icon="@drawable/perfil_selector"
+        android:title="Perfil" />
 </menu>

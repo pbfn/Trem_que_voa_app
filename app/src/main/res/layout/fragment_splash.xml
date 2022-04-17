@@ -3,27 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_darker"
     android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.SplashFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageViewSplash"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/image_splash" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textViewSplash"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="splash.json"
+        app:lottie_loop="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageViewSplash"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="Bem vindo ao App \n trem que voa"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

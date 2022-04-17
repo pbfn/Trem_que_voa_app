@@ -33,8 +33,16 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium">
-        <item name="android:fontFamily">@font/libre_franklin_medium</item>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_18_Bold">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textColor">@color/neutral_darkest</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">27dp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_16_Bold">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textColor">@color/neutral_darkest</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
@@ -47,18 +55,20 @@
         <item name="lineHeight">24dp</item>
     </style>
 
-    <style name="Base.Widget.AppCompat.TextView.App_Body_14_Libre_Medium">
-        <item name="android:fontFamily">@font/libre_franklin_medium</item>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_14_Regular">
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
         <item name="android:textColor">@color/neutral_darkest</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">22dp</item>
     </style>
 
-    <style name="Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light">
-        <item name="android:fontFamily">@font/libre_franklin_light</item>
+    Fonts App/Body-16-Regular
+    <style name="Base.Widget.AppCompat.TextView.App_Body_16_Regular">
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
         <item name="android:textColor">@color/neutral_darkest</item>
-        <item name="android:textSize">14sp</item>
-        <item name="lineHeight">22dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
     </style>
 
     <style name="Base.Widget.AppCompat.TextView.App_Body_14_Libre_Bold">

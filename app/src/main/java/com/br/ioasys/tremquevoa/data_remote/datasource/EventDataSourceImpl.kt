@@ -1,18 +1,18 @@
 package com.br.ioasys.tremquevoa.data_remote.datasource
 
-import com.br.ioasys.tremquevoa.data.datasource.remote.RegisterEventRemoteDataSource
+import com.br.ioasys.tremquevoa.data.datasource.remote.EventRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
-import com.br.ioasys.tremquevoa.data_remote.model.response.event.AddressResponse
-import com.br.ioasys.tremquevoa.data_remote.model.response.event.EventResponse
-import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.request.event.AddressRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.event.EventRequest
+import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RegisterEventDataSourceImpl(
+class EventDataSourceImpl(
     private val eventService: EventService
-) : RegisterEventRemoteDataSource {
+) : EventRemoteDataSource {
     override fun registerEvent(
         token: String,
         id: String,
@@ -39,9 +39,8 @@ class RegisterEventDataSourceImpl(
     ): Flow<Event> = flow {
         val response = eventService.registerEvent(
             token = "Bearer $token",
-            registerEventRequest = RegisterEventResponse(
-                EventResponse(
-                    id = id,
+            registerEventRequest = RegisterEventRequest(
+                eventRequest = EventRequest(
                     name = name,
                     description = description,
                     isOnline = isOnline,
@@ -53,22 +52,20 @@ class RegisterEventDataSourceImpl(
                     endTime = endTime,
                     activityId = activityId,
                     price = price,
-                    userId = userId,
                     userIdentity = userIdentity,
                     accessibilities = accessibilities,
                 ),
-                address = AddressResponse(
+                address = AddressRequest(
                     street = street,
                     number = number,
                     city = city,
                     state = state,
                     zipCode = zipCode,
-                    referencePoint = referencePoint,
-                    userId = userId,
-                    eventId = id,
+                    referencePoint = referencePoint
                 )
             )
         )
+
         if (response.isSuccessful) {
             response.body()?.let { registerEventResponse ->
                 emit(registerEventResponse.toDomain())
@@ -76,6 +73,21 @@ class RegisterEventDataSourceImpl(
         } else {
             emit(error(response.code()))
         }
+    }
+
+    override fun getEvent(token: String): Flow<List<Event>> {
+        return flow {
+            val response = eventService.getEvent(token)
+            if (response.isSuccessful) {
+                response.body()?.let { registerEventResponse ->
+                    emit(registerEventResponse.toDomain())
+                }
+            } else {
+                emit(error(response.code()))
+            }
+        }
+    }
+}
 
 
 //    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
@@ -88,5 +100,3 @@ class RegisterEventDataSourceImpl(
 //            emit(error(response.code()))
 //        }
 //    }
-    }
-}

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.ActivityHomeBinding
+import com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment
 
@@ -27,22 +28,29 @@ class HomeActivity : AppCompatActivity() {
         binding.menuBottomNavigation.setupWithNavController(navController)
 
         showDialog()
-        replaceFragment(PerfilUserFragment())
+        replaceFragment(HomeFragment())
         setBottomNavigation()
     }
 
 
     private fun setBottomNavigation() {
+        binding.menuBottomNavigation.itemIconTintList = null
         binding.menuBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item_perfil -> {
+                R.id.menuHome -> {
+                    replaceFragment(HomeFragment())
+                }
+                R.id.menuPerfil -> {
                     replaceFragment(PerfilUserFragment())
                 }
-                R.id.item_new_event -> {
+                R.id.menuNewEvent -> {
                     replaceFragment(RegisterEventFragment())
                 }
-                else -> {
-                    replaceFragment(PerfilUserFragment())
+                R.id.menuCalendar -> {
+
+                }
+                R.id.menuSaves -> {
+
                 }
             }
 

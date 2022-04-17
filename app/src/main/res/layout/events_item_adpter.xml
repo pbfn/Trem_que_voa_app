@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewEvents"
+    android:layout_width="285dp"
+    android:layout_height="160dp"
+    android:backgroundTint="@color/bg_card_event"
+    app:cardCornerRadius="20dp"
+    android:layout_marginHorizontal="8dp"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/frameLayoutImageDate"
+            android:layout_width="124dp"
+            android:layout_height="160dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageCardEvent"
+                android:layout_width="124dp"
+                android:layout_height="160dp"
+                android:background="@drawable/img_yoga"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewDateEvent"
+                android:layout_width="66dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="14dp"
+                android:text="28 abril"
+                android:gravity="center"
+                android:textColor="#1A00D0"
+                android:textStyle="bold"
+                android:background="@drawable/bg_date_card_event"
+                app:layout_constraintStart_toEndOf="@id/imageCardEvent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTitleEvent"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Yoga no campus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconLocalEvent"
+            android:layout_width="8dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/ic_local"
+            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleEvent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewLocalEvent"
+            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="Gramado da entrada"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconLocalEvent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleEvent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconUserEvent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/ic_photo_perfil"
+            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
+            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewConfirmedEvent"
+            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="14dp"
+            android:text="8 Confirmados"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconUserEvent"
+            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconFavoriteEvent"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_favorite_event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

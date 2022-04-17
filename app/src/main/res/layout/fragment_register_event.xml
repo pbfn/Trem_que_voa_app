@@ -36,9 +36,8 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_name_event"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="35dp"
             app:custom_title="Nome do evento:"
             android:inputType="text"
@@ -48,9 +47,9 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_user_identity"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             android:inputType="number"
             app:custom_title="CPF do organizador:"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,9 +58,9 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_max_participants"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             android:inputType="number"
             app:custom_title="Máximo de participantes:"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,51 +69,48 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputBoxCategory"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="2dp"
+            android:hint="Categoria"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_max_participants"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Selecione a Categoria"
                 android:inputType="none" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputBoxModality"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:hint="Modalidade"
+            android:layout_marginHorizontal="18dp"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputBoxCategory"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteModality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Selecione a modalidade"
                 android:inputType="none" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_url"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="text"
             app:custom_title="Url:"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,26 +119,21 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_street"
-            android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:custom_title="Rua:"
             android:inputType="textAutoComplete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_url">
-
-        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+            app:layout_constraintTop_toBottomOf="@+id/custom_url"/>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_number"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:custom_title="Número:"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,10 +143,9 @@
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_zipCode"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:custom_title="CEP:"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,10 +155,9 @@
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_city"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:custom_title="Cidade:"
             android:inputType="textAutoComplete"
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,9 +167,8 @@
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_state"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="16dp"
             app:custom_title="Estado:"
             android:inputType="textAutoComplete"
@@ -192,7 +180,8 @@
             android:id="@+id/textViewAddGoogleMaps"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="34dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="4dp"
             android:text="Adicionar localização no Google Maps"
             style="@style/Base.Widget.AppCompat.TextView.Text_18"
             android:textColor="#2C3131"
@@ -203,57 +192,48 @@
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_references"
             android:animateLayoutChanges="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             app:custom_title="Ponto de Referência:"
             android:inputType="textAutoComplete"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewAddGoogleMaps" />
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             android:inputType="date"
             app:custom_title="Data:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_references">
-
-
-
-        </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+            app:layout_constraintTop_toBottomOf="@id/custom_references"/>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_start_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             android:inputType="time"
             app:custom_title="Horário início:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_date">
-
-
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_end_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="24dp"
             android:inputType="time"
             app:custom_title="Horário Término:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_start_time">
-
-
-
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -261,17 +241,18 @@
             android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:hint="É Pet Friendly?"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_end_time"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompletePetFriendly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="É Pet Friendly?"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -279,7 +260,7 @@
             android:id="@+id/textViewAcessible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="18dp"
             android:layout_marginTop="24dp"
             android:text="Evento acessível a pessoa com deficiência?"
             style="@style/Base.Widget.AppCompat.TextView.Text_18"
@@ -304,10 +285,9 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_description"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             app:custom_title="Descrição do evento:"
             android:inputType="textAutoComplete"
             app:layout_constraintEnd_toEndOf="parent"
@@ -316,9 +296,8 @@
 
         <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
             android:id="@+id/custom_price"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="30dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:custom_title="Preço:"
             android:inputType="numberDecimal"
@@ -331,13 +310,12 @@
             style="@style/TextAppearance.AppCompat.Button.StyleButton"
             android:layout_width="263dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="40dp"
             android:text="Criar evento e publicar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/custom_price" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

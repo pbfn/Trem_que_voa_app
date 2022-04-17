@@ -79,7 +79,6 @@ class  EmergencyContactFragment : Fragment() {
                 }
 
                 is ViewState.Success -> {
-                    Toast.makeText(requireContext(), "Teste", Toast.LENGTH_SHORT).show()
                     nextPage(
                         EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment(
                             args.token

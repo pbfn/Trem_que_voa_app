@@ -13,19 +13,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="147dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/round_triangle_chain"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_logo_joinme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTitle"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Medium"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="42dp"
         android:text="Olá! Acesse sua conta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewStayConnected"
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Medium"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -134,14 +134,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogin">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Não tem uma conta?" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnRegister"
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Libre_Light"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cadastre-se aqui!"

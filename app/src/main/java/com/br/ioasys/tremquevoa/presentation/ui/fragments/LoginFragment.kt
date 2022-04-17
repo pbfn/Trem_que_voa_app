@@ -1,28 +1,20 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
-import android.content.Context
-import android.graphics.Paint
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Editable
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.TextWatcher
-import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentLoginBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.presentation.viewmodel.LoginViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
@@ -52,7 +44,6 @@ class LoginFragment : Fragment() {
             customEmail.ChangeBackground(false, null)
             customPassword.ChangeBackground(false, null)
         }
-        underlineText()
         setListeners()
         addObserver()
     }
@@ -70,6 +61,19 @@ class LoginFragment : Fragment() {
             btnRegister.setOnClickListener {
                 nextPage(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
             }
+
+            customPassword.inputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+
+            customPassword.input.doAfterTextChanged {
+                customEmail.ChangeBackground(false, null)
+                customPassword.ChangeBackground(false, null)
+            }
+
+            customEmail.input.doAfterTextChanged {
+                customEmail.ChangeBackground(false, null)
+                customPassword.ChangeBackground(false, null)
+            }
+
 
             textViewForgotPassword.setOnClickListener {
                 nextPage(LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
@@ -139,9 +143,6 @@ class LoginFragment : Fragment() {
         findNavController().navigate(directions)
     }
 
-    private fun underlineText() {
-        binding.btnRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-    }
 
     private fun emitError(msg: String) {
         Toast.makeText(

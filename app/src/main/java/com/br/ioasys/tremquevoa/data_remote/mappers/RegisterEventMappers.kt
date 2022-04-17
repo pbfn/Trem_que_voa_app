@@ -13,12 +13,12 @@ fun RegisterEventResponse.toDomain() = Event(
     isPetFriendly = this.eventResponse.isPetFriendly,
     maxParticipants = this.eventResponse.maxParticipants,
     startTime = this.eventResponse.startTime,
-    endTime = this.eventResponse.endTime,
+    endTime = this.eventResponse.endTime?:"",
     activityId = this.eventResponse.activityId,
     price = this.eventResponse.price,
     userId = this.eventResponse.userId,
     userIdentity = this.eventResponse.userIdentity,
-    accessibilities = this.eventResponse.accessibilities,
+    accessibilities = this.eventAccessibilities?.acessibilities?: arrayListOf(),
     street = this.address.street,
     number = this.address.number,
     city = this.address.city,
@@ -26,3 +26,9 @@ fun RegisterEventResponse.toDomain() = Event(
     zipCode = this.address.zipCode,
     referencePoint = this.address.referencePoint
 )
+
+fun List<RegisterEventResponse>.toDomain(): List<Event> {
+    return this.map {
+        it.toDomain()
+    }
+}
