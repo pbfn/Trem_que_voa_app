@@ -88,7 +88,7 @@ class PerfilUserFragment : Fragment() {
         val layoutDeficiency =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         adapterDeficiency = AdapterDeficiencyPerfil()
-        binding.recyclerViewDeficiency.apply {
+        binding.recyclerViewDisabilities.apply {
             adapter = adapterDeficiency
             layoutManager = layoutDeficiency
         }
@@ -96,16 +96,16 @@ class PerfilUserFragment : Fragment() {
 
     private fun setListeners() {
         binding.apply {
-            buttonEditAboutMe.setOnClickListener {
-                editAboutMe.isEnabled = true
-            }
+//            buttonEditAboutMe.setOnClickListener {
+//                editAboutMe.isEnabled = true
+//            }
 
 //            editAboutMe.doAfterTextChanged {
 //                perfilViewModel.updateAboutMe(token = user.token, aboutMe = it.toString())
 //            }
-            buttonSettings.setOnClickListener {
-                findNavController().navigate(PerfilUserFragmentDirections.actionPerfilUserFragmentToSettingsFragment())
-            }
+//            buttonSettings.setOnClickListener {
+//                //findNavController().navigate(PerfilUserFragmentDirections.actionPerfilUserFragmentToSettingsFragment())
+//            }
         }
     }
 
