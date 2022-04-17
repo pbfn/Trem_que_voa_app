@@ -9,16 +9,25 @@ import kotlinx.coroutines.flow.flow
 
 class DisabilitiesRemoteDataSourceImpl(
     private val disabilitiesService: DisabilitiesService
-): DisabilitiesRemoteDataSource {
+) : DisabilitiesRemoteDataSource {
 
-    override fun fetchAllDisabilities(token:String): Flow<List<Disabilities>> = flow {
+    override fun fetchAllDisabilities(token: String): Flow<List<Disabilities>> = flow {
         val response = disabilitiesService.getAllDisabilities(token = "Bearer $token")
         if (response.isSuccessful) {
             response.body()?.let { listReponse ->
                 emit(listReponse.toDomain())
             }
         } else {
-           emit(error(response.code()))
+            emit(error(response.code()))
+        }
+    }
+
+    override fun fetchDesabilitiesByUser(token: String): Flow<List<Disabilities>> = flow {
+        val response = disabilitiesService.getDesabilitiesByUser(token = "Bearer $token")
+        if (response.isSuccessful) {
+            response.body()?.let {
+                emit(it.toDomain())
+            }
         }
     }
 }
