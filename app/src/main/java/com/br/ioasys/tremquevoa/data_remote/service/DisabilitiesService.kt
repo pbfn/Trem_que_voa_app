@@ -13,4 +13,10 @@ interface DisabilitiesService {
     suspend fun getAllDisabilities(
         @Header("Authorization") token: String,
     ): Response<List<DisabilitiesResponse>>
+
+    @Headers("Content-type: application/json")
+    @GET("users/disabilities/list/")
+    suspend fun getDesabilitiesByUser(
+        @Header("Authorization") token: String,
+    ): Response<List<DisabilitiesResponse>>
 }

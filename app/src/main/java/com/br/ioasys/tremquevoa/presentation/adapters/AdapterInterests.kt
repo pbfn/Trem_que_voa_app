@@ -57,14 +57,10 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
             image.setOnClickListener {
                 interest.selected = !interest.selected
                 if (interest.selected) {
-                    //TODO PESQUISAR OUTRAS FORMAS DE FAZER
                     holder.itemView.apply {
                         Glide.with(this).load(interest.urlActive)
                             .into(holder.image)
                     }
-//                    image.borderWidth = 110
-//                    image.borderColor =
-//                        ContextCompat.getColor(context!!, R.color.border_interest_selected)
                 } else {
                     holder.itemView.apply {
                         Glide.with(this).load(interest.urlInactive)

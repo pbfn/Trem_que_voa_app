@@ -17,7 +17,7 @@
     <color name="neutral">#757678</color>
     <color name="bg_bottom_navigation">#A5A1A1</color>
     <color name="bg_event">#FAF1F1</color>
-    <color name="background_card">#DEDAF0</color>
+
     <color name="background_item_perfil">#6B5BBE</color>
     <color name="bg_date_card_event">#F6F9FF</color>
     <color name="bg_card_event">#E8E7E3</color>
@@ -28,7 +28,9 @@
     <color name="neutral_darkest">#252627</color>
     <color name="neutral_dark">#757678</color>
     <color name="primary_darker">#1A00D0</color>
+    <color name="primary_dark">#4C33FD</color>
     <color name="primary_lighter">#DEDAF0</color>
     <color name="secondary_dark">#DF3083</color>
+    <color name="neutral_light">#E8E7E3</color>
 
 </resources>

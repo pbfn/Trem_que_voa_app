@@ -3,6 +3,7 @@ package com.br.ioasys.tremquevoa.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.*
@@ -15,11 +16,16 @@ class PerfilViewModel(
     private val getLocalUserUseCase: GetLocalUserUseCase,
     private val getInterestsByUserUseCase: GetInterestsByUserUseCase,
     private val updateAboutMeUserUserCase: UpdateAboutMeUserUserCase,
-    private val updateUserUseCase: UpdateUserUseCase
+    private val updateUserUseCase: UpdateUserUseCase,
+    private val getDisabilitiesByUserUseCase: GetDisabilitiesByUserUseCase
 ) : ViewModel() {
 
     private var _interests = MutableLiveData<ViewState<List<Interests>>>()
     var interests: LiveData<ViewState<List<Interests>>> = _interests
+
+    private var _deficiency = MutableLiveData<ViewState<List<Disabilities>>>()
+    var deficiency: LiveData<ViewState<List<Disabilities>>> = _deficiency
+
 
     private var _userLocal = MutableLiveData<ViewState<User>>()
     var userLocal: LiveData<ViewState<User>> = _userLocal
@@ -49,6 +55,22 @@ class PerfilViewModel(
         )
     }
 
+    private fun getDeficiencyUser(token: String) {
+        _deficiency.postLoading()
+        getDisabilitiesByUserUseCase(
+            GetDisabilitiesByUserUseCase.Params(
+                token = token
+            ),
+            onSuccess = {
+                _deficiency.postSuccess(it)
+            },
+            onError = {
+                _deficiency.postError(it)
+            }
+        )
+
+    }
+
     private fun getUserLocal() {
         _userLocal.postLoading()
         getLocalUserUseCase(
@@ -56,6 +78,7 @@ class PerfilViewModel(
             onSuccess = {
                 _userLocal.postSuccess(it)
                 getInterestsUser(it.token)
+                getDeficiencyUser(it.token)
             },
             onError = {
                 _userLocal.postError(it)
@@ -79,7 +102,7 @@ class PerfilViewModel(
         )
     }
 
-     fun updateUserLocal(newUser: User) {
+    fun updateUserLocal(newUser: User) {
         updateUserUseCase(
             params = UpdateUserUseCase.Params(
                 newUser = newUser

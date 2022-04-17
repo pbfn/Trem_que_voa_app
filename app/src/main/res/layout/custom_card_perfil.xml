@@ -4,7 +4,7 @@
     android:id="@+id/cardViewMinutes"
     android:layout_width="110dp"
     android:layout_height="80dp"
-    android:backgroundTint="@color/background_card"
+    android:backgroundTint="@color/neutral_light"
     app:cardCornerRadius="16dp"
     app:layout_constraintStart_toStartOf="parent">
 
@@ -24,21 +24,22 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleCard"
-            style="@style/Base.Widget.AppCompat.TextView.Title_23"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="2" />
+            android:text="2"
+            android:textColor="@color/primary_dark" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/subTitleCard"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:text="Eventos"
-            android:textColor="@color/neutral" />
+            android:textColor="@color/neutral_dark" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

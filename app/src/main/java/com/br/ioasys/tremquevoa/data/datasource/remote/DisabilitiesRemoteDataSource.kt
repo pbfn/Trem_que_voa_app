@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface DisabilitiesRemoteDataSource {
 
     fun fetchAllDisabilities(token:String): Flow<List<Disabilities>>
+
+    fun fetchDesabilitiesByUser(token:String): Flow<List<Disabilities>>
 }

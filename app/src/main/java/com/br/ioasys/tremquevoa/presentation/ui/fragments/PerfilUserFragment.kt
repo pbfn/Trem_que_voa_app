@@ -8,10 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doBeforeTextChanged
+import androidx.navigation.NavDirections
+import androidx.navigation.R
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentPerfilUserBinding
+import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
+import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDeficiencyPerfil
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterInterestsPerfil
 import com.br.ioasys.tremquevoa.presentation.viewmodel.PerfilViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -24,12 +30,14 @@ class PerfilUserFragment : Fragment() {
     private val binding: FragmentPerfilUserBinding get() = _binding!!
 
     private lateinit var adapterInterests: AdapterInterestsPerfil
+    private lateinit var adapterDeficiency: AdapterDeficiencyPerfil
     private lateinit var user: User
 
     private val perfilViewModel: PerfilViewModel by lazy {
         getViewModel()
     }
     private var listInterests: List<Interests> = listOf()
+    private var listDeficiency: List<Disabilities> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,13 +77,20 @@ class PerfilUserFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        val lst = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        // val layout = GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
+        val layoutInterests =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         adapterInterests = AdapterInterestsPerfil()
-        //adapterInterests.differ.submitList(MockInteresses.listaInteresses)
         binding.recyclerViewInterests.apply {
             adapter = adapterInterests
-            layoutManager = lst
+            layoutManager = layoutInterests
+        }
+
+        val layoutDeficiency =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        adapterDeficiency = AdapterDeficiencyPerfil()
+        binding.recyclerViewDeficiency.apply {
+            adapter = adapterDeficiency
+            layoutManager = layoutDeficiency
         }
     }
 
@@ -85,8 +100,11 @@ class PerfilUserFragment : Fragment() {
                 editAboutMe.isEnabled = true
             }
 
-            editAboutMe.doAfterTextChanged {
-                perfilViewModel.updateAboutMe(token = user.token, aboutMe = it.toString())
+//            editAboutMe.doAfterTextChanged {
+//                perfilViewModel.updateAboutMe(token = user.token, aboutMe = it.toString())
+//            }
+            buttonSettings.setOnClickListener {
+                findNavController().navigate(PerfilUserFragmentDirections.actionPerfilUserFragmentToSettingsFragment())
             }
         }
     }
@@ -131,7 +149,6 @@ class PerfilUserFragment : Fragment() {
             }
 
         }
-
         perfilViewModel.user.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
@@ -153,16 +170,35 @@ class PerfilUserFragment : Fragment() {
                 }
             }
         }
+        perfilViewModel.deficiency.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
 
+                }
+                is ViewState.Success -> {
+                    listDeficiency = response.data
+                    adapterDeficiency.differ.submitList(listDeficiency)
+                }
+
+                is ViewState.Error -> {
+
+                }
+                else -> {
+
+                }
+            }
+
+        }
     }
 
-    private fun setLayout(){
+    private fun setLayout() {
         binding.apply {
-            if(!user.aboutMe.isNullOrEmpty()){
+            if (!user.aboutMe.isNullOrEmpty()) {
                 editAboutMe.text = Editable.Factory.getInstance().newEditable(user.aboutMe)
             }
             textViewName.text = user.name
         }
     }
+
 
 }
