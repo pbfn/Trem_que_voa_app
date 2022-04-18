@@ -3,14 +3,14 @@ package com.br.ioasys.tremquevoa.domain.usecase
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
-import com.br.ioasys.tremquevoa.domain.repositories.RegisterEventRepository
+import com.br.ioasys.tremquevoa.domain.repositories.EventRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 
 class RegisterEventUseCase(
     private val userRepository: UserRepository,
-    private val registerEventRepository: RegisterEventRepository,
+    private val eventRepository: EventRepository,
     scope: CoroutineScope
 ) : UseCase<RegisterEventUseCase.Params, Event>(scope = scope) {
 
@@ -47,7 +47,7 @@ class RegisterEventUseCase(
 
         validateFields(params)
 
-        return registerEventRepository.registerEvent(
+        return eventRepository.registerEvent(
             token = params.token,
             id = params.id,
             name = params.name,

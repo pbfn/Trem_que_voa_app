@@ -10,6 +10,9 @@ class EventAccessibilitiesResponse (
     val disabilityId: String,
     @SerializedName("eventId")
     val eventId: String,
+    val createdAt: String,
+    val updatedAt: String?,
+    val deletedAt: String?,
     @SerializedName("acessibilities")
-    val acessibilities: List<Disabilities>
+    val acessibilities: List<DisabilitiesResponse>?
 )

@@ -68,7 +68,16 @@ class EventDataSourceImpl(
 
         if (response.isSuccessful) {
             response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse.toDomain())
+                emit(registerEventResponse.let { registerResponse ->
+                    registerResponse.eventResponse.toDomain().copy(
+                        accessibilities =
+                        registerResponse.eventAccessibilities?.acessibilities?.toDomain()
+                            ?: arrayListOf(),
+                        address = registerResponse.address.toDomain(),
+                        activity = registerResponse.interestResponse.toDomain()
+                    )
+
+                })
             }
         } else {
             emit(error(response.code()))
@@ -80,7 +89,9 @@ class EventDataSourceImpl(
             val response = eventService.getEvent(token)
             if (response.isSuccessful) {
                 response.body()?.let { registerEventResponse ->
-                    emit(registerEventResponse.toDomain())
+                    emit(registerEventResponse.map {
+                        it.toDomain()
+                    })
                 }
             } else {
                 emit(error(response.code()))

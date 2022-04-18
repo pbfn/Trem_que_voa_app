@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.data_remote.service
 
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event_list.ListEventResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -18,7 +19,7 @@ interface EventService {
     @GET("events/list")
     suspend fun getEvent(
         @Header("Authorization") token: String
-    ): Response<List<RegisterEventResponse>>
+    ): Response<ListEventResponse>
 
 //    @Headers("Content-type: application/json")
 //    @GET("activities/list")

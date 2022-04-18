@@ -1,5 +1,8 @@
 package com.br.ioasys.tremquevoa.data_remote.model.response.event
 
+import com.br.ioasys.tremquevoa.data_remote.model.response.DisabilitiesResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.InterestsResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.UserResponse
 import com.google.gson.annotations.SerializedName
 
 data class EventResponse(
@@ -12,7 +15,7 @@ data class EventResponse(
     @SerializedName("isOnline")
     val isOnline: Boolean,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("date")
     val date: String,
     @SerializedName("isPetFriendly")
@@ -26,12 +29,28 @@ data class EventResponse(
     @SerializedName("activityId")
     val activityId: String,
     @SerializedName("price")
-    val price: Int,
+    val price: Double,
     @SerializedName("userId")
-    val userId: String,
+    val userId: String?,
     @SerializedName("userIdentity")
     val userIdentity: String,
     @SerializedName("accessibilities")
-    val accessibilities: List<String>
+    val accessibilities: List<String>,
+    @SerializedName("users")
+    val users: UserResponse,
+    @SerializedName("createdAt")
+    val createdAt: String,
+    @SerializedName("deletedAt")
+    val deletedAt: String?,
+    @SerializedName( "updatedAt")
+    val updatedAt: String?,
+    @SerializedName( "activities")
+    val activities: InterestsResponse,
+    @SerializedName( "addresses")
+    val addresses: List<AddressResponse> ?= arrayListOf(),
+    @SerializedName( "eventAccessibilities")
+    val eventAccessibilities: List<DisabilitiesResponse> ?= arrayListOf(),
+    @SerializedName( "numParticipants")
+    val numParticipants: Int
 )
 

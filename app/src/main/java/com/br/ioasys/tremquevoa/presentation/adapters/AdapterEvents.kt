@@ -4,22 +4,30 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.EventsItemAdpterBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
 
-class AdapterEvents() : RecyclerView.Adapter<AdapterEvents.AdpterEventsViewHolder>() {
+class AdapterEvents(
+    private val onEventClickListener: EventClickListener
+) :ListAdapter<Event, AdapterEvents.EventListViewHolder>(DIFF_CALLBACK) {
 
-        class AdpterEventsViewHolder(itemView: EventsItemAdpterBinding) :
-            RecyclerView.ViewHolder(itemView.root) {
-            val dateEvent = itemView.textViewDateEvent
-            val titleEvent = itemView.textViewTitleEvent
-            //val interestEvent = itemView.interestCardEvent TODO como pegar essa informação dos interesses?
-            //val confirmed = itemView.confirmedCardEvent TODO como implementar essa parte de confirmação?
-            val city = itemView.textViewLocalEvent
-        }
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): EventListViewHolder {
+        return EventListViewHolder.create(parent, onEventClickListener)
+    }
 
-        private val differCallback = object : DiffUtil.ItemCallback<Event>() {
+    override fun onBindViewHolder(holder: EventListViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<Event>() {
             override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
                 return oldItem.id == newItem.id
             }
@@ -28,28 +36,44 @@ class AdapterEvents() : RecyclerView.Adapter<AdapterEvents.AdpterEventsViewHolde
                 return oldItem == newItem
             }
         }
+    }
 
-        val differ = AsyncListDiffer(this, differCallback)
+    class EventListViewHolder(
+        private val binding: EventsItemAdpterBinding,
+        private val onEventClickListener: EventClickListener
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(event: Event) {
+            binding.apply {
+                textViewDateEvent.text = event.date
+                textViewTitleEvent.text = event.name
+                textViewLocalEvent.text = event.address?.city
+                //val interestEvent = itemView.interestCardEvent TODO como pegar essa informação dos interesses?
+                //val confirmed = itemView.confirmedCardEvent TODO como implementar essa parte de confirmação?
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdpterEventsViewHolder {
-            val binding = EventsItemAdpterBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-            return AdpterEventsViewHolder(binding)
-        }
+                imageCardEvent.load(event.url) {
+                    error(R.drawable.img_event)
+                }
 
-        override fun onBindViewHolder(holder: AdpterEventsViewHolder, position: Int) {
-            val events = differ.currentList[position]
-            holder.apply {
-                dateEvent.text = events.date
-                titleEvent.text = events.name
-                city.text = events.city
+                root.setOnClickListener {
+                    onEventClickListener.onEventClickListener(event)
+                }
             }
         }
 
-        override fun getItemCount(): Int {
-            return differ.currentList.size
+        companion object {
+            fun create(
+                parent:ViewGroup,
+                onEventClickListener: EventClickListener
+            ):EventListViewHolder {
+                val binding = EventsItemAdpterBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                return EventListViewHolder(binding, onEventClickListener)
+            }
         }
+    }
 }
+
+
