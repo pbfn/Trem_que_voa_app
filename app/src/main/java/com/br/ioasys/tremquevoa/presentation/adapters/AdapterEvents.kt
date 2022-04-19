@@ -2,7 +2,6 @@ package com.br.ioasys.tremquevoa.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -50,7 +49,8 @@ class AdapterEvents(
                 //val interestEvent = itemView.interestCardEvent TODO como pegar essa informação dos interesses?
                 //val confirmed = itemView.confirmedCardEvent TODO como implementar essa parte de confirmação?
 
-                imageCardEvent.load(event.url) {
+                //TODO setar uma imagem para cada atividade
+                imageCardEvent.load(event.activity.urlActive) {
                     error(R.drawable.img_event)
                 }
 
