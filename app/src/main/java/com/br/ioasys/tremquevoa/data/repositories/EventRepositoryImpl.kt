@@ -12,7 +12,6 @@ class EventRepositoryImpl(
 ) : EventRepository {
     override fun registerEvent(
         token: String,
-        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -36,7 +35,6 @@ class EventRepositoryImpl(
     ): Flow<Event> = flow {
         eventRemoteDataSource.registerEvent(
             token = token,
-            id = id,
             name = name,
             description = description,
             isOnline = isOnline,

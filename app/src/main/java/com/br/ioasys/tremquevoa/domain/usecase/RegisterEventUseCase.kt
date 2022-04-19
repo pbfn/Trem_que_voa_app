@@ -16,7 +16,6 @@ class RegisterEventUseCase(
 
     data class Params(
         val token: String,
-        val id: String,
         val name: String,
         val description: String,
         val isOnline: Boolean,
@@ -49,7 +48,6 @@ class RegisterEventUseCase(
 
         return eventRepository.registerEvent(
             token = params.token,
-            id = params.id,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,

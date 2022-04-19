@@ -45,7 +45,6 @@ class RegisterEventViewModel(
 
     fun registerEvent(
         token:String,
-        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -72,7 +71,6 @@ class RegisterEventViewModel(
         registerEventUseCase(
             params = RegisterEventUseCase.Params(
                 token = token,
-                id = id,
                 name = name,
                 description = description,
                 isOnline = isOnline,
@@ -149,5 +147,4 @@ class RegisterEventViewModel(
             }
         )
     }
-
 }

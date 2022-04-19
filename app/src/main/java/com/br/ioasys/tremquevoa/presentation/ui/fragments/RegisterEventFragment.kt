@@ -11,12 +11,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
-
-import com.br.ioasys.tremquevoa.di.databaseModule
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.extensions.*
@@ -338,7 +335,6 @@ class RegisterEventFragment : Fragment() {
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
             token = user?.token?:"",
-            id = "",
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,

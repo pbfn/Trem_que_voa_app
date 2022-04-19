@@ -7,7 +7,6 @@ interface EventRepository {
 
     fun registerEvent(
         token:String,
-        id: String,
         name: String,
         description: String,
         isOnline: Boolean,

@@ -20,6 +20,8 @@ data class EventResponse(
     val date: String,
     @SerializedName("isPetFriendly")
     val isPetFriendly: Boolean,
+    @SerializedName("isPromoted")
+    val isPromoted: Boolean,
     @SerializedName("maxParticipants")
     val maxParticipants: Int,
     @SerializedName("startTime")

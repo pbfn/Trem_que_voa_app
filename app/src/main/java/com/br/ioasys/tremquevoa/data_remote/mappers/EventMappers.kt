@@ -11,6 +11,7 @@ fun EventResponse.toDomain() = Event(
     url = this.url?:"",
     date = this.date,
     isPetFriendly = this.isPetFriendly,
+    isPromoted = this.isPromoted,
     maxParticipants = this.maxParticipants,
     numParticipants = this.numParticipants,
     startTime = this.startTime,

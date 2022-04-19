@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.Event
+import com.br.ioasys.tremquevoa.domain.model.EventLists
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.GetAllEventsUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.GetLocalUserUseCase
@@ -17,8 +18,8 @@ class HomeViewModel(
      private val getLocalUserUseCase: GetLocalUserUseCase
 ) : ViewModel() {
 
-     private var _events = MutableLiveData<ViewState<List<Event>>>()
-     var events: LiveData<ViewState<List<Event>>> = _events
+     private var _events = MutableLiveData<ViewState<EventLists>>()
+     var events: LiveData<ViewState<EventLists>> = _events
 
      private var _user = MutableLiveData<ViewState<User>>()
      var user: LiveData<ViewState<User>> = _user
@@ -34,8 +35,20 @@ class HomeViewModel(
                params = GetAllEventsUseCase.Params(
                     token = token
                ),
-               onSuccess = { listInterestsResponse ->
-                    _events.postSuccess(listInterestsResponse)
+               onSuccess = { listEvent ->
+                    _events.postSuccess(listEvent.let { list ->
+                         EventLists(
+                              listOnline = list.filter {
+                                   it.isOnline
+                              },
+                              listPromoted = list.filter {
+                                   it.isPromoted
+                              },
+                              listRecommended = list.filter {
+                                   it.isOnline.not()
+                              }
+                         )
+                    })
                },
                onError = {
                     _events.postError(it)
