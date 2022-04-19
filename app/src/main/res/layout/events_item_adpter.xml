@@ -2,11 +2,14 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardViewEvents"
-    android:layout_width="285dp"
+    android:layout_width="333dp"
     android:layout_height="160dp"
+    android:layout_marginEnd="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:longClickable="false"
     android:backgroundTint="@color/bg_card_event"
     app:cardCornerRadius="20dp"
-    android:layout_marginHorizontal="8dp"
     app:layout_constraintStart_toStartOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,16 +21,17 @@
         <FrameLayout
             android:id="@+id/frameLayoutImageDate"
             android:layout_width="124dp"
-            android:layout_height="160dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageCardEvent"
-                android:layout_width="124dp"
-                android:layout_height="160dp"
-                android:background="@drawable/img_yoga"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_event"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +54,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewTitleEvent"
             style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
@@ -73,46 +77,107 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewLocalEvent"
             style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_width="118dp"
+            android:layout_height="19dp"
             android:layout_marginTop="8dp"
             android:text="Gramado da entrada"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iconLocalEvent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitleEvent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iconUserEvent"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/ic_photo_perfil"
-            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
-            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewConfirmedEvent"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+        <GridLayout
+            android:id="@+id/gridLayoutUsers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="14dp"
-            android:text="8 Confirmados"
+            android:columnCount="4"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iconUserEvent"
-            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
+            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iconFavoriteEvent"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ic_favorite_event"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconUserEventOne"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/ic_photo_perfil" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconUserEventTwo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/ic_photo_perfil" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconUserEventThree"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/ic_photo_perfil" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewConfirmedEvent"
+                style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="14dp"
+                android:text="8 Confirmados" />
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/gridLayoutSelecteds"
+            android:layout_width="193dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:columnCount="3"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
+            app:layout_constraintTop_toBottomOf="@id/gridLayoutUsers"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconFavoriteEvent"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/ic_favorite_event"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgCategory"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_favorite_event"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAcessible"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_favorite_event"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+        </GridLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
