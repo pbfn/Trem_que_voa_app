@@ -11,4 +11,7 @@ data class DisabilitiesResponse (
     val description: String,
     @SerializedName("active")
     val active: Boolean,
+    val createdAt: String,
+    val updatedAt: String?,
+    val deletedAt: String?
 )

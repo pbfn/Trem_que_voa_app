@@ -35,9 +35,22 @@
     <string name="access_account_button">ACESSAR SUA CONTA</string>
     <string name="send_password">Não recebeu a senha?</string>
     <string name="send_new_password_button">Reenvie aqui!</string>
+    <string name="criar_novo_evento">Criar novo evento</string>
+    <string name="nome_do_evento">Nome do evento:</string>
+    <string name="cpf_do_organizador">CPF do organizador:</string>
+    <string name="categoria_do_evento">Categoria do evento</string>
+    <string name="modalidade">Modalidade</string>
+    <string name="aceita_animais_de_estimacao">Aceita animais de estimação?</string>
+    <string name="adicionar_localizacao_no_google_maps">Adicionar localização no Google Maps</string>
+    <string name="evento_acessivel">Evento acessível a pessoa com deficiência?</string>
+    <string name="tipos_de_deficiencia">Clique aqui para entender os tipos de deficiência</string>
+    <string name="criar_evento_e_publicar">Criar evento e publicar</string>
+    <string name="evento_gratuito">Evento gratuito</string>
+    <string name="estado">Estado:</string>
+    <string name="modality_online">Online</string>
+    <string name="modality_presencial">Presencial</string>
     <string name="motivational_message">“Lembre-se: ninguém tem as respostas para a sua vida além de você”</string>
     <string name="question_mood">Como você está se sentindo hoje?</string>
-
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>
