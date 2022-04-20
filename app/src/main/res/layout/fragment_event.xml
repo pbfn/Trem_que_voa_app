@@ -463,7 +463,6 @@
                     app:layout_constraintTop_toBottomOf="@id/iconEventShare" />
             </GridLayout>
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonParticipate"
                 style="@style/TextAppearance.AppCompat.Button.StyleButton"
@@ -477,6 +476,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gridShares" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPay"
+                style="@style/TextAppearance.AppCompat.Button.StyleButtonGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="Pagar com cartão"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonParticipate" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -47,6 +47,8 @@
     <string name="criar_evento_e_publicar">Criar evento e publicar</string>
     <string name="evento_gratuito">Evento gratuito</string>
     <string name="estado">Estado:</string>
+    <string name="modality_online">Online</string>
+    <string name="modality_presencial">Presencial</string>
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>

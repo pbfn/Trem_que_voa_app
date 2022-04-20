@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
+import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW
+import com.br.ioasys.tremquevoa.extensions.toString
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -47,16 +50,21 @@ class EventFragment : BottomSheetDialogFragment() {
             textViewEventDescription.text = event?.description
             textViewNameOrganizer.text = event?.user?.name
             textViewConfirmedParticipants.text = event?.numParticipants.toString()
-            textViewDate.text = event?.date
+            textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
             textViewStartTime.text = event?.startTime
             textViewDuration.text = event?.endTime  //TODO calcular duração
             textViewCategory.text = event?.activity?.title
-            textViewModality.text = event?.isOnline.toString()
+            textViewModality.text = getModality(event?.isOnline?:false)
             textViewAcessible.text = event?.accessibilities.toString() //TODO tratar para pegar as acessibilidades
             textViewPets.text = event?.isPetFriendly.toString() //TODO tratar para retornar o texto Sim ou não
             textViewLocalEvent.text = event?.address?.street
             textViewEventFreeOrEventPromoted.text = event?.price.toString()  //TODO tratar para pegar se for pago ou gratuito
         }
+    }
+
+    private fun getModality(isOnline: Boolean) : String {
+        return if(isOnline) getString(R.string.modality_online)
+        else getString(R.string.modality_presencial)
     }
 
     override fun onDestroyView() {

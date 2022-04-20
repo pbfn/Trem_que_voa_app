@@ -31,15 +31,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_event"
+                android:src="@drawable/image_yoga"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewDateEvent"
-                android:layout_width="66dp"
-                android:layout_height="29dp"
+                android:layout_width="70dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="14dp"
                 android:text="28 abril"
@@ -53,7 +53,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewTitleEvent"
-            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -76,9 +76,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewLocalEvent"
-            style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
-            android:layout_width="118dp"
-            android:layout_height="19dp"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Gramado da entrada"
             app:layout_constraintEnd_toEndOf="parent"

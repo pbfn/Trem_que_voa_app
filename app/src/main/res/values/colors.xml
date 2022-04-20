@@ -16,7 +16,7 @@
     <color name="error">#E25C5C</color>
     <color name="neutral">#757678</color>
     <color name="bg_bottom_navigation">#A5A1A1</color>
-    <color name="bg_event">#FAF1F1</color>
+    <color name="bg_event">#FF5722</color>
     <color name="background_card">#DEDAF0</color>
     <color name="background_item_perfil">#6B5BBE</color>
     <color name="bg_date_card_event">#F6F9FF</color>
