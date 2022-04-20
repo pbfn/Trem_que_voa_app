@@ -49,6 +49,9 @@
             android:id="@+id/action_interestsFragment_to_homeActivity"
             app:destination="@id/homeActivity"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_interestsFragment_to_disabilitiesFragment"
+            app:destination="@id/disabilitiesFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerEventFragment"
@@ -159,4 +162,13 @@
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/disabilitiesFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.DisabilitiesFragment"
+        android:label="fragment_disabilities"
+        tools:layout="@layout/fragment_disabilities" >
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
 </navigation>
