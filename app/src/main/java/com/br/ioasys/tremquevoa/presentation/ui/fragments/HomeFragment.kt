@@ -1,16 +1,24 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
+import androidx.appcompat.widget.AppCompatTextView
+import com.br.ioasys.tremquevoa.R
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentHomeBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
+import com.br.ioasys.tremquevoa.domain.model.Message
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterEvents
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.text.SimpleDateFormat
+import java.util.*
 import com.br.ioasys.tremquevoa.presentation.adapters.EventClickListener
 import com.br.ioasys.tremquevoa.presentation.viewmodel.HomeViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -28,6 +36,8 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterEventsPromoted: AdapterEvents
     private lateinit var adapterEventsOnline: AdapterEvents
     private lateinit var adapterEventsRecommended: AdapterEvents
+    private lateinit var customAlertDialogView: View
+    private lateinit var dateNow: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,9 +53,13 @@ class HomeFragment : Fragment(), EventClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewEvents()
         addObserver()
-        homeViewModel.getEvent(user?.token?:"")
+        verifyDateLogin()
+        setRecyclerViewEvents()
+        homeViewModel.getEvent(user?.token ?: "")
+        customAlertDialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.pop_up_home, null, false)
+
     }
 
     private fun addObserver() {
@@ -87,6 +101,27 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+
+        homeViewModel.date.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    val lastDateLogin = dateTimeFormat.parse(response.data)
+                    val dateLogin = dateTimeFormat.parse(dateNow)
+                    if (dateLogin > lastDateLogin) {
+                        homeViewModel.getDailyMessage(user?.token ?: "")
+                    }
+                }
+            }
+        }
+
+        homeViewModel.dailyMessage.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    showDialog(response.data)
+                }
+            }
+        }
     }
 
     private fun setRecyclerViewEvents() {
@@ -107,6 +142,35 @@ class HomeFragment : Fragment(), EventClickListener {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = adapterEventsRecommended
         }
+    }
+
+    private fun showDialog(dailyMessage: Message) {
+        val dialog =
+            MaterialAlertDialogBuilder(
+                requireContext(),
+                R.style.MaterialAlertDialog_Rounded
+            )
+        dialog.setView(customAlertDialogView)
+        val text =
+            customAlertDialogView.findViewById(R.id.textViewMotivationalMessage) as AppCompatTextView
+        val radioGroup = customAlertDialogView.findViewById(R.id.radioGroup) as RadioGroup
+
+        dialog.setPositiveButton("Confirmar", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+
+            }
+        })
+        text.text = dailyMessage.text
+
+        dialog.create()
+        dialog.show()
+    }
+
+    private fun verifyDateLogin() {
+        val date = Calendar.getInstance().time
+        val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+        dateNow = dateTimeFormat.format(date)
+        homeViewModel.verifyDate(dateNow)
     }
 
     override fun onEventClickListener(event: Event) {

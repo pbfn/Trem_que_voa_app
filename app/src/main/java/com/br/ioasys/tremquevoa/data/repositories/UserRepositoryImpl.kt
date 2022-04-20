@@ -92,4 +92,10 @@ class UserRepositoryImpl(
         userLocalDataSource.setFirstLogin()
     }
 
+    override fun saveDateLogin(date: String): Flow<String> = flow {
+        userLocalDataSource.saveDateLogin(date = date).collect {
+            emit(it)
+        }
+    }
+
 }

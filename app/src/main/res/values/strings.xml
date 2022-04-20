@@ -49,6 +49,8 @@
     <string name="estado">Estado:</string>
     <string name="modality_online">Online</string>
     <string name="modality_presencial">Presencial</string>
+    <string name="motivational_message">“Lembre-se: ninguém tem as respostas para a sua vida além de você”</string>
+    <string name="question_mood">Como você está se sentindo hoje?</string>
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>

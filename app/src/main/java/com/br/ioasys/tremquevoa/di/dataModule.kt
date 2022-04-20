@@ -14,11 +14,15 @@ val dataModule = module {
     }
 
 
-    single<InterestsRepository>{
+    single<InterestsRepository> {
         InterestsRepositoryImpl(get())
     }
 
     single<DisabilitiesRepository> {
         DisabilitiesRepositoryImpl(get())
+    }
+
+    single<MessageRepository> {
+        MessageRepositoryImpl(get())
     }
 }

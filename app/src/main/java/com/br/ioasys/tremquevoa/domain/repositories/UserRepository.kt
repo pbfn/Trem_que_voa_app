@@ -34,4 +34,6 @@ interface UserRepository {
     fun verifyFirstLogin(): Flow<Boolean>
 
     fun setFirstLogin()
+
+    fun saveDateLogin(date:String):Flow<String>
 }

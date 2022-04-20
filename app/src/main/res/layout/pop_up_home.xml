@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewMotivationalMessage"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/motivational_message"
+        android:textColor="@color/primary_darker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView2"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/question_mood"
+        android:textColor="@color/neutral_darkest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMotivationalMessage" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:button="@drawable/selector_icon_crazy" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:button="@drawable/selector_icon_sad" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:button="@drawable/selector_icon_neutral" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:button="@drawable/selector_icon_happy" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:button="@drawable/selector_icon_very_happy" />
+
+        </RadioGroup>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

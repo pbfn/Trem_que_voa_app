@@ -2,10 +2,7 @@ package com.br.ioasys.tremquevoa.di
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.*
 import com.br.ioasys.tremquevoa.data_remote.datasource.*
-import com.br.ioasys.tremquevoa.data_remote.service.AuthService
-import com.br.ioasys.tremquevoa.data_remote.service.DisabilitiesService
-import com.br.ioasys.tremquevoa.data_remote.service.EventService
-import com.br.ioasys.tremquevoa.data_remote.service.InterestsService
+import com.br.ioasys.tremquevoa.data_remote.service.*
 import com.br.ioasys.tremquevoa.data_remote.utils.ApiConstants.BASE_URL
 import com.br.ioasys.tremquevoa.data_remote.utils.WebServiceFactory
 import org.koin.dsl.module
@@ -26,6 +23,10 @@ val dataRemoteModule = module {
 
     single<DisabilitiesRemoteDataSource> {
         DisabilitiesRemoteDataSourceImpl(get())
+    }
+
+    single<MessageRemoteDataSource> {
+        MessageRemoteDataSourceImpl(get())
     }
 
     single<AuthService> {
@@ -50,6 +51,13 @@ val dataRemoteModule = module {
     }
 
     single<DisabilitiesService> {
+        WebServiceFactory.createWebService(
+            okHttpClient = get(),
+            url = BASE_URL
+        )
+    }
+
+    single<MessageService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
             url = BASE_URL
