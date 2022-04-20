@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,8 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterEventsPromoted: AdapterEvents
     private lateinit var adapterEventsOnline: AdapterEvents
     private lateinit var adapterEventsRecommended: AdapterEvents
+    private lateinit var customAlertDialogView: View
+    private lateinit var dateNow: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +54,13 @@ class HomeFragment : Fragment(), EventClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewEvents()
         addObserver()
-        homeViewModel.getEvent(user?.token?:"")
+        verifyDateLogin()
+        setRecyclerViewEvents()
+        homeViewModel.getEvent(user?.token ?: "")
         customAlertDialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.pop_up_home, null, false)
-        showDialog()
+        
     }
 
     private fun addObserver() {
@@ -98,6 +102,21 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+
+        homeViewModel.date.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    Log.d("HomeFragment", response.data)
+                    val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                    val lastDateLogin = dateTimeFormat.parse(response.data)
+                    val dateLogin = dateTimeFormat.parse(dateNow)
+                    if(dateLogin > lastDateLogin){
+                        showDialog()
+                    }
+                }
+            }
+        }
+
     }
 
     private fun setRecyclerViewEvents() {
@@ -136,14 +155,17 @@ class HomeFragment : Fragment(), EventClickListener {
             }
 
         })
-        val date = Calendar.getInstance().time
-        val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
 
-        text.text = dateTimeFormat.format(date)
         dialog.create()
         dialog.show()
     }
 
+    private fun verifyDateLogin() {
+        val date = Calendar.getInstance().time
+        val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+        dateNow = dateTimeFormat.format(date)
+        homeViewModel.verifyDate(dateNow)
+    }
 
     override fun onEventClickListener(event: Event) {
         EventFragment.newInstance(event).show(childFragmentManager, "event")

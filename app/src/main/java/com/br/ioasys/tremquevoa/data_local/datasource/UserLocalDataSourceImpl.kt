@@ -43,7 +43,7 @@ class UserLocalDataSourceImpl(
 
     override fun saveDateLogin(date: String): Flow<String> = flow {
         val lastDate = sharedPreferencesHelper.getString(LAST_DATE_LOGIN)
-        saveDateLogin(date = date)
+        sharedPreferencesHelper.saveString(LAST_DATE_LOGIN,date)
         emit(lastDate)
     }
 
