@@ -12,13 +12,23 @@ data class UserResponse(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("emergencyName")
-    val emergencyName: String,
+    val emergencyName: String?,
     @SerializedName("emergencyPhone")
-    val emergencyPhone: String,
+    val emergencyPhone: String?,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("updatedAt")
-    val updatedAt: String,
+    val updatedAt: String?,
     @SerializedName("aboutMe")
-    val aboutMe: String,
+    val aboutMe: String?,
+    @SerializedName("deletedAt")
+    val deletedAt: String?,
+    @SerializedName("isPremium")
+    val isPremium: Boolean,
+    @SerializedName("isAdmin")
+    val isAdmin: Boolean,
+    @SerializedName("password")
+    val password: String,
+    @SerializedName("city")
+    val city: String
 )

@@ -9,4 +9,5 @@ interface UserLocalDataSource {
     fun updateUser(user: User)
     fun verifyFirstLogin(): Flow<Boolean>
     fun setFirstLogin()
+    fun saveDateLogin(date: String):Flow<String>
 }

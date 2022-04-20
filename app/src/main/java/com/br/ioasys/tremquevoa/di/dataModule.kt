@@ -9,16 +9,20 @@ val dataModule = module {
         UserRepositoryImpl(get(), get())
     }
 
-    single<RegisterEventRepository> {
-        RegisterEventRepositoryImpl(get())
+    single<EventRepository> {
+        EventRepositoryImpl(get())
     }
 
 
-    single<InterestsRepository>{
+    single<InterestsRepository> {
         InterestsRepositoryImpl(get())
     }
 
     single<DisabilitiesRepository> {
         DisabilitiesRepositoryImpl(get())
+    }
+
+    single<MessageRepository> {
+        MessageRepositoryImpl(get())
     }
 }

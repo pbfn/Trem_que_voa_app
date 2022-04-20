@@ -57,7 +57,11 @@
         android:id="@+id/registerEventFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment"
         android:label="fragment_register_event"
-        tools:layout="@layout/fragment_register_event" />
+        tools:layout="@layout/fragment_register_event" >
+        <action
+            android:id="@+id/action_registerEventFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
     <fragment
         android:id="@+id/emergencyContactFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.EmergencyContactFragment"

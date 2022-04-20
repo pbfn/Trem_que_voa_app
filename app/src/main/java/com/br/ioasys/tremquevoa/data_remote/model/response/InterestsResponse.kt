@@ -13,4 +13,8 @@ data class InterestsResponse(
     val urlActive: String,
     @SerializedName("urlInactive")
     val urlInactive: String,
+    val createdAt: String,
+    val updatedAt: String?,
+    val deletedAt: String?
+
 )

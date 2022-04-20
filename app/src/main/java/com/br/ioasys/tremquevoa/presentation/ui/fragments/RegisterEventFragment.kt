@@ -11,11 +11,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
-
-import com.br.ioasys.tremquevoa.di.databaseModule
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.extensions.*
@@ -45,7 +43,7 @@ class RegisterEventFragment : Fragment() {
     private var date: GregorianCalendar = GregorianCalendar()
     private var startHour: GregorianCalendar? = null
     private var endHour: GregorianCalendar? = null
-    private lateinit var user: User
+    private var user: User? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,6 +69,7 @@ class RegisterEventFragment : Fragment() {
 
         settingModality()
         settingPetFriendly()
+        configToggleEventFree()
     }
 
     private fun setListener() {
@@ -119,8 +118,8 @@ class RegisterEventFragment : Fragment() {
 
                 is ViewState.Success -> {
                     user = response.data
-                    registerEventViewModel.fetchActivities(user.token)
-                    registerEventViewModel.fetchDisabilities(user.token)
+                    registerEventViewModel.fetchActivities(user?.token ?: "")
+                    registerEventViewModel.fetchDisabilities(user?.token ?: "")
                 }
 
                 is ViewState.Error -> {
@@ -294,6 +293,21 @@ class RegisterEventFragment : Fragment() {
         }
     }
 
+    private fun configToggleEventFree() {
+        binding.apply {
+            toggleFreeEvent.setOnCheckedChangeListener { compoundButton, b ->
+                if (compoundButton.isChecked) {
+                    compoundButton.isChecked = true
+                    customPrice.invisible()
+                } else {
+                    compoundButton.isChecked = false
+                    customPrice.visible()
+                }
+            }
+        }
+
+    }
+
     private fun configViewIsOnline(online: Boolean) {
         binding.apply {
             if (online) {
@@ -336,20 +350,19 @@ class RegisterEventFragment : Fragment() {
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
-            token = user.token,
-            id = "",
+            token = user?.token ?: "",
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,
             url = binding.customUrl.input.text.toString(),
-            date = date?.toString(FORMAT_DATE)?:"",
-            startTime = startHour?.toString(FORMAT_HOUR)?:"",
-            endTime = endHour?.toString(FORMAT_HOUR)?:"",
+            date = date?.toString(FORMAT_DATE) ?: "",
+            startTime = startHour?.toString(FORMAT_HOUR) ?: "",
+            endTime = endHour?.toString(FORMAT_HOUR) ?: "",
             isPetFriendly = isYes,
             maxParticipants = binding.customMaxParticipants.input.text.toInt() ?: 0,
             activityId = categorySelected?.id ?: "",
             price = binding.customPrice.input.text.toInt() ?: 0,
-            userId = user.id,
+            userId = user?.id ?: "",
             userIdentity = binding.customUserIdentity.input.text.toString(),
             accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.id },
             street = binding.customStreet.input.text.toString(),
@@ -362,11 +375,10 @@ class RegisterEventFragment : Fragment() {
     }
 
     private fun setRecycleViewButtonsOptions() {
-        val layout = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         adapterDisabilities = AdapterDisabilities()
         binding.recyclerViewButtonOptions.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = adapterDisabilities
-            layoutManager = layout
         }
     }
 }
