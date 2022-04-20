@@ -9,8 +9,8 @@ val dataModule = module {
         UserRepositoryImpl(get(), get())
     }
 
-    single<RegisterEventRepository> {
-        RegisterEventRepositoryImpl(get())
+    single<EventRepository> {
+        EventRepositoryImpl(get())
     }
 
 

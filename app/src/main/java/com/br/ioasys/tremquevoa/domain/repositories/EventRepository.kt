@@ -1,14 +1,12 @@
 package com.br.ioasys.tremquevoa.domain.repositories
 
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 
-interface RegisterEventRepository {
+interface EventRepository {
 
     fun registerEvent(
         token:String,
-        id: String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -31,5 +29,5 @@ interface RegisterEventRepository {
         referencePoint: String
     ): Flow<Event>
 
-    //fun fetchEventActivities(): Flow<List<Activities>>
+    fun getEvents(token: String): Flow<List<Event>>
 }

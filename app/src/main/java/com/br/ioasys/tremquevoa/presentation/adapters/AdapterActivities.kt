@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.ThemedSpinnerAdapter
-import com.br.ioasys.tremquevoa.domain.model.Activities
 import com.br.ioasys.tremquevoa.domain.model.Interests
 
 @SuppressLint("NewApi")
