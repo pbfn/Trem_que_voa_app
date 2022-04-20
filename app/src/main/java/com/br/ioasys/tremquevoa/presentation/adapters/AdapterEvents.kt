@@ -1,15 +1,15 @@
 package com.br.ioasys.tremquevoa.presentation.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.EventsItemAdpterBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW_SHORT
+import com.br.ioasys.tremquevoa.extensions.interestImageDrawable
 import com.br.ioasys.tremquevoa.extensions.toString
 
 class AdapterEvents(
@@ -40,6 +40,7 @@ class AdapterEvents(
     }
 
     class EventListViewHolder(
+        private val context: Context,
         private val binding: EventsItemAdpterBinding,
         private val onEventClickListener: EventClickListener
     ): RecyclerView.ViewHolder(binding.root) {
@@ -51,11 +52,7 @@ class AdapterEvents(
                 //val interestEvent = itemView.interestCardEvent TODO como pegar essa informação dos interesses?
                 //val confirmed = itemView.confirmedCardEvent TODO como implementar essa parte de confirmação?
 
-                //TODO setar uma imagem para cada atividade
-                imageCardEvent.load(event.activity.urlActive) {
-                    error(R.drawable.img_event)
-                }
-
+                imageCardEvent.setImageDrawable(event.interestImageDrawable(context))
                 root.setOnClickListener {
                     onEventClickListener.onEventClickListener(event)
                 }
@@ -72,7 +69,7 @@ class AdapterEvents(
                     parent,
                     false
                 )
-                return EventListViewHolder(binding, onEventClickListener)
+                return EventListViewHolder(parent.context, binding, onEventClickListener)
             }
         }
     }
