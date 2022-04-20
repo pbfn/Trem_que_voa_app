@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.response.DisabilitiesResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.InterestsResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.UserResponse
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class EventResponse(
     @SerializedName("id")
@@ -17,7 +18,7 @@ data class EventResponse(
     @SerializedName("url")
     val url: String?,
     @SerializedName("date")
-    val date: String,
+    val date: Date,
     @SerializedName("isPetFriendly")
     val isPetFriendly: Boolean,
     @SerializedName("isPromoted")

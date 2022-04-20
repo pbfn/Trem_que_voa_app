@@ -1,12 +1,14 @@
 package com.br.ioasys.tremquevoa.domain.model
 
+import java.util.*
+
 data class Event (
     val id: String,
     val name: String,
     val description: String,
     val isOnline: Boolean,
     val url: String,
-    val date: String,
+    val date: Date,
     val isPetFriendly: Boolean,
     val maxParticipants: Int,
     val numParticipants: Int,

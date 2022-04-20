@@ -9,6 +9,8 @@ import coil.load
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.EventsItemAdpterBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
+import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW_SHORT
+import com.br.ioasys.tremquevoa.extensions.toString
 
 class AdapterEvents(
     private val onEventClickListener: EventClickListener
@@ -43,7 +45,7 @@ class AdapterEvents(
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(event: Event) {
             binding.apply {
-                textViewDateEvent.text = event.date
+                textViewDateEvent.text = event.date.toString(FORMAT_DATE_VIEW_SHORT)
                 textViewTitleEvent.text = event.name
                 textViewLocalEvent.text = event.address?.city
                 //val interestEvent = itemView.interestCardEvent TODO como pegar essa informação dos interesses?
