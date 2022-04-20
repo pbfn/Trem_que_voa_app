@@ -35,7 +35,8 @@
     <string name="access_account_button">ACESSAR SUA CONTA</string>
     <string name="send_password">Não recebeu a senha?</string>
     <string name="send_new_password_button">Reenvie aqui!</string>
-    <string name="motivational_message">Motivational message</string>
+    <string name="motivational_message">“Lembre-se: ninguém tem as respostas para a sua vida além de você”</string>
+    <string name="question_mood">Como você está se sentindo hoje?</string>
 
 
     <string-array name="pet_friendly_array">

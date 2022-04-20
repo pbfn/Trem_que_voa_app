@@ -34,20 +34,6 @@
     </style>
 
 
-    <style name="Base.Widget.AppCompat.TextView.App_Body_18_Bold">
-        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
-        <item name="android:textColor">@color/neutral_darkest</item>
-        <item name="android:textSize">18sp</item>
-        <item name="lineHeight">27dp</item>
-    </style>
-
-    <style name="Base.Widget.AppCompat.TextView.App_Body_16_Bold">
-        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
-        <item name="android:textColor">@color/neutral_darkest</item>
-        <item name="android:textSize">16sp</item>
-        <item name="lineHeight">24dp</item>
-    </style>
-
     <style name="Base.Widget.AppCompat.TextView.App_Body_16_Libre_Bold">
         <item name="android:fontFamily">@font/libre_franklin_bold</item>
         <item name="android:textColor">@color/neutral_darkest</item>
@@ -64,6 +50,7 @@
     </style>
 
     Fonts App/Body-16-Regular
+
     <style name="Base.Widget.AppCompat.TextView.App_Body_16_Regular">
         <item name="android:fontFamily">@font/source_sans_pro_regular</item>
         <item name="android:textColor">@color/neutral_darkest</item>
@@ -76,7 +63,8 @@
         <item name="android:textColor">@color/M3_sys_light_on_primary</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">22dp</item>
-    </style> M3/label/large
+    </style>
+    M3/label/large
 
     <style name="Base.Widget.AppCompat.TextView.M3_label_large">
         <item name="android:fontFamily">@font/roboto_medium</item>
@@ -135,6 +123,32 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:background">@drawable/background_item_perfil</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <!--    NOVOS LAYOUTS, USAR APENAS ESSES, REMOVER OS ANTERIORES NO FIM DO PROJETO-->
+
+    <style name="MaterialAlertDialog.Rounded" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MaterialAlertDialog.Rounded
+        </item>
+        <item name="colorSurface">@color/primary_lighter</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialAlertDialog.Rounded" parent="">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_18_Bold">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textColor">@color/neutral_darkest</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">27dp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_16_Bold">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textColor">@color/title_edit_text</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>
