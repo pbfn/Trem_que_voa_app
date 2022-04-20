@@ -5,6 +5,7 @@ import com.br.ioasys.tremquevoa.data_local.database.UserDao
 import com.br.ioasys.tremquevoa.data_local.mappers.toDao
 import com.br.ioasys.tremquevoa.data_local.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_local.utils.LocalConstants.FIRST_LOGIN
+import com.br.ioasys.tremquevoa.data_local.utils.LocalConstants.LAST_DATE_LOGIN
 import com.br.ioasys.tremquevoa.data_local.utils.SharedPreferencesHelper
 import com.br.ioasys.tremquevoa.domain.model.User
 import kotlinx.coroutines.flow.Flow
@@ -38,6 +39,12 @@ class UserLocalDataSourceImpl(
             key = FIRST_LOGIN,
             value = false
         )
+    }
+
+    override fun saveDateLogin(date: String): Flow<String> = flow {
+        val lastDate = sharedPreferencesHelper.getString(LAST_DATE_LOGIN)
+        saveDateLogin(date = date)
+        emit(lastDate)
     }
 
 }

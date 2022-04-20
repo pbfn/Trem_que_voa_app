@@ -30,4 +30,5 @@ val domainModule = module {
     factory { VerifyFirstLoginUseCase(get(), get()) }
     factory { SetFirstLoginUseCase(get(), get()) }
     factory { GetDisabilitiesByUserUseCase(get(), get()) }
+    factory { SaveDateLoginUseCase(get(), get()) }
 }

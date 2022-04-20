@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

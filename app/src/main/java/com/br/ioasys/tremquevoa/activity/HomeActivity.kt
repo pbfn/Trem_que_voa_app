@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
@@ -20,14 +21,18 @@ import com.br.ioasys.tremquevoa.databinding.ActivityHomeBinding
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment
 import com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment
+import com.br.ioasys.tremquevoa.presentation.viewmodel.HomeActivityViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var materialAlertDialogBuilder: MaterialAlertDialogBuilder
     private lateinit var customAlertDialogView: View
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -41,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         customAlertDialogView = LayoutInflater.from(this)
             .inflate(R.layout.pop_up_home, null, false)
 
-        showDialog()
+        //showDialog()
         replaceFragment(HomeFragment())
         setBottomNavigation()
     }
@@ -77,22 +82,5 @@ class HomeActivity : AppCompatActivity() {
             .addToBackStack("Fragment").commit()
     }
 
-    private fun showDialog() {
-        val dialog =
-            MaterialAlertDialogBuilder(
-                this,
-                R.style.MaterialAlertDialog_Rounded
-            )
-        dialog.setView(customAlertDialogView)
-        val text =
-            customAlertDialogView.findViewById(R.id.textViewMotivationalMessage) as AppCompatTextView
-        dialog.setPositiveButtonIcon(ContextCompat.getDrawable(this,R.drawable.ic_error))
-//        dialog.setPositiveButton(
-//            "Confirmar",
-//            DialogInterface.OnClickListener { dialogInterface, i ->
-//                Unit
-//            })
-        dialog.create()
-        dialog.show()
-    }
+
 }

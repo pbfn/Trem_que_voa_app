@@ -17,4 +17,11 @@ class SharedPreferencesHelper(
     }
 
     fun getBoolean(key: String): Boolean = sharedPreferences.getBoolean(key, true)
+
+    fun saveString(key: String, value: String) = sharedPreferences.edit().run {
+        putString(key, value)
+        apply()
+    }
+
+    fun getString(key: String): String = sharedPreferences.getString(key,"")?:""
 }
