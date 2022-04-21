@@ -11,12 +11,11 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.br.ioasys.tremquevoa.R
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentHomeBinding
-import com.br.ioasys.tremquevoa.domain.model.Disabilities
-import com.br.ioasys.tremquevoa.domain.model.Event
-import com.br.ioasys.tremquevoa.domain.model.Message
-import com.br.ioasys.tremquevoa.domain.model.Interests
+import com.br.ioasys.tremquevoa.domain.model.*
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterEvents
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
@@ -41,7 +40,7 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterEventsRecommended: AdapterEvents
     private lateinit var adapterInterests: AdapterInterestsPerfil
     private lateinit var adapterDisabilities: AdapterDisabilities
-    private lateinit var adatpterWellness: AdatpterWellness
+    private lateinit var adapterWellness: AdapterWellness
     private lateinit var customAlertDialogView: View
     private lateinit var dateNow: String
 
@@ -171,7 +170,7 @@ class HomeFragment : Fragment(), EventClickListener {
         homeViewModel.wellness.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Success -> {
-                    adatpterWellness.differ.submitList(response.data)
+                    adapterWellness.differ.submitList(response.data)
                 }
             }
         }
@@ -190,7 +189,7 @@ class HomeFragment : Fragment(), EventClickListener {
                 )!!, {}
             )
             textViewViewMore.setOnClickListener {
-
+                nextPage(HomeFragmentDirections.actionHomeFragmentToWellnessFragment())
             }
         }
     }
@@ -214,11 +213,10 @@ class HomeFragment : Fragment(), EventClickListener {
             adapter = adapterEventsRecommended
         }
 
-        adatpterWellness = AdatpterWellness()
-        adatpterWellness.itemLimit = 50
+        adapterWellness = AdapterWellness()
         binding.recyclerViewWellness.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = adatpterWellness
+            adapter = adapterWellness
 
         }
     }
@@ -270,5 +268,9 @@ class HomeFragment : Fragment(), EventClickListener {
 
     override fun onEventClickListener(event: Event) {
         EventFragment.newInstance(event).show(childFragmentManager, "event")
+    }
+
+    private fun nextPage(directions: NavDirections) {
+        findNavController().navigate(directions)
     }
 }

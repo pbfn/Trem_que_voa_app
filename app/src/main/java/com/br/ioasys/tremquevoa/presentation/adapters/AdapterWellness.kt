@@ -9,7 +9,7 @@ import com.br.ioasys.tremquevoa.databinding.WellnessItemAdapterBinding
 import com.br.ioasys.tremquevoa.domain.model.Wellness
 import com.bumptech.glide.Glide
 
-class AdatpterWellness() : RecyclerView.Adapter<AdatpterWellness.AdapterWellnessViewHolder>() {
+class AdapterWellness() : RecyclerView.Adapter<AdapterWellness.AdapterWellnessViewHolder>() {
 
     var itemLimit = 3
 
