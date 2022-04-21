@@ -19,6 +19,7 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_button_disable.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_button_enabled.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_edit_perfil_actived.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_item_interests_perfil.xml" value="0.1085" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_item_perfil.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_disable.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_enable.xml" value="0.1" />
@@ -73,17 +74,17 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/buttons_options_item_adapter.xml" value="0.22" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/custom_form.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/events_item_adpter.xml" value="0.33" />
-        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_event.xml" value="0.1" />
-        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_event.xml" value="0.25" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_interests.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_perfil_user.xml" value="0.1" />
-        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_register_event.xml" value="0.15" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_register_user.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_welcome.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/interests_item_adapter.xml" value="0.1" />
-        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/interests_perfil_item_adapter.xml" value="0.12355707567336469" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/interests_perfil_item_adapter.xml" value="0.18" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable-hdpi/background_button_google.xml" value="0.121" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable-xxhdpi/background_edit_perfil_inactive.xml" value="0.1145" />
         <entry key="..\:/projetos-android-kotlin/Trem_que_voa_app/Trem_que_voa_app/app/src/main/res/drawable/background_button_disable.xml" value="0.1" />
@@ -143,7 +144,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.5" />
       </ProjectState>
     </option>
   </component>

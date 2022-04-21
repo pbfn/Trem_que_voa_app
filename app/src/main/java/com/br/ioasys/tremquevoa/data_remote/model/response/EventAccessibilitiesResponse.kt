@@ -14,5 +14,5 @@ class EventAccessibilitiesResponse (
     val updatedAt: String?,
     val deletedAt: String?,
     @SerializedName("acessibilities")
-    val acessibilities: List<DisabilitiesResponse>?
+    val acessibilities: DisabilitiesResponse?
 )

@@ -15,4 +15,5 @@ val presentationModule = module {
     viewModel { SplashViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { DisabilitiesViewModel(get(), get()) }
+    viewModel { EventViewModel( get(), get()) }
 }

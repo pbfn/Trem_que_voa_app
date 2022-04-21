@@ -1,5 +1,6 @@
 package com.br.ioasys.tremquevoa.data_remote.service
 
+import com.br.ioasys.tremquevoa.data_remote.model.request.ParticipateEventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.response.event.RegisterEventResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.event_list.ListEventResponse
@@ -20,6 +21,13 @@ interface EventService {
     suspend fun getEvent(
         @Header("Authorization") token: String
     ): Response<ListEventResponse>
+
+    @Headers("Content-type: application/json")
+    @POST("events/attendees")
+    suspend fun participateEvent(
+        @Body participateEventRequest: ParticipateEventRequest,
+        @Header("Authorization") token: String
+    ): Response<Unit>
 
 //    @Headers("Content-type: application/json")
 //    @GET("activities/list")

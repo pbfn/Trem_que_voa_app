@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 
 import com.br.ioasys.tremquevoa.data.datasource.remote.EventRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
+import com.br.ioasys.tremquevoa.data_remote.model.request.ParticipateEventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.AddressRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.EventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
@@ -70,8 +71,7 @@ class EventDataSourceImpl(
                 emit(registerEventResponse.let { registerResponse ->
                     registerResponse.eventResponse.toDomain().copy(
                         accessibilities =
-                        registerResponse.eventAccessibilities?.acessibilities?.toDomain()
-                            ?: arrayListOf(),
+                        registerResponse.eventAccessibilities?.toDomain(),
                         address = registerResponse.address.toDomain(),
                         activity = registerResponse.interestResponse.toDomain()
                     )
@@ -95,6 +95,17 @@ class EventDataSourceImpl(
             } else {
                 emit(error(response.code()))
             }
+        }
+    }
+
+    override fun registerParticipateEvent(token: String, status: String, eventId: String) = flow {
+        val response = eventService.participateEvent(ParticipateEventRequest(status, eventId),  token = "Bearer $token")
+        if (response.isSuccessful) {
+            response.body()?.let { registerEventResponse ->
+                emit(registerEventResponse)
+            }
+        } else {
+            emit(error(response.code()))
         }
     }
 }

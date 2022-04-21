@@ -31,5 +31,11 @@ interface EventRemoteDataSource {
 
     fun getEvent(token: String): Flow<List<Event>>
 
+    fun registerParticipateEvent(
+        token: String,
+        status: String,
+        eventId: String
+    ): Flow<Unit>
+
     //fun fetchEventActivities(): Flow<List<Activities>>
 }

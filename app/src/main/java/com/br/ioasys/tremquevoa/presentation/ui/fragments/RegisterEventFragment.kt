@@ -191,10 +191,10 @@ class RegisterEventFragment : Fragment() {
         datePikerDialog = DatePickerDialog(
             requireContext(),
             { _, mYear, mMonth, mDay ->
-                binding.customDate.input.setText("$mYear-$mMonth-$mDay")
-                date.set(GregorianCalendar.YEAR, mYear)
-                date.set(GregorianCalendar.MONTH, mMonth)
+                binding.customDate.input.setText("$mDay-$mMonth-$mYear")
                 date.set(GregorianCalendar.DAY_OF_MONTH, mDay)
+                date.set(GregorianCalendar.MONTH, mMonth)
+                date.set(GregorianCalendar.YEAR, mYear)
                 Log.d("Date", "data selecionada $mDay-$mMonth-$mYear")
             },
             year,

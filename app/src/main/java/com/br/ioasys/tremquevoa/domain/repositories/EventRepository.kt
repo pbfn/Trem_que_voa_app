@@ -29,4 +29,10 @@ interface EventRepository {
     ): Flow<Event>
 
     fun getEvents(): Flow<List<Event>>
+
+    fun registerParticipateEvent(
+        token: String,
+        status: String,
+        eventId: String
+    ): Flow<Unit>
 }
