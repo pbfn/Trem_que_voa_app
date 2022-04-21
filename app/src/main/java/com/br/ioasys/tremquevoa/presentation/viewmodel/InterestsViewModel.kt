@@ -22,8 +22,11 @@ class InterestsViewModel(
     private var _saveInterests = MutableLiveData<ViewState<Boolean>>()
     var saveInterests: LiveData<ViewState<Boolean>> = _saveInterests
 
+    init {
+        getInterests()
+    }
 
-    fun getInterests() {
+    private fun getInterests() {
         _interests.postLoading()
 
         getInterestsUseCase(
