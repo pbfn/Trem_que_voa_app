@@ -233,7 +233,7 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/view_more"
-            android:textColor="@color/logo_blue"
+            android:textColor="@color/primary_default"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewOnline" />
 
