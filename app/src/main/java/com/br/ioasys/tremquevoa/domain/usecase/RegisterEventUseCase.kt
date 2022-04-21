@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
 class RegisterEventUseCase(
     private val eventRepository: EventRepository,
     scope: CoroutineScope
-) : UseCase<RegisterEventUseCase.Params, Event>(scope = scope) {
+) : UseCase<RegisterEventUseCase.Params, Unit>(scope = scope) {
 
     data class Params(
         val name: String,
@@ -25,7 +25,7 @@ class RegisterEventUseCase(
         var endTime: String,
         val activityId: String,
         val price: Int,
-        val userId: String,
+        val userId: String? = "",
         val userIdentity: String,
         val accessibilities: List<String>,
         val street: String,
@@ -36,7 +36,7 @@ class RegisterEventUseCase(
         val referencePoint: String,
     )
 
-    override fun run(params: Params): Flow<Event> {
+    override fun run(params: Params): Flow<Unit> {
 
         validateFields(params)
 
@@ -52,7 +52,7 @@ class RegisterEventUseCase(
             endTime = params.endTime,
             activityId = params.activityId,
             price = params.price,
-            userId = params.userId,
+            userId = params.userId?:"",
             userIdentity = params.userIdentity,
             accessibilities = params.accessibilities,
             street = params.street,
@@ -74,9 +74,6 @@ class RegisterEventUseCase(
         }
         if (params.date.isEmpty()) {
             throw InvalidEmptyDateException()
-        }
-        if (params.userId.isEmpty()) {
-            throw InvalidEmptyUserIdException()
         }
         if (params.maxParticipants.toString().isEmpty()) {
             throw InvalidEmptyMaxParticipantsException()

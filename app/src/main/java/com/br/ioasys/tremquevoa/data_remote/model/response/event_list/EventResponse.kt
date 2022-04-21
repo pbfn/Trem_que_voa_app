@@ -1,6 +1,7 @@
-package com.br.ioasys.tremquevoa.data_remote.model.response.event
+package com.br.ioasys.tremquevoa.data_remote.model.response.event_list
 
-import com.br.ioasys.tremquevoa.data_remote.model.response.DisabilitiesResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.AddressResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.EventAccessibilitiesResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.InterestsResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.UserResponse
 import com.google.gson.annotations.SerializedName
@@ -48,11 +49,11 @@ data class EventResponse(
     @SerializedName( "updatedAt")
     val updatedAt: String?,
     @SerializedName( "activities")
-    val activities: InterestsResponse,
+    val activities: InterestsResponse?,
     @SerializedName( "addresses")
     val addresses: List<AddressResponse> ?= arrayListOf(),
     @SerializedName( "eventAccessibilities")
-    val eventAccessibilities: List<DisabilitiesResponse> ?= arrayListOf(),
+    val eventAccessibilities: List<EventAccessibilitiesResponse> ?= arrayListOf(),
     @SerializedName( "numParticipants")
     val numParticipants: Int
 )

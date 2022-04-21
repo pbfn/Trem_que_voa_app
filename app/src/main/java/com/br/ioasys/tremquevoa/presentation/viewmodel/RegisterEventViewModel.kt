@@ -23,8 +23,8 @@ class RegisterEventViewModel(
 
     private val TAG = "EventViewModel"
 
-    private var _event = MutableLiveData<ViewState<Event>>()
-    var event: LiveData<ViewState<Event>> = _event
+    private var _event = MutableLiveData<ViewState<Unit>>()
+    var event: LiveData<ViewState<Unit>> = _event
 
     private var _activities = MutableLiveData<ViewState<List<Interests>>>()
     val activities: LiveData<ViewState<List<Interests>>> = _activities
@@ -45,7 +45,6 @@ class RegisterEventViewModel(
         endTime: String,
         activityId: String,
         price: Int,
-        userId: String,
         userIdentity: String,
         accessibilities: List<String>,
         street: String,
@@ -70,7 +69,6 @@ class RegisterEventViewModel(
                 endTime = endTime,
                 activityId = activityId,
                 price = price,
-                userId = userId,
                 userIdentity = userIdentity,
                 accessibilities = accessibilities,
                 street = street,

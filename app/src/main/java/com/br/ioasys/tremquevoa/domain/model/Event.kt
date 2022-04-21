@@ -15,7 +15,7 @@ data class Event (
     val startTime: String,
     val isPromoted: Boolean,
     val endTime: String,
-    val activity: Interests,
+    val activity: Interests?,
     val price: Double,
     val user: User,
     val userIdentity: String,

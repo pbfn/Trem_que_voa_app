@@ -36,7 +36,7 @@ class EventDataSourceImpl(
         state: String,
         zipCode: String,
         referencePoint: String,
-    ): Flow<Event> = flow {
+    ): Flow<Unit> = flow {
         val response = eventService.registerEvent(
             token = "Bearer $token",
             registerEventRequest = RegisterEventRequest(
@@ -67,17 +67,7 @@ class EventDataSourceImpl(
         )
 
         if (response.isSuccessful) {
-            response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse.let { registerResponse ->
-                    registerResponse.eventResponse.toDomain().copy(
-                        accessibilities =
-                        registerResponse.eventAccessibilities?.toDomain(),
-                        address = registerResponse.address.toDomain(),
-                        activity = registerResponse.interestResponse.toDomain()
-                    )
-
-                })
-            }
+            emit(Unit)
         } else {
             emit(error(response.code()))
         }
@@ -87,8 +77,8 @@ class EventDataSourceImpl(
         return flow {
             val response = eventService.getEvent(token)
             if (response.isSuccessful) {
-                response.body()?.let { registerEventResponse ->
-                    emit(registerEventResponse.map {
+                response.body()?.let { eventResponse ->
+                    emit(eventResponse.map {
                         it.toDomain()
                     })
                 }
@@ -101,23 +91,11 @@ class EventDataSourceImpl(
     override fun registerParticipateEvent(token: String, status: String, eventId: String) = flow {
         val response = eventService.participateEvent(ParticipateEventRequest(status, eventId),  token = "Bearer $token")
         if (response.isSuccessful) {
-            response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse)
+            response.body()?.let { unit ->
+                emit(unit)
             }
         } else {
             emit(error(response.code()))
         }
     }
 }
-
-
-//    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
-//        val response = eventService.fetchEventActivities()
-//        if (response.isSuccessful) {
-//            response.body()?.let { registerEventResponse ->
-//                emit(registerEventResponse.toDomain())
-//            }
-//        } else {
-//            emit(error(response.code()))
-//        }
-//    }

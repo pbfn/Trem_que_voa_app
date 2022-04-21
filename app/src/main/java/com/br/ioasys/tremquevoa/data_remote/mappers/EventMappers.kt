@@ -1,6 +1,6 @@
 package com.br.ioasys.tremquevoa.data_remote.mappers
 
-import com.br.ioasys.tremquevoa.data_remote.model.response.event.EventResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.event_list.EventResponse
 import com.br.ioasys.tremquevoa.domain.model.Event
 
 fun EventResponse.toDomain() = Event(
@@ -16,7 +16,7 @@ fun EventResponse.toDomain() = Event(
     numParticipants = this.numParticipants,
     startTime = this.startTime,
     endTime = this.endTime ?: "",
-    activity = this.activities.toDomain(),
+    activity = this.activities?.toDomain(),
     price = this.price,
     user = this.users.toDomain(),
     userIdentity = this.userIdentity,
@@ -24,3 +24,4 @@ fun EventResponse.toDomain() = Event(
         ?.toDomain()?: arrayListOf(),
     address = this.addresses?.toDomain()?.firstOrNull()
 )
+

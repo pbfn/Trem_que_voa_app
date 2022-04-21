@@ -8,7 +8,7 @@ import com.br.ioasys.tremquevoa.domain.model.Event
 
 @SuppressLint("UseCompatLoadingForDrawables")
 fun Event.interestImageDrawable(context: Context): Drawable? {
-    return context.getDrawable(
+    return activity?.let { activity ->
         if (activity.title.contains("Volei", true)) {
             R.drawable.image_volley
         } else if (activity.title.contains("Futebol", true)) {
@@ -36,5 +36,9 @@ fun Event.interestImageDrawable(context: Context): Drawable? {
         } else {
             R.drawable.rounded_bg_event
         }
-    )
+    }?.let {
+        context.getDrawable(
+            it
+        )
+    }
 }

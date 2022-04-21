@@ -27,7 +27,7 @@ interface EventRemoteDataSource {
         state: String,
         zipCode: String,
         referencePoint: String,
-    ): Flow<Event>
+    ): Flow<Unit>
 
     fun getEvent(token: String): Flow<List<Event>>
 

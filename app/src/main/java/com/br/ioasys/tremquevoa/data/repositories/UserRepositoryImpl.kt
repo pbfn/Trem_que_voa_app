@@ -21,9 +21,15 @@ class UserRepositoryImpl(
                 email = email,
                 password = password
             ).collect { user ->
-                userLocalDataSource.saveToken(
-                    token = user.token,
-                )
+                userLocalDataSource.apply {
+                    saveToken(
+                        token = user.token,
+                    )
+
+                    saveUserID(
+                        userId = user.id
+                    )
+                }
                 emit(user)
             }
         }

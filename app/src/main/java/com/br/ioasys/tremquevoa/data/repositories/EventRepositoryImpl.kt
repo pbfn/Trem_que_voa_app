@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.repositories.EventRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 
 class EventRepositoryImpl(
@@ -34,11 +35,13 @@ class EventRepositoryImpl(
         state: String,
         zipCode: String,
         referencePoint: String,
-    ): Flow<Event> = flow {
-        userLocalDataSource.getToken().collect { token ->
-            if (token.isNotEmpty()) {
+    ): Flow<Unit> = flow {
+        userLocalDataSource.getToken().combine(userLocalDataSource.getUserID()) { token, userID ->
+            Pair<String, String>(token, userID)
+        }.collect { pairCombine ->
+            if (pairCombine.first.isNotEmpty() && pairCombine.second.isNotEmpty()) {
                 eventRemoteDataSource.registerEvent(
-                    token = token,
+                    token = pairCombine.first,
                     name = name,
                     description = description,
                     isOnline = isOnline,
@@ -50,7 +53,7 @@ class EventRepositoryImpl(
                     endTime = endTime,
                     activityId = activityId,
                     price = price,
-                    userId = userId,
+                    userId = pairCombine.second,
                     userIdentity = userIdentity,
                     accessibilities = accessibilities,
                     street = street,

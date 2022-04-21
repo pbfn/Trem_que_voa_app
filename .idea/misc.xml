@@ -15,6 +15,7 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable-hdpi/background_button_google.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable-xxhdpi/background_edit_perfil_inactive.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable-xxxhdpi/background_item_deficiency_perfil.xml" value="0.1955" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/add_event_selector.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_button_disable.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/background_button_enabled.xml" value="0.1" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_disable.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_button_options_enable.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_date_card_event.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/bg_yoga_acessible_card_event.xml" value="0.1955" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/button_disabilities.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/button_selected_options.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/button_selector.xml" value="0.122" />
@@ -31,7 +33,14 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/home_selector.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_add_event_active.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_add_event_inative.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_arrow_blue.xml" value="0.1505" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_background_home.xml" value="0.1505" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_background_navbar.xml" value="0.1505" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_calendar_active.xml" value="0.1505" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_calendar_inative.xml" value="0.1505" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_camera.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_crazy_ative.xml" value="0.1505" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_crazy_inative.xml" value="0.1505" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_edit_image.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_edit_neutral.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_emergency_siren.xml" value="0.149" />
@@ -51,6 +60,7 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_perfil_inative.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_pets.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_photo_perfil.xml" value="0.149" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_sad_inative.xml" value="0.1505" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_saved_active.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_saved_inative.xml" value="0.149" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/ic_share.xml" value="0.149" />
@@ -66,16 +76,24 @@
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/rounded_bottom_navigation.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/saved_event_selector.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/selector_about_me_perfil.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/selector_icon_crazy.xml" value="0.1955" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/selector_icon_happy.xml" value="0.1955" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/shape_radio_button_selected.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/shape_radio_button_unselected.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/text_color_disabilities_selector.xml" value="0.1955" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/drawable/toogle_selector.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/buttons_options_item_adapter.xml" value="0.22" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/custom_card_perfil.xml" value="0.21547669944420692" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/custom_form.xml" value="0.1" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/deficiency_perfil_item_adapter.xml" value="0.21547669944420692" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/events_item_adpter.xml" value="0.33" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_city.xml" value="0.21547669944420692" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_disabilities.xml" value="0.21547669944420692" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_emergency_contact.xml" value="0.21547669944420692" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_event.xml" value="0.25" />
-        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_interests.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/prisc/Documents/Trem_que_voa_app/app/src/main/res/layout/fragment_perfil_user.xml" value="0.1" />

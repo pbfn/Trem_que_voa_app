@@ -1,6 +1,5 @@
 package com.br.ioasys.tremquevoa.data_remote.model.response
 
-import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.google.gson.annotations.SerializedName
 
 class EventAccessibilitiesResponse (
@@ -13,6 +12,6 @@ class EventAccessibilitiesResponse (
     val createdAt: String,
     val updatedAt: String?,
     val deletedAt: String?,
-    @SerializedName("acessibilities")
+    @SerializedName("accessibilities")
     val acessibilities: DisabilitiesResponse?
 )
