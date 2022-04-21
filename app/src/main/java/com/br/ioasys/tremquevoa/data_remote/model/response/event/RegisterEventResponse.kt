@@ -12,6 +12,6 @@ data class RegisterEventResponse (
     @SerializedName("address")
     val address: AddressResponse,
     @SerializedName("eventAccessibilities")
-    val eventAccessibilities: EventAccessibilitiesResponse?
+    val eventAccessibilities: List<EventAccessibilitiesResponse>?
 )
 

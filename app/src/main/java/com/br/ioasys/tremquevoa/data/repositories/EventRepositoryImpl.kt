@@ -69,7 +69,7 @@ class EventRepositoryImpl(
         status: String,
         eventId: String
     ): Flow<Unit>  {
-        return eventRemoteDataSource.getParticipateEvent(
+        return eventRemoteDataSource.registerParticipateEvent(
             token = token,
             status = status,
             eventId = eventId

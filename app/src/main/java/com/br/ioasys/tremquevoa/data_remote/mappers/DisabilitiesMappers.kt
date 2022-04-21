@@ -1,9 +1,8 @@
 package com.br.ioasys.tremquevoa.data_remote.mappers
 
 import com.br.ioasys.tremquevoa.data_remote.model.response.DisabilitiesResponse
-import com.br.ioasys.tremquevoa.data_remote.model.response.InterestsResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.EventAccessibilitiesResponse
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
-import com.br.ioasys.tremquevoa.domain.model.Interests
 
 fun List<DisabilitiesResponse>.toDomain(): MutableList<Disabilities> {
     val disabilities: MutableList<Disabilities> = mutableListOf()
@@ -21,3 +20,10 @@ fun DisabilitiesResponse.toDomain(): Disabilities = Disabilities(
     description = this.description,
     active = false
 )
+
+@JvmName("toDomainEventAccessibilitiesResponse")
+fun List<EventAccessibilitiesResponse>.toDomain(): List<Disabilities> {
+    return this.map {
+        it.acessibilities?.toDomain()!!
+    }
+}
