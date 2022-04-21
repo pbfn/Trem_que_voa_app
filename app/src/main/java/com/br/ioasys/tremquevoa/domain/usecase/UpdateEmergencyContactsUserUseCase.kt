@@ -1,5 +1,7 @@
 package com.br.ioasys.tremquevoa.domain.usecase
 
+import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNameContatct
+import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNumberContatct
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
@@ -18,6 +20,12 @@ class UpdateEmergencyContactsUserUseCase(
     )
 
     override fun run(params: Params): Flow<User> = when {
+        params.emergencyName.isEmpty() -> {
+            throw EmpytNameContatct()
+        }
+        params.emergencyPhone.isEmpty() -> {
+            throw EmpytNumberContatct()
+        }
         else -> {
             userRepository.updateEmergencyContactsUser(
                 emergencyPhone = params.emergencyPhone,

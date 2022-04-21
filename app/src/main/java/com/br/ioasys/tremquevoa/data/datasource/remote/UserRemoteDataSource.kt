@@ -28,4 +28,6 @@ interface UserRemoteDataSource {
     ): Flow<User>
 
     fun getUser(token: String): Flow<User>
+
+    fun updateCityUser(token: String, city: String): Flow<Boolean>
 }

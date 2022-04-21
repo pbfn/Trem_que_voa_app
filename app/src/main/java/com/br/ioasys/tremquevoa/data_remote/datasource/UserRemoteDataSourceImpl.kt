@@ -103,7 +103,7 @@ class UserRemoteDataSourceImpl(
             token = "Bearer $token",
             UpdateAboutMeUserRequest(aboutMe = aboutMe)
         )
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             response.body()?.let { registerReponse ->
                 emit(registerReponse.toDomain())
             }
@@ -114,10 +114,23 @@ class UserRemoteDataSourceImpl(
         val response = authService.getUser(
             token = "Bearer $token",
         )
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             response.body()?.let { userReponse ->
                 emit(userReponse.toDomain())
             }
+        }
+    }
+
+    override fun updateCityUser(token: String, city: String): Flow<Boolean> = flow {
+        val response = authService.updateCityUser(
+            token = "Bearer $token",
+            UpdateCityUserRequest(city = city)
+        )
+
+        if (response.isSuccessful) {
+            emit(true)
+        }else{
+            emit(false)
         }
     }
 }

@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.NavArgs
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.br.ioasys.tremquevoa.databinding.FragmentEmergencyContactBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNameContatct
+import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNumberContatct
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.presentation.viewmodel.UpdateUserViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class  EmergencyContactFragment : Fragment() {
+class EmergencyContactFragment : Fragment() {
 
     private var _binding: FragmentEmergencyContactBinding? = null
     private val binding: FragmentEmergencyContactBinding get() = _binding!!
@@ -41,6 +44,10 @@ class  EmergencyContactFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setListeners()
+        binding.apply {
+            editTextNamePerson.ChangeBackground(false, null)
+            editTextNumberPerson.ChangeBackground(false, null)
+        }
         addObserver()
     }
 
@@ -56,6 +63,16 @@ class  EmergencyContactFragment : Fragment() {
                 nextPage(
                     EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment()
                 )
+            }
+
+            editTextNumberPerson.input.doAfterTextChanged {
+                editTextNumberPerson.ChangeBackground(false, null)
+                editTextNamePerson.ChangeBackground(false, null)
+            }
+
+            editTextNamePerson.input.doAfterTextChanged {
+                editTextNumberPerson.ChangeBackground(false, null)
+                editTextNamePerson.ChangeBackground(false, null)
             }
         }
     }
@@ -81,14 +98,22 @@ class  EmergencyContactFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
+                    var msg = ""
+                    when (response.throwable) {
+                        is EmpytNameContatct -> {
+                            msg = "Por favor informe o nome"
+                            binding.editTextNamePerson.ChangeBackground(true, msg)
+                        }
 
+                        is EmpytNumberContatct -> {
+                            msg = "Por favor informe o número"
+                            binding.editTextNumberPerson.ChangeBackground(true, msg)
+                        }
+
+                    }
                 }
 
             }
-        }
-        binding.apply {
-            editTextNamePerson.ChangeBackground(false, null)
-            editTextNumberPerson.ChangeBackground(false, null)
         }
     }
 

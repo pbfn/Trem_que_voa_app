@@ -9,7 +9,7 @@
         android:id="@+id/loginFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
@@ -27,7 +27,7 @@
         android:id="@+id/registerFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterUserFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register_user" >
+        tools:layout="@layout/fragment_register_user">
         <action
             android:id="@+id/action_registerFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
@@ -41,7 +41,7 @@
         android:id="@+id/interestsFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.InterestsFragment"
         android:label="fragment_interests"
-        tools:layout="@layout/fragment_interests" >
+        tools:layout="@layout/fragment_interests">
         <action
             android:id="@+id/action_interestsFragment_to_disabilitiesFragment"
             app:destination="@id/disabilitiesFragment" />
@@ -50,7 +50,7 @@
         android:id="@+id/registerEventFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment"
         android:label="fragment_register_event"
-        tools:layout="@layout/fragment_register_event" >
+        tools:layout="@layout/fragment_register_event">
         <action
             android:id="@+id/action_registerEventFragment_to_homeActivity"
             app:destination="@id/homeActivity" />
@@ -59,7 +59,7 @@
         android:id="@+id/emergencyContactFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.EmergencyContactFragment"
         android:label="fragment_emergency_contact"
-        tools:layout="@layout/fragment_emergency_contact" >
+        tools:layout="@layout/fragment_emergency_contact">
         <action
             android:id="@+id/action_emergencyContactFragment_to_interestsFragment"
             app:destination="@id/interestsFragment"
@@ -69,7 +69,7 @@
         android:id="@+id/welcomeFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_emergencyContactFragment"
             app:destination="@id/emergencyContactFragment"
@@ -85,7 +85,7 @@
         android:id="@+id/forgotPasswordFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password" >
+        tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_newPasswordSuccessFragment"
             app:destination="@id/newPasswordSuccessFragment"
@@ -98,7 +98,7 @@
         android:id="@+id/newPasswordSuccessFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.NewPasswordSuccessFragment"
         android:label="fragment_new_password_success"
-        tools:layout="@layout/fragment_new_password_success" >
+        tools:layout="@layout/fragment_new_password_success">
         <action
             android:id="@+id/action_newPasswordSuccessFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -126,7 +126,7 @@
         android:id="@+id/splashFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -143,15 +143,14 @@
         android:id="@+id/onboardingFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.OnboardingFragment"
         android:label="fragment_init_onboarding"
-        tools:layout="@layout/fragment_onboarding" >
+        tools:layout="@layout/fragment_onboarding">
         <action
             android:id="@+id/action_initOnboardingFragment_self"
             app:destination="@id/onboardingFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
         <argument
             android:name="page"
-            app:argType="integer"
-            />
+            app:argType="integer" />
         <action
             android:id="@+id/action_initOnboardingFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -166,7 +165,7 @@
         android:id="@+id/disabilitiesFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.DisabilitiesFragment"
         android:label="fragment_disabilities"
-        tools:layout="@layout/fragment_disabilities" >
+        tools:layout="@layout/fragment_disabilities">
         <action
             android:id="@+id/action_disabilitiesFragment_to_cityFragment"
             app:destination="@id/cityFragment" />
@@ -175,7 +174,7 @@
         android:id="@+id/cityFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.CityFragment"
         android:label="fragment_city"
-        tools:layout="@layout/fragment_city" >
+        tools:layout="@layout/fragment_city">
         <action
             android:id="@+id/action_cityFragment_to_homeActivity"
             app:destination="@id/homeActivity" />
