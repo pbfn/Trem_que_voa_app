@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.br.ioasys.tremquevoa.databinding.DeficiencyPerfilItemAdapterBinding
 import com.br.ioasys.tremquevoa.databinding.InterestsPerfilItemAdapterBinding
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Interests
@@ -12,7 +13,7 @@ import com.br.ioasys.tremquevoa.domain.model.Interests
 class AdapterDeficiencyPerfil() :
     RecyclerView.Adapter<AdapterDeficiencyPerfil.AdapterDeficiencyPerfilPerfilViewHolder>() {
 
-    class AdapterDeficiencyPerfilPerfilViewHolder(itemView: InterestsPerfilItemAdapterBinding) :
+    class AdapterDeficiencyPerfilPerfilViewHolder(itemView: DeficiencyPerfilItemAdapterBinding) :
         RecyclerView.ViewHolder(itemView.root) {
         val title = itemView.textViewTitle
     }
@@ -34,7 +35,7 @@ class AdapterDeficiencyPerfil() :
         parent: ViewGroup,
         viewType: Int
     ): AdapterDeficiencyPerfilPerfilViewHolder {
-        val binding = InterestsPerfilItemAdapterBinding.inflate(
+        val binding = DeficiencyPerfilItemAdapterBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

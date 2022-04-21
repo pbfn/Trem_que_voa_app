@@ -47,6 +47,9 @@ class ForgotPasswordFragment : Fragment() {
             buttonSendEmail.setOnClickListener {
                 resetPassword(email = editTextEmail.input.text.toString())
             }
+            btnGotoLogin.setOnClickListener {
+                nextPage(ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment())
+            }
         }
     }
 

@@ -100,6 +100,9 @@
             android:id="@+id/action_forgotPasswordFragment_to_newPasswordSuccessFragment"
             app:destination="@id/newPasswordSuccessFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPasswordSuccessFragment"
@@ -110,6 +113,9 @@
             android:id="@+id/action_newPasswordSuccessFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_newPasswordSuccessFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/perfilUserFragment"

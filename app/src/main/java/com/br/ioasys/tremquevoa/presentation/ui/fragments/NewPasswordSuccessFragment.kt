@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentNewPasswordSuccessBinding
 
 class NewPasswordSuccessFragment : Fragment() {
@@ -36,6 +35,9 @@ class NewPasswordSuccessFragment : Fragment() {
     private fun setListenres() {
         binding.buttonGoToLogin.setOnClickListener {
             nextPage(NewPasswordSuccessFragmentDirections.actionNewPasswordSuccessFragmentToLoginFragment())
+        }
+        binding.btnGoToPassword.setOnClickListener {
+            nextPage(NewPasswordSuccessFragmentDirections.actionNewPasswordSuccessFragmentToForgotPasswordFragment())
         }
     }
 

@@ -106,10 +106,14 @@ class HomeFragment : Fragment(), EventClickListener {
             when (response) {
                 is ViewState.Success -> {
                     val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                    val lastDateLogin = dateTimeFormat.parse(response.data)
-                    val dateLogin = dateTimeFormat.parse(dateNow)
-                    if (dateLogin > lastDateLogin) {
+                    if(response.data.isEmpty()){
                         homeViewModel.getDailyMessage(user?.token ?: "")
+                    }else{
+                        val lastDateLogin = dateTimeFormat.parse(response.data)
+                        val dateLogin = dateTimeFormat.parse(dateNow)
+                        if (dateLogin > lastDateLogin) {
+                            homeViewModel.getDailyMessage(user?.token ?: "")
+                        }
                     }
                 }
             }
