@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentHomeBinding
+import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
+import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.presentation.adapters.AdapterEvents
-import com.br.ioasys.tremquevoa.presentation.adapters.EventClickListener
+import com.br.ioasys.tremquevoa.extensions.ChangeIcon
+import com.br.ioasys.tremquevoa.presentation.adapters.*
 import com.br.ioasys.tremquevoa.presentation.viewmodel.HomeViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -28,6 +32,11 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterEventsPromoted: AdapterEvents
     private lateinit var adapterEventsOnline: AdapterEvents
     private lateinit var adapterEventsRecommended: AdapterEvents
+    private lateinit var adapterInterests: AdapterInterestsPerfil
+    private lateinit var adapterDisabilities: AdapterDisabilities
+
+    private var listInterests: List<Interests> = listOf()
+    private var listDisabilities: List<Disabilities> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +53,12 @@ class HomeFragment : Fragment(), EventClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewEvents()
+        setRecyclerViewDisabilities()
+        setRecyclerViewInterest()
+        setListener()
         addObserver()
-        homeViewModel.getEvent(user?.token?:"")
+        homeViewModel.getEvent(user?.token ?: "")
+
     }
 
     private fun addObserver() {
@@ -56,6 +69,9 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
                 is ViewState.Success -> {
                     user = response.data
+                    configureNameUserTitle(user?.name)
+                    homeViewModel.getInterest(user?.token ?: "")
+                    homeViewModel.getDisabilities(user?.token ?: "")
                 }
 
                 is ViewState.Error -> {
@@ -87,6 +103,61 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+
+        homeViewModel.interest.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+                }
+
+                is ViewState.Success -> {
+                    listInterests = response.data
+                    adapterInterests.differ.submitList(listInterests)
+                }
+
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Falha na lista de eventos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+        homeViewModel.disabilities.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+                }
+
+                is ViewState.Success -> {
+                    listDisabilities = response.data
+                    adapterDisabilities.differ.submitList(listDisabilities)
+                }
+
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Falha na lista de eventos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun configureNameUserTitle(name: String?) {
+        binding.nameUser.text = String.format(getString(R.string.bem_vindo), name)
+    }
+
+    private fun setListener() {
+        binding.apply {
+            customSearch.ChangeIcon(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_search,
+                )!!, {}
+            )
+        }
     }
 
     private fun setRecyclerViewEvents() {
@@ -106,6 +177,22 @@ class HomeFragment : Fragment(), EventClickListener {
         binding.recyclerViewRecomended.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = adapterEventsRecommended
+        }
+    }
+
+    private fun setRecyclerViewInterest() {
+        adapterInterests = AdapterInterestsPerfil()
+        binding.recyclerViewCategoryHome.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterInterests
+        }
+    }
+
+    private fun setRecyclerViewDisabilities() {
+        adapterDisabilities = AdapterDisabilities()
+        binding.recyclerViewAccessibitiesHome.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterDisabilities
         }
     }
 

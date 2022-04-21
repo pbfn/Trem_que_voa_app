@@ -314,7 +314,7 @@
                 android:textOn="" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewStayConnected"
+                android:id="@+id/textViewFreeEvent"
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
