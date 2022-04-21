@@ -32,5 +32,6 @@
     <color name="primary_lighter">#DEDAF0</color>
     <color name="secondary_dark">#DF3083</color>
     <color name="neutral_light">#E8E7E3</color>
+    <color name="logo_blue">#1E00FC</color>
 
 </resources>

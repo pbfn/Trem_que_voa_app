@@ -90,9 +90,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:text="Categorias"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_search"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCategoryHome"
@@ -115,8 +115,8 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
             android:text="Acesssibilidade"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerViewCategoryHome" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -140,9 +140,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="32dp"
             android:text="Eventos impulsionados"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewAccessibitiesHome"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewAccessibitiesHome" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewPromotedEvents"
@@ -154,10 +154,10 @@
             android:orientation="horizontal"
             android:paddingStart="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/events_item_adpter"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewListPromotedEvents"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewListPromotedEvents"
+            tools:listitem="@layout/events_item_adpter" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewListRecomendedEvents"
@@ -167,9 +167,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:text="Eventos recomendados"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewPromotedEvents"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewPromotedEvents" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecomended"
@@ -181,10 +181,10 @@
             android:orientation="horizontal"
             android:paddingStart="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/events_item_adpter"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewListRecomendedEvents"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewListRecomendedEvents"
+            tools:listitem="@layout/events_item_adpter" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewListOnlineEvents"
@@ -193,36 +193,64 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:text="Eventos online"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewRecomended"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewRecomended" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewOnline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="48dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingStart="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/events_item_adpter"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewListOnlineEvents"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewListOnlineEvents"
+            tools:listitem="@layout/events_item_adpter" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewListInsights"
-            style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Dicas de saúde e bem estar"
+            android:textColor="@color/neutral_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewOnline" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewViewMore"
+            style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/view_more"
+            android:textColor="@color/logo_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewOnline" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewWellness"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:text="Dicas de saúde e bem estar"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewOnline"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewListInsights"
+            tools:listitem="@layout/wellness_item_adapter" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
 

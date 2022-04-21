@@ -50,12 +50,6 @@
 
     Fonts App/Body-14-Bold
 
-    <style name="Base.Widget.AppCompat.TextView.App_Body_14_Bold">
-        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
-        <item name="android:textColor">@color/neutral_darkest</item>
-        <item name="android:textSize">14sp</item>
-        <item name="lineHeight">22dp</item>
-    </style>
 
     Fonts App/Body-16-Regular
 
@@ -157,6 +151,20 @@
         <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textColor">@color/title_edit_text</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_14_Bold">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textColor">@color/neutral_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">22dp</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.App_Body_11_Regular">
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textColor">@color/neutral_dark</item>
+        <item name="android:textSize">11sp</item>
+        <item name="lineHeight">22dp</item>
     </style>
 
 </resources>

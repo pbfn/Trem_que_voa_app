@@ -17,7 +17,6 @@ import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.model.Message
 import com.br.ioasys.tremquevoa.domain.model.Interests
-import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterEvents
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
@@ -42,6 +41,7 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterEventsRecommended: AdapterEvents
     private lateinit var adapterInterests: AdapterInterestsPerfil
     private lateinit var adapterDisabilities: AdapterDisabilities
+    private lateinit var adatpterWellness: AdatpterWellness
     private lateinit var customAlertDialogView: View
     private lateinit var dateNow: String
 
@@ -167,6 +167,14 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+
+        homeViewModel.wellness.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    adatpterWellness.differ.submitList(response.data)
+                }
+            }
+        }
     }
 
     private fun configureNameUserTitle(name: String) {
@@ -181,6 +189,9 @@ class HomeFragment : Fragment(), EventClickListener {
                     R.drawable.ic_search,
                 )!!, {}
             )
+            textViewViewMore.setOnClickListener {
+
+            }
         }
     }
 
@@ -201,6 +212,14 @@ class HomeFragment : Fragment(), EventClickListener {
         binding.recyclerViewRecomended.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = adapterEventsRecommended
+        }
+
+        adatpterWellness = AdatpterWellness()
+        adatpterWellness.itemLimit = 50
+        binding.recyclerViewWellness.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adatpterWellness
+
         }
     }
 
