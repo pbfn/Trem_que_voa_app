@@ -6,11 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.EventLists
 import com.br.ioasys.tremquevoa.domain.model.Message
 import com.br.ioasys.tremquevoa.domain.model.*
-import com.br.ioasys.tremquevoa.domain.usecase.GetAllEventsUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetDailyMessageUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.SaveDateLoginUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.*
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
@@ -22,6 +18,7 @@ class HomeViewModel(
     private val getAllEventsUseCase: GetAllEventsUseCase,
     private val saveDateLoginUseCase: SaveDateLoginUseCase,
     private val getDailyMessageUseCase: GetDailyMessageUseCase,
+    private val getUserUseCase: GetUserUseCase
 ) : ViewModel() {
 
     private var _events = MutableLiveData<ViewState<EventLists>>()
@@ -37,11 +34,15 @@ class HomeViewModel(
     private var _interest = MutableLiveData<ViewState<List<Interests>>>()
     var interest: LiveData<ViewState<List<Interests>>> = _interest
 
+    private var _user = MutableLiveData<ViewState<User>>()
+    var user: LiveData<ViewState<User>> = _user
+
 
     private var _dailyMessage = MutableLiveData<ViewState<Message>>()
     var dailyMessage: LiveData<ViewState<Message>> = _dailyMessage
 
     init {
+        getUser()
         getEvent()
         getInterest()
         getDisabilities()
@@ -101,7 +102,7 @@ class HomeViewModel(
         )
     }
 
-    fun getInterest() {
+    private fun getInterest() {
         _interest.postLoading()
 
         getInterestsUseCase(
@@ -115,7 +116,7 @@ class HomeViewModel(
         )
     }
 
-    fun getDisabilities() {
+    private fun getDisabilities() {
         _disabilities.postLoading()
 
         getDisabilitiesUseCase(
@@ -129,4 +130,17 @@ class HomeViewModel(
         )
     }
 
+    private fun getUser() {
+        _user.postLoading()
+
+        getUserUseCase(
+            params = Unit,
+            onSuccess = {
+                _user.postSuccess(it)
+            },
+            onError = {
+                _user.postError(it)
+            }
+        )
+    }
 }
