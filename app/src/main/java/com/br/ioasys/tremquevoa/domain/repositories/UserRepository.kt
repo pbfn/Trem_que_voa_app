@@ -13,14 +13,12 @@ interface UserRepository {
 
     fun registerUser(
         firstName: String,
-        lastName: String,
         email: String,
         password: String,
         passwordConfirmation: String
     ): Flow<User>
 
     fun updateEmergencyContactsUser(
-        token: String,
         emergencyName: String,
         emergencyPhone: String
     ): Flow<User>
@@ -29,7 +27,7 @@ interface UserRepository {
 
     fun resetPassword(email: String): Flow<Boolean>
 
-    fun updateAboutMe(token: String, aboutMe: String): Flow<User>
+    fun updateAboutMe(aboutMe: String): Flow<User>
 
     fun verifyFirstLogin(): Flow<Boolean>
 

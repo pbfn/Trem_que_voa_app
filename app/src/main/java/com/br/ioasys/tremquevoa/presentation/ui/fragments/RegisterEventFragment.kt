@@ -118,8 +118,8 @@ class RegisterEventFragment : Fragment() {
 
                 is ViewState.Success -> {
                     user = response.data
-                    registerEventViewModel.fetchActivities(user?.token ?: "")
-                    registerEventViewModel.fetchDisabilities(user?.token ?: "")
+                    registerEventViewModel.fetchActivities()
+                    registerEventViewModel.fetchDisabilities()
                 }
 
                 is ViewState.Error -> {
@@ -350,7 +350,6 @@ class RegisterEventFragment : Fragment() {
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
-            token = user?.token ?: "",
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,

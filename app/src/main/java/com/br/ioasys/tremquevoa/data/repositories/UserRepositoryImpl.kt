@@ -2,6 +2,7 @@ package com.br.ioasys.tremquevoa.data.repositories
 
 import com.br.ioasys.tremquevoa.data.datasource.local.UserLocalDataSource
 import com.br.ioasys.tremquevoa.data.datasource.remote.UserRemoteDataSource
+import com.br.ioasys.tremquevoa.domain.exceptions.EmptyToken
 import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
@@ -38,14 +39,12 @@ class UserRepositoryImpl(
 
     override fun registerUser(
         firstName: String,
-        lastName: String,
         email: String,
         password: String,
         passwordConfirmation: String
     ): Flow<User> = flow {
         userRemoteDataSource.registerUser(
             firstName = firstName,
-            lastName = lastName,
             email = email,
             password = password,
             passwordConfirmation = passwordConfirmation
@@ -55,17 +54,23 @@ class UserRepositoryImpl(
     }
 
     override fun updateEmergencyContactsUser(
-        token: String,
         emergencyName: String,
         emergencyPhone: String
     ): Flow<User> = flow {
-        userRemoteDataSource.updateEmergencyContactsUser(
-            token = token,
-            emergencyName = emergencyName,
-            emergencyPhone = emergencyPhone
-        ).collect {
-            emit(it)
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                userRemoteDataSource.updateEmergencyContactsUser(
+                    token = token,
+                    emergencyName = emergencyName,
+                    emergencyPhone = emergencyPhone
+                ).collect {
+                    emit(it)
+                }
+            } else {
+                emit(throw EmptyToken())
+            }
         }
+
     }
 
     override fun updateUser(newUser: User) = userLocalDataSource.updateUser(newUser)
@@ -76,13 +81,20 @@ class UserRepositoryImpl(
         }
     }
 
-    override fun updateAboutMe(token: String, aboutMe: String): Flow<User> = flow {
-        userRemoteDataSource.updateAboutMeUser(
-            token = token,
-            aboutMe = aboutMe
-        ).collect {
-            emit(it)
+    override fun updateAboutMe(aboutMe: String): Flow<User> = flow {
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                userRemoteDataSource.updateAboutMeUser(
+                    token = token,
+                    aboutMe = aboutMe
+                ).collect {
+                    emit(it)
+                }
+            } else {
+                emit(throw EmptyToken())
+            }
         }
+
     }
 
     override fun verifyFirstLogin(): Flow<Boolean> = flow {

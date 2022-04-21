@@ -40,12 +40,10 @@ class PerfilViewModel(
         getUserLocal()
     }
 
-    private fun getInterestsUser(token: String) {
+    private fun getInterestsUser() {
         _interests.postLoading()
         getInterestsByUserUseCase(
-            GetInterestsByUserUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _interests.postSuccess(it)
             },
@@ -55,12 +53,10 @@ class PerfilViewModel(
         )
     }
 
-    private fun getDeficiencyUser(token: String) {
+    private fun getDeficiencyUser() {
         _deficiency.postLoading()
         getDisabilitiesByUserUseCase(
-            GetDisabilitiesByUserUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _deficiency.postSuccess(it)
             },
@@ -77,8 +73,8 @@ class PerfilViewModel(
             params = Unit,
             onSuccess = {
                 _userLocal.postSuccess(it)
-                getInterestsUser(it.token)
-                getDeficiencyUser(it.token)
+                getInterestsUser()
+                getDeficiencyUser()
             },
             onError = {
                 _userLocal.postError(it)
@@ -87,10 +83,9 @@ class PerfilViewModel(
         )
     }
 
-    fun updateAboutMe(aboutMe: String, token: String) {
+    fun updateAboutMe(aboutMe: String) {
         updateAboutMeUserUserCase(
             params = UpdateAboutMeUserUserCase.Params(
-                token = token,
                 aboutMe = aboutMe
             ),
             onSuccess = {

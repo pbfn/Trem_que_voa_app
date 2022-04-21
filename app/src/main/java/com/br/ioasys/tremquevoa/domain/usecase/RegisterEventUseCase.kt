@@ -9,13 +9,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 
 class RegisterEventUseCase(
-    private val userRepository: UserRepository,
     private val eventRepository: EventRepository,
     scope: CoroutineScope
 ) : UseCase<RegisterEventUseCase.Params, Event>(scope = scope) {
 
     data class Params(
-        val token: String,
         val name: String,
         val description: String,
         val isOnline: Boolean,
@@ -40,14 +38,9 @@ class RegisterEventUseCase(
 
     override fun run(params: Params): Flow<Event> {
 
-        params.apply {
-            var userId = getUserId()
-        }
-
         validateFields(params)
 
         return eventRepository.registerEvent(
-            token = params.token,
             name = params.name,
             description = params.description,
             isOnline = params.isOnline,
@@ -71,11 +64,6 @@ class RegisterEventUseCase(
         )
     }
 
-    private fun getUserId(): String {
-        return userRepository.fetchUserLogged().map { user ->
-            user?.id ?: ""
-        }.toString()
-    }
 
     private fun validateFields(params: Params) {
         if (params.name.isEmpty()) {

@@ -21,6 +21,10 @@ class UserLocalDataSourceImpl(
         sharedPreferencesHelper.saveString(TOKEN, token)
     }
 
+    override fun getToken(): Flow<String> = flow {
+        emit(sharedPreferencesHelper.getString(TOKEN))
+    }
+
     override fun saveUser(user: User) {
         userDao.wipeTable()
         return userDao.saveUser(

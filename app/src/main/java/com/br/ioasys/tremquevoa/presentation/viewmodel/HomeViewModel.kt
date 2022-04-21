@@ -39,13 +39,11 @@ class HomeViewModel(
         getUserLocal()
     }
 
-    fun getEvent(token: String) {
+    fun getEvent() {
         _events.postLoading()
 
         getAllEventsUseCase(
-            params = GetAllEventsUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listEvent ->
                 _events.postSuccess(listEvent.let { list ->
                     EventLists(
@@ -96,12 +94,10 @@ class HomeViewModel(
         )
     }
 
-    fun getDailyMessage(token: String) {
+    fun getDailyMessage() {
         _dailyMessage.postLoading()
         getDailyMessageUseCase(
-            GetDailyMessageUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _dailyMessage.postSuccess(it)
             },

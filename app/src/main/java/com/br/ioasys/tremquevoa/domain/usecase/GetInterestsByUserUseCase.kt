@@ -9,13 +9,9 @@ import kotlinx.coroutines.flow.Flow
 class GetInterestsByUserUseCase(
     private val interestsRepository: InterestsRepository,
     scope: CoroutineScope
-) : UseCase<GetInterestsByUserUseCase.Params, List<Interests>>(scope = scope) {
+) : UseCase<Unit, List<Interests>>(scope = scope) {
 
-    data class Params(
-        val token: String
-    )
-
-    override fun run(params: Params): Flow<List<Interests>> {
-        return interestsRepository.fetchInterestsByUser(params.token)
+    override fun run(params: Unit): Flow<List<Interests>> {
+        return interestsRepository.fetchInterestsByUser()
     }
 }

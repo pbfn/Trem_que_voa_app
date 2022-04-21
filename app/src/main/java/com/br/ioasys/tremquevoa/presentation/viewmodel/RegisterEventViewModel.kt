@@ -44,7 +44,6 @@ class RegisterEventViewModel(
 
 
     fun registerEvent(
-        token:String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -70,7 +69,6 @@ class RegisterEventViewModel(
 
         registerEventUseCase(
             params = RegisterEventUseCase.Params(
-                token = token,
                 name = name,
                 description = description,
                 isOnline = isOnline,
@@ -102,12 +100,10 @@ class RegisterEventViewModel(
         )
     }
 
-    fun fetchActivities(token: String) {
+    fun fetchActivities() {
         _activities.postLoading()
         getInterestsUseCase(
-            params = GetInterestsUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listInterestsResponse ->
                 Log.d(TAG, listInterestsResponse.toString())
                 _activities.postSuccess(listInterestsResponse)
@@ -118,12 +114,10 @@ class RegisterEventViewModel(
         )
     }
 
-    fun fetchDisabilities(token: String) {
+    fun fetchDisabilities() {
         _disabilities.postLoading()
         getDisabilitiesUseCase(
-            GetDisabilitiesUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listDisabilitiesResponse ->
                 Log.d(TAG, listDisabilitiesResponse.toString())
                 _disabilities.postSuccess(listDisabilitiesResponse)

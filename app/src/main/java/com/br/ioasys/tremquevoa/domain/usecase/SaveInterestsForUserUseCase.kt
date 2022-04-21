@@ -11,14 +11,12 @@ class SaveInterestsForUserUseCase(
 ) : UseCase<SaveInterestsForUserUseCase.Params, Boolean>(scope) {
 
     data class Params(
-        val token: String,
         val listIdInterests: List<String>
     )
 
     override fun run(params: Params): Flow<Boolean> = when {
         else -> {
             interestsRepository.saveInterestsForUser(
-                token = params.token,
                 listIdInterests = params.listIdInterests
             )
         }

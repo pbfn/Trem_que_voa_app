@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface EventRepository {
 
     fun registerEvent(
-        token:String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -29,5 +28,5 @@ interface EventRepository {
         referencePoint: String
     ): Flow<Event>
 
-    fun getEvents(token: String): Flow<List<Event>>
+    fun getEvents(): Flow<List<Event>>
 }

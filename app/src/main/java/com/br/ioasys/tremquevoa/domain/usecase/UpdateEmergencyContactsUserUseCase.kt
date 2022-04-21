@@ -13,7 +13,6 @@ class UpdateEmergencyContactsUserUseCase(
 
 
     data class Params(
-        val token: String,
         val emergencyName: String,
         val emergencyPhone: String
     )
@@ -21,7 +20,6 @@ class UpdateEmergencyContactsUserUseCase(
     override fun run(params: Params): Flow<User> = when {
         else -> {
             userRepository.updateEmergencyContactsUser(
-                token = params.token,
                 emergencyPhone = params.emergencyPhone,
                 emergencyName = params.emergencyName
             )

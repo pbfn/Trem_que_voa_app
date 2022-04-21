@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserLocalDataSource {
     fun saveToken(token: String)
+    fun getToken(): Flow<String>
     fun saveUser(user: User)
     fun fetchUserLogged(): User
     fun updateUser(user: User)

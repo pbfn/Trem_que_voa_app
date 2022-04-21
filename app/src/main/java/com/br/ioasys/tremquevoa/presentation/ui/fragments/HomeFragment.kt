@@ -56,7 +56,7 @@ class HomeFragment : Fragment(), EventClickListener {
         addObserver()
         verifyDateLogin()
         setRecyclerViewEvents()
-        homeViewModel.getEvent(user?.token ?: "")
+        homeViewModel.getEvent()
         customAlertDialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.pop_up_home, null, false)
 
@@ -107,12 +107,12 @@ class HomeFragment : Fragment(), EventClickListener {
                 is ViewState.Success -> {
                     val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                     if(response.data.isEmpty()){
-                        homeViewModel.getDailyMessage(user?.token ?: "")
+                        homeViewModel.getDailyMessage()
                     }else{
                         val lastDateLogin = dateTimeFormat.parse(response.data)
                         val dateLogin = dateTimeFormat.parse(dateNow)
                         if (dateLogin > lastDateLogin) {
-                            homeViewModel.getDailyMessage(user?.token ?: "")
+                            homeViewModel.getDailyMessage()
                         }
                     }
                 }

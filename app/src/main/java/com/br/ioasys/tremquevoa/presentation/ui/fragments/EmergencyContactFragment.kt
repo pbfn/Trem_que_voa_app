@@ -25,7 +25,6 @@ class  EmergencyContactFragment : Fragment() {
         getViewModel()
     }
 
-    private val args: EmergencyContactFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,9 +54,7 @@ class  EmergencyContactFragment : Fragment() {
             }
             textViewButtonJump.setOnClickListener {
                 nextPage(
-                    EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment(
-                        args.token
-                    )
+                    EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment()
                 )
             }
         }
@@ -65,7 +62,6 @@ class  EmergencyContactFragment : Fragment() {
 
     private fun updateEmergencyContacts(emergencyName: String, emergencyPhone: String) {
         updateUserViewModel.updateEmergencyContact(
-            token = args.token,
             emergencyName = emergencyName,
             emergencyPhone = emergencyPhone
         )
@@ -80,9 +76,7 @@ class  EmergencyContactFragment : Fragment() {
 
                 is ViewState.Success -> {
                     nextPage(
-                        EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment(
-                            args.token
-                        )
+                        EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment()
                     )
                 }
 

@@ -23,11 +23,10 @@ class UpdateUserViewModel(
         _responseUpdateEmergencyContact
 
 
-    fun updateEmergencyContact(token: String, emergencyName: String, emergencyPhone: String) {
+    fun updateEmergencyContact(emergencyName: String, emergencyPhone: String) {
         _responseUpdateEmergencyContact.postLoading()
         updateEmergencyContactsUserUseCase(
             params = UpdateEmergencyContactsUserUseCase.Params(
-                token = token,
                 emergencyName = emergencyName,
                 emergencyPhone = emergencyPhone
             ),

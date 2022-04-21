@@ -5,9 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface InterestsRepository {
 
-    fun fetchAllInterests(token: String): Flow<List<Interests>>
+    fun fetchAllInterests(): Flow<List<Interests>>
 
-    fun fetchInterestsByUser(token: String): Flow<List<Interests>>
+    fun fetchInterestsByUser(): Flow<List<Interests>>
 
-    fun saveInterestsForUser(token: String, listIdInterests: List<String>): Flow<Boolean>
+    fun saveInterestsForUser(listIdInterests: List<String>): Flow<Boolean>
 }

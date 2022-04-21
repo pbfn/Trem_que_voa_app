@@ -74,9 +74,7 @@ class WelcomeFragment : Fragment() {
 
                 is ViewState.Success -> {
                     nextPage(
-                        WelcomeFragmentDirections.actionWelcomeFragmentToEmergencyContactFragment(
-                            response.data.token
-                        )
+                        WelcomeFragmentDirections.actionWelcomeFragmentToEmergencyContactFragment()
                     )
                 }
 

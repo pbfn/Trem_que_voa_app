@@ -9,7 +9,6 @@ interface UserRemoteDataSource {
 
     fun registerUser(
         firstName: String,
-        lastName: String,
         email: String,
         password: String,
         passwordConfirmation: String

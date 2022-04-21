@@ -12,14 +12,12 @@ class UpdateAboutMeUserUserCase(
 ) : UseCase<UpdateAboutMeUserUserCase.Params, User>(scope = scope) {
 
     data class Params(
-        val token: String,
         val aboutMe: String
     )
 
     override fun run(params: Params): Flow<User> = when {
         else -> {
             userRepository.updateAboutMe(
-                token = params.token,
                 aboutMe = params.aboutMe
             )
         }

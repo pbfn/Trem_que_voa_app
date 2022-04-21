@@ -14,7 +14,6 @@ class RegisterUserUseCase(
 
     data class Params(
         val firstName: String,
-        val lastName: String,
         val email: String,
         val password: String,
         val passwordConfirmation: String
@@ -23,9 +22,6 @@ class RegisterUserUseCase(
     override fun run(params: Params): Flow<User> = when {
         params.firstName.isEmpty() -> {
             throw InvalidEmptyFirstNameException()
-        }
-        params.lastName.isEmpty() -> {
-            throw InvalidEmptyLastNameException()
         }
         params.email.isEmpty() -> {
             throw InvalidEmptyEmailException()
@@ -45,7 +41,6 @@ class RegisterUserUseCase(
         else -> {
             userRepository.registerUser(
                 firstName = params.firstName,
-                lastName = params.lastName,
                 email = params.email,
                 password = params.password,
                 passwordConfirmation = params.passwordConfirmation
