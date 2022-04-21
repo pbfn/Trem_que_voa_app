@@ -17,4 +17,5 @@ val presentationModule = module {
     viewModel { DisabilitiesViewModel(get(), get()) }
     viewModel { EventViewModel(get()) }
     viewModel { CityViewModel(get()) }
+    viewModel { WellnessViewModel(get()) }
 }

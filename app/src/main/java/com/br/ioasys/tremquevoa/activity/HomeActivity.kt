@@ -1,86 +1,37 @@
 package com.br.ioasys.tremquevoa.activity
 
-import android.app.Dialog
-import android.content.Context
-import android.content.DialogInterface
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.RadioGroup
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
+import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.ActivityHomeBinding
-import com.br.ioasys.tremquevoa.presentation.ui.fragments.HomeFragment
-import com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment
-import com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment
-import com.br.ioasys.tremquevoa.presentation.viewmodel.HomeActivityViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.androidx.viewmodel.ext.android.getViewModel
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var customAlertDialogView: View
-    
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.frame_contaier) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        binding.menuBottomNavigation.setupWithNavController(navController)
-        customAlertDialogView = LayoutInflater.from(this)
-            .inflate(R.layout.pop_up_home, null, false)
-
-        //showDialog()
-        replaceFragment(HomeFragment())
-        setBottomNavigation()
+        setNavigationController()
     }
 
-
-    private fun setBottomNavigation() {
-        binding.menuBottomNavigation.itemIconTintList = null
-        binding.menuBottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menuHome -> {
-                    replaceFragment(HomeFragment())
-                }
-                R.id.menuPerfil -> {
-                    replaceFragment(PerfilUserFragment())
-                }
-                R.id.menuNewEvent -> {
-                    replaceFragment(RegisterEventFragment())
-                }
-                R.id.menuCalendar -> {
-
-                }
-                R.id.menuSaves -> {
-
-                }
-            }
-
-            true
-        }
+    private fun setNavigationController() {
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.frame_contaier, fragment)
-            .addToBackStack("Fragment").commit()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment)) ||
+                super.onOptionsItemSelected(item)
     }
-
 
 }
