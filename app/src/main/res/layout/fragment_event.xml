@@ -34,7 +34,8 @@
                 android:layout_margin="16dp"
                 android:contentDescription="Fechar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_arrow_white"/>
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,16 +43,36 @@
             android:layout_height="match_parent"
             android:background="@drawable/rounded_bg_event"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageEventContainer">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageBackgroundFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="30dp"
+                android:src="@color/primary_lighter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconFavorite"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:src="@drawable/icone_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewEventName"
-                style="@style/Base.Widget.AppCompat.TextView.Title_23"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="32dp"
                 android:textColor="@color/primary_darker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +84,7 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="16dp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +202,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewEventFreeOrEventPromoted"
-                    style="@style/TextAppearance.AppCompat.Button.StyleButtonOptionsDisabilities"
+                    style="@layout/interests_perfil_item_adapter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="26dp"
@@ -300,7 +321,7 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginTop="16dp"
                 android:text="Evento aceita animais de estimação?"
                 app:layout_constraintStart_toEndOf="@id/iconPets"
@@ -311,7 +332,7 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="58dp"
+                android:layout_marginStart="56dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -343,7 +364,7 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="54dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -351,8 +372,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageEventLocal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
@@ -469,10 +490,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"
-                android:text="Quero participar"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/to_participate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gridShares" />
@@ -484,7 +504,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 android:text="Pagar com cartão"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
