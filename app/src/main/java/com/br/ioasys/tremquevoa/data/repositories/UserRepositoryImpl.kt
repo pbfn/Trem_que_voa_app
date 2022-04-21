@@ -21,6 +21,9 @@ class UserRepositoryImpl(
                 password = password,
                 maintainLogin = maintainLogin
             ).collect { user ->
+                userLocalDataSource.saveToken(
+                    token = user.token,
+                )
                 emit(user)
             }
         }
