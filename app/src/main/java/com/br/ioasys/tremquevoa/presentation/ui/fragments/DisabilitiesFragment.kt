@@ -1,14 +1,12 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentDisabilitiesBinding
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDisabilities
@@ -50,7 +48,8 @@ class DisabilitiesFragment : Fragment() {
     }
 
     private fun setupRecyclesView() {
-        val layout = GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
+        //val layout = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        val layout = GridLayoutManager(requireContext(), 2)
         adapterDisabilities = AdapterDisabilities()
         binding.recyclerViewDisabilities.apply {
             adapter = adapterDisabilities
@@ -73,7 +72,7 @@ class DisabilitiesFragment : Fragment() {
         disabilitiesViewModel.responseSaveDisabilities.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Success -> {
-
+                    nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
                 }
             }
         }
@@ -85,9 +84,16 @@ class DisabilitiesFragment : Fragment() {
             for (disabilities in adapterDisabilities.listDisabilitiesSelected) {
                 listIds.add(disabilities.id)
             }
-            disabilitiesViewModel.saveDisabilitiesByUser(
-                listIdDisabilities = listIds
-            )
+            if (listIds.size == 0) {
+                nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
+            } else {
+                disabilitiesViewModel.saveDisabilitiesByUser(
+                    listIdDisabilities = listIds
+                )
+            }
+        }
+        binding.textViewButtonJump.setOnClickListener {
+            nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
         }
     }
 

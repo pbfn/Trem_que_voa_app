@@ -75,6 +75,9 @@ class CityFragment : Fragment() {
             textInputCity.input.doAfterTextChanged {
                 textInputCity.ChangeBackground(false, null)
             }
+            textViewButtonJump.setOnClickListener {
+                nextPage(CityFragmentDirections.actionCityFragmentToHomeActivity())
+            }
         }
     }
 
