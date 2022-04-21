@@ -43,10 +43,6 @@
         android:label="fragment_interests"
         tools:layout="@layout/fragment_interests" >
         <action
-            android:id="@+id/action_interestsFragment_to_homeActivity"
-            app:destination="@id/homeActivity"
-            app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
             android:id="@+id/action_interestsFragment_to_disabilitiesFragment"
             app:destination="@id/disabilitiesFragment" />
     </fragment>
@@ -170,5 +166,18 @@
         android:id="@+id/disabilitiesFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.DisabilitiesFragment"
         android:label="fragment_disabilities"
-        tools:layout="@layout/fragment_disabilities" />
+        tools:layout="@layout/fragment_disabilities" >
+        <action
+            android:id="@+id/action_disabilitiesFragment_to_cityFragment"
+            app:destination="@id/cityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.CityFragment"
+        android:label="fragment_city"
+        tools:layout="@layout/fragment_city" >
+        <action
+            android:id="@+id/action_cityFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
 </navigation>
