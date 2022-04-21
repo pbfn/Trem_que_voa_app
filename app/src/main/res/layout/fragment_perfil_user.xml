@@ -182,14 +182,14 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Não tem uma conta?" />
+                android:text="@string/subtitle_perfil" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnInsights"
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cadastre-se aqui!"
+                android:text="@string/button_perfil"
                 android:textColor="@color/primary_darker" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

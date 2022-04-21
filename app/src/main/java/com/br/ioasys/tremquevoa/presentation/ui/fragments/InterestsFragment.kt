@@ -92,7 +92,11 @@ class InterestsFragment : Fragment() {
 
                 }
                 is ViewState.Success -> {
-                    nextPage(InterestsFragmentDirections.actionInterestsFragmentToHomeActivity())
+                    nextPage(
+                        InterestsFragmentDirections.actionInterestsFragmentToDisabilitiesFragment(
+                            args.token
+                        )
+                    )
                 }
 
                 is ViewState.Error -> {

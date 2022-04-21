@@ -23,4 +23,16 @@ class DisabilitiesRepositoryImpl(
                 emit(listDisabilities)
             }
     }
+
+    override fun saveDesabilitiesByUser(
+        token: String,
+        listIdDisabilities: List<String>
+    ): Flow<Boolean> = flow {
+        disabilitiesRemoteDataSource.saveDesabilitiesByUser(
+            token = token,
+            listIdDisabilities = listIdDisabilities
+        ).collect {
+            emit(it)
+        }
+    }
 }
