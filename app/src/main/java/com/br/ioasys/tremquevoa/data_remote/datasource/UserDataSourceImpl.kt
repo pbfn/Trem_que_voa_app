@@ -109,4 +109,15 @@ class UserDataSourceImpl(
             }
         }
     }
+
+    override fun getUser(token: String): Flow<User> = flow {
+        val response = authService.getUser(
+            token = "Bearer $token",
+        )
+        if (response.isSuccessful){
+            response.body()?.let { userReponse ->
+                emit(userReponse.toDomain())
+            }
+        }
+    }
 }

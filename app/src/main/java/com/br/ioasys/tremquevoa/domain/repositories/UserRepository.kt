@@ -33,5 +33,7 @@ interface UserRepository {
 
     fun setFirstLogin()
 
-    fun saveDateLogin(date:String):Flow<String>
+    fun saveDateLogin(date: String): Flow<String>
+
+    fun getUser(): Flow<User>
 }

@@ -21,7 +21,6 @@ class RegisterEventViewModel(
     private val registerEventUseCase: RegisterEventUseCase,
     private val getInterestsUseCase: GetInterestsUseCase,
     private val getDisabilitiesUseCase: GetDisabilitiesUseCase,
-    private val getLocalUserUseCase: GetLocalUserUseCase
 ) : ViewModel() {
 
     private val TAG = "EventViewModel"
@@ -34,13 +33,6 @@ class RegisterEventViewModel(
 
     private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
     var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
-
-    private var _user = MutableLiveData<ViewState<User>>()
-    var user: LiveData<ViewState<User>> = _user
-
-    init {
-        getUserLocal()
-    }
 
 
     fun registerEvent(
@@ -128,17 +120,4 @@ class RegisterEventViewModel(
         )
     }
 
-    private fun getUserLocal() {
-        _user.postLoading()
-        getLocalUserUseCase(
-            params = Unit,
-            onSuccess = {
-                _user.postSuccess(it)
-            },
-            onError = {
-                _user.postError(it)
-                _user.postError(it)
-            }
-        )
-    }
 }

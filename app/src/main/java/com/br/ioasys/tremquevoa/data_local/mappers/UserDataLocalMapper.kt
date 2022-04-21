@@ -32,5 +32,8 @@ fun UserDataLocal.toDomain(): User = User(
     updatedAt = this.updatedAt,
     createdAt = this.createdAt,
     maintainLogin = this.maintainLogin,
-    aboutMe = this.aboutMe
+    aboutMe = this.aboutMe,
+    city = "",
+    isAdm = false,
+    isPremium = false
 )

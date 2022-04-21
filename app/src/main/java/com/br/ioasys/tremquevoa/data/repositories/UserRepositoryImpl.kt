@@ -113,4 +113,16 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun getUser(): Flow<User> = flow {
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                userRemoteDataSource.getUser(token = token).collect {
+                    emit(it)
+                }
+            } else {
+                emit(throw EmptyToken())
+            }
+        }
+    }
+
 }

@@ -17,5 +17,8 @@ fun RegisterResponse.toDomain() = User(
     updatedAt = this.user.updatedAt,
     createdAt = this.user.createdAt,
     maintainLogin = false,
-    aboutMe = ""
+    aboutMe = "",
+    city = "",
+    isAdm = false,
+    isPremium = false
 )

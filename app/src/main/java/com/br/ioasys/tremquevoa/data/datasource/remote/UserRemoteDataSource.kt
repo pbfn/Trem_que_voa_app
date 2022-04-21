@@ -24,6 +24,8 @@ interface UserRemoteDataSource {
 
     fun updateAboutMeUser(
         token: String,
-        aboutMe:String
-    ):Flow<User>
+        aboutMe: String
+    ): Flow<User>
+
+    fun getUser(token: String): Flow<User>
 }
