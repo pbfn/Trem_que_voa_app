@@ -33,5 +33,5 @@ val domainModule = module {
     factory { GetUserUseCase(get(), get()) }
     factory { VerifyMaintainLoginUseCase(get(), get()) }
     factory { SetMaintainLoginUseCase(get(), get()) }
-    factory { RegisterParticipateEventsUseCase(get(), get(), get()) }
+    factory { RegisterParticipateEventsUseCase(get(), get()) }
 }

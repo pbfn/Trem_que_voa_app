@@ -12,7 +12,6 @@ import com.br.ioasys.tremquevoa.R
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentHomeBinding
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
@@ -72,9 +71,6 @@ class HomeFragment : Fragment(), EventClickListener {
         setRecyclerViewDisabilities()
         setRecyclerViewInterest()
         setListener()
-        addObserver()
-        homeViewModel.getEvent(user?.token ?: "")
-
     }
 
     private fun addObserver() {
@@ -143,9 +139,9 @@ class HomeFragment : Fragment(), EventClickListener {
             when (response) {
                 is ViewState.Success -> {
                     val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                    if(response.data.isEmpty()){
+                    if (response.data.isEmpty()) {
                         homeViewModel.getDailyMessage()
-                    }else{
+                    } else {
                         val lastDateLogin = dateTimeFormat.parse(response.data)
                         val dateLogin = dateTimeFormat.parse(dateNow)
                         if (dateLogin > lastDateLogin) {
@@ -163,10 +159,18 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+
+        homeViewModel.user.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    configureNameUserTitle(response.data.name)
+                }
+            }
+        }
     }
 
-    private fun configureNameUserTitle(name: String?) {
-        binding.nameUser.text = String.format(getString(R.string.bem_vindo), name)
+    private fun configureNameUserTitle(name: String) {
+        binding.nameUser.text = String.format(getString(R.string.welcome), name)
     }
 
     private fun setListener() {

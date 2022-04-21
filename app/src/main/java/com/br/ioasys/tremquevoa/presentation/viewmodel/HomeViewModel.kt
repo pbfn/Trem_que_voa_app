@@ -6,22 +6,19 @@ import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.EventLists
 import com.br.ioasys.tremquevoa.domain.model.Message
 import com.br.ioasys.tremquevoa.domain.model.*
-import com.br.ioasys.tremquevoa.domain.usecase.GetAllEventsUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetDailyMessageUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.SaveDateLoginUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.*
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
 import com.br.ioasys.tremquevoa.util.postSuccess
 
 class HomeViewModel(
-     private val getInterestsUseCase: GetInterestsUseCase,
-     private val getDisabilitiesUseCase: GetDisabilitiesUseCase
+    private val getInterestsUseCase: GetInterestsUseCase,
+    private val getDisabilitiesUseCase: GetDisabilitiesUseCase,
     private val getAllEventsUseCase: GetAllEventsUseCase,
     private val saveDateLoginUseCase: SaveDateLoginUseCase,
     private val getDailyMessageUseCase: GetDailyMessageUseCase,
+    private val getUserUseCase: GetUserUseCase
 ) : ViewModel() {
 
     private var _events = MutableLiveData<ViewState<EventLists>>()
@@ -30,16 +27,25 @@ class HomeViewModel(
 
     private var _date = MutableLiveData<ViewState<String>>()
     var date: LiveData<ViewState<String>> = _date
-     var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
-     private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
-     var interest: LiveData<ViewState<List<Interests>>> = _interest
-     private var _interest = MutableLiveData<ViewState<List<Interests>>>()
+
+    private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
+    var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
+
+    private var _interest = MutableLiveData<ViewState<List<Interests>>>()
+    var interest: LiveData<ViewState<List<Interests>>> = _interest
+
+    private var _user = MutableLiveData<ViewState<User>>()
+    var user: LiveData<ViewState<User>> = _user
+
 
     private var _dailyMessage = MutableLiveData<ViewState<Message>>()
     var dailyMessage: LiveData<ViewState<Message>> = _dailyMessage
 
     init {
+        getUser()
         getEvent()
+        getInterest()
+        getDisabilities()
     }
 
     private fun getEvent() {
@@ -95,36 +101,46 @@ class HomeViewModel(
             }
         )
     }
-     fun getInterest(token: String) {
-          _interest.postLoading()
 
-          getInterestsUseCase(
-               params = GetInterestsUseCase.Params(
-                    token = token
-               ),
-               onSuccess = { listInterest ->
-                    _interest.postSuccess(listInterest)
-               },
-               onError = {
-                    _interest.postError(it)
-               }
-          )
-     }
+    private fun getInterest() {
+        _interest.postLoading()
 
-     fun getDisabilities(token: String) {
-          _disabilities.postLoading()
+        getInterestsUseCase(
+            params = Unit,
+            onSuccess = { listInterest ->
+                _interest.postSuccess(listInterest)
+            },
+            onError = {
+                _interest.postError(it)
+            }
+        )
+    }
 
-          getDisabilitiesUseCase(
-               params = GetDisabilitiesUseCase.Params(
-                    token = token
-               ),
-               onSuccess = { listDisabilities ->
-                    _disabilities.postSuccess(listDisabilities)
-               },
-               onError = {
-                    _disabilities.postError(it)
-               }
-          )
-     }
+    private fun getDisabilities() {
+        _disabilities.postLoading()
 
+        getDisabilitiesUseCase(
+            params = Unit,
+            onSuccess = { listDisabilities ->
+                _disabilities.postSuccess(listDisabilities)
+            },
+            onError = {
+                _disabilities.postError(it)
+            }
+        )
+    }
+
+    private fun getUser() {
+        _user.postLoading()
+
+        getUserUseCase(
+            params = Unit,
+            onSuccess = {
+                _user.postSuccess(it)
+            },
+            onError = {
+                _user.postError(it)
+            }
+        )
+    }
 }
