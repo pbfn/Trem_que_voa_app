@@ -13,5 +13,6 @@ val presentationModule = module {
     viewModel { ForgotPasswordViewModel(get()) }
     viewModel { PerfilViewModel(get(), get(), get(), get(), get()) }
     viewModel { SplashViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel( get(), get()) }
+    viewModel { HomeViewModel( get(), get(), get(), get()) }
+    viewModel { EventViewModel( get(), get()) }
 }

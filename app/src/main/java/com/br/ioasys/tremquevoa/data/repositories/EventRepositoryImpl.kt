@@ -63,6 +63,18 @@ class EventRepositoryImpl(
     override fun getEvents(token: String): Flow<List<Event>> {
        return eventRemoteDataSource.getEvent(token)
     }
+
+    override fun registerParticipateEvent(
+        token: String,
+        status: String,
+        eventId: String
+    ): Flow<Unit>  {
+        return eventRemoteDataSource.getParticipateEvent(
+            token = token,
+            status = status,
+            eventId = eventId
+        )
+    }
 }
 
 //    override fun fetchEventActivities(): Flow<List<Activities>> {

@@ -49,6 +49,9 @@
     <string name="estado">Estado:</string>
     <string name="modality_online">Online</string>
     <string name="modality_presencial">Presencial</string>
+    <string name="quero_participar">Quero participar</string>
+    <string name="participacao_confirmada">Participação confirmada</string>
+    <string name="bem_vindo">Olá, %s</string>
 
     <string-array name="pet_friendly_array">
         <item>@string/yes</item>
