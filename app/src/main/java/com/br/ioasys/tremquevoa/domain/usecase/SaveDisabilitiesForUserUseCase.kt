@@ -11,14 +11,12 @@ class SaveDisabilitiesForUserUseCase(
 ) : UseCase<SaveDisabilitiesForUserUseCase.Params, Boolean>(scope = scope) {
 
     data class Params(
-        val token: String,
         val listIdDisabilities: List<String>
     )
 
     override fun run(params: Params): Flow<Boolean> = when {
         else -> {
             disabilitiesRepository.saveDesabilitiesByUser(
-                token = params.token,
                 listIdDisabilities = params.listIdDisabilities
             )
         }

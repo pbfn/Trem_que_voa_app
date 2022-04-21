@@ -163,7 +163,6 @@ class RegisterUserFragment : Fragment() {
     private fun registerUser() {
         registerViewModel.registerUser(
             firstName = binding.editTextFirstName.input.text.toString(),
-            lastName = "pedro",
             email = binding.editTextEmail.input.text.toString(),
             password = binding.editTextPassword.input.text.toString(),
             passwordConfirmation = binding.editTextConfirmPassword.input.text.toString()

@@ -41,4 +41,10 @@ interface AuthService {
         @Header("Authorization") token: String,
         @Body updateAboutMeUserRequest: UpdateAboutMeUserRequest
     ): Response<RegisterResponse>
+
+    @Headers("Content-type: application/json")
+    @GET("users/find")
+    suspend fun getUser(
+        @Header("Authorization") token: String,
+    ): Response<UserResponse>
 }

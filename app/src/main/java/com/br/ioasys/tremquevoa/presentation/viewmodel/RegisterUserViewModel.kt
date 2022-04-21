@@ -19,7 +19,6 @@ class RegisterUserViewModel(
 
     fun registerUser(
         firstName: String,
-        lastName: String,
         email: String,
         password: String,
         passwordConfirmation: String
@@ -29,7 +28,6 @@ class RegisterUserViewModel(
         registerUserUseCase(
             params = RegisterUserUseCase.Params(
                 firstName = firstName,
-                lastName = lastName,
                 email = email,
                 password = password,
                 passwordConfirmation = passwordConfirmation

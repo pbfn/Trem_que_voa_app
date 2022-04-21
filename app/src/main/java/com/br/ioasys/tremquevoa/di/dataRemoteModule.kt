@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val dataRemoteModule = module {
     single<UserRemoteDataSource> {
-        UserDataSourceImpl(get())
+        UserRemoteDataSourceImpl(get())
     }
 
     single<EventRemoteDataSource> {

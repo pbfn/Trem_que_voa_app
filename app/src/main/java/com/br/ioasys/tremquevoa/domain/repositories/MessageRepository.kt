@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MessageRepository {
 
-    fun getDailyMessage(token: String): Flow<Message>
+    fun getDailyMessage(): Flow<Message>
 
 }

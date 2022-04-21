@@ -9,13 +9,9 @@ import kotlinx.coroutines.flow.Flow
 class GetAllEventsUseCase(
     private val eventRepository: EventRepository,
     scope: CoroutineScope
-) : UseCase<GetAllEventsUseCase.Params, List<Event>>(scope = scope) {
+) : UseCase<Unit, List<Event>>(scope = scope) {
 
-    data class Params(
-        var token: String
-    )
-
-    override fun run(params: Params): Flow<List<Event>> {
-       return eventRepository.getEvents(params.token)
+    override fun run(params: Unit): Flow<List<Event>> {
+        return eventRepository.getEvents()
     }
 }

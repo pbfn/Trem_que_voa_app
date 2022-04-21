@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val dataLocalModule = module {
     single { SharedPreferencesHelper(androidContext()) }
-    single<UserLocalDataSource> { UserLocalDataSourceImpl(get(), get()) }
+    single<UserLocalDataSource> { UserLocalDataSourceImpl(get()) }
 }

@@ -21,7 +21,6 @@ class DisabilitiesFragment : Fragment() {
     private var _binding: FragmentDisabilitiesBinding? = null
     private val binding: FragmentDisabilitiesBinding get() = _binding!!
 
-   private val args: DisabilitiesFragmentArgs by navArgs()
 
     private val disabilitiesViewModel: DisabilitiesViewModel by lazy {
         getViewModel()
@@ -60,7 +59,7 @@ class DisabilitiesFragment : Fragment() {
     }
 
     private fun getDisabilities() {
-        disabilitiesViewModel.getDisabilities(args.token)
+        disabilitiesViewModel.getDisabilities()
     }
 
     private fun observeData() {
@@ -87,7 +86,6 @@ class DisabilitiesFragment : Fragment() {
                 listIds.add(disabilities.id)
             }
             disabilitiesViewModel.saveDisabilitiesByUser(
-                token = args.token,
                 listIdDisabilities = listIds
             )
         }

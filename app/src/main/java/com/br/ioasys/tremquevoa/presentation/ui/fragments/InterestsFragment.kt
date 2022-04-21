@@ -27,7 +27,6 @@ class InterestsFragment : Fragment() {
         getViewModel()
     }
 
-    private val args: InterestsFragmentArgs by navArgs()
     private var listInterests: List<Interests> = listOf()
 
     private lateinit var adapterInterests: AdapterInterests
@@ -62,7 +61,7 @@ class InterestsFragment : Fragment() {
     }
 
     private fun getInterests() {
-        interestsViewModel.getInterests(args.token)
+        interestsViewModel.getInterests()
     }
 
     private fun addObserver() {
@@ -93,9 +92,7 @@ class InterestsFragment : Fragment() {
                 }
                 is ViewState.Success -> {
                     nextPage(
-                        InterestsFragmentDirections.actionInterestsFragmentToDisabilitiesFragment(
-                            args.token
-                        )
+                        InterestsFragmentDirections.actionInterestsFragmentToDisabilitiesFragment()
                     )
                 }
 
@@ -118,7 +115,7 @@ class InterestsFragment : Fragment() {
                     selectedIdInterestsList.add(interest.id)
                 }
             }
-            interestsViewModel.saveInterestsByUser(args.token, selectedIdInterestsList)
+            interestsViewModel.saveInterestsByUser(selectedIdInterestsList)
         }
     }
 

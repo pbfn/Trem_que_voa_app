@@ -13,11 +13,10 @@ import com.br.ioasys.tremquevoa.util.postLoading
 import com.br.ioasys.tremquevoa.util.postSuccess
 
 class PerfilViewModel(
-    private val getLocalUserUseCase: GetLocalUserUseCase,
     private val getInterestsByUserUseCase: GetInterestsByUserUseCase,
     private val updateAboutMeUserUserCase: UpdateAboutMeUserUserCase,
-    private val updateUserUseCase: UpdateUserUseCase,
-    private val getDisabilitiesByUserUseCase: GetDisabilitiesByUserUseCase
+    private val getDisabilitiesByUserUseCase: GetDisabilitiesByUserUseCase,
+    private val getUserUseCase: GetUserUseCase
 ) : ViewModel() {
 
     private var _interests = MutableLiveData<ViewState<List<Interests>>>()
@@ -26,26 +25,20 @@ class PerfilViewModel(
     private var _deficiency = MutableLiveData<ViewState<List<Disabilities>>>()
     var deficiency: LiveData<ViewState<List<Disabilities>>> = _deficiency
 
-
-    private var _userLocal = MutableLiveData<ViewState<User>>()
-    var userLocal: LiveData<ViewState<User>> = _userLocal
-
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
 
-    private var _updateUser = MutableLiveData<ViewState<Boolean>>()
-    var updateUser: LiveData<ViewState<Boolean>> = _updateUser
 
     init {
-        getUserLocal()
+        getUser()
+        getInterestsUser()
+        getDeficiencyUser()
     }
 
-    private fun getInterestsUser(token: String) {
+    private fun getInterestsUser() {
         _interests.postLoading()
         getInterestsByUserUseCase(
-            GetInterestsByUserUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _interests.postSuccess(it)
             },
@@ -55,12 +48,10 @@ class PerfilViewModel(
         )
     }
 
-    private fun getDeficiencyUser(token: String) {
+    private fun getDeficiencyUser() {
         _deficiency.postLoading()
         getDisabilitiesByUserUseCase(
-            GetDisabilitiesByUserUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _deficiency.postSuccess(it)
             },
@@ -71,28 +62,10 @@ class PerfilViewModel(
 
     }
 
-    private fun getUserLocal() {
-        _userLocal.postLoading()
-        getLocalUserUseCase(
+    private fun getUser() {
+        _user.postLoading()
+        getUserUseCase(
             params = Unit,
-            onSuccess = {
-                _userLocal.postSuccess(it)
-                getInterestsUser(it.token)
-                getDeficiencyUser(it.token)
-            },
-            onError = {
-                _userLocal.postError(it)
-                _interests.postError(it)
-            }
-        )
-    }
-
-    fun updateAboutMe(aboutMe: String, token: String) {
-        updateAboutMeUserUserCase(
-            params = UpdateAboutMeUserUserCase.Params(
-                token = token,
-                aboutMe = aboutMe
-            ),
             onSuccess = {
                 _user.postSuccess(it)
             },
@@ -102,18 +75,19 @@ class PerfilViewModel(
         )
     }
 
-    fun updateUserLocal(newUser: User) {
-        updateUserUseCase(
-            params = UpdateUserUseCase.Params(
-                newUser = newUser
+    fun updateAboutMe(aboutMe: String) {
+        updateAboutMeUserUserCase(
+            params = UpdateAboutMeUserUserCase.Params(
+                aboutMe = aboutMe
             ),
             onSuccess = {
-                _updateUser.postSuccess(true)
+
             },
             onError = {
-                _updateUser.postError(it)
+
             }
         )
     }
+
 
 }

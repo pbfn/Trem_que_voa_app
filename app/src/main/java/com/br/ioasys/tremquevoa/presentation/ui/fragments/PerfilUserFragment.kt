@@ -55,6 +55,8 @@ class PerfilUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         addObserver()
         setListeners()
+        setRecyclerView()
+        setCardLayout()
     }
 
     private fun setCardLayout() {
@@ -110,26 +112,6 @@ class PerfilUserFragment : Fragment() {
     }
 
     private fun addObserver() {
-        perfilViewModel.userLocal.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is ViewState.Loading -> {
-
-                }
-                is ViewState.Success -> {
-                    user = response.data
-                    setLayout()
-                    setCardLayout()
-                    setRecyclerView()
-                }
-
-                is ViewState.Error -> {
-
-                }
-                else -> {
-
-                }
-            }
-        }
         perfilViewModel.interests.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
@@ -148,27 +130,6 @@ class PerfilUserFragment : Fragment() {
                 }
             }
 
-        }
-        perfilViewModel.user.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is ViewState.Loading -> {
-
-                }
-                is ViewState.Success -> {
-                    val updatedUser = response.data
-                    updatedUser.token = user.token
-                    updatedUser.refreshToken = user.refreshToken
-                    updatedUser.maintainLogin = user.maintainLogin
-                    perfilViewModel.updateUserLocal(updatedUser)
-                }
-
-                is ViewState.Error -> {
-
-                }
-                else -> {
-
-                }
-            }
         }
         perfilViewModel.deficiency.observe(viewLifecycleOwner) { response ->
             when (response) {

@@ -66,7 +66,8 @@ class RegisterEventFragment : Fragment() {
         setListener()
         addObserver()
         setRecycleViewButtonsOptions()
-
+        registerEventViewModel.fetchActivities()
+        registerEventViewModel.fetchDisabilities()
         settingModality()
         settingPetFriendly()
         configToggleEventFree()
@@ -110,27 +111,6 @@ class RegisterEventFragment : Fragment() {
     }
 
     private fun addObserver() {
-
-        registerEventViewModel.user.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is ViewState.Loading -> {
-                }
-
-                is ViewState.Success -> {
-                    user = response.data
-                    registerEventViewModel.fetchActivities(user?.token ?: "")
-                    registerEventViewModel.fetchDisabilities(user?.token ?: "")
-                }
-
-                is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Houve uma falha no cadastro",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
 
         registerEventViewModel.event.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -350,7 +330,6 @@ class RegisterEventFragment : Fragment() {
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
-            token = user?.token ?: "",
             name = binding.customNameEvent.input.text.toString(),
             description = binding.customDescription.input.text.toString(),
             isOnline = isOnline,

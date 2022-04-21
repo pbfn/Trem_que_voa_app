@@ -7,10 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.model.Interests
-import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetLocalUserUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterEventUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
@@ -21,7 +19,6 @@ class RegisterEventViewModel(
     private val registerEventUseCase: RegisterEventUseCase,
     private val getInterestsUseCase: GetInterestsUseCase,
     private val getDisabilitiesUseCase: GetDisabilitiesUseCase,
-    private val getLocalUserUseCase: GetLocalUserUseCase
 ) : ViewModel() {
 
     private val TAG = "EventViewModel"
@@ -35,16 +32,8 @@ class RegisterEventViewModel(
     private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
     var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
 
-    private var _user = MutableLiveData<ViewState<User>>()
-    var user: LiveData<ViewState<User>> = _user
-
-    init {
-        getUserLocal()
-    }
-
 
     fun registerEvent(
-        token:String,
         name: String,
         description: String,
         isOnline: Boolean,
@@ -70,7 +59,6 @@ class RegisterEventViewModel(
 
         registerEventUseCase(
             params = RegisterEventUseCase.Params(
-                token = token,
                 name = name,
                 description = description,
                 isOnline = isOnline,
@@ -102,12 +90,10 @@ class RegisterEventViewModel(
         )
     }
 
-    fun fetchActivities(token: String) {
+    fun fetchActivities() {
         _activities.postLoading()
         getInterestsUseCase(
-            params = GetInterestsUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listInterestsResponse ->
                 Log.d(TAG, listInterestsResponse.toString())
                 _activities.postSuccess(listInterestsResponse)
@@ -118,12 +104,10 @@ class RegisterEventViewModel(
         )
     }
 
-    fun fetchDisabilities(token: String) {
+    fun fetchDisabilities() {
         _disabilities.postLoading()
         getDisabilitiesUseCase(
-            GetDisabilitiesUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listDisabilitiesResponse ->
                 Log.d(TAG, listDisabilitiesResponse.toString())
                 _disabilities.postSuccess(listDisabilitiesResponse)
@@ -134,17 +118,4 @@ class RegisterEventViewModel(
         )
     }
 
-    private fun getUserLocal() {
-        _user.postLoading()
-        getLocalUserUseCase(
-            params = Unit,
-            onSuccess = {
-                _user.postSuccess(it)
-            },
-            onError = {
-                _user.postError(it)
-                _user.postError(it)
-            }
-        )
-    }
 }

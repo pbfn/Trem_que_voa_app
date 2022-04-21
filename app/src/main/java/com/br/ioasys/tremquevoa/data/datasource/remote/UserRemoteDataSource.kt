@@ -5,11 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRemoteDataSource {
 
-    fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User>
+    fun doLogin(email: String, password: String): Flow<User>
 
     fun registerUser(
         firstName: String,
-        lastName: String,
         email: String,
         password: String,
         passwordConfirmation: String
@@ -25,6 +24,8 @@ interface UserRemoteDataSource {
 
     fun updateAboutMeUser(
         token: String,
-        aboutMe:String
-    ):Flow<User>
+        aboutMe: String
+    ): Flow<User>
+
+    fun getUser(token: String): Flow<User>
 }

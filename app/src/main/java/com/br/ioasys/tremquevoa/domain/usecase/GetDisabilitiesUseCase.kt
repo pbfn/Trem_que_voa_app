@@ -10,13 +10,11 @@ import kotlinx.coroutines.flow.Flow
 class GetDisabilitiesUseCase(
     private val disabilitiesRepository: DisabilitiesRepository,
     scope: CoroutineScope
-) : UseCase<GetDisabilitiesUseCase.Params, List<Disabilities>>(scope = scope) {
+) : UseCase<Unit, List<Disabilities>>(scope = scope) {
 
-    data class Params(
-        var token: String
-    )
 
-    override fun run(params: Params): Flow<List<Disabilities>> {
-        return disabilitiesRepository.fetchAllDesabilities(params.token)
+
+    override fun run(params: Unit): Flow<List<Disabilities>> {
+        return disabilitiesRepository.fetchAllDesabilities()
     }
 }

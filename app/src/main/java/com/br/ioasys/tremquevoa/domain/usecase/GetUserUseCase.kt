@@ -6,15 +6,13 @@ import com.br.ioasys.tremquevoa.domain.usecase.util.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
-class GetLocalUserUseCase(
-    private val userRepository: UserRepository,
-    scope: CoroutineScope
+class GetUserUseCase(
+    val userRepository: UserRepository,
+    val scope: CoroutineScope
 ) : UseCase<Unit, User>(scope = scope) {
-
-
     override fun run(params: Unit): Flow<User> = when {
-        else->{
-            userRepository.fetchUserLogged()
+        else-> {
+            userRepository.getUser()
         }
     }
 }

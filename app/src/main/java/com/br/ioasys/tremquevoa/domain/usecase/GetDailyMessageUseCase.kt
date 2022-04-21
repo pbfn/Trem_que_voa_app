@@ -9,14 +9,12 @@ import kotlinx.coroutines.flow.Flow
 class GetDailyMessageUseCase(
     private val messageRepository: MessageRepository,
     val scope: CoroutineScope
-) : UseCase<GetDailyMessageUseCase.Params, Message>(scope = scope) {
-    data class Params(
-        val token: String
-    )
+) : UseCase<Unit, Message>(scope = scope) {
 
-    override fun run(params: Params): Flow<Message> = when {
+
+    override fun run(params: Unit): Flow<Message> = when {
         else -> {
-            messageRepository.getDailyMessage(token = params.token)
+            messageRepository.getDailyMessage()
         }
     }
 }

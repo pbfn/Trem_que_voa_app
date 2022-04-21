@@ -11,7 +11,6 @@ class MainApplication : Application() {
         super.onCreate()
         startKoin {
             modules(
-                databaseModule,
                 dataLocalModule,
                 dataModule,
                 dataRemoteModule,

@@ -28,7 +28,6 @@ class HomeFragment : Fragment(), EventClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
-    private var user: User? = null
     private val homeViewModel: HomeViewModel by lazy {
         getViewModel()
     }
@@ -56,31 +55,12 @@ class HomeFragment : Fragment(), EventClickListener {
         addObserver()
         verifyDateLogin()
         setRecyclerViewEvents()
-        homeViewModel.getEvent(user?.token ?: "")
         customAlertDialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.pop_up_home, null, false)
 
     }
 
     private fun addObserver() {
-        homeViewModel.user.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is ViewState.Loading -> {
-
-                }
-                is ViewState.Success -> {
-                    user = response.data
-                }
-
-                is ViewState.Error -> {
-
-                }
-                else -> {
-
-                }
-            }
-        }
-
         homeViewModel.events.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {
@@ -107,12 +87,12 @@ class HomeFragment : Fragment(), EventClickListener {
                 is ViewState.Success -> {
                     val dateTimeFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                     if(response.data.isEmpty()){
-                        homeViewModel.getDailyMessage(user?.token ?: "")
+                        homeViewModel.getDailyMessage()
                     }else{
                         val lastDateLogin = dateTimeFormat.parse(response.data)
                         val dateLogin = dateTimeFormat.parse(dateNow)
                         if (dateLogin > lastDateLogin) {
-                            homeViewModel.getDailyMessage(user?.token ?: "")
+                            homeViewModel.getDailyMessage()
                         }
                     }
                 }

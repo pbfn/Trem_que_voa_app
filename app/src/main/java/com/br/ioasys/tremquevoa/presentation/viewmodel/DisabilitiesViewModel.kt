@@ -22,12 +22,10 @@ class DisabilitiesViewModel(
     private val _responseSaveDisabilities = MutableLiveData<ViewState<Boolean>>()
     val responseSaveDisabilities: LiveData<ViewState<Boolean>> = _responseSaveDisabilities
 
-    fun getDisabilities(token: String) {
+    fun getDisabilities() {
         _disabilities.postLoading()
         getDisabilitiesUseCase(
-            GetDisabilitiesUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = {
                 _disabilities.postSuccess(it)
             },
@@ -37,11 +35,10 @@ class DisabilitiesViewModel(
         )
     }
 
-    fun saveDisabilitiesByUser(token: String, listIdDisabilities: List<String>) {
+    fun saveDisabilitiesByUser(listIdDisabilities: List<String>) {
         _responseSaveDisabilities.postLoading()
         saveDisabilitiesForUserUseCase(
             SaveDisabilitiesForUserUseCase.Params(
-                token = token,
                 listIdDisabilities = listIdDisabilities
             ),
             onSuccess = {

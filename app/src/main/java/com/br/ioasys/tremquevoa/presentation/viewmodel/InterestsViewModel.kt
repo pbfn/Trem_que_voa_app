@@ -23,13 +23,11 @@ class InterestsViewModel(
     var saveInterests: LiveData<ViewState<Boolean>> = _saveInterests
 
 
-    fun getInterests(token: String) {
+    fun getInterests() {
         _interests.postLoading()
 
         getInterestsUseCase(
-            params = GetInterestsUseCase.Params(
-                token = token
-            ),
+            params = Unit,
             onSuccess = { listInterestsResponse ->
                 _interests.postSuccess(listInterestsResponse)
             },
@@ -40,12 +38,11 @@ class InterestsViewModel(
 
     }
 
-    fun saveInterestsByUser(token: String, listIdInterests: List<String>) {
+    fun saveInterestsByUser(listIdInterests: List<String>) {
         _saveInterests.postLoading()
 
         saveInterestsForUserUseCase(
             params = SaveInterestsForUserUseCase.Params(
-                token = token,
                 listIdInterests = listIdInterests
             ),
             onSuccess = {
