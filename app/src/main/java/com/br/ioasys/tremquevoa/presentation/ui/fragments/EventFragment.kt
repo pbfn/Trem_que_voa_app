@@ -54,7 +54,7 @@ class EventFragment : BottomSheetDialogFragment() {
                 is ViewState.Success -> {
                     Toast.makeText(
                         requireContext(),
-                        getString(R.string.participacao_confirmada),
+                        getString(R.string.participation_confirmed),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -62,13 +62,12 @@ class EventFragment : BottomSheetDialogFragment() {
                 is ViewState.Error -> {
                     Toast.makeText(
                         requireContext(),
-                        "Houve uma falha ao participar do evento",
+                        "Usuário já está participando desse evento",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
-
     }
 
     private fun setListeners() {
@@ -102,8 +101,7 @@ class EventFragment : BottomSheetDialogFragment() {
                 textViewModality.text = getModality(event?.isOnline ?: false)
                 textViewAcessible.text =
                     event?.accessibilities.toString() //TODO tratar para pegar as acessibilidades
-                textViewPets.text =
-                    event?.isPetFriendly.toString() //TODO tratar para retornar o texto Sim ou não
+                textViewPets.text = getPetFriendly(event?.isPetFriendly ?: false)
                 textViewLocalEvent.text = event?.address?.street
                 textViewEventFreeOrEventPromoted.text =
                     event?.price.toString()  //TODO tratar para pegar se for pago ou gratuito
@@ -113,6 +111,11 @@ class EventFragment : BottomSheetDialogFragment() {
         private fun getModality(isOnline: Boolean): String {
             return if (isOnline) getString(R.string.modality_online)
             else getString(R.string.modality_presencial)
+        }
+
+        private fun getPetFriendly(isPetFriendly: Boolean): String {
+            return if (isPetFriendly) getString(R.string.pet_friendly_yes)
+            else getString(R.string.pet_friendly_no)
         }
 
         override fun onDestroyView() {
@@ -127,4 +130,4 @@ class EventFragment : BottomSheetDialogFragment() {
                 }
             }
         }
-    }
+}
