@@ -25,4 +25,8 @@ val dataModule = module {
     single<MessageRepository> {
         MessageRepositoryImpl(get(), get())
     }
+
+    single<WellnessRepository> {
+        WellnessRepositoryImpl(get(), get())
+    }
 }

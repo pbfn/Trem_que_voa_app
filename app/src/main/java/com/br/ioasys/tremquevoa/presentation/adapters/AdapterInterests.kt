@@ -1,21 +1,15 @@
 package com.br.ioasys.tremquevoa.presentation.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.InterestsItemAdapterBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.bumptech.glide.Glide
 
 class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterestsViewHolder>() {
-
-
-    var context: Context? = null
 
     class AdapterInterestsViewHolder(itemView: InterestsItemAdapterBinding) :
         RecyclerView.ViewHolder(itemView.root) {
@@ -42,7 +36,6 @@ class AdapterInterests() : RecyclerView.Adapter<AdapterInterests.AdapterInterest
             parent,
             false
         )
-        context = parent.context
         return AdapterInterestsViewHolder(binding)
     }
 

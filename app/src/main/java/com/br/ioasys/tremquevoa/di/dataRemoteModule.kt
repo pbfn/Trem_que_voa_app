@@ -29,6 +29,10 @@ val dataRemoteModule = module {
         MessageRemoteDataSourceImpl(get())
     }
 
+    single<WellnessRemoteDataSource> {
+        WellnessRemoteDataSourceImpl(get())
+    }
+
     single<AuthService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
@@ -58,6 +62,13 @@ val dataRemoteModule = module {
     }
 
     single<MessageService> {
+        WebServiceFactory.createWebService(
+            okHttpClient = get(),
+            url = BASE_URL
+        )
+    }
+
+    single<WellnessService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
             url = BASE_URL

@@ -18,7 +18,8 @@ class HomeViewModel(
     private val getAllEventsUseCase: GetAllEventsUseCase,
     private val saveDateLoginUseCase: SaveDateLoginUseCase,
     private val getDailyMessageUseCase: GetDailyMessageUseCase,
-    private val getUserUseCase: GetUserUseCase
+    private val getUserUseCase: GetUserUseCase,
+    private val getWellnessListUseCase: GetWellnessListUseCase
 ) : ViewModel() {
 
     private var _events = MutableLiveData<ViewState<EventLists>>()
@@ -37,15 +38,18 @@ class HomeViewModel(
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
 
-
     private var _dailyMessage = MutableLiveData<ViewState<Message>>()
     var dailyMessage: LiveData<ViewState<Message>> = _dailyMessage
+
+    private var _wellness = MutableLiveData<ViewState<List<Wellness>>>()
+    var wellness: LiveData<ViewState<List<Wellness>>> = _wellness
 
     init {
         getUser()
         getEvent()
         getInterest()
         getDisabilities()
+        getListWellness()
     }
 
     private fun getEvent() {
@@ -140,6 +144,19 @@ class HomeViewModel(
             },
             onError = {
                 _user.postError(it)
+            }
+        )
+    }
+
+    private fun getListWellness() {
+        _wellness.postLoading()
+        getWellnessListUseCase(
+            params = Unit,
+            onSuccess = {
+                _wellness.postSuccess(it)
+            },
+            onError = {
+                _wellness.postError(it)
             }
         )
     }
