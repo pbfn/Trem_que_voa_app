@@ -126,4 +126,16 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun updateCityForUser(city: String): Flow<Boolean> = flow {
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                userRemoteDataSource.updateCityUser(token = token, city = city).collect {
+                    emit(it)
+                }
+            } else {
+                emit(throw EmptyToken())
+            }
+        }
+    }
+
 }

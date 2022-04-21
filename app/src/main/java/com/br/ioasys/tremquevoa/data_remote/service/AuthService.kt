@@ -47,4 +47,11 @@ interface AuthService {
     suspend fun getUser(
         @Header("Authorization") token: String,
     ): Response<UserResponse>
+
+    @Headers("Content-type: application/json")
+    @PATCH("users")
+    suspend fun updateCityUser(
+        @Header("Authorization") token: String,
+        @Body updateCityUser: UpdateCityUserRequest
+    ): Response<UserResponse>
 }

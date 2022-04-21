@@ -36,4 +36,6 @@ interface UserRepository {
     fun saveDateLogin(date: String): Flow<String>
 
     fun getUser(): Flow<User>
+
+    fun updateCityForUser(city: String): Flow<Boolean>
 }
