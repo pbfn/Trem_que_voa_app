@@ -28,7 +28,6 @@ class HomeFragment : Fragment(), EventClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
-    private var user: User? = null
     private val homeViewModel: HomeViewModel by lazy {
         getViewModel()
     }
@@ -56,31 +55,12 @@ class HomeFragment : Fragment(), EventClickListener {
         addObserver()
         verifyDateLogin()
         setRecyclerViewEvents()
-        homeViewModel.getEvent()
         customAlertDialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.pop_up_home, null, false)
 
     }
 
     private fun addObserver() {
-        homeViewModel.user.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is ViewState.Loading -> {
-
-                }
-                is ViewState.Success -> {
-                    user = response.data
-                }
-
-                is ViewState.Error -> {
-
-                }
-                else -> {
-
-                }
-            }
-        }
-
         homeViewModel.events.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Loading -> {

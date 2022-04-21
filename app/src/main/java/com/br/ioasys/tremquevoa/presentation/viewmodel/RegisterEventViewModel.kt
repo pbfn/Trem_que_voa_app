@@ -7,10 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.domain.model.Interests
-import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
-import com.br.ioasys.tremquevoa.domain.usecase.GetLocalUserUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterEventUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError

@@ -85,7 +85,6 @@ class LoginFragment : Fragment() {
         loginViewModel.doLogin(
             email = email,
             password = password,
-            maintainLogin = maintainLogin
         )
     }
 
@@ -106,6 +105,7 @@ class LoginFragment : Fragment() {
                         "Login realizado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
+                    loginViewModel.setMaintainLogin()
                     nextPage(LoginFragmentDirections.actionLoginFragmentToHomeActivity())
                 }
 

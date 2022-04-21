@@ -15,7 +15,6 @@ fun UserResponse.toDomain() = User(
     emergencyPhone = this.emergencyPhone,
     createdAt = this.createdAt,
     updatedAt = this.updatedAt,
-    maintainLogin = false,
     isPremium = this.isPremium,
     isAdm = this.isAdmin,
     city = this.city

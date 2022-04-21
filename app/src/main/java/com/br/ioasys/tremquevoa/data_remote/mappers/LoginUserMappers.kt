@@ -4,7 +4,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.response.LoginResponse
 import com.br.ioasys.tremquevoa.data_remote.model.response.RegisterResponse
 import com.br.ioasys.tremquevoa.domain.model.User
 
-fun LoginResponse.toDomain(maintainLogin: Boolean) = User(
+fun LoginResponse.toDomain() = User(
     id = this.user.id,
     email = this.user.email,
     name = this.user.name,
@@ -15,7 +15,6 @@ fun LoginResponse.toDomain(maintainLogin: Boolean) = User(
     emergencyPhone = this.user.emergencyPhone,
     updatedAt = this.user.updatedAt,
     createdAt = this.user.createdAt,
-    maintainLogin = maintainLogin,
     aboutMe = this.user.aboutMe,
     isPremium = this.user.isPremium,
     isAdm = this.user.isAdmin,

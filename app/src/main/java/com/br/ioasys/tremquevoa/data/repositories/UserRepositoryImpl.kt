@@ -15,12 +15,11 @@ class UserRepositoryImpl(
     private val userLocalDataSource: UserLocalDataSource
 ) : UserRepository {
 
-    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> =
+    override fun doLogin(email: String, password: String): Flow<User> =
         flow {
             userRemoteDataSource.doLogin(
                 email = email,
-                password = password,
-                maintainLogin = maintainLogin
+                password = password
             ).collect { user ->
                 userLocalDataSource.saveToken(
                     token = user.token,
@@ -29,13 +28,6 @@ class UserRepositoryImpl(
             }
         }
 
-    override fun saveUser(user: User) = userLocalDataSource.saveUser(
-        user = user
-    )
-
-    override fun fetchUserLogged(): Flow<User> {
-        return flowOf(userLocalDataSource.fetchUserLogged())
-    }
 
     override fun registerUser(
         firstName: String,
@@ -73,7 +65,6 @@ class UserRepositoryImpl(
 
     }
 
-    override fun updateUser(newUser: User) = userLocalDataSource.updateUser(newUser)
 
     override fun resetPassword(email: String): Flow<Boolean> = flow {
         userRemoteDataSource.resetPassword(email = email).collect {
@@ -103,8 +94,18 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun verifyMaintainLogin(): Flow<Boolean> = flow {
+        userLocalDataSource.verifyMaintainLogin().collect {
+            emit(it)
+        }
+    }
+
     override fun setFirstLogin() {
         userLocalDataSource.setFirstLogin()
+    }
+
+    override fun setMaintainLogin() {
+        userLocalDataSource.setMaintainLogin()
     }
 
     override fun saveDateLogin(date: String): Flow<String> = flow {

@@ -16,7 +16,9 @@ class SharedPreferencesHelper(
         apply()
     }
 
-    fun getBoolean(key: String): Boolean = sharedPreferences.getBoolean(key, true)
+    fun getBooleanStandardReturnTrue(key: String): Boolean = sharedPreferences.getBoolean(key, true)
+
+    fun getBooleanStandardReturnFalse(key: String): Boolean = sharedPreferences.getBoolean(key, false)
 
     fun saveString(key: String, value: String) = sharedPreferences.edit().run {
         putString(key, value)

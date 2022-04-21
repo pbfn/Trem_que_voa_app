@@ -3,23 +3,22 @@ package com.br.ioasys.tremquevoa.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.br.ioasys.tremquevoa.domain.model.User
-import com.br.ioasys.tremquevoa.domain.usecase.GetLocalUserUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.SetFirstLoginUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.VerifyFirstLoginUseCase
+import com.br.ioasys.tremquevoa.domain.usecase.VerifyMaintainLoginUseCase
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.br.ioasys.tremquevoa.util.postError
 import com.br.ioasys.tremquevoa.util.postLoading
 import com.br.ioasys.tremquevoa.util.postSuccess
 
 class SplashViewModel(
-    private val getLocalUserUseCase: GetLocalUserUseCase,
     private val verifyFirstLoginUseCase: VerifyFirstLoginUseCase,
-    private val setFirtsLoginUseCase: SetFirstLoginUseCase
+    private val setFirtsLoginUseCase: SetFirstLoginUseCase,
+    private val verifyMaintainLoginUseCase: VerifyMaintainLoginUseCase
 ) : ViewModel() {
 
-    private var _user = MutableLiveData<ViewState<User>>()
-    var user: LiveData<ViewState<User>> = _user
+    private var _maintainLogin = MutableLiveData<ViewState<Boolean>>()
+    var maintainLogin: LiveData<ViewState<Boolean>> = _maintainLogin
 
     private val _firstLogin = MutableLiveData<ViewState<Boolean>>()
     var firstLogin: LiveData<ViewState<Boolean>> = _firstLogin
@@ -31,15 +30,15 @@ class SplashViewModel(
         verifyFirstLogin()
     }
 
-    fun getUserLocal() {
-        _user.postLoading()
-        getLocalUserUseCase(
+    fun verifyMaintainLogin() {
+        _maintainLogin.postLoading()
+        verifyMaintainLoginUseCase(
             params = Unit,
             onSuccess = {
-                _user.postSuccess(it)
+                _maintainLogin.postSuccess(it)
             },
             onError = {
-                _user.postError(it)
+                _maintainLogin.postError(it)
             }
         )
     }

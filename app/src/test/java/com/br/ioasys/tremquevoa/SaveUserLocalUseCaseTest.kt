@@ -2,10 +2,8 @@ package com.br.ioasys.tremquevoa
 
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.domain.repositories.UserRepository
-import com.br.ioasys.tremquevoa.domain.usecase.SaveUserLocalUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

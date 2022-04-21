@@ -9,16 +9,16 @@ import com.br.ioasys.tremquevoa.domain.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class UserDataSourceImpl(
+class UserRemoteDataSourceImpl(
     private val authService: AuthService
 ) : UserRemoteDataSource {
 
-    override fun doLogin(email: String, password: String, maintainLogin: Boolean): Flow<User> =
+    override fun doLogin(email: String, password: String): Flow<User> =
         flow {
             val response = authService.doLogin(LoginRequest(email = email, password = password))
             if (response.isSuccessful) {
                 response.body()?.let { loginResponse ->
-                    emit(loginResponse.toDomain(maintainLogin = maintainLogin))
+                    emit(loginResponse.toDomain())
                 }
             } else {
                 when (response.code()) {

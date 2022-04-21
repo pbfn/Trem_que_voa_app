@@ -59,8 +59,7 @@ class WelcomeFragment : Fragment() {
     private fun doLogin() {
         loginViewModel.doLogin(
             email = args.email,
-            password = args.password,
-            maintainLogin = false
+            password = args.password
         )
     }
 

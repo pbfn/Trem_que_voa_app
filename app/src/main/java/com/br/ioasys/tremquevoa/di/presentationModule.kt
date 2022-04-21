@@ -9,10 +9,10 @@ val presentationModule = module {
     viewModel { RegisterEventViewModel(get(), get(), get()) }
     viewModel { RegisterUserViewModel(get()) }
     viewModel { InterestsViewModel(get(), get()) }
-    viewModel { UpdateUserViewModel(get(), get(), get()) }
+    viewModel { UpdateUserViewModel(get()) }
     viewModel { ForgotPasswordViewModel(get()) }
-    viewModel { PerfilViewModel(get(), get(), get(),get()) }
+    viewModel { PerfilViewModel(get(), get(), get(), get()) }
     viewModel { SplashViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel(get(), get(), get(), get()) }
-    viewModel { DisabilitiesViewModel(get(),get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { DisabilitiesViewModel(get(), get()) }
 }

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentSplashBinding
 import com.br.ioasys.tremquevoa.presentation.viewmodel.SplashViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -44,7 +43,7 @@ class SplashFragment : Fragment() {
 
 
     private fun observeData() {
-        splashViewModel.user.observe(viewLifecycleOwner) { response ->
+        splashViewModel.maintainLogin.observe(viewLifecycleOwner) { response ->
             when (response) {
 
                 is ViewState.Loading -> {
@@ -52,13 +51,10 @@ class SplashFragment : Fragment() {
                 }
 
                 is ViewState.Success -> {
-                    if (response.data.maintainLogin) {
-
+                    if (response.data) {
                         nextPage(SplashFragmentDirections.actionSplashFragmentToHomeActivity())
                     } else {
-
                         nextPage(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
-
                     }
                 }
 
@@ -84,7 +80,7 @@ class SplashFragment : Fragment() {
                             )
                         )
                     } else {
-                        splashViewModel.getUserLocal()
+                        splashViewModel.verifyMaintainLogin()
                     }
                 }
 
