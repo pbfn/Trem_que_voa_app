@@ -12,7 +12,6 @@ import com.br.ioasys.tremquevoa.R
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentHomeBinding
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Event
@@ -73,8 +72,6 @@ class HomeFragment : Fragment(), EventClickListener {
         setRecyclerViewInterest()
         setListener()
         addObserver()
-        homeViewModel.getEvent(user?.token ?: "")
-
     }
 
     private fun addObserver() {
@@ -166,7 +163,7 @@ class HomeFragment : Fragment(), EventClickListener {
     }
 
     private fun configureNameUserTitle(name: String?) {
-        binding.nameUser.text = String.format(getString(R.string.bem_vindo), name)
+        //binding.nameUser.text = String.format(getString(R.string.bem_vindo), name)
     }
 
     private fun setListener() {

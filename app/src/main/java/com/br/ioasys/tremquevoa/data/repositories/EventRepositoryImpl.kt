@@ -83,15 +83,20 @@ class EventRepositoryImpl(
     }
 
     override fun registerParticipateEvent(
-        token: String,
         status: String,
         eventId: String
-    ): Flow<Unit>  {
-        return eventRemoteDataSource.registerParticipateEvent(
-            token = token,
-            status = status,
-            eventId = eventId
-        )
+    ): Flow<Unit> = flow {
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                eventRemoteDataSource.registerParticipateEvent(
+                    token = token,
+                    status = status,
+                    eventId = eventId
+                )
+            } else {
+                emit(throw EmptyToken())
+            }
+        }
     }
 }
 

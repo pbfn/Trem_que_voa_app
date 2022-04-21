@@ -34,7 +34,6 @@ class EventFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerParticipateViewModel.getUserLocal()
         setupView()
         setListeners()
         setupFragmentEventHeight()
