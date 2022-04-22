@@ -1,5 +1,6 @@
 package com.br.ioasys.tremquevoa.data.datasource.remote
 
+import com.br.ioasys.tremquevoa.domain.model.Attendees
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 
@@ -36,6 +37,11 @@ interface EventRemoteDataSource {
         status: String,
         eventId: String
     ): Flow<Unit>
+
+    fun getAttendeesEventByStatus(
+        token: String,
+        status: String,
+    ): Flow<List<Attendees>>
 
     //fun fetchEventActivities(): Flow<List<Activities>>
 }

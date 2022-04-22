@@ -69,20 +69,31 @@ class EventRepositoryImpl(
                 emit(throw EmptyToken())
             }
         }
-
     }
 
     override fun getEvents(): Flow<List<Event>> = flow {
         userLocalDataSource.getToken().collect { token ->
             if (token.isNotEmpty()) {
-                eventRemoteDataSource.getEvent(token).collect {
-                    emit(it)
-                }
+                eventRemoteDataSource
+                    .getEvent(token)
+                    .combine(
+                        eventRemoteDataSource
+                            .getAttendeesEventByStatus(token, "SAVED")
+                    ) { listEvent, listAttendees ->
+                        listEvent.map { e ->
+                            listAttendees.forEach { a ->
+                                e.isFavorite = e.id == a.eventId
+                            }
+                            e
+                        }
+                    }
+                    .collect {
+                        emit(it)
+                    }
             } else {
                 emit(throw EmptyToken())
             }
         }
-
     }
 
     override fun registerParticipateEvent(
@@ -95,7 +106,9 @@ class EventRepositoryImpl(
                     token = token,
                     status = status,
                     eventId = eventId
-                )
+                ).collect {
+                    emit(Unit)
+                }
             } else {
                 emit(throw EmptyToken())
             }

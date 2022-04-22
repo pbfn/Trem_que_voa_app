@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.request.event.AddressRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.EventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
+import com.br.ioasys.tremquevoa.domain.model.Attendees
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -96,6 +97,21 @@ class EventDataSourceImpl(
             }
         } else {
             emit(error(response.code()))
+        }
+    }
+
+    override fun getAttendeesEventByStatus(token: String, status: String): Flow<List<Attendees>> {
+        return flow {
+            val response = eventService.getAttendeesEventByStatus("Bearer $token", status)
+            if (response.isSuccessful) {
+                response.body()?.let { attendeesResponse ->
+                    emit(attendeesResponse.map {
+                        it.toDomain()
+                    })
+                }
+            } else {
+                emit(error(response.code()))
+            }
         }
     }
 }

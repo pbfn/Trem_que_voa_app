@@ -17,6 +17,9 @@ class EventViewModel(
     private var _eventParticipate = MutableLiveData<ViewState<Unit>>()
     var eventParticipate: LiveData<ViewState<Unit>> = _eventParticipate
 
+    private var _favoriteEvent = MutableLiveData<ViewState<Boolean>>()
+    var favoriteEvent: LiveData<ViewState<Boolean>> = _favoriteEvent
+
 
     fun registerParticipateEvent(
         eventId: String
@@ -33,6 +36,25 @@ class EventViewModel(
             },
             onError = {
                 _eventParticipate.postError(Throwable())
+            }
+        )
+    }
+
+    fun favoriteEvent(
+        eventId: String
+    ) {
+        _favoriteEvent.postLoading()
+
+        registerParticipateEventsUseCase(
+            params = RegisterParticipateEventsUseCase.Params(
+                status = "SAVED",
+                eventId = eventId
+            ),
+            onSuccess = {
+                _favoriteEvent.postSuccess(true)
+            },
+            onError = {
+                _favoriteEvent.postError(Throwable())
             }
         )
     }

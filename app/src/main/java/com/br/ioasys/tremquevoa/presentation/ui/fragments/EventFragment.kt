@@ -1,5 +1,7 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,8 @@ import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW
+import com.br.ioasys.tremquevoa.extensions.show
+import com.br.ioasys.tremquevoa.extensions.toMoney
 import com.br.ioasys.tremquevoa.extensions.toString
 import com.br.ioasys.tremquevoa.presentation.viewmodel.EventViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -66,6 +70,22 @@ class EventFragment : BottomSheetDialogFragment() {
                     ).show()
                 }
             }
+
+            registerParticipateViewModel.favoriteEvent.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is ViewState.Success -> {
+                        getIconFavorite(true)
+                    }
+
+                    is ViewState.Error -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ocorreu um erro ao favoritar o evento",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
     }
 
@@ -78,11 +98,21 @@ class EventFragment : BottomSheetDialogFragment() {
             buttonParticipate.setOnClickListener {
                 registerParticipateEvent()
             }
+
+            iconFavorite.setOnClickListener {
+                favoriteEvent()
+            }
         }
     }
 
     private fun registerParticipateEvent() {
         registerParticipateViewModel.registerParticipateEvent(
+            eventId = event?.id?:""
+        )
+    }
+
+    private fun favoriteEvent() {
+        registerParticipateViewModel.favoriteEvent(
             eventId = event?.id?:""
         )
     }
@@ -95,19 +125,42 @@ class EventFragment : BottomSheetDialogFragment() {
                 textViewConfirmedParticipants.text = event?.numParticipants.toString()
                 textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
                 textViewStartTime.text = event?.startTime
+                iconFavorite.setImageDrawable(getIconFavorite(event?.isFavorite?:false))
                 textViewDuration.text = event?.endTime  //TODO calcular duração
                 textViewCategory.text = event?.activity?.title
                 textViewModality.text = getModality(event?.isOnline ?: false)
                 textViewAcessible.text =
-                    event?.accessibilities.toString() //TODO tratar para pegar as acessibilidades
+                    event?.accessibilities?.map {
+                        it.name
+                    }?.joinToString(
+                        prefix = "",
+                        separator = ", ",
+                        postfix = ""
+                    )
                 textViewPets.text = getPetFriendly(event?.isPetFriendly ?: false)
                 textViewLocalEvent.text = event?.address?.street
-                textViewEventFreeOrEventPromoted.text =
-                    event?.price.toString()  //TODO tratar para pegar se for pago ou gratuito
+                textViewEventFree.text = getTextEventPaymentType(getEventIsFree(event?.price))
+                buttonPay.show(getEventIsFree(event?.price).not())
             }
         }
 
-        private fun getModality(isOnline: Boolean): String {
+    private fun getTextEventPaymentType(isFree: Boolean): String {
+        return if (isFree) getString(R.string.free_event)
+        else event?.price?.toMoney()?:"R$0,00"
+    }
+
+    private fun getEventIsFree(price: Double?): Boolean {
+        return price == 0.0
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun getIconFavorite(favorite: Boolean): Drawable? {
+        return if(favorite) {
+            context?.getDrawable(R.drawable.ic_favorite_event_active)
+        } else context?.getDrawable(R.drawable.ic_favorite_event_inative)
+    }
+
+    private fun getModality(isOnline: Boolean): String {
             return if (isOnline) getString(R.string.modality_online)
             else getString(R.string.modality_presencial)
         }

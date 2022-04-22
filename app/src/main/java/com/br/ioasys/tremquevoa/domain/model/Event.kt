@@ -9,6 +9,7 @@ data class Event (
     val isOnline: Boolean,
     val url: String,
     val date: Date,
+    var isFavorite: Boolean = false,
     val isPetFriendly: Boolean,
     val maxParticipants: Int,
     val numParticipants: Int,

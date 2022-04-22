@@ -10,6 +10,7 @@ fun EventResponse.toDomain() = Event(
     isOnline = this.isOnline,
     url = this.url?:"",
     date = this.date,
+    isFavorite = false,
     isPetFriendly = this.isPetFriendly,
     isPromoted = this.isPromoted,
     maxParticipants = this.maxParticipants,
