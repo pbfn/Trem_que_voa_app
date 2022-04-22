@@ -47,25 +47,23 @@ class RegisterEventFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = FragmentRegisterEventBinding.inflate(inflater, container, false).apply {
-        Log.d("EventFragment", "eu passei no onCreate")
         _binding = this
     }.root
 
     override fun onDestroyView() {
         super.onDestroyView()
+        registerEventViewModel.resetViewState()
         _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addObserver()
         setupDatePickerDialog()
         setupTimePickerDialogStart()
         setupTimePickerDialogEnd()
         setListener()
-        addObserver()
         setRecycleViewButtonsOptions()
-        registerEventViewModel.fetchActivities()
-        registerEventViewModel.fetchDisabilities()
         settingModality()
         settingPetFriendly()
         configToggleEventFree()

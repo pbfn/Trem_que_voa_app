@@ -10,10 +10,7 @@ import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.usecase.GetDisabilitiesUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.GetInterestsUseCase
 import com.br.ioasys.tremquevoa.domain.usecase.RegisterEventUseCase
-import com.br.ioasys.tremquevoa.util.ViewState
-import com.br.ioasys.tremquevoa.util.postError
-import com.br.ioasys.tremquevoa.util.postLoading
-import com.br.ioasys.tremquevoa.util.postSuccess
+import com.br.ioasys.tremquevoa.util.*
 
 class RegisterEventViewModel(
     private val registerEventUseCase: RegisterEventUseCase,
@@ -34,6 +31,11 @@ class RegisterEventViewModel(
 
     private var _showProgressBar = MutableLiveData<Boolean>()
     var showProgressBar: LiveData<Boolean> = _showProgressBar
+
+    init {
+        fetchActivities()
+        fetchDisabilities()
+    }
 
     fun registerEvent(
         name: String,
@@ -126,4 +128,7 @@ class RegisterEventViewModel(
         )
     }
 
+    fun resetViewState() {
+        _event.postNeutral()
+    }
 }
