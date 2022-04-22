@@ -1,4 +1,4 @@
-package com.br.ioasys.tremquevoa.data_remote.model.response.event
+package com.br.ioasys.tremquevoa.data_remote.model.response
 
 class AddressResponse(
     val id: String,

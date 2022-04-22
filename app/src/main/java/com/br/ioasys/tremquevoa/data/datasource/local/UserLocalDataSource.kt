@@ -5,7 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserLocalDataSource {
     fun saveToken(token: String)
+    fun saveUserID(userId: String)
     fun getToken(): Flow<String>
+    fun getUserID(): Flow<String>
     fun verifyFirstLogin(): Flow<Boolean>
     fun verifyMaintainLogin(): Flow<Boolean>
     fun setFirstLogin()

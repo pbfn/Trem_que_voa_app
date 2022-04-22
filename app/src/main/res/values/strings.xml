@@ -43,7 +43,7 @@
     <string name="accessible_event">Evento acessível a pessoa com deficiência?</string>
     <string name="types_of_disabilities">Clique aqui para entender os tipos de deficiência</string>
     <string name="create_event_and_publish">Criar evento e publicar</string>
-    <string name="free_event">Evento gratuito</string>
+    <string name="free_event">Gratuito</string>
     <string name="state">Estado</string>
     <string name="modality_online">Online</string>
     <string name="modality_presencial">Presencial</string>
@@ -70,6 +70,17 @@
     <string name="button_perfil">Temos dicas pra você aqui!</string>
     <string name="title_city">Selecione a sua localização:</string>
     <string name="confirm">Confirmar</string>
+    <string name="share_event">Compartilhar</string>
+    <string name="report_event">Denunciar</string>
+    <string name="forum_event">Fórum</string>
+    <string name="event_help">Sua dúvida poderá ser respondida pelo organizador\nou participante já confirmados.</string>
+    <string name="event_help_title">Dúvidas? Pergunte no fórum do evento!</string>
+    <string name="event_location">Local do evento</string>
+    <string name="event_accept_pets">Evento aceita animais de estimação?</string>
+    <string name="event_accessible">Evento acessível a pessoas com deficiência?</string>
+    <string name="event_duration">Duração:</string>
+    <string name="event_time">Horário:</string>
+    <string name="event_date_card">Data:</string>
     <string name="view_more">ver todas</string>
 
     <string-array name="pet_friendly_array">

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
-import com.br.ioasys.tremquevoa.domain.model.User
 import com.br.ioasys.tremquevoa.extensions.*
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterActivities
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDisabilities
@@ -43,7 +42,6 @@ class RegisterEventFragment : Fragment() {
     private var date: GregorianCalendar = GregorianCalendar()
     private var startHour: GregorianCalendar? = null
     private var endHour: GregorianCalendar? = null
-    private var user: User? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -341,7 +339,6 @@ class RegisterEventFragment : Fragment() {
             maxParticipants = binding.customMaxParticipants.input.text.toInt() ?: 0,
             activityId = categorySelected?.id ?: "",
             price = binding.customPrice.input.text.toInt() ?: 0,
-            userId = user?.id ?: "",
             userIdentity = binding.customUserIdentity.input.text.toString(),
             accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.id },
             street = binding.customStreet.input.text.toString(),

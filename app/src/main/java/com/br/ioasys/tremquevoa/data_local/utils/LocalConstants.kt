@@ -6,4 +6,5 @@ object LocalConstants {
     const val MAINTAIN_LOGIN = "maintain_login"
     const val LAST_DATE_LOGIN = "last_date_login"
     const val TOKEN = "token"
+    const val USER_ID = "user_id"
 }

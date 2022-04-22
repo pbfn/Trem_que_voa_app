@@ -26,7 +26,7 @@ interface EventRepository {
         state: String,
         zipCode: String,
         referencePoint: String
-    ): Flow<Event>
+    ): Flow<Unit>
 
     fun getEvents(): Flow<List<Event>>
 

@@ -7,9 +7,7 @@ import com.br.ioasys.tremquevoa.domain.model.Disabilities
 fun List<DisabilitiesResponse>.toDomain(): MutableList<Disabilities> {
     val disabilities: MutableList<Disabilities> = mutableListOf()
     for (disabilitie in this) {
-        if (disabilitie.active) {
-            disabilities.add(disabilitie.toDomain())
-        }
+        disabilities.add(disabilitie.toDomain())
     }
     return disabilities
 }
@@ -21,9 +19,16 @@ fun DisabilitiesResponse.toDomain(): Disabilities = Disabilities(
     active = false
 )
 
+fun EventAccessibilitiesResponse.toDomain(): Disabilities = Disabilities(
+        id = this.id,
+        name = this.acessibilities?.name?:"",
+        description = this.acessibilities?.description?:"",
+        active = false
+)
+
 @JvmName("toDomainEventAccessibilitiesResponse")
 fun List<EventAccessibilitiesResponse>.toDomain(): List<Disabilities> {
     return this.map {
-        it.acessibilities?.toDomain()!!
+        it.toDomain()
     }
 }

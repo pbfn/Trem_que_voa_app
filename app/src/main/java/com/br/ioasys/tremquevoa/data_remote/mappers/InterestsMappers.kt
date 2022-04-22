@@ -7,9 +7,7 @@ import com.br.ioasys.tremquevoa.domain.model.Interests
 fun List<InterestsResponse>.toDomain(): MutableList<Interests> {
     val interests: MutableList<Interests> = mutableListOf()
     for (interest in this) {
-        if (interest.active) {
-            interests.add(interest.toDomain())
-        }
+        interests.add(interest.toDomain())
     }
     return interests
 }

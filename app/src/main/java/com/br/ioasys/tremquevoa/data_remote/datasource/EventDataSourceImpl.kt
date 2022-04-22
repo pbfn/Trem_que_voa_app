@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.request.event.AddressRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.EventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
+import com.br.ioasys.tremquevoa.domain.model.Attendees
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -36,7 +37,7 @@ class EventDataSourceImpl(
         state: String,
         zipCode: String,
         referencePoint: String,
-    ): Flow<Event> = flow {
+    ): Flow<Unit> = flow {
         val response = eventService.registerEvent(
             token = "Bearer $token",
             registerEventRequest = RegisterEventRequest(
@@ -67,17 +68,7 @@ class EventDataSourceImpl(
         )
 
         if (response.isSuccessful) {
-            response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse.let { registerResponse ->
-                    registerResponse.eventResponse.toDomain().copy(
-                        accessibilities =
-                        registerResponse.eventAccessibilities?.toDomain(),
-                        address = registerResponse.address.toDomain(),
-                        activity = registerResponse.interestResponse.toDomain()
-                    )
-
-                })
-            }
+            emit(Unit)
         } else {
             emit(error(response.code()))
         }
@@ -87,8 +78,8 @@ class EventDataSourceImpl(
         return flow {
             val response = eventService.getEvent(token)
             if (response.isSuccessful) {
-                response.body()?.let { registerEventResponse ->
-                    emit(registerEventResponse.map {
+                response.body()?.let { eventResponse ->
+                    emit(eventResponse.map {
                         it.toDomain()
                     })
                 }
@@ -101,23 +92,26 @@ class EventDataSourceImpl(
     override fun registerParticipateEvent(token: String, status: String, eventId: String) = flow {
         val response = eventService.participateEvent(ParticipateEventRequest(status, eventId),  token = "Bearer $token")
         if (response.isSuccessful) {
-            response.body()?.let { registerEventResponse ->
-                emit(registerEventResponse)
+            response.body()?.let { unit ->
+                emit(unit)
             }
         } else {
             emit(error(response.code()))
         }
     }
+
+    override fun getAttendeesEventByStatus(token: String, status: String): Flow<List<Attendees>> {
+        return flow {
+            val response = eventService.getAttendeesEventByStatus("Bearer $token", status)
+            if (response.isSuccessful) {
+                response.body()?.let { attendeesResponse ->
+                    emit(attendeesResponse.map {
+                        it.toDomain()
+                    })
+                }
+            } else {
+                emit(error(response.code()))
+            }
+        }
+    }
 }
-
-
-//    override fun fetchEventActivities(): Flow<List<Activities>> = flow {
-//        val response = eventService.fetchEventActivities()
-//        if (response.isSuccessful) {
-//            response.body()?.let { registerEventResponse ->
-//                emit(registerEventResponse.toDomain())
-//            }
-//        } else {
-//            emit(error(response.code()))
-//        }
-//    }

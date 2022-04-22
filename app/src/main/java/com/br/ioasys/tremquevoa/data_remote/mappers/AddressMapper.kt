@@ -1,6 +1,6 @@
 package com.br.ioasys.tremquevoa.data_remote.mappers
 
-import com.br.ioasys.tremquevoa.data_remote.model.response.event.AddressResponse
+import com.br.ioasys.tremquevoa.data_remote.model.response.AddressResponse
 import com.br.ioasys.tremquevoa.domain.model.Address
 
 fun AddressResponse.toDomain(): Address {
