@@ -26,7 +26,6 @@ class PerfilUserFragment : Fragment() {
 
     private lateinit var adapterInterests: AdapterInterestsPerfil
     private lateinit var adapterDeficiency: AdapterDeficiencyPerfil
-    private lateinit var user: User
 
     private val perfilViewModel: PerfilViewModel by lazy {
         getViewModel()
@@ -111,7 +110,15 @@ class PerfilUserFragment : Fragment() {
                 }
                 is ViewState.Success -> {
                     listInterests = response.data
-                    adapterInterests.differ.submitList(listInterests)
+                    if (response.data.isEmpty()) {
+                        binding.apply {
+                            recyclerViewDisabilities.visibility = View.INVISIBLE
+                            itemEmpty.visibility = View.VISIBLE
+                        }
+                    } else {
+                        adapterInterests.differ.submitList(listInterests)
+                    }
+
                 }
 
                 is ViewState.Error -> {

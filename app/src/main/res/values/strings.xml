@@ -85,4 +85,12 @@
     <string name="label_interests">Interesses</string>
     <string name="label_disabilities">Possui alguma deficiência?</string>
     <string name="label_moods">Registro dos moods da semana:</string>
+    <string name="settings">Configurações</string>
+    <string name="label_edit_perfil">Editar perfil</string>
+    <string name="label_notification">Notificações</string>
+    <string name="label_security">Segurança</string>
+    <string name="label_invite_friends">Convidar amigos</string>
+    <string name="label_help">Ajuda</string>
+    <string name="label_logout">Sair da conta</string>
+    <string name="label_none">Nenhuma</string>
 </resources>

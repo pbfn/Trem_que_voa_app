@@ -3,7 +3,10 @@ package com.br.ioasys.tremquevoa.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 
@@ -27,6 +30,21 @@ class HomeActivity : AppCompatActivity() {
     private fun setNavigationController() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         binding.bottomNavigation.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.settingsFragment -> {
+                    hideBottomNav()
+                    changeStatusBarColor(R.color.neutral_light)
+                }
+                R.id.wellnessFragment -> {
+                    hideBottomNav()
+                }
+                else -> {
+                    showBottomNav()
+                    changeStatusBarColor(R.color.white)
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -34,4 +52,16 @@ class HomeActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
     }
 
+    private fun showBottomNav() {
+        binding.bottomNavigation.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNav() {
+        binding.bottomNavigation.visibility = View.GONE
+    }
+
+    private fun changeStatusBarColor(color: Int) {
+        this.window.statusBarColor =
+            ContextCompat.getColor(applicationContext, color)
+    }
 }
