@@ -17,14 +17,17 @@ class RegisterUserViewModel(
     private var _user = MutableLiveData<ViewState<User>>()
     var user: LiveData<ViewState<User>> = _user
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
     fun registerUser(
         firstName: String,
         email: String,
         password: String,
         passwordConfirmation: String
     ) {
+        _showProgressBar.postValue(true)
         _user.postLoading()
-
         registerUserUseCase(
             params = RegisterUserUseCase.Params(
                 firstName = firstName,
@@ -34,10 +37,12 @@ class RegisterUserViewModel(
             ),
             onSuccess = {
                 _user.postSuccess(it)
+                _showProgressBar.postValue(false)
 
             },
             onError = {
                 _user.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

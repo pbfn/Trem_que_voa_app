@@ -54,7 +54,7 @@ class UserRepositoryImpl(
     override fun updateEmergencyContactsUser(
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<User> = flow {
+    ): Flow<Boolean> = flow {
         userLocalDataSource.getToken().collect { token ->
             if (token.isNotEmpty()) {
                 userRemoteDataSource.updateEmergencyContactsUser(
@@ -62,7 +62,7 @@ class UserRepositoryImpl(
                     emergencyName = emergencyName,
                     emergencyPhone = emergencyPhone
                 ).collect {
-                    emit(it)
+                    emit(true)
                 }
             } else {
                 emit(throw EmptyToken())
@@ -110,8 +110,8 @@ class UserRepositoryImpl(
         userLocalDataSource.setFirstLogin()
     }
 
-    override fun setMaintainLogin() {
-        userLocalDataSource.setMaintainLogin()
+    override fun setMaintainLogin(maintainLogin: Boolean) {
+        userLocalDataSource.setMaintainLogin(maintainLogin = maintainLogin)
     }
 
     override fun saveDateLogin(date: String): Flow<String> = flow {

@@ -1,30 +1,33 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentDisabilitiesBinding
-import com.br.ioasys.tremquevoa.presentation.adapters.AdapterDisabilities
+import com.br.ioasys.tremquevoa.domain.model.Disabilities
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.DisabilitiesViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
+import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class DisabilitiesFragment : Fragment() {
 
     private var _binding: FragmentDisabilitiesBinding? = null
     private val binding: FragmentDisabilitiesBinding get() = _binding!!
-
+    private val selectedIdDisabilitiessList: MutableList<String> = mutableListOf()
 
     private val disabilitiesViewModel: DisabilitiesViewModel by lazy {
         getViewModel()
     }
-
-    private lateinit var adapterDisabilities: AdapterDisabilities
 
 
     override fun onCreateView(
@@ -43,29 +46,59 @@ class DisabilitiesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeData()
         getDisabilities()
-        setupRecyclesView()
         setupListeners()
     }
 
-    private fun setupRecyclesView() {
-        //val layout = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-        val layout = GridLayoutManager(requireContext(), 2)
-        adapterDisabilities = AdapterDisabilities()
-        binding.recyclerViewDisabilities.apply {
-            adapter = adapterDisabilities
-            layoutManager = layout
-        }
-    }
 
     private fun getDisabilities() {
         disabilitiesViewModel.getDisabilities()
+    }
+
+    private fun setupChips(disabilities: List<Disabilities>) {
+        for (disabilitie in disabilities) {
+            val chip = Chip(requireContext())
+            chip.text = disabilitie.name
+            chip.chipStrokeWidth = if (chip.isChecked) 0.0F else TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                2f,
+                resources.displayMetrics
+            )
+            chip.textSize = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_SP,
+                16f,
+                resources.displayMetrics
+            )
+            chip.chipStrokeColor =
+                ContextCompat.getColorStateList(requireContext(), R.color.chip_stroke_color)
+            chip.isCheckedIconVisible = false
+            chip.isCheckable = true
+            chip.chipBackgroundColor =
+                ContextCompat.getColorStateList(requireContext(), R.color.chip_color_selector)
+            chip.setTextColor(
+                ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.chip_text_color
+                )
+            )
+            chip.setOnCheckedChangeListener { _, _ ->
+                selectedIdDisabilitiessList.add(disabilitie.id)
+            }
+            binding.chipGroup.addView(chip)
+        }
     }
 
     private fun observeData() {
         disabilitiesViewModel.disabilities.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Success -> {
-                    adapterDisabilities.differ.submitList(response.data)
+                    setupChips(response.data)
+                }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -74,21 +107,28 @@ class DisabilitiesFragment : Fragment() {
                 is ViewState.Success -> {
                     nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
                 }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
+        }
+
+        disabilitiesViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 
     private fun setupListeners() {
         binding.buttonNext.setOnClickListener {
-            val listIds: MutableList<String> = mutableListOf()
-            for (disabilities in adapterDisabilities.listDisabilitiesSelected) {
-                listIds.add(disabilities.id)
-            }
-            if (listIds.size == 0) {
+            if (selectedIdDisabilitiessList.size == 0) {
                 nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
             } else {
                 disabilitiesViewModel.saveDisabilitiesByUser(
-                    listIdDisabilities = listIds
+                    listIdDisabilities = selectedIdDisabilitiessList
                 )
             }
         }

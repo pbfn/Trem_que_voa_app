@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentInterestsBinding
 import com.br.ioasys.tremquevoa.domain.model.Interests
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterInterests
 import com.br.ioasys.tremquevoa.presentation.viewmodel.InterestsViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -67,7 +70,11 @@ class InterestsFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 else -> {
 
@@ -88,13 +95,21 @@ class InterestsFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 else -> {
 
                 }
             }
 
+        }
+
+        interestsViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 

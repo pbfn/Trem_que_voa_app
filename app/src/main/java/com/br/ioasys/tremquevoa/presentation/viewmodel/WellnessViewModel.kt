@@ -17,19 +17,25 @@ class WellnessViewModel(
     private var _wellness = MutableLiveData<ViewState<List<Wellness>>>()
     var wellness: LiveData<ViewState<List<Wellness>>> = _wellness
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
     init {
         getListWellness()
     }
 
     private fun getListWellness() {
+        _showProgressBar.postValue(true)
         _wellness.postLoading()
         getWellnessListUseCase(
             params = Unit,
             onSuccess = {
                 _wellness.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _wellness.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

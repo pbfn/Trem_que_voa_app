@@ -16,9 +16,11 @@ class ForgotPasswordViewModel(
     private val _resetPassword = MutableLiveData<ViewState<Boolean>>()
     val resetPassword: LiveData<ViewState<Boolean>> = _resetPassword
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
 
     fun resetPassword(email: String) {
-
+        _showProgressBar.postValue(true)
         _resetPassword.postLoading()
 
         resetPasswordUserUseCase(
@@ -27,9 +29,11 @@ class ForgotPasswordViewModel(
             ),
             onSuccess = {
                 _resetPassword.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _resetPassword.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
 

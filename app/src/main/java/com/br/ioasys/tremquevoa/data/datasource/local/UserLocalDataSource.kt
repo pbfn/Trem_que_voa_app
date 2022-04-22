@@ -11,6 +11,6 @@ interface UserLocalDataSource {
     fun verifyFirstLogin(): Flow<Boolean>
     fun verifyMaintainLogin(): Flow<Boolean>
     fun setFirstLogin()
-    fun setMaintainLogin()
+    fun setMaintainLogin(maintainLogin: Boolean)
     fun saveDateLogin(date: String): Flow<String>
 }

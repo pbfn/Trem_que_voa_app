@@ -22,20 +22,28 @@ class DisabilitiesViewModel(
     private val _responseSaveDisabilities = MutableLiveData<ViewState<Boolean>>()
     val responseSaveDisabilities: LiveData<ViewState<Boolean>> = _responseSaveDisabilities
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
+
     fun getDisabilities() {
+        _showProgressBar.postValue(true)
         _disabilities.postLoading()
         getDisabilitiesUseCase(
             params = Unit,
             onSuccess = {
                 _disabilities.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _disabilities.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     fun saveDisabilitiesByUser(listIdDisabilities: List<String>) {
+        _showProgressBar.postValue(true)
         _responseSaveDisabilities.postLoading()
         saveDisabilitiesForUserUseCase(
             SaveDisabilitiesForUserUseCase.Params(
@@ -43,9 +51,11 @@ class DisabilitiesViewModel(
             ),
             onSuccess = {
                 _responseSaveDisabilities.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _responseSaveDisabilities.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

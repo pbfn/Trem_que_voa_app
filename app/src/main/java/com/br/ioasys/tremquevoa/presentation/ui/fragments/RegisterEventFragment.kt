@@ -178,6 +178,9 @@ class RegisterEventFragment : Fragment() {
                 }
             }
         }
+        registerEventViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
+        }
     }
 
     private fun setupDatePickerDialog() {

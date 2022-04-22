@@ -18,7 +18,7 @@ interface UserRepository {
     fun updateEmergencyContactsUser(
         emergencyName: String,
         emergencyPhone: String
-    ): Flow<User>
+    ): Flow<Boolean>
 
 
     fun resetPassword(email: String): Flow<Boolean>
@@ -31,7 +31,7 @@ interface UserRepository {
 
     fun setFirstLogin()
 
-    fun setMaintainLogin()
+    fun setMaintainLogin(maintainLogin: Boolean)
 
     fun saveDateLogin(date: String): Flow<String>
 

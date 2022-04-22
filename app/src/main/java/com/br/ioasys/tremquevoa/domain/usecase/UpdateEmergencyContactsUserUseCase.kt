@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 class UpdateEmergencyContactsUserUseCase(
     private val userRepository: UserRepository,
     scope: CoroutineScope
-) : UseCase<UpdateEmergencyContactsUserUseCase.Params, User>(scope = scope) {
+) : UseCase<UpdateEmergencyContactsUserUseCase.Params, Boolean>(scope = scope) {
 
 
     data class Params(
@@ -19,7 +19,7 @@ class UpdateEmergencyContactsUserUseCase(
         val emergencyPhone: String
     )
 
-    override fun run(params: Params): Flow<User> = when {
+    override fun run(params: Params): Flow<Boolean> = when {
         params.emergencyName.isEmpty() -> {
             throw EmpytNameContatct()
         }

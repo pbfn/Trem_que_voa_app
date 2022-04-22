@@ -22,8 +22,12 @@ class LoginViewModel(
     private var _maintainLogin = MutableLiveData<ViewState<Boolean>>()
     var maintainLogin: LiveData<ViewState<Boolean>> = _maintainLogin
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
     fun doLogin(email: String, password: String) {
         _user.postLoading()
+        _showProgressBar.postValue(true)
 
         loginUseCase(
             params = LoginUseCase.Params(
@@ -32,24 +36,30 @@ class LoginViewModel(
             ),
             onSuccess = { userReponse ->
                 _user.postSuccess(userReponse)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _user.postError(it)
+                _showProgressBar.postValue(false)
             }
 
         )
     }
 
-    fun setMaintainLogin() {
+    fun setMaintainLogin(maintain: Boolean) {
         _maintainLogin.postLoading()
-
+        _showProgressBar.postValue(true)
         setMaintainLoginUseCase(
-            params = Unit,
+            params = SetMaintainLoginUseCase.Params(
+                maintainLogin = maintain
+            ),
             onSuccess = {
                 _maintainLogin.postSuccess(true)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _maintainLogin.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

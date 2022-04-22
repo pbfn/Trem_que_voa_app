@@ -1,5 +1,6 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
+import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import com.br.ioasys.tremquevoa.presentation.adapters.EventClickListener
 import com.br.ioasys.tremquevoa.extensions.ChangeIcon
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.adapters.*
 import com.br.ioasys.tremquevoa.presentation.viewmodel.HomeViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -43,6 +45,7 @@ class HomeFragment : Fragment(), EventClickListener {
     private lateinit var adapterWellness: AdapterWellness
     private lateinit var customAlertDialogView: View
     private lateinit var dateNow: String
+    private lateinit var dialog: AlertDialog
 
     private var listInterests: List<Interests> = listOf()
     private var listDisabilities: List<Disabilities> = listOf()
@@ -56,6 +59,7 @@ class HomeFragment : Fragment(), EventClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        homeViewModel.resetViewState()
         _binding = null
     }
 
@@ -66,10 +70,10 @@ class HomeFragment : Fragment(), EventClickListener {
         setRecyclerViewEvents()
         customAlertDialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.pop_up_home, null, false)
-
         setRecyclerViewDisabilities()
         setRecyclerViewInterest()
         setListener()
+        createDialog()
     }
 
     private fun addObserver() {
@@ -174,6 +178,9 @@ class HomeFragment : Fragment(), EventClickListener {
                 }
             }
         }
+        homeViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
+        }
     }
 
     private fun configureNameUserTitle(name: String) {
@@ -238,16 +245,14 @@ class HomeFragment : Fragment(), EventClickListener {
         }
     }
 
-    private fun showDialog(dailyMessage: Message) {
-        val dialog =
+    private fun createDialog() {
+        dialog =
             MaterialAlertDialogBuilder(
                 requireContext(),
                 R.style.MaterialAlertDialog_Rounded
             ).create()
 
         dialog.setView(customAlertDialogView)
-        val text =
-            customAlertDialogView.findViewById(R.id.textViewMotivationalMessage) as AppCompatTextView
         val radioGroup = customAlertDialogView.findViewById(R.id.radioGroup) as RadioGroup
         val btnConfirm = customAlertDialogView.findViewById(R.id.btnConfirm) as AppCompatTextView
         radioGroup.setOnCheckedChangeListener { _, _ ->
@@ -260,6 +265,12 @@ class HomeFragment : Fragment(), EventClickListener {
         btnConfirm.setOnClickListener {
             dialog.dismiss()
         }
+
+    }
+
+    private fun showDialog(dailyMessage: Message) {
+        val text =
+            customAlertDialogView.findViewById(R.id.textViewMotivationalMessage) as AppCompatTextView
         text.text = dailyMessage.text
         dialog.show()
     }

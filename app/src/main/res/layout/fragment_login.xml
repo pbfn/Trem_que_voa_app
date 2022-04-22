@@ -7,6 +7,17 @@
     android:fitsSystemWindows="true"
     tools:context=".presentation.ui.fragments.LoginFragment">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/primary_darker"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewLogo"
@@ -56,11 +67,10 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayouStayConnected"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_password">
 
@@ -85,17 +95,15 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewForgotPassword"
-        style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
-        android:layout_width="match_parent"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="112dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="Esqueceu a senha?"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="18.5dp"
+        android:text="@string/forgot_password"
         android:textColor="@color/primary_darker"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegisterGoogle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegisterGoogle"
@@ -107,7 +115,7 @@
         android:includeFontPadding="false"
         android:paddingStart="41dp"
         android:paddingEnd="41dp"
-        android:text="acessar com o gmail"
+        android:text="@string/access_gmail"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"

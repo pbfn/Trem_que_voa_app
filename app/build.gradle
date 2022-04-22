@@ -87,4 +87,6 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "com.airbnb.android:lottie:5.0.3"
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }
