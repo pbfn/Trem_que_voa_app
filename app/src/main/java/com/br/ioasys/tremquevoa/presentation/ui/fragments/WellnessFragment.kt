@@ -60,4 +60,10 @@ class WellnessFragment : Fragment() {
         }
     }
 
+    private fun setupListener() {
+        binding.btnBack.setOnClickListener {
+
+        }
+    }
+
 }

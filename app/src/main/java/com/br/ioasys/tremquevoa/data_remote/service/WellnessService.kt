@@ -8,7 +8,7 @@ import retrofit2.http.Headers
 
 interface WellnessService {
     @Headers("Content-type: application/json")
-    @GET("wellness/list")
+    @GET("wellness/list/?take=50")
 
     suspend fun getListWellness(
         @Header("Authorization") token: String,

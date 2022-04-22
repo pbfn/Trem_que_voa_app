@@ -1,9 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/neutral_light"
     tools:context=".presentation.ui.fragments.SettingsFragment">
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_arrow_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTitle"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnEditPerfil"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:src="@drawable/ic_edit_perfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewEditPerfil"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_edit_perfil"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEditPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnEditPerfil"
+        app:layout_constraintTop_toTopOf="@+id/btnEditPerfil" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnNotification"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_notification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditPerfil" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNotification"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_notification"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNotification"
+        app:layout_constraintTop_toTopOf="@+id/btnNotification" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnSecurity"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_security"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNotification" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewSecurity"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_security"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSecurity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSecurity"
+        app:layout_constraintTop_toTopOf="@+id/btnSecurity" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnInviteFriends"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_invite_friends"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSecurity" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewInviteFriends"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_invite_friends"
+        app:layout_constraintBottom_toBottomOf="@+id/btnInviteFriends"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnInviteFriends"
+        app:layout_constraintTop_toTopOf="@+id/btnInviteFriends" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/bntHelp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_help"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInviteFriends" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewHelp"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_help"
+        app:layout_constraintBottom_toBottomOf="@+id/bntHelp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bntHelp"
+        app:layout_constraintTop_toTopOf="@+id/bntHelp" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/bntLogout"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bntHelp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewLogout"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/label_logout"
+        app:layout_constraintBottom_toBottomOf="@+id/bntLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bntLogout"
+        app:layout_constraintTop_toTopOf="@+id/bntLogout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

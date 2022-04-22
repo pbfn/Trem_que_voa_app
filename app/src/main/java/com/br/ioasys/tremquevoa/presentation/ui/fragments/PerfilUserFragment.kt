@@ -1,18 +1,13 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doBeforeTextChanged
 import androidx.navigation.NavDirections
-import androidx.navigation.R
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.br.ioasys.tremquevoa.databinding.FragmentPerfilUserBinding
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Interests
@@ -31,7 +26,6 @@ class PerfilUserFragment : Fragment() {
 
     private lateinit var adapterInterests: AdapterInterestsPerfil
     private lateinit var adapterDeficiency: AdapterDeficiencyPerfil
-    private lateinit var user: User
 
     private val perfilViewModel: PerfilViewModel by lazy {
         getViewModel()
@@ -68,11 +62,11 @@ class PerfilUserFragment : Fragment() {
             cardNivel.apply {
                 title.visibility = View.GONE
                 icon.visibility = View.VISIBLE
-                subtitle.text = "Nível 2"
+                subtitle.text = "Nível 1"
             }
             cardMinutes.apply {
-                title.text = "140"
-                subtitle.text = "Minutos"
+                title.text = "7"
+                subtitle.text = "Moods"
             }
 
         }
@@ -98,16 +92,13 @@ class PerfilUserFragment : Fragment() {
 
     private fun setListeners() {
         binding.apply {
-//            buttonEditAboutMe.setOnClickListener {
-//                editAboutMe.isEnabled = true
-//            }
+            btnInsights.setOnClickListener {
+                nextPage(PerfilUserFragmentDirections.actionPerfilUserFragmentToWellnessFragment())
+            }
 
-//            editAboutMe.doAfterTextChanged {
-//                perfilViewModel.updateAboutMe(token = user.token, aboutMe = it.toString())
-//            }
-//            buttonSettings.setOnClickListener {
-//                //findNavController().navigate(PerfilUserFragmentDirections.actionPerfilUserFragmentToSettingsFragment())
-//            }
+            btnSettings.setOnClickListener {
+                nextPage(PerfilUserFragmentDirections.actionPerfilUserFragmentToSettingsFragment())
+            }
         }
     }
 
@@ -119,7 +110,15 @@ class PerfilUserFragment : Fragment() {
                 }
                 is ViewState.Success -> {
                     listInterests = response.data
-                    adapterInterests.differ.submitList(listInterests)
+                    if (response.data.isEmpty()) {
+                        binding.apply {
+                            recyclerViewDisabilities.visibility = View.INVISIBLE
+                            itemEmpty.visibility = View.VISIBLE
+                        }
+                    } else {
+                        adapterInterests.differ.submitList(listInterests)
+                    }
+
                 }
 
                 is ViewState.Error -> {
@@ -150,16 +149,36 @@ class PerfilUserFragment : Fragment() {
             }
 
         }
-    }
 
-    private fun setLayout() {
-        binding.apply {
-            if (!user.aboutMe.isNullOrEmpty()) {
-                editAboutMe.text = Editable.Factory.getInstance().newEditable(user.aboutMe)
+        perfilViewModel.user.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+
+                }
+                is ViewState.Success -> {
+                    setLayout(user = response.data)
+                }
+
+                is ViewState.Error -> {
+
+                }
+                else -> {
+
+                }
             }
-            textViewName.text = user.name
+
         }
     }
 
+    private fun setLayout(user: User) {
+        binding.apply {
+            textViewName.text = user.name
+            textViewAboutMe.text = user.aboutMe
+        }
+    }
+
+    private fun nextPage(directions: NavDirections) {
+        findNavController().navigate(directions)
+    }
 
 }

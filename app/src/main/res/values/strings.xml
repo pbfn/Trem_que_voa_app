@@ -78,4 +78,26 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_me_text">Estudante de Engenharia de Produção, gosto de fazer atividades físicas e cursos que estimulam a criatividade.</string>
+    <string name="about_me">Sobre mim</string>
+    <string name="label_name">Name</string>
+    <string name="perfil">Perfil</string>
+    <string name="label_interests">Interesses</string>
+    <string name="label_disabilities">Possui alguma deficiência?</string>
+    <string name="label_moods">Registro dos moods da semana:</string>
+    <string name="settings">Configurações</string>
+    <string name="label_edit_perfil">Editar perfil</string>
+    <string name="label_notification">Notificações</string>
+    <string name="label_security">Segurança</string>
+    <string name="label_invite_friends">Convidar amigos</string>
+    <string name="label_help">Ajuda</string>
+    <string name="label_logout">Sair da conta</string>
+    <string name="label_none">Nenhuma</string>
+    <string name="confirm_terms">Por favor concorde com os Termos e Codições e a Política de Privacidade para continuar</string>
+    <string name="label_welcome">Que bom ter você por aqui!</string>
+    <string name="label_new_account">Sua conta foi criada com sucesso!</string>
+    <string name="entrar">Entrar</string>
+    <string name="title_emegency">Você gostaria de adicionar um contato para emergências?</string>
+    <string name="subtitle_emergency">O contato serve para o organizador do evento enviar uma mensagem a alguém que você confia, caso você não se sinta bem ou tenha alguma emergência e precise de ajuda. O organizador poderá mandar uma mensagem ou ligar para o número quando ele informar uma emergência durante o evento.</string>
+    <string name="add_contact">Adicionar contato</string>
 </resources>

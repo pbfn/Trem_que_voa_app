@@ -10,9 +10,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewAlert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="27dp"
         android:src="@drawable/ic_emergency_siren"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,20 +24,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="44dp"
-        android:text="Gostaria de adicionar um contato de emergência?"
+        android:layout_marginTop="27dp"
+        android:text="@string/title_emegency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewAlert" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewSubTitleTitle"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Esse contato serve para enviarmos uma mensa-gem para alguém que você confia, caso você não se sinta segura ou confortável em alguma situação, através do botão de ajuda."
+        android:layout_marginTop="8dp"
+        android:text="@string/subtitle_emergency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
@@ -47,9 +47,9 @@
         android:id="@+id/editTextNamePerson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="16dp"
         android:inputType="text"
-        app:custom_title="Qual o nome do seu contato?"
+        app:custom_title="Qual é o nome do seu contato?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSubTitleTitle" />
@@ -59,9 +59,9 @@
         android:id="@+id/editTextNumberPerson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:inputType="number"
-        app:custom_title="E qual é o celular dele?"
+        app:custom_title="Qual é o celular dele?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNamePerson" />
@@ -75,7 +75,7 @@
         android:layout_marginBottom="64dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="Adicionar contato"
+        android:text="@string/add_contact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

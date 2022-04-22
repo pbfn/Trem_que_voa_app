@@ -1,6 +1,5 @@
 package com.br.ioasys.tremquevoa.presentation.ui.fragments
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import android.widget.RadioGroup
 import androidx.appcompat.widget.AppCompatTextView
 import com.br.ioasys.tremquevoa.R
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -188,6 +188,7 @@ class HomeFragment : Fragment(), EventClickListener {
                     R.drawable.ic_search,
                 )!!, {}
             )
+            customSearch.clearFocus()
             textViewViewMore.setOnClickListener {
                 nextPage(HomeFragmentDirections.actionHomeFragmentToWellnessFragment())
             }
@@ -242,20 +243,24 @@ class HomeFragment : Fragment(), EventClickListener {
             MaterialAlertDialogBuilder(
                 requireContext(),
                 R.style.MaterialAlertDialog_Rounded
-            )
+            ).create()
+
         dialog.setView(customAlertDialogView)
         val text =
             customAlertDialogView.findViewById(R.id.textViewMotivationalMessage) as AppCompatTextView
         val radioGroup = customAlertDialogView.findViewById(R.id.radioGroup) as RadioGroup
-
-        dialog.setPositiveButton("Confirmar", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-
-            }
-        })
+        val btnConfirm = customAlertDialogView.findViewById(R.id.btnConfirm) as AppCompatTextView
+        radioGroup.setOnCheckedChangeListener { _, _ ->
+            btnConfirm.visibility = View.VISIBLE
+        }
+        val icClose = customAlertDialogView.findViewById(R.id.btnClose) as AppCompatImageButton
+        icClose.setOnClickListener {
+            dialog.dismiss()
+        }
+        btnConfirm.setOnClickListener {
+            dialog.dismiss()
+        }
         text.text = dailyMessage.text
-
-        dialog.create()
         dialog.show()
     }
 

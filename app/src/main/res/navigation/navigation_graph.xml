@@ -18,7 +18,14 @@
         android:id="@+id/perfilUserFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.PerfilUserFragment"
         android:label="PerfilUserFragment"
-        tools:layout="@layout/fragment_perfil_user" />
+        tools:layout="@layout/fragment_perfil_user" >
+        <action
+            android:id="@+id/action_perfilUserFragment_to_wellnessFragment"
+            app:destination="@id/wellnessFragment" />
+        <action
+            android:id="@+id/action_perfilUserFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerEventFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.RegisterEventFragment"
@@ -29,4 +36,9 @@
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.WellnessFragment"
         android:label="fragment_wellness"
         tools:layout="@layout/fragment_wellness" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

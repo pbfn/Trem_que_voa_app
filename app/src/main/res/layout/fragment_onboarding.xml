@@ -12,15 +12,14 @@
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_marginTop="18dp"
-        android:background="@drawable/ic_onboarding_background"
-        android:src="@drawable/onboard_init"
+        android:src="@drawable/ic_onboard_init"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewTitle"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Libre_Bold"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_18_Bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"

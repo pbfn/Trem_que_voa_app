@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="13dp"
         android:text="Olá! Primeiro crie sua conta"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="20dp"
         android:button="@drawable/radio_button_selector"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
@@ -122,9 +122,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="8dp"
-        android:text="Por favor concorde com os Termos e Codições e a Política de Privacidade para continuar"
+        android:text="@string/confirm_terms"
         android:textColor="@color/M3_sys_light_error"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTerms_part4" />
@@ -132,6 +132,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegisterGoogle"
         style="@style/TextAppearance.AppCompat.Button.StyleButtonGoogle"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="14dp"
@@ -143,7 +144,8 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewErrorMsg" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
