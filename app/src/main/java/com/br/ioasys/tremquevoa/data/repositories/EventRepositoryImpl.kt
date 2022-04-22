@@ -114,11 +114,34 @@ class EventRepositoryImpl(
             }
         }
     }
+
+    override fun getListEventsRecommended(): Flow<List<Event>> = flow {
+        userLocalDataSource.getToken().collect { token ->
+            if (token.isNotEmpty()) {
+                eventRemoteDataSource
+                    .getListEventsRecommended(token)
+                    .combine(
+                        eventRemoteDataSource
+                            .getAttendeesEventByStatus(token, "SAVED")
+                    ) { listEvent, listAttendees ->
+                        listEvent.map { e ->
+                            listAttendees.forEach { a ->
+                                e.isFavorite = e.id == a.eventId
+                            }
+                            e
+                        }
+                    }
+                    .collect {
+                        emit(it)
+                    }
+            } else {
+                emit(throw EmptyToken())
+            }
+        }
+    }
+
 }
 
-//    override fun fetchEventActivities(): Flow<List<Activities>> {
-//        return registerEventRemoteDataSource.fetchEventActivities()
-//    }
 
 
 

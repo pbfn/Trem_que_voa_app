@@ -90,7 +90,10 @@ class EventDataSourceImpl(
     }
 
     override fun registerParticipateEvent(token: String, status: String, eventId: String) = flow {
-        val response = eventService.participateEvent(ParticipateEventRequest(status, eventId),  token = "Bearer $token")
+        val response = eventService.participateEvent(
+            ParticipateEventRequest(status, eventId),
+            token = "Bearer $token"
+        )
         if (response.isSuccessful) {
             response.body()?.let { unit ->
                 emit(unit)
@@ -106,6 +109,21 @@ class EventDataSourceImpl(
             if (response.isSuccessful) {
                 response.body()?.let { attendeesResponse ->
                     emit(attendeesResponse.map {
+                        it.toDomain()
+                    })
+                }
+            } else {
+                emit(error(response.code()))
+            }
+        }
+    }
+
+    override fun getListEventsRecommended(token: String): Flow<List<Event>> {
+        return flow {
+            val response = eventService.getEvent(token)
+            if (response.isSuccessful) {
+                response.body()?.let { eventResponse ->
+                    emit(eventResponse.map {
                         it.toDomain()
                     })
                 }
