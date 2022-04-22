@@ -9,11 +9,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="322dp"
+        android:layout_height="319dp"
+        android:layout_marginHorizontal="19dp"
         android:layout_marginTop="36dp"
-        android:src="@drawable/cuate"
-        android:background="@drawable/ic_background_home"
+        android:src="@drawable/ic_new_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,22 +24,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="2dp"
         android:gravity="center"
-        android:text="Que bom ter você por aqui!"
+        android:text="@string/label_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewSubTitle"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
-        style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
-        android:text="Sua conta foi criada!"
+        android:text="@string/label_new_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textVIewTitle" />
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="64dp"
-        android:text="próximo"
+        android:text="@string/entrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

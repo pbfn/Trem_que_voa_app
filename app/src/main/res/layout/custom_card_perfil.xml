@@ -2,8 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardViewMinutes"
-    android:layout_width="110dp"
-    android:layout_height="80dp"
+    android:layout_width="96dp"
+    android:layout_height="64dp"
     android:backgroundTint="@color/neutral_light"
     app:cardCornerRadius="16dp"
     app:layout_constraintStart_toStartOf="parent">

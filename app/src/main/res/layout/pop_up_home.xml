@@ -3,8 +3,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="328dp"
+    android:layout_height="208dp">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="17dp"
+        android:background="@drawable/ic_close_popup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewMotivationalMessage"
@@ -35,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewMotivationalMessage" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -49,46 +60,61 @@
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginEnd="5dp"
                 android:button="@drawable/selector_icon_crazy" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:button="@drawable/selector_icon_sad" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:button="@drawable/selector_icon_neutral" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:button="@drawable/selector_icon_happy" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginEnd="11dp"
+                android:layout_marginStart="5dp"
                 android:button="@drawable/selector_icon_very_happy" />
 
         </RadioGroup>
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnConfirm"
+        style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/confirm"
+        android:textColor="@color/primary_darker"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

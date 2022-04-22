@@ -46,7 +46,7 @@ class OnboardingFragment : Fragment() {
                     imageView.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(),
-                            R.drawable.onboard_mid
+                            R.drawable.ic_onboard_mid
                         )
                     )
                     textViewTitle.text = getText(R.string.title_onboarding_mid)
@@ -70,7 +70,7 @@ class OnboardingFragment : Fragment() {
                     imageView.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(),
-                            R.drawable.onboard_end
+                            R.drawable.ic_onboard_end
                         )
                     )
                     imageViewFirst.setImageDrawable(
