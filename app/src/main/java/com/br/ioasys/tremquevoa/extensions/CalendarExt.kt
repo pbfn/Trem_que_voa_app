@@ -20,5 +20,32 @@ fun Date.toString(stringFormat: String): String {
     return dateStringFormated
 }
 
+fun Date.differ(secondDate: Date): String {
+    val firstDate = this
+
+    val differDate = Date(firstDate.time - secondDate.time)
+
+    return differDate.toString(FORMAT_HOUR)
+}
+
+fun String.differTime(secondDateString: String): String {
+
+    if(this.isEmpty() || secondDateString.isEmpty()) return ""
+    val firstDate = converterStringToDate(this)
+    val secondDate = converterStringToDate(secondDateString)
+    return secondDate?.let {
+        firstDate?.differ(it)
+    }?:""
+}
+
+private fun converterStringToDate(stringDate: String): Date? {
+    val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
+    return stringDate.takeIf {
+        it.isNotEmpty()
+    }?.let {
+        simpleDateFormat.parse(stringDate)
+    }
+}
+
 
 
