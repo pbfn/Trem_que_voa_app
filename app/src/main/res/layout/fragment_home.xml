@@ -8,6 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
         android:orientation="vertical"
         tools:context=".presentation.ui.fragments.HomeFragment">
 
@@ -191,8 +192,8 @@
             style="@style/Base.Widget.AppCompat.TextView.M3_label_large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:text="Eventos online"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

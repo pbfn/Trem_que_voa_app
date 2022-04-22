@@ -38,6 +38,7 @@ class WellnessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observaData()
         setupRecyclerView()
+        setupListener()
     }
 
     private fun observaData() {
@@ -62,7 +63,7 @@ class WellnessFragment : Fragment() {
 
     private fun setupListener() {
         binding.btnBack.setOnClickListener {
-
+            activity?.onBackPressed()
         }
     }
 
