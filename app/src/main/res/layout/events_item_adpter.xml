@@ -56,7 +56,7 @@
             style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="22dp"
             android:layout_marginTop="16dp"
             android:text="Yoga no campus"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,9 +67,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iconLocalEvent"
             android:layout_width="8dp"
-            android:layout_height="11dp"
+            android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/ic_local"
             app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
             app:layout_constraintTop_toBottomOf="@id/textViewTitleEvent" />
@@ -77,8 +77,9 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewLocalEvent"
             style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Gramado da entrada"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:columnCount="4"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toEndOf="@id/frameLayoutImageDate"
@@ -136,9 +137,10 @@
             android:id="@+id/gridLayoutSelecteds"
             android:layout_width="193dp"
             android:layout_height="26dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="24dp"
             android:columnCount="3"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.437"
@@ -146,35 +148,39 @@
             app:layout_constraintTop_toBottomOf="@id/gridLayoutUsers"
             app:layout_constraintVertical_bias="0.0">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iconFavoriteEvent"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="18dp"
-                android:background="@drawable/ic_favorite_event"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTitleCardCategory"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+                android:layout_width="wrap_content"
+                android:paddingVertical="2dp"
+                android:paddingHorizontal="16dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_yoga_acessible_card_event"
+                android:gravity="center"
+                android:lines="1"
+                android:text="title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTitleCardAccessibilities"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
+                android:layout_width="wrap_content"
+                android:paddingVertical="2dp"
+                android:paddingHorizontal="16dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_yoga_acessible_card_event"
+                android:gravity="center"
+                android:lines="1"
+                android:text="title" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgCategory"
+                android:id="@+id/iconSaveFavorite"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_favorite_event"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgAcessible"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/ic_favorite_event"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_favorite_event_inative"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewLocalEvent" />
