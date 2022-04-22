@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentWellnessBinding
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterWellness
 import com.br.ioasys.tremquevoa.presentation.viewmodel.WellnessViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -38,6 +41,7 @@ class WellnessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observaData()
         setupRecyclerView()
+        setupListener()
     }
 
     private fun observaData() {
@@ -47,7 +51,18 @@ class WellnessFragment : Fragment() {
                     adapterWellness.itemLimit = response.data.size
                     adapterWellness.differ.submitList(response.data)
                 }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
+        }
+
+        wellnessViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 
@@ -62,7 +77,7 @@ class WellnessFragment : Fragment() {
 
     private fun setupListener() {
         binding.btnBack.setOnClickListener {
-
+            activity?.onBackPressed()
         }
     }
 

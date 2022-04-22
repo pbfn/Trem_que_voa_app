@@ -17,8 +17,12 @@ class UpdateUserViewModel(
     var responseUpdateEmergencyContact: LiveData<ViewState<Boolean>> =
         _responseUpdateEmergencyContact
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
 
     fun updateEmergencyContact(emergencyName: String, emergencyPhone: String) {
+        _showProgressBar.postValue(true)
         _responseUpdateEmergencyContact.postLoading()
         updateEmergencyContactsUserUseCase(
             params = UpdateEmergencyContactsUserUseCase.Params(
@@ -26,11 +30,12 @@ class UpdateUserViewModel(
                 emergencyPhone = emergencyPhone
             ),
             onSuccess = {
-                //TODO ALTERAR
-                _responseUpdateEmergencyContact.postSuccess(true)
+                _responseUpdateEmergencyContact.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _responseUpdateEmergencyContact.postError(it)
+                _showProgressBar.postValue(false)
             }
 
         )

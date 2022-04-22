@@ -111,4 +111,10 @@
     <string name="title_emegency">Você gostaria de adicionar um contato para emergências?</string>
     <string name="subtitle_emergency">O contato serve para o organizador do evento enviar uma mensagem a alguém que você confia, caso você não se sinta bem ou tenha alguma emergência e precise de ajuda. O organizador poderá mandar uma mensagem ou ligar para o número quando ele informar uma emergência durante o evento.</string>
     <string name="add_contact">Adicionar contato</string>
+    <string name="label_cadastro_disabilities">Deseja informar se possui algum tipo de deficiência? Se sim, qual destas?</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="access_gmail">acessar com o gmail</string>
+    <string name="coming_soon">Em breve</string>
+    <string name="failed_request">Houve uma falha na comunicação</string>
+    <string name="google_diary">sincronizar com google agenda</string>
 </resources>

@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentForgotPasswordBinding
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.ForgotPasswordViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -70,10 +72,18 @@ class ForgotPasswordFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.failed_request),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
 
+        }
+
+        forgotPasswordViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 

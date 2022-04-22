@@ -11,10 +11,12 @@ import androidx.navigation.NavArgs
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEmergencyContactBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNameContatct
 import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNumberContatct
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.UpdateUserViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -96,7 +98,6 @@ class EmergencyContactFragment : Fragment() {
                         EmergencyContactFragmentDirections.actionEmergencyContactFragmentToInterestsFragment()
                     )
                 }
-
                 is ViewState.Error -> {
                     var msg = ""
                     when (response.throwable) {
@@ -109,11 +110,20 @@ class EmergencyContactFragment : Fragment() {
                             msg = "Por favor informe o número"
                             binding.editTextNumberPerson.ChangeBackground(true, msg)
                         }
-
+                        else -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    getString(R.string.failed_request),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                        }
                     }
                 }
 
             }
+        }
+        updateUserViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 

@@ -32,6 +32,8 @@ class RegisterEventViewModel(
     private var _disabilities = MutableLiveData<ViewState<List<Disabilities>>>()
     var disabilities: LiveData<ViewState<List<Disabilities>>> = _disabilities
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
 
     fun registerEvent(
         name: String,
@@ -55,7 +57,7 @@ class RegisterEventViewModel(
         referencePoint: String
     ) {
         _event.postValue(ViewState.Loading)
-
+        _showProgressBar.postValue(true)
         registerEventUseCase(
             params = RegisterEventUseCase.Params(
                 name = name,
@@ -81,37 +83,45 @@ class RegisterEventViewModel(
             onSuccess = { event ->
                 Log.d(TAG, event.toString())
                 _event.postValue(ViewState.Success(event))
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _event.postValue(ViewState.Error(throwable = it))
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     fun fetchActivities() {
         _activities.postLoading()
+        _showProgressBar.postValue(true)
         getInterestsUseCase(
             params = Unit,
             onSuccess = { listInterestsResponse ->
                 Log.d(TAG, listInterestsResponse.toString())
                 _activities.postSuccess(listInterestsResponse)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _activities.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     fun fetchDisabilities() {
         _disabilities.postLoading()
+        _showProgressBar.postValue(true)
         getDisabilitiesUseCase(
             params = Unit,
             onSuccess = { listDisabilitiesResponse ->
                 Log.d(TAG, listDisabilitiesResponse.toString())
                 _disabilities.postSuccess(listDisabilitiesResponse)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _disabilities.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

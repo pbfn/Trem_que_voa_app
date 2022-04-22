@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentRegisterUserBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.*
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
+import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.RegisterUserViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.google.android.material.textfield.TextInputLayout
@@ -57,7 +59,8 @@ class RegisterUserFragment : Fragment() {
             }
 
             editTextPassword.inputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
-            editTextConfirmPassword.inputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+            editTextConfirmPassword.inputLayout.endIconMode =
+                TextInputLayout.END_ICON_PASSWORD_TOGGLE
 
             editTextEmail.input.doAfterTextChanged {
                 editTextEmail.ChangeBackground(false, null)
@@ -143,10 +146,20 @@ class RegisterUserFragment : Fragment() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
-
                 }
             }
+        }
+
+        registerViewModel.showProgressBar.observe(viewLifecycleOwner) { showProgressBar ->
+            binding.progressBar.show(showProgressBar)
         }
     }
 

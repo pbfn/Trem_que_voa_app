@@ -22,37 +22,48 @@ class InterestsViewModel(
     private var _saveInterests = MutableLiveData<ViewState<Boolean>>()
     var saveInterests: LiveData<ViewState<Boolean>> = _saveInterests
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
     init {
         getInterests()
     }
 
     private fun getInterests() {
+        _showProgressBar.postValue(true)
         _interests.postLoading()
 
         getInterestsUseCase(
             params = Unit,
             onSuccess = { listInterestsResponse ->
                 _interests.postSuccess(listInterestsResponse)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _interests.postError(it)
+                _showProgressBar.postValue(false)
+
             }
         )
 
     }
 
     fun saveInterestsByUser(listIdInterests: List<String>) {
+        _showProgressBar.postValue(true)
         _saveInterests.postLoading()
-
         saveInterestsForUserUseCase(
             params = SaveInterestsForUserUseCase.Params(
                 listIdInterests = listIdInterests
             ),
             onSuccess = {
                 _saveInterests.postSuccess(it)
+                _showProgressBar.postValue(false)
+
             },
             onError = {
                 _saveInterests.postError(it)
+                _showProgressBar.postValue(false)
+
             }
         )
 

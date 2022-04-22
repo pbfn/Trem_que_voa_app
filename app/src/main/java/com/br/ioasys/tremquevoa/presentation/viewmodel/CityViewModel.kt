@@ -16,8 +16,11 @@ class CityViewModel(
     private var _responseSaveCity = MutableLiveData<ViewState<Boolean>>()
     var responseSaveCity: LiveData<ViewState<Boolean>> = _responseSaveCity
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
 
     fun saveCity(city: String) {
+        _showProgressBar.postValue(true)
         _responseSaveCity.postLoading()
         saveCityForUser(
             params = SaveCityForUser.Params(
@@ -25,9 +28,11 @@ class CityViewModel(
             ),
             onSuccess = {
                 _responseSaveCity.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _responseSaveCity.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }

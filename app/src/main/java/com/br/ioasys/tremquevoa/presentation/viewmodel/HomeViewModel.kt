@@ -7,10 +7,7 @@ import com.br.ioasys.tremquevoa.domain.model.EventLists
 import com.br.ioasys.tremquevoa.domain.model.Message
 import com.br.ioasys.tremquevoa.domain.model.*
 import com.br.ioasys.tremquevoa.domain.usecase.*
-import com.br.ioasys.tremquevoa.util.ViewState
-import com.br.ioasys.tremquevoa.util.postError
-import com.br.ioasys.tremquevoa.util.postLoading
-import com.br.ioasys.tremquevoa.util.postSuccess
+import com.br.ioasys.tremquevoa.util.*
 
 class HomeViewModel(
     private val getInterestsUseCase: GetInterestsUseCase,
@@ -44,6 +41,10 @@ class HomeViewModel(
     private var _wellness = MutableLiveData<ViewState<List<Wellness>>>()
     var wellness: LiveData<ViewState<List<Wellness>>> = _wellness
 
+    private var _showProgressBar = MutableLiveData<Boolean>()
+    var showProgressBar: LiveData<Boolean> = _showProgressBar
+
+
     init {
         getUser()
         getEvent()
@@ -54,7 +55,7 @@ class HomeViewModel(
 
     private fun getEvent() {
         _events.postLoading()
-
+        _showProgressBar.postValue(true)
         getAllEventsUseCase(
             params = Unit,
             onSuccess = { listEvent ->
@@ -71,93 +72,115 @@ class HomeViewModel(
                         }
                     )
                 })
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _events.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     fun verifyDate(date: String) {
         _date.postLoading()
+        _showProgressBar.postValue(true)
         saveDateLoginUseCase(
             SaveDateLoginUseCase.Params(
                 date = date
             ),
             onSuccess = {
                 _date.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _date.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     fun getDailyMessage() {
         _dailyMessage.postLoading()
+        _showProgressBar.postValue(true)
         getDailyMessageUseCase(
             params = Unit,
             onSuccess = {
                 _dailyMessage.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _dailyMessage.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     private fun getInterest() {
         _interest.postLoading()
-
+        _showProgressBar.postValue(true)
         getInterestsUseCase(
             params = Unit,
             onSuccess = { listInterest ->
                 _interest.postSuccess(listInterest)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _interest.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     private fun getDisabilities() {
         _disabilities.postLoading()
-
+        _showProgressBar.postValue(true)
         getDisabilitiesUseCase(
             params = Unit,
             onSuccess = { listDisabilities ->
                 _disabilities.postSuccess(listDisabilities)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _disabilities.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     private fun getUser() {
         _user.postLoading()
-
+        _showProgressBar.postValue(true)
         getUserUseCase(
             params = Unit,
             onSuccess = {
                 _user.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _user.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
     }
 
     private fun getListWellness() {
         _wellness.postLoading()
+        _showProgressBar.postValue(true)
         getWellnessListUseCase(
             params = Unit,
             onSuccess = {
                 _wellness.postSuccess(it)
+                _showProgressBar.postValue(false)
             },
             onError = {
                 _wellness.postError(it)
+                _showProgressBar.postValue(false)
             }
         )
+    }
+
+    fun resetViewState() {
+        _date.postNeutral()
+        _dailyMessage.postNeutral()
     }
 }

@@ -9,10 +9,19 @@ import kotlinx.coroutines.flow.flowOf
 class SetMaintainLoginUseCase(
     val scope: CoroutineScope,
     private val userRepository: UserRepository
-) : UseCase<Unit, Unit>(scope = scope) {
-    override fun run(params: Unit): Flow<Unit> = when {
+) : UseCase<SetMaintainLoginUseCase.Params, Unit>(scope = scope) {
+
+    data class Params(
+        val maintainLogin: Boolean
+    )
+
+    override fun run(params: Params): Flow<Unit> = when {
         else -> {
-            flowOf(userRepository.setMaintainLogin())
+            flowOf(
+                userRepository.setMaintainLogin(
+                    maintainLogin = params.maintainLogin
+                )
+            )
         }
     }
 }

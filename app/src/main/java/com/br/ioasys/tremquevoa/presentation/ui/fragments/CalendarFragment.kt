@@ -5,20 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.br.ioasys.tremquevoa.R
-import com.br.ioasys.tremquevoa.databinding.FragmentSettingsBinding
+import com.br.ioasys.tremquevoa.databinding.FragmentCalendarBinding
+import com.br.ioasys.tremquevoa.extensions.showComingSoon
 
+class CalendarFragment : Fragment() {
 
-class SettingsFragment : Fragment() {
-
-
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding: FragmentSettingsBinding get() = _binding!!
+    private var _binding: FragmentCalendarBinding? = null
+    private val binding: FragmentCalendarBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentSettingsBinding.inflate(layoutInflater, container, false).apply {
+    ): View = FragmentCalendarBinding.inflate(layoutInflater, container, false).apply {
         _binding = this
     }.root
 
@@ -33,11 +33,9 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.apply {
-            btnBack.setOnClickListener {
-                activity?.onBackPressed()
-            }
+        binding.btnDiaryGoogle.setOnClickListener {
+            val toast = Toast(requireContext())
+            toast.showComingSoon(requireContext())
         }
     }
 }
-

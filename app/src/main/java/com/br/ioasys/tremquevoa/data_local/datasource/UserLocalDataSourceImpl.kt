@@ -45,10 +45,10 @@ class UserLocalDataSourceImpl(
         )
     }
 
-    override fun setMaintainLogin() {
+    override fun setMaintainLogin(maintainLogin: Boolean) {
         sharedPreferencesHelper.saveBoolean(
             key = MAINTAIN_LOGIN,
-            value = true
+            value = maintainLogin
         )
     }
 
