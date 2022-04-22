@@ -41,4 +41,9 @@
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
 </navigation>

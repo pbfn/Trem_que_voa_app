@@ -17,10 +17,16 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/favoritesFragment"
+        android:checked="true"
+        android:icon="@drawable/ic_save"
+        android:title="Favoritos"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/perfilUserFragment"
         android:checked="true"
         android:icon="@drawable/ic_perfil_user"
         android:title="Perfil"
         app:showAsAction="ifRoom" />
-
 </menu>
