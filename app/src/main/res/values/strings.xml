@@ -111,4 +111,10 @@
     <string name="title_emegency">Você gostaria de adicionar um contato para emergências?</string>
     <string name="subtitle_emergency">O contato serve para o organizador do evento enviar uma mensagem a alguém que você confia, caso você não se sinta bem ou tenha alguma emergência e precise de ajuda. O organizador poderá mandar uma mensagem ou ligar para o número quando ele informar uma emergência durante o evento.</string>
     <string name="add_contact">Adicionar contato</string>
+    <string name="accessible_card">Acessível</string>
+    <string name="event_accessibilitie">Acesssibilidade</string>
+    <string name="events_promoted">Eventos impulsionados</string>
+    <string name="events_recomended">Eventos recomendados</string>
+    <string name="events_online">Eventos online</string>
+    <string name="health_and_wellness_tips">Dicas de saúde e bem estar</string>
 </resources>
