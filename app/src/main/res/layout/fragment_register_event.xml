@@ -345,7 +345,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutFreeEvent">
-
         </com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
 
         <androidx.appcompat.widget.AppCompatButton

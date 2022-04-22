@@ -16,12 +16,15 @@ class HomeViewModel(
     private val saveDateLoginUseCase: SaveDateLoginUseCase,
     private val getDailyMessageUseCase: GetDailyMessageUseCase,
     private val getUserUseCase: GetUserUseCase,
-    private val getWellnessListUseCase: GetWellnessListUseCase
+    private val getWellnessListUseCase: GetWellnessListUseCase,
+    private val getEventsRecomendedUseCase: GetEventsRecomendedUseCase
 ) : ViewModel() {
 
     private var _events = MutableLiveData<ViewState<EventLists>>()
     var events: LiveData<ViewState<EventLists>> = _events
 
+    private var _eventsRecommended = MutableLiveData<ViewState<List<Event>>>()
+    var eventsRecommended: LiveData<ViewState<List<Event>>> = _eventsRecommended
 
     private var _date = MutableLiveData<ViewState<String>>()
     var date: LiveData<ViewState<String>> = _date
@@ -51,6 +54,7 @@ class HomeViewModel(
         getInterest()
         getDisabilities()
         getListWellness()
+        getEventsRecomended()
     }
 
     private fun getEvent() {
@@ -66,9 +70,6 @@ class HomeViewModel(
                         },
                         listPromoted = list.filter {
                             it.isPromoted
-                        },
-                        listRecommended = list.filter {
-                            it.isOnline.not()
                         }
                     )
                 })
@@ -80,6 +81,21 @@ class HomeViewModel(
             }
         )
     }
+
+    private fun getEventsRecomended() {
+        _eventsRecommended.postLoading()
+
+        getEventsRecomendedUseCase(
+            params = Unit,
+            onSuccess = { listEvent ->
+                _eventsRecommended.postSuccess(listEvent)
+            },
+            onError = {
+                _eventsRecommended.postError(it)
+            }
+        )
+    }
+
 
     fun verifyDate(date: String) {
         _date.postLoading()

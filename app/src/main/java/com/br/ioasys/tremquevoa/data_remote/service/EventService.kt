@@ -36,6 +36,12 @@ interface EventService {
         @Query("status") status: String
     ): Response<DataListAttendeesResponse>
 
+    @Headers("Content-type: application/json")
+    @GET("events/list/user")
+    suspend fun getListEventsRecommended(
+        @Header("Authorization") token: String
+    ): Response<DataListEventResponse>
+
 //    @Headers("Content-type: application/json")
 //    @GET("activities/list")
 //    suspend fun fetchEventActivities(): Response<ListActivitiesResponse>

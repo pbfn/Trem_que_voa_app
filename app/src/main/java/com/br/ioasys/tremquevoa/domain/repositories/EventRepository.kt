@@ -34,4 +34,6 @@ interface EventRepository {
         status: String,
         eventId: String
     ): Flow<Unit>
+
+    fun getListEventsRecommended(): Flow<List<Event>>
 }

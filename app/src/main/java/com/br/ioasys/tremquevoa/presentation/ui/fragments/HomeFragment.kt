@@ -85,7 +85,6 @@ class HomeFragment : Fragment(), EventClickListener {
                 is ViewState.Success -> {
                     adapterEventsPromoted.submitList(response.data.listPromoted)
                     adapterEventsOnline.submitList(response.data.listOnline)
-                    adapterEventsRecommended.submitList(response.data.listRecommended)
                 }
 
                 is ViewState.Error -> {
@@ -93,6 +92,25 @@ class HomeFragment : Fragment(), EventClickListener {
                         requireContext(),
                         "Falha na lista de eventos",
                         Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+        homeViewModel.eventsRecommended.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Loading -> {
+                }
+
+                is ViewState.Success -> {
+                    adapterEventsRecommended.submitList(response.data)
+                }
+
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Falha na lista de eventos recomendados",
+                        Toast.LENGTH_LONG
                     ).show()
                 }
             }

@@ -11,32 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/imageEventContainer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="7dp"
-            app:cardElevation="24dp"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageEvent"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/image_arts" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:src="@drawable/img_event" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/buttonClose"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_margin="16dp"
-                android:contentDescription="Fechar"
-                android:src="@drawable/ic_arrow_white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </com.google.android.material.card.MaterialCardView>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/buttonClose"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="34dp"
+            android:clickable="true"
+            android:contentDescription="Fechar"
+            android:src="@drawable/ic_arrow_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,26 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageEventContainer" >
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageBackgroundFavorite"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="30dp"
-                android:src="@color/primary_lighter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iconFavorite"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="40dp"
-                android:src="@drawable/ic_favorite_event_inative"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageEvent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewEventName"
@@ -131,15 +107,11 @@
                     android:text="Ana Vaz" />
             </GridLayout>
 
-            <GridLayout
-                android:id="@+id/gridParticipants"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerLayoutUsers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:gravity="start"
-                android:orientation="horizontal"
-                android:paddingStart="0dp"
-                android:paddingEnd="8dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gridOrganizer">
@@ -149,25 +121,72 @@
                     style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="Participantes" />
+                    android:text="Participantes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageViewParticipantes"
+                    android:id="@+id/iconUserEventOne"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="26dp"
-                    android:src="@drawable/ic_ellipse" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_avatar"
+                    android:elevation="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textViewTitleParticipants"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconUserEventTwo"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_avatar2"
+                    android:elevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iconUserEventOne"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iconUserEventThree"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_avatar3"
+                    android:elevation="3dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iconUserEventTwo"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewConfirmedParticipants"
-                    style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
-                    android:layout_width="wrap_content"
+                    style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="24dp" />
-            </GridLayout>
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="8 Confirmados"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iconUserEventThree"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <GridLayout
                 android:id="@+id/gridCategoryModality"
@@ -179,7 +198,7 @@
                 android:paddingStart="0dp"
                 android:rowCount="2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gridParticipants">
+                app:layout_constraintTop_toBottomOf="@id/containerLayoutUsers">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewTitleCategory"
@@ -219,35 +238,41 @@
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="4dp"
                     tools:text="Presencial" />
+
             </GridLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewEventFree"
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:layout_marginEnd="24dp"
+                android:layout_height="36dp"
+                android:layout_row="0"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="18dp"
                 android:background="@drawable/background_item_interests_perfil"
                 android:gravity="center"
                 android:lines="1"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="4dp"
                 android:text="title"
                 android:textColor="@color/primary_darker"
+                app:layout_constraintBottom_toTopOf="@+id/gridDateTime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/gridCategoryModality"
-                app:layout_constraintTop_toBottomOf="@id/gridParticipants" />
+                app:layout_constraintStart_toEndOf="@+id/gridCategoryModality"
+                app:layout_constraintTop_toBottomOf="@+id/containerLayoutUsers" />
 
             <GridLayout
                 android:id="@+id/gridDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="24dp"
                 android:columnCount="3"
                 android:paddingStart="0dp"
                 android:rowCount="2"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTitleAcessible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gridCategoryModality">
 
@@ -538,6 +563,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonParticipate" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageBackgroundFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@color/primary_lighter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconFavorite"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="26dp"
+                android:src="@drawable/ic_favorite_event_inative"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

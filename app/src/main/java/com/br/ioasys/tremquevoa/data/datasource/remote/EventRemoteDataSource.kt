@@ -43,5 +43,9 @@ interface EventRemoteDataSource {
         status: String,
     ): Flow<List<Attendees>>
 
+    fun getListEventsRecommended(
+        token: String
+    ): Flow<List<Event>>
+
     //fun fetchEventActivities(): Flow<List<Activities>>
 }

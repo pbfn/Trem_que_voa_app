@@ -42,6 +42,11 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
         android:id="@+id/calendarFragment"
         android:name="com.br.ioasys.tremquevoa.presentation.ui.fragments.CalendarFragment"
         android:label="fragment_calendar"

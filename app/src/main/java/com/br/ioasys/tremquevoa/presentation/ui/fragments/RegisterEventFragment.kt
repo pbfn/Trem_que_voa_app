@@ -121,6 +121,25 @@ class RegisterEventFragment : Fragment() {
                         "Evento cadastrado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
+                    binding.customNameEvent.input.text.toString()
+                    binding.customDescription.input.text.toString()
+                    isOnline = false
+                    binding.customUrl.input.text.toString()
+                    date = GregorianCalendar()
+                    startHour?.toString(FORMAT_HOUR) ?: ""
+                    endHour?.toString(FORMAT_HOUR) ?: ""
+                    isYes = false
+                    binding.customMaxParticipants.input.text?.clear()
+                    categorySelected?.id ?: ""
+                    binding.customPrice.input.text?.clear()
+                    binding.customUserIdentity.input.text?.clear()
+                    adapterDisabilities.listDisabilitiesSelected.map { it.id }
+                    binding.customStreet.input.text?.clear()
+                    binding.customNumber.input.text?.clear()
+                    binding.customCity.input.text?.clear()
+                    binding.customState.input.text?.clear()
+                    binding.customZipCode.input.text?.clear()
+                    binding.customReferences.input.text?.clear()
                 }
 
                 is ViewState.Error -> {

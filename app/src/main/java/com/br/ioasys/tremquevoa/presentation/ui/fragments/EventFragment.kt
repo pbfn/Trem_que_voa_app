@@ -10,10 +10,7 @@ import android.widget.Toast
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEventBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
-import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW
-import com.br.ioasys.tremquevoa.extensions.show
-import com.br.ioasys.tremquevoa.extensions.toMoney
-import com.br.ioasys.tremquevoa.extensions.toString
+import com.br.ioasys.tremquevoa.extensions.*
 import com.br.ioasys.tremquevoa.presentation.viewmodel.EventViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -70,20 +67,20 @@ class EventFragment : BottomSheetDialogFragment() {
                     ).show()
                 }
             }
+        }
 
-            registerParticipateViewModel.favoriteEvent.observe(viewLifecycleOwner) { response ->
-                when (response) {
-                    is ViewState.Success -> {
-                        getIconFavorite(true)
-                    }
+        registerParticipateViewModel.favoriteEvent.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is ViewState.Success -> {
+                    getIconFavorite(true)
+                }
 
-                    is ViewState.Error -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Ocorreu um erro ao favoritar o evento",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocorreu um erro ao favoritar o evento",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -107,46 +104,47 @@ class EventFragment : BottomSheetDialogFragment() {
 
     private fun registerParticipateEvent() {
         registerParticipateViewModel.registerParticipateEvent(
-            eventId = event?.id?:""
+            eventId = event?.id ?: ""
         )
     }
 
     private fun favoriteEvent() {
         registerParticipateViewModel.favoriteEvent(
-            eventId = event?.id?:""
+            eventId = event?.id ?: ""
         )
     }
 
     private fun setupView() {
-            binding.apply {
-                textViewEventName.text = event?.name
-                textViewEventDescription.text = event?.description
-                textViewNameOrganizer.text = event?.user?.name
-                textViewConfirmedParticipants.text = event?.numParticipants.toString()
-                textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
-                textViewStartTime.text = event?.startTime
-                iconFavorite.setImageDrawable(getIconFavorite(event?.isFavorite?:false))
-                textViewDuration.text = event?.endTime  //TODO calcular duração
-                textViewCategory.text = event?.activity?.title
-                textViewModality.text = getModality(event?.isOnline ?: false)
-                textViewAcessible.text =
-                    event?.accessibilities?.map {
-                        it.name
-                    }?.joinToString(
-                        prefix = "",
-                        separator = ", ",
-                        postfix = ""
-                    )
-                textViewPets.text = getPetFriendly(event?.isPetFriendly ?: false)
-                textViewLocalEvent.text = event?.address?.street
-                textViewEventFree.text = getTextEventPaymentType(getEventIsFree(event?.price))
-                buttonPay.show(getEventIsFree(event?.price).not())
-            }
+        binding.apply {
+            textViewEventName.text = event?.name
+            textViewEventDescription.text = event?.description
+            textViewNameOrganizer.text = event?.user?.name
+            textViewConfirmedParticipants.text = event?.numParticipants.toString()
+            textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
+            textViewStartTime.text = event?.startTime
+            iconFavorite.setImageDrawable(getIconFavorite(event?.isFavorite ?: false))
+            textViewDuration.text = event?.startTime?.differTime(event?.endTime?:"0")
+            textViewCategory.text = event?.activity?.title
+            textViewModality.text = getModality(event?.isOnline ?: false)
+            textViewAcessible.text =
+                event?.accessibilities?.map {
+                    it.name
+                }?.joinToString(
+                    prefix = "",
+                    separator = ", ",
+                    postfix = ""
+                )
+            textViewPets.text = getPetFriendly(event?.isPetFriendly ?: false)
+            textViewLocalEvent.text = event?.address?.street
+            textViewEventFree.text = getTextEventPaymentType(getEventIsFree(event?.price))
+            buttonPay.show(getEventIsFree(event?.price).not())
+            imageEvent.setImageDrawable(event?.interestImageDrawable(requireContext()))
         }
+    }
 
     private fun getTextEventPaymentType(isFree: Boolean): String {
         return if (isFree) getString(R.string.free_event)
-        else event?.price?.toMoney()?:"R$0,00"
+        else event?.price?.toMoney() ?: "R$0,00"
     }
 
     private fun getEventIsFree(price: Double?): Boolean {
@@ -155,31 +153,31 @@ class EventFragment : BottomSheetDialogFragment() {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun getIconFavorite(favorite: Boolean): Drawable? {
-        return if(favorite) {
+        return if (favorite) {
             context?.getDrawable(R.drawable.ic_favorite_event_active)
         } else context?.getDrawable(R.drawable.ic_favorite_event_inative)
     }
 
     private fun getModality(isOnline: Boolean): String {
-            return if (isOnline) getString(R.string.modality_online)
-            else getString(R.string.modality_presencial)
-        }
+        return if (isOnline) getString(R.string.modality_online)
+        else getString(R.string.modality_presencial)
+    }
 
-        private fun getPetFriendly(isPetFriendly: Boolean): String {
-            return if (isPetFriendly) getString(R.string.pet_friendly_yes)
-            else getString(R.string.pet_friendly_no)
-        }
+    private fun getPetFriendly(isPetFriendly: Boolean): String {
+        return if (isPetFriendly) getString(R.string.pet_friendly_yes)
+        else getString(R.string.pet_friendly_no)
+    }
 
-        override fun onDestroyView() {
-            super.onDestroyView()
-            _binding
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding
+    }
 
-        companion object {
-            fun newInstance(event: Event?): EventFragment {
-                return EventFragment().apply {
-                    this.event = event
-                }
+    companion object {
+        fun newInstance(event: Event?): EventFragment {
+            return EventFragment().apply {
+                this.event = event
             }
         }
+    }
 }
