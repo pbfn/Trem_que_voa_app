@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.br.ioasys.tremquevoa.databinding.EventsItemAdpterBinding
 import com.br.ioasys.tremquevoa.domain.model.Event
-import com.br.ioasys.tremquevoa.extensions.FORMAT_DATE_VIEW_SHORT
-import com.br.ioasys.tremquevoa.extensions.interestImageDrawable
-import com.br.ioasys.tremquevoa.extensions.show
-import com.br.ioasys.tremquevoa.extensions.toString
+import com.br.ioasys.tremquevoa.extensions.*
 
 class AdapterEvents(
     private val onEventClickListener: EventClickListener
@@ -54,7 +51,7 @@ class AdapterEvents(
                 textViewTitleCardAccessibilities.show(
                     event.accessibilities?.isNotEmpty()?: false
                 )
-
+                iconSaveFavorite.setImageDrawable(event.getIconFavorite(context))
                 imageCardEvent.setImageDrawable(event.interestImageDrawable(context))
                 root.setOnClickListener {
                     onEventClickListener.onEventClickListener(event)
