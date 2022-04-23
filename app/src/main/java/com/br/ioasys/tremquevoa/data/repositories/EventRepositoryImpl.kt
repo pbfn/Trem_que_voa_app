@@ -82,7 +82,10 @@ class EventRepositoryImpl(
                     ) { listEvent, listAttendees ->
                         listEvent.map { e ->
                             listAttendees.forEach { a ->
-                                e.isFavorite = e.id == a.eventId
+                                if (e.id == a.eventId) {
+                                    e.isFavorite = true
+                                    return@forEach
+                                }
                             }
                             e
                         }

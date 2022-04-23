@@ -42,6 +42,8 @@ class FavoritesFragment : Fragment(), EventClickListener {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewFavoritesEvents()
         addObserver()
+        favoritiesEventsViewModel.getEventsFavorities()
+
     }
 
     private fun addObserver() {

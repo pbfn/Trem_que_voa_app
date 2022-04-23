@@ -19,11 +19,8 @@ class FavoritiesEventsViewModel(
     private var _events = MutableLiveData<ViewState<List<Event>>>()
     var events: LiveData<ViewState<List<Event>>> = _events
 
-    init {
-        getEventsFavorities()
-    }
 
-    private fun getEventsFavorities() {
+   fun getEventsFavorities() {
         _events.postLoading()
 
         getAllEventsUseCase(

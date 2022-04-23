@@ -73,7 +73,7 @@ class EventFragment : BottomSheetDialogFragment() {
         registerParticipateViewModel.favoriteEvent.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is ViewState.Success -> {
-                    getIconFavorite(true)
+                    binding.iconFavorite.setImageDrawable(event?.getIconFavorite(requireContext()))
                 }
 
                 is ViewState.Error -> {
@@ -134,8 +134,8 @@ class EventFragment : BottomSheetDialogFragment() {
             textViewConfirmedParticipants.text = event?.numParticipants.toString()
             textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
             textViewStartTime.text = event?.startTime
-            iconFavorite.setImageDrawable(getIconFavorite(event?.isFavorite ?: false))
-            textViewDuration.text = event?.startTime?.differTime(event?.endTime ?: "0")
+            iconFavorite.setImageDrawable(event?.getIconFavorite(requireContext()))
+            textViewDuration.text = event?.startTime?.differTime(event?.endTime?:"0")
             textViewCategory.text = event?.activity?.title
             textViewModality.text = getModality(event?.isOnline ?: false)
             textViewAcessible.text =
@@ -161,13 +161,6 @@ class EventFragment : BottomSheetDialogFragment() {
 
     private fun getEventIsFree(price: Double?): Boolean {
         return price == 0.0
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun getIconFavorite(favorite: Boolean): Drawable? {
-        return if (favorite) {
-            context?.getDrawable(R.drawable.ic_favorite_event_active)
-        } else context?.getDrawable(R.drawable.ic_favorite_event_inative)
     }
 
     private fun getModality(isOnline: Boolean): String {

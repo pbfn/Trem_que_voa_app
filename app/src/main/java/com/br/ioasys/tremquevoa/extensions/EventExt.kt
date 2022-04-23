@@ -42,3 +42,10 @@ fun Event.interestImageDrawable(context: Context): Drawable? {
         )
     }
 }
+
+@SuppressLint("UseCompatLoadingForDrawables")
+fun Event.getIconFavorite(context: Context): Drawable? {
+    return if (this.isFavorite) {
+        context?.getDrawable(R.drawable.ic_favorite_event_active)
+    } else context?.getDrawable(R.drawable.ic_favorite_event_inative)
+}

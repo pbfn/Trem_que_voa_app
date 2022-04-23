@@ -36,6 +36,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_bg_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -87,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Organizador:" />
+                    android:text="@string/organizer_event" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewOrganizer"
@@ -123,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="Participantes"
+                    android:text="@string/participantes_event"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +134,7 @@
                     android:id="@+id/iconUserEventOne"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/ic_avatar"
                     android:elevation="5dp"
@@ -174,7 +175,7 @@
                     style="@style/Base.Widget.AppCompat.TextView.LibreFranklin_Text_12_Regular"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
@@ -208,7 +209,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="16dp"
-                    android:text="Categoria" />
+                    android:text="@string/category_event" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewTitleModality"
@@ -219,7 +220,7 @@
                     android:layout_column="1"
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="16dp"
-                    android:text="Modalidade" />
+                    android:text="@string/modality_event" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewCategory"
@@ -289,7 +290,7 @@
                     style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="56dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/event_time" />
 
@@ -314,7 +315,7 @@
                     style="@style/Base.Widget.AppCompat.TextView.App_Body_14_Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="56dp"
                     tools:text="18:00" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -325,7 +326,6 @@
                     android:layout_marginStart="60dp"
                     tools:text="30 min" />
             </GridLayout>
-
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icon_accessible"
@@ -487,6 +487,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="26dp"
+                    android:clickable="true"
                     android:src="@drawable/ic_forum" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -495,6 +496,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="85dp"
                     android:layout_marginTop="26dp"
+                    android:clickable="true"
                     android:src="@drawable/ic_round_report" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -503,6 +505,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="75dp"
                     android:layout_marginTop="28dp"
+                    android:clickable="true"
                     android:src="@drawable/ic_share" />
 
                 <TextView

@@ -117,6 +117,11 @@
     <string name="events_recomended">Eventos recomendados</string>
     <string name="events_online">Eventos online</string>
     <string name="health_and_wellness_tips">Dicas de saúde e bem estar</string>
+    <string name="participantes_event">Participantes:</string>
+    <string name="organizer_event">Organizador:</string>
+    <string name="category_event">Categoria</string>
+    <string name="modality_event">Modalidade</string>
+    <string name="save_events">Eventos salvos</string>
     <string name="label_cadastro_disabilities">Deseja informar se possui algum tipo de deficiência? Se sim, qual destas?</string>
     <string name="forgot_password">Esqueceu a senha?</string>
     <string name="access_gmail">acessar com o gmail</string>
