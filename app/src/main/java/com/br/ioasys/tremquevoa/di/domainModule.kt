@@ -37,4 +37,5 @@ val domainModule = module {
     factory { SaveCityForUser(get(), get()) }
     factory { GetWellnessListUseCase(get(), get()) }
     factory { GetEventsRecomendedUseCase(get(), get()) }
+    factory { WipeTokenUseCase(get(), get()) }
 }
