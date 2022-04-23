@@ -36,27 +36,56 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_name_event"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="26dp"
-            android:inputType="text"
-            app:custom_title="@string/event_name"
+            android:hint="@string/event_name"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCreateEvent" />
+            app:layout_constraintTop_toBottomOf="@id/textViewCreateEvent">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputTextName"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_user_identity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="number"
-            app:custom_title="@string/cpf_organizer"
+            android:hint="@string/cpf_organizer"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_name_event" />
+            app:layout_constraintTop_toBottomOf="@id/custom_name_event">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputTextUserIdentity"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputBoxCategory"
@@ -122,120 +151,263 @@
                 android:paddingBottom="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="date"
-            app:custom_title="@string/event_date"
+            android:hint="@string/event_date"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputPetFriendly" />
+            app:layout_constraintTop_toBottomOf="@id/textInputPetFriendly">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputTextDate"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="date"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_start_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="time"
-            app:custom_title="@string/start_time"
+            android:hint="@string/start_time"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_date"></com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+            app:layout_constraintTop_toBottomOf="@id/custom_date">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputStartTime"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="time"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_end_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="time"
-            app:custom_title="@string/end_time"
+            android:hint="@string/end_time"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_start_time"></com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput>
+            app:layout_constraintTop_toBottomOf="@id/custom_start_time">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEndTime"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="time"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_max_participants"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="number"
-            app:custom_title="@string/maximum_participants"
+            android:hint="@string/maximum_participants"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_end_time" />
+            app:layout_constraintTop_toBottomOf="@id/custom_end_time">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputMaxParticipants"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_url"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="text"
-            app:custom_title="@string/event_url"
+            android:hint="@string/event_url"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_max_participants" />
+            app:layout_constraintTop_toBottomOf="@id/custom_max_participants">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputUrl"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_street"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="textAutoComplete"
-            app:custom_title="@string/event_street"
+            android:animateLayoutChanges="true"
+            android:hint="@string/event_street"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_url" />
+            app:layout_constraintTop_toBottomOf="@id/custom_url">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputStreet"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="number"
-            app:custom_title="@string/event_number"
+            android:hint="@string/event_number"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_street" />
+            app:layout_constraintTop_toBottomOf="@id/custom_street">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputNumber"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_zipCode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="number"
-            app:custom_title="@string/event_zip_code"
+            android:hint="@string/event_zip_code"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_number" />
+            app:layout_constraintTop_toBottomOf="@id/custom_number">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputZipCode"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_city"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="textAutoComplete"
-            app:custom_title="@string/event_city"
+            android:hint="@string/event_city"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_zipCode" />
+            app:layout_constraintTop_toBottomOf="@id/custom_zipCode">
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputCity"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_state"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="textAutoComplete"
-            app:custom_title="@string/state"
+            android:hint="@string/state"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_city" />
+            app:layout_constraintTop_toBottomOf="@id/custom_city">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputState"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAddGoogleMaps"
@@ -244,23 +416,40 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="18dp"
             android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@string/location_on_google_maps"
             android:textColor="#1E00FC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/custom_state" />
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_references"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:animateLayoutChanges="true"
-            android:inputType="textAutoComplete"
-            app:custom_title="@string/reference_point"
+            android:hint="@string/reference_point"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddGoogleMaps" />
+            app:layout_constraintTop_toBottomOf="@id/textViewAddGoogleMaps">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputReferences"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAcessible"
@@ -300,16 +489,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerViewButtonOptions" />
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_price"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:inputType="numberDecimal"
-            app:custom_title="@string/event_price"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:animateLayoutChanges="true"
+            android:hint="@string/event_price"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewClickHere" />
+            app:layout_constraintTop_toBottomOf="@id/textViewClickHere">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPrice"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayoutFreeEvent"
@@ -339,16 +543,31 @@
                 android:textColor="@color/neutral_dark" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.br.ioasys.tremquevoa.presentation.ui.custom_views.CustomFormInput
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:inputType="textMultiLine"
-            app:custom_title="@string/event_description"
+            android:animateLayoutChanges="true"
+            android:hint="@string/event_description"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutFreeEvent" />
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutFreeEvent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDescription"
+                style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegisterEvent"

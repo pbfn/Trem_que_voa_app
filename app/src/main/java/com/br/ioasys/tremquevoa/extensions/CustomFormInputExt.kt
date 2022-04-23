@@ -25,10 +25,10 @@ fun CustomFormInput.ChangeBackground(error: Boolean, msg: String?) {
     } else {
         this.apply {
             inputLayout.isErrorEnabled = error
-            inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.purple_500)
+            inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.primary_darker)
             inputLayout.helperText = ""
             inputLayout.hintTextColor =
-                ColorStateList.valueOf(ContextCompat.getColor(context, R.color.purple_500))
+                ColorStateList.valueOf(ContextCompat.getColor(context, R.color.primary_darker))
         }
     }
 }
