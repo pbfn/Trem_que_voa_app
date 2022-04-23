@@ -15,6 +15,7 @@ import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEmergencyContactBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNameContatct
 import com.br.ioasys.tremquevoa.domain.exceptions.EmpytNumberContatct
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.UpdateUserViewModel
@@ -109,6 +110,13 @@ class EmergencyContactFragment : Fragment() {
                         is EmpytNumberContatct -> {
                             msg = "Por favor informe o número"
                             binding.editTextNumberPerson.ChangeBackground(true, msg)
+                        }
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         else -> {
                                 Toast.makeText(

@@ -3,6 +3,7 @@ package com.br.ioasys.tremquevoa.data_remote.datasource
 import com.br.ioasys.tremquevoa.data.datasource.remote.WellnessRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.service.WellnessService
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Wellness
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,7 +19,7 @@ class WellnessRemoteDataSourceImpl(
                 emit(it.toDomain())
             }
         } else {
-
+            emit(throw RequestException())
         }
 
     }

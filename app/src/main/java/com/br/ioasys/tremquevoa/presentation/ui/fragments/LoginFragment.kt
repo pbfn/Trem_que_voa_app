@@ -138,6 +138,13 @@ class LoginFragment : Fragment() {
                             msg = "Não existe esse email cadastrado"
                             emitError(msg)
                         }
+                        is RequestException->{
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                         else -> {
                             Toast.makeText(
                                 requireContext(),

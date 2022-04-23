@@ -87,6 +87,8 @@ class UserRemoteDataSourceImpl(
             response.body()?.let { userReponse ->
                 emit(userReponse.toDomain())
             }
+        } else {
+            emit(throw RequestException())
         }
     }
 
@@ -95,6 +97,8 @@ class UserRemoteDataSourceImpl(
         val response = authService.resetPassword(ResetPasswordUserRequest(email = email))
         if (response.isSuccessful) {
             emit(true)
+        } else {
+            emit(throw RequestException())
         }
     }
 
@@ -107,6 +111,8 @@ class UserRemoteDataSourceImpl(
             response.body()?.let { registerReponse ->
                 emit(registerReponse.toDomain())
             }
+        } else {
+            emit(throw RequestException())
         }
     }
 
@@ -118,6 +124,8 @@ class UserRemoteDataSourceImpl(
             response.body()?.let { userReponse ->
                 emit(userReponse.toDomain())
             }
+        } else {
+            emit(throw RequestException())
         }
     }
 
@@ -129,8 +137,8 @@ class UserRemoteDataSourceImpl(
 
         if (response.isSuccessful) {
             emit(true)
-        }else{
-            emit(false)
+        } else {
+            emit(throw RequestException())
         }
     }
 }

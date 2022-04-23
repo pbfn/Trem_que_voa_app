@@ -12,3 +12,5 @@ class InvalidEmptyActivityIdException : EventException()
 class InvalidEmptyUserIdException : EventException()
 class InvalidEmptyUserIdentityException : EventException()
 class InvalidEmptyPriceException : EventException()
+
+class RequestException() : EventException()

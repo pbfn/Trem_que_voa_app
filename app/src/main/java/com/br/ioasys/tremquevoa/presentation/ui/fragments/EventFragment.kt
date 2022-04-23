@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentEventBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Event
 import com.br.ioasys.tremquevoa.extensions.*
 import com.br.ioasys.tremquevoa.presentation.viewmodel.EventViewModel
@@ -76,11 +77,22 @@ class EventFragment : BottomSheetDialogFragment() {
                 }
 
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ocorreu um erro ao favoritar o evento",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_favorite),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }
@@ -123,7 +135,7 @@ class EventFragment : BottomSheetDialogFragment() {
             textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
             textViewStartTime.text = event?.startTime
             iconFavorite.setImageDrawable(getIconFavorite(event?.isFavorite ?: false))
-            textViewDuration.text = event?.startTime?.differTime(event?.endTime?:"0")
+            textViewDuration.text = event?.startTime?.differTime(event?.endTime ?: "0")
             textViewCategory.text = event?.activity?.title
             textViewModality.text = getModality(event?.isOnline ?: false)
             textViewAcessible.text =

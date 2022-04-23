@@ -12,6 +12,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentDisabilitiesBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.DisabilitiesViewModel
@@ -94,11 +95,23 @@ class DisabilitiesFragment : Fragment() {
                     setupChips(response.data)
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.failed_request),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
                 }
             }
         }
@@ -108,11 +121,22 @@ class DisabilitiesFragment : Fragment() {
                     nextPage(DisabilitiesFragmentDirections.actionDisabilitiesFragmentToCityFragment())
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.failed_request),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }

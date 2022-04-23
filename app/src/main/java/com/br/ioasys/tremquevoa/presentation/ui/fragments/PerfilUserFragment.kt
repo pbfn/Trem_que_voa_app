@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentPerfilUserBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.domain.model.User
@@ -122,7 +125,22 @@ class PerfilUserFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
                 else -> {
 
@@ -141,7 +159,22 @@ class PerfilUserFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
                 else -> {
 
@@ -160,7 +193,22 @@ class PerfilUserFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
                 else -> {
 

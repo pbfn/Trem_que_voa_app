@@ -10,6 +10,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentForgotPasswordBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.ForgotPasswordViewModel
 import com.br.ioasys.tremquevoa.util.ViewState
@@ -72,11 +73,23 @@ class ForgotPasswordFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.failed_request),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
                 }
             }
 

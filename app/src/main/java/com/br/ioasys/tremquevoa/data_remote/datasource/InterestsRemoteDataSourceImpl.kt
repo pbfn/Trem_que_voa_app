@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data.datasource.remote.InterestsRemoteDataSource
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.UserInterestsRequest
 import com.br.ioasys.tremquevoa.data_remote.service.InterestsService
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Interests
 import com.br.ioasys.tremquevoa.util.MockInteresses
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +20,7 @@ class InterestsRemoteDataSourceImpl(
                 emit(listReponse.toDomain())
             }
         } else {
-            emit(MockInteresses.listaInteresses)
+            emit(throw RequestException())
         }
 
     }
@@ -31,6 +32,8 @@ class InterestsRemoteDataSourceImpl(
             response.body()?.let {
                 emit(it.toDomain())
             }
+        } else {
+            emit(throw RequestException())
         }
     }
 
@@ -47,7 +50,7 @@ class InterestsRemoteDataSourceImpl(
         if (response.isSuccessful) {
             emit(true)
         } else {
-            emit(false)
+            emit(throw RequestException())
         }
     }
 }

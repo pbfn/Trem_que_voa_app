@@ -78,7 +78,22 @@ class WelcomeFragment : Fragment() {
                 }
 
                 is ViewState.Error -> {
-
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentCityBinding
 import com.br.ioasys.tremquevoa.domain.exceptions.EmptyCity
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.extensions.ChangeBackground
 import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.viewmodel.CityViewModel
@@ -62,6 +63,13 @@ class CityFragment : Fragment() {
                                 true,
                                 "Por favor informe uma cidade"
                             )
+                        }
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         else -> {
                             Toast.makeText(

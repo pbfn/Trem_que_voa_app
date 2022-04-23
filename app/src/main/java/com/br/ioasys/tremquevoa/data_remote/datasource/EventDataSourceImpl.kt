@@ -7,6 +7,7 @@ import com.br.ioasys.tremquevoa.data_remote.model.request.event.AddressRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.EventRequest
 import com.br.ioasys.tremquevoa.data_remote.model.request.event.RegisterEventRequest
 import com.br.ioasys.tremquevoa.data_remote.service.EventService
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Attendees
 import com.br.ioasys.tremquevoa.domain.model.Event
 import kotlinx.coroutines.flow.Flow
@@ -70,7 +71,7 @@ class EventDataSourceImpl(
         if (response.isSuccessful) {
             emit(Unit)
         } else {
-            emit(error(response.code()))
+            emit(throw RequestException())
         }
     }
 
@@ -84,7 +85,7 @@ class EventDataSourceImpl(
                     })
                 }
             } else {
-                emit(error(response.code()))
+                emit(throw RequestException())
             }
         }
     }
@@ -99,7 +100,7 @@ class EventDataSourceImpl(
                 emit(unit)
             }
         } else {
-            emit(error(response.code()))
+            emit(throw RequestException())
         }
     }
 
@@ -113,7 +114,7 @@ class EventDataSourceImpl(
                     })
                 }
             } else {
-                emit(error(response.code()))
+                emit(throw RequestException())
             }
         }
     }
@@ -128,7 +129,7 @@ class EventDataSourceImpl(
                     })
                 }
             } else {
-                emit(error(response.code()))
+                emit(throw RequestException())
             }
         }
     }

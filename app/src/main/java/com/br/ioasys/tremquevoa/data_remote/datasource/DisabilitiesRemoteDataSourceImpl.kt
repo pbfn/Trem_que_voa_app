@@ -4,6 +4,7 @@ import com.br.ioasys.tremquevoa.data.datasource.remote.DisabilitiesRemoteDataSou
 import com.br.ioasys.tremquevoa.data_remote.mappers.toDomain
 import com.br.ioasys.tremquevoa.data_remote.model.request.UserDisabilitiesRequest
 import com.br.ioasys.tremquevoa.data_remote.service.DisabilitiesService
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.domain.model.Disabilities
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,7 +20,7 @@ class DisabilitiesRemoteDataSourceImpl(
                 emit(listReponse.toDomain())
             }
         } else {
-            emit(error(response.code()))
+            emit(throw RequestException())
         }
     }
 
@@ -29,6 +30,8 @@ class DisabilitiesRemoteDataSourceImpl(
             response.body()?.let {
                 emit(it.toDomain())
             }
+        }else{
+            emit(throw RequestException())
         }
     }
 
@@ -44,6 +47,8 @@ class DisabilitiesRemoteDataSourceImpl(
             response.body()?.let {
                 emit(true)
             }
+        }else{
+            emit(throw RequestException())
         }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.br.ioasys.tremquevoa.R
 import com.br.ioasys.tremquevoa.databinding.FragmentWellnessBinding
+import com.br.ioasys.tremquevoa.domain.exceptions.RequestException
 import com.br.ioasys.tremquevoa.extensions.show
 import com.br.ioasys.tremquevoa.presentation.adapters.AdapterWellness
 import com.br.ioasys.tremquevoa.presentation.viewmodel.WellnessViewModel
@@ -52,11 +53,22 @@ class WellnessFragment : Fragment() {
                     adapterWellness.differ.submitList(response.data)
                 }
                 is ViewState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.failed_request),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    when (response.throwable) {
+                        is RequestException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.failed_request),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }

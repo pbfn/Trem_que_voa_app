@@ -123,4 +123,5 @@
     <string name="coming_soon">Em breve</string>
     <string name="failed_request">Houve uma falha na comunicação</string>
     <string name="google_diary">sincronizar com google agenda</string>
+    <string name="failed_favorite">Ocorreu um erro ao favoritar o evento</string>
 </resources>
