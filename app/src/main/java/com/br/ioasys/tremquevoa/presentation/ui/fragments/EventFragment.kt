@@ -135,7 +135,7 @@ class EventFragment : BottomSheetDialogFragment() {
             textViewDate.text = event?.date?.toString(FORMAT_DATE_VIEW)
             textViewStartTime.text = event?.startTime
             iconFavorite.setImageDrawable(event?.getIconFavorite(requireContext()))
-            textViewDuration.text = event?.startTime?.differTime(event?.endTime?:"0")
+            textViewDuration.text = event?.startTime?.differTime(event?.endTime ?: "0")
             textViewCategory.text = event?.activity?.title
             textViewModality.text = getModality(event?.isOnline ?: false)
             textViewAcessible.text =

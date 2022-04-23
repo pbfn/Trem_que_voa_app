@@ -271,7 +271,7 @@
                 style="@style/Base.Widget.AppCompat.TextView.App_Body_16_Regular"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="number"
+                android:inputType="textAutoComplete"
                 android:paddingTop="15dp"
                 android:paddingBottom="10dp"
                 android:textSize="16sp" />
