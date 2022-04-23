@@ -144,4 +144,8 @@ class UserRepositoryImpl(
         }
     }
 
+    override fun wipetoken() {
+        userLocalDataSource.saveToken("")
+    }
+
 }

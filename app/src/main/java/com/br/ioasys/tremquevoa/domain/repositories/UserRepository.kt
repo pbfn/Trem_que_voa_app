@@ -38,4 +38,6 @@ interface UserRepository {
     fun getUser(): Flow<User>
 
     fun updateCityForUser(city: String): Flow<Boolean>
+
+    fun wipetoken()
 }
