@@ -74,22 +74,26 @@ class RegisterEventFragment : Fragment() {
             buttonRegisterEvent.setOnClickListener {
                 registerEvent()
             }
+            textViewAddGoogleMaps.setOnClickListener {
+                val toast = Toast(requireContext())
+                toast.showComingSoon(requireContext())
+            }
 
-            customDate.ChangeIcon(
+            inputTextDate.ChangeIcon(
                 ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.date_range_fill_input
                 )!!, ::showDatePicker
             )
 
-            customStartTime.ChangeIcon(
+            inputStartTime.ChangeIcon(
                 ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.time_five_input
                 )!!, ::showTimePickerDialogStart
             )
 
-            customEndTime.ChangeIcon(
+            inputEndTime.ChangeIcon(
                 ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.time_five_input
@@ -119,25 +123,25 @@ class RegisterEventFragment : Fragment() {
                         "Evento cadastrado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
-                    binding.customNameEvent.input.text.toString()
-                    binding.customDescription.input.text.toString()
+                    binding.inputTextName.text.toString()
+                    binding.inputDescription.text.toString()
                     isOnline = false
-                    binding.customUrl.input.text.toString()
+                    binding.inputUrl.text.toString()
                     date = GregorianCalendar()
                     startHour?.toString(FORMAT_HOUR) ?: ""
                     endHour?.toString(FORMAT_HOUR) ?: ""
                     isYes = false
-                    binding.customMaxParticipants.input.text?.clear()
+                    binding.inputMaxParticipants.text?.clear()
                     categorySelected?.id ?: ""
-                    binding.customPrice.input.text?.clear()
-                    binding.customUserIdentity.input.text?.clear()
+                    binding.inputPrice.text?.clear()
+                    binding.inputTextUserIdentity.text?.clear()
                     adapterDisabilities.listDisabilitiesSelected.map { it.id }
-                    binding.customStreet.input.text?.clear()
-                    binding.customNumber.input.text?.clear()
-                    binding.customCity.input.text?.clear()
-                    binding.customState.input.text?.clear()
-                    binding.customZipCode.input.text?.clear()
-                    binding.customReferences.input.text?.clear()
+                    binding.inputStreet.text?.clear()
+                    binding.inputNumber.text?.clear()
+                    binding.inputCity.text?.clear()
+                    binding.inputState.text?.clear()
+                    binding.inputZipCode.text?.clear()
+                    binding.inputReferences.text?.clear()
                 }
 
                 is ViewState.Error -> {
@@ -209,7 +213,7 @@ class RegisterEventFragment : Fragment() {
         datePikerDialog = DatePickerDialog(
             requireContext(),
             { _, mYear, mMonth, mDay ->
-                binding.customDate.input.setText("$mDay-$mMonth-$mYear")
+                binding.inputTextDate.setText("$mDay-$mMonth-$mYear")
                 date.set(GregorianCalendar.DAY_OF_MONTH, mDay)
                 date.set(GregorianCalendar.MONTH, mMonth)
                 date.set(GregorianCalendar.YEAR, mYear)
@@ -233,7 +237,7 @@ class RegisterEventFragment : Fragment() {
         timePickerDialogStart = TimePickerDialog(
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
-                binding.customStartTime.input.setText("$mHour:$mMinute")
+                binding.inputStartTime.setText("$mHour:$mMinute")
                 startHour = GregorianCalendar().apply {
                     set(GregorianCalendar.HOUR, mHour)
                     set(GregorianCalendar.MINUTE, mMinute)
@@ -260,7 +264,7 @@ class RegisterEventFragment : Fragment() {
         timePickerDialogEnd = TimePickerDialog(
             requireContext(),
             TimePickerDialog.OnTimeSetListener { view, mHour, mMinute ->
-                binding.customEndTime.input.setText("$mHour:$mMinute")
+                binding.inputEndTime.setText("$mHour:$mMinute")
                 endHour = GregorianCalendar().apply {
                     set(GregorianCalendar.HOUR_OF_DAY, mHour)
                     set(GregorianCalendar.MINUTE, mMinute)
@@ -348,25 +352,25 @@ class RegisterEventFragment : Fragment() {
 
     private fun registerEvent() {
         registerEventViewModel.registerEvent(
-            name = binding.customNameEvent.input.text.toString(),
-            description = binding.customDescription.input.text.toString(),
+            name = binding.inputTextName.text.toString(),
+            description = binding.inputDescription.text.toString(),
             isOnline = isOnline,
-            url = binding.customUrl.input.text.toString(),
+            url = binding.inputUrl.text.toString(),
             date = date?.toString(FORMAT_DATE) ?: "",
             startTime = startHour?.toString(FORMAT_HOUR) ?: "",
             endTime = endHour?.toString(FORMAT_HOUR) ?: "",
             isPetFriendly = isYes,
-            maxParticipants = binding.customMaxParticipants.input.text.toInt() ?: 0,
+            maxParticipants = binding.inputMaxParticipants.text.toInt() ?: 0,
             activityId = categorySelected?.id ?: "",
-            price = binding.customPrice.input.text.toInt() ?: 0,
-            userIdentity = binding.customUserIdentity.input.text.toString(),
+            price = binding.inputPrice.text.toInt() ?: 0,
+            userIdentity = binding.inputTextUserIdentity.text.toString(),
             accessibilities = adapterDisabilities.listDisabilitiesSelected.map { it.id },
-            street = binding.customStreet.input.text.toString(),
-            number = binding.customNumber.input.text.toInt() ?: 0,
-            city = binding.customCity.input.text.toString(),
-            state = binding.customState.input.text.toString(),
-            zipCode = binding.customZipCode.input.text.toString(),
-            referencePoint = binding.customReferences.input.text.toString(),
+            street = binding.inputStreet.text.toString(),
+            number = binding.inputNumber.text.toInt() ?: 0,
+            city = binding.inputCity.text.toString(),
+            state = binding.inputState.text.toString(),
+            zipCode = binding.inputZipCode.text.toString(),
+            referencePoint = binding.inputReferences.text.toString(),
         )
     }
 
